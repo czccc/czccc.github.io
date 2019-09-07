@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html  lang="en">
+<head>
+    <meta charset="utf-8" />
+
+<meta name="generator" content="Hexo 3.9.0" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+<title>Python-100-Day ③ 常用/内置模块 - CZCC</title>
+
+
+    <meta name="keywords" content="Python,Python-100-Days">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python-100-Day ③ 常用&#x2F;内置模块">
+<meta property="og:url" content="http://czccc.github.io/p/53e0edd6/index.html">
+<meta property="og:site_name" content="CZCC">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http://czccc.github.io/images/og_image.png">
+<meta property="og:updated_time" content="2019-09-07T07:42:44.712Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Python-100-Day ③ 常用&#x2F;内置模块">
+<meta name="twitter:image" content="http://czccc.github.io/images/og_image.png">
+
+
+
+
+
+
+
+<link rel="icon" href="/images/favicon.ico">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css">
+
+
+    
+    
+    
+    <style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+    
+
+    
+    
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+    
+
+    
+    
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+
+    
+    
+    
+    
+
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+<link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+
+    
+    
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="is-2-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="/images/logo.ico" alt="Python-100-Day ③ 常用/内置模块" height="28">
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item"
+                href="/">Home</a>
+                
+                <a class="navbar-item"
+                href="/archives">Archives</a>
+                
+                <a class="navbar-item"
+                href="/categories">Categories</a>
+                
+                <a class="navbar-item"
+                href="/tags">Tags</a>
+                
+                <a class="navbar-item"
+                href="/about">About</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                    
+                    
+                    <a class="navbar-item" target="_blank" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                    
+                
+                
+                <a class="navbar-item is-hidden-tablet catalogue" title="Catalogue" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
+                
+                <a class="navbar-item search" title="Search" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-9-desktop is-9-widescreen has-order-2 column-main"><div class="card">
+    
+    <div class="card-content article ">
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <i class="fas fa-angle-double-right"></i>&nbsp;&nbsp;Python-100-Day ③ 常用/内置模块
+            
+        </h1>
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <!-- <time class="level-item has-text-grey" datetime="2019-06-11T13:26:28.000Z">2019-06-11</time> -->
+                <time class="level-item has-text-grey" datetime="2019-06-11T13:26:28.000Z">
+                    <i class="far fa-calendar-alt">&nbsp;</i>
+                    2019-06-11
+                </time>
+                
+                    <time class="level-item has-text-grey is-hidden-mobile" datetime="2019-09-07T07:42:44.712Z"><i class="far fa-calendar-check">&nbsp;</i>2019-09-07</time>
+                
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/Python/">Python</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Python/Python-100-Days/">Python-100-Days</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    8 minutes read (About 1244 words)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <!-- <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                Python-100-Day ③ 常用/内置模块
+            
+        </h1> -->
+        <div class="content">
+            <hr>
+<a id="more"></a>
+
+<h1 id="图形用户界面和游戏开发"><a href="#图形用户界面和游戏开发" class="headerlink" title="图形用户界面和游戏开发"></a>图形用户界面和游戏开发</h1><h2 id="tkinter"><a href="#tkinter" class="headerlink" title="tkinter"></a>tkinter</h2><blockquote>
+<p>待补充</p>
+</blockquote>
+<p>基本上使用tkinter来开发GUI应用需要以下5个步骤：</p>
+<ol>
+<li><p>导入tkinter模块中我们需要的东西。</p>
+ <figure class="highlight python hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> tkinter</span><br><span class="line"><span class="hljs-keyword">import</span> tkinter.messagebox</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>创建一个顶层窗口对象并用它来承载整个GUI应用。</p>
+ <figure class="highlight python hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment"># 创建顶层窗口</span></span><br><span class="line">top = tkinter.Tk()</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在顶层窗口对象上添加GUI组件。</p>
+ <figure class="highlight python hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment"># 设置窗口大小</span></span><br><span class="line">top.geometry(<span class="hljs-string">'240x160'</span>)</span><br><span class="line"><span class="hljs-comment"># 设置窗口标题</span></span><br><span class="line">top.title(<span class="hljs-string">'小游戏'</span>)</span><br><span class="line"><span class="hljs-comment"># 创建标签对象并添加到顶层窗口</span></span><br><span class="line">label = tkinter.Label(top, text=<span class="hljs-string">'Hello, world!'</span>, font=<span class="hljs-string">'Arial -32'</span>, fg=<span class="hljs-string">'red'</span>)</span><br><span class="line">label.pack(expand=<span class="hljs-number">1</span>)</span><br><span class="line"><span class="hljs-comment"># 创建一个装按钮的容器</span></span><br><span class="line">panel = tkinter.Frame(top)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>通过代码将这些GUI组件的功能组织起来。</p>
+ <figure class="highlight python hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment"># 创建按钮对象 指定添加到哪个容器中 通过command参数绑定事件回调函数</span></span><br><span class="line">button1 = tkinter.Button(panel, text=<span class="hljs-string">'修改'</span>, command=change_label_text)</span><br><span class="line">button1.pack(side=<span class="hljs-string">'left'</span>)</span><br><span class="line">button2 = tkinter.Button(panel, text=<span class="hljs-string">'退出'</span>, command=confirm_to_quit)</span><br><span class="line">button2.pack(side=<span class="hljs-string">'right'</span>)</span><br><span class="line">panel.pack(side=<span class="hljs-string">'bottom'</span>)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>进入主事件循环(main loop)。</p>
+ <figure class="highlight python hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment"># 开启主事件循环</span></span><br><span class="line">tkinter.mainloop()</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h2 id="pygame"><a href="#pygame" class="headerlink" title="pygame"></a>pygame</h2><blockquote>
+<p>TODO</p>
+</blockquote>
+<h1 id="文件和异常"><a href="#文件和异常" class="headerlink" title="文件和异常"></a>文件和异常</h1><h2 id="打开文件"><a href="#打开文件" class="headerlink" title="打开文件"></a>打开文件</h2><p>通过Python内置的<code>open</code>函数，可以指定文件名、操作模式、编码信息等来获得操作文件的对象，接下来就可以对文件进行读写操作了</p>
+<figure class="highlight python hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">open(</span><br><span class="line">    file,           <span class="hljs-comment"># 文件名</span></span><br><span class="line">    mode=<span class="hljs-string">'r'</span>,       <span class="hljs-comment"># 操作模式, 默认为 'rt'</span></span><br><span class="line">    buffering=<span class="hljs-number">-1</span>,   <span class="hljs-comment"># 缓存, 0为不缓存, 1为缓存一行</span></span><br><span class="line">    encoding=<span class="hljs-literal">None</span>,  <span class="hljs-comment"># 编码, 一般使用 utf8</span></span><br><span class="line">    errors=<span class="hljs-literal">None</span>,    <span class="hljs-comment"># 报错级别</span></span><br><span class="line">    newline=<span class="hljs-literal">None</span>,   <span class="hljs-comment"># 区分换行符</span></span><br><span class="line">    closefd=<span class="hljs-literal">True</span>,   <span class="hljs-comment"># 传入的file参数类型</span></span><br><span class="line">    opener=<span class="hljs-literal">None</span>,</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+<p>对于操作模式, 可以参考:</p>
+<table>
+<thead>
+<tr>
+<th>字符</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>‘r’</td>
+<td>读文件 (默认)</td>
+</tr>
+<tr>
+<td>‘w’</td>
+<td>写文件, 首先会将文件截断</td>
+</tr>
+<tr>
+<td>‘x’</td>
+<td>新建文件, 然后以写模式打开</td>
+</tr>
+<tr>
+<td>‘a’</td>
+<td>写文件, 如果文件已存在, 则追加到文件末尾</td>
+</tr>
+<tr>
+<td>‘b’</td>
+<td>二进制模式</td>
+</tr>
+<tr>
+<td>‘t’</td>
+<td>文本模式 (默认)</td>
+</tr>
+<tr>
+<td>‘+’</td>
+<td>更新文件 (可读可写)</td>
+</tr>
+<tr>
+<td>‘U’</td>
+<td>universal newline mode (deprecated)</td>
+</tr>
+</tbody></table>
+<p>使用一些模式的组合, 可以实现简单的功能:</p>
+<ol>
+<li>默认模式为 <code>&#39;rt&#39;</code>, 即以只读文本形式打开</li>
+<li>使用 <code>&#39;w+b&#39;</code>, 可以截断二进制文件</li>
+<li>使用 <code>&#39;r+b&#39;</code>, 不截断二进制文件</li>
+<li>模式 <code>&#39;x&#39;</code> 包含 <code>&#39;w&#39;</code>, 但会当文件已经存在时, 抛出 <code>FileExistsError</code> 异常</li>
+</ol>
+<p><img src="https://i.loli.net/2019/06/19/5d09d28a18f6055267.png" alt="20190619141328.png"></p>
+<p>对于文本文件, 常用的打开模式如下:</p>
+<figure class="highlight python hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">try</span>:</span><br><span class="line">    <span class="hljs-keyword">with</span> open(<span class="hljs-string">'test.txt'</span>, <span class="hljs-string">'r'</span>, encoding=<span class="hljs-string">'utf-8'</span>) <span class="hljs-keyword">as</span> f:</span><br><span class="line">        print(f.read())</span><br><span class="line"><span class="hljs-keyword">except</span> FileNotFoundError:</span><br><span class="line">    print(<span class="hljs-string">'无法打开指定的文件!'</span>)</span><br><span class="line"><span class="hljs-keyword">except</span> LookupError:</span><br><span class="line">    print(<span class="hljs-string">'指定了未知的编码!'</span>)</span><br><span class="line"><span class="hljs-keyword">except</span> UnicodeDecodeError:</span><br><span class="line">    print(<span class="hljs-string">'读取文件时解码错误!'</span>)</span><br></pre></td></tr></table></figure>
+
+<p>在读取文件时, 可能会出现的异常有:</p>
+<table>
+<thead>
+<tr>
+<th>异常</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>FileNotFoundError</code></td>
+<td>文件不存在</td>
+</tr>
+<tr>
+<td><code>FileExistsError</code></td>
+<td>文件已经存在 (<code>&#39;x&#39;</code>模式)</td>
+</tr>
+<tr>
+<td><code>LookupError</code></td>
+<td>制定了未知编码</td>
+</tr>
+<tr>
+<td><code>UnicodeDecodeError</code></td>
+<td>读取文件时解码错误</td>
+</tr>
+</tbody></table>
+<h2 id="读取文本文件"><a href="#读取文本文件" class="headerlink" title="读取文本文件"></a>读取文本文件</h2><p>打开一个文本文件后, 可以通过 <code>read()</code> 函数读取文件的内容</p>
+<figure class="highlight python hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment"># 参数变量</span></span><br><span class="line">name            <span class="hljs-comment"># 文件名</span></span><br><span class="line">mode            <span class="hljs-comment"># 模式</span></span><br><span class="line">buffer          <span class="hljs-comment"># 缓存</span></span><br><span class="line">encoding        <span class="hljs-comment"># 文件编码格式</span></span><br><span class="line">errors          <span class="hljs-comment"># 报错级别</span></span><br><span class="line">newlines        <span class="hljs-comment"># 区分换行符</span></span><br><span class="line"></span><br><span class="line">line_buffering  <span class="hljs-comment"># 行缓存</span></span><br><span class="line">closed          <span class="hljs-comment"># 文件是否关闭</span></span><br><span class="line">write_through   <span class="hljs-comment">#</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 函数</span></span><br><span class="line">close()         <span class="hljs-comment"># 关闭文件对象</span></span><br><span class="line">flush()         <span class="hljs-comment"># 清理写入缓存</span></span><br><span class="line">fileno()        <span class="hljs-comment"># 返回一个整型的文件描述符</span></span><br><span class="line">isatty()        <span class="hljs-comment"># 判断是否连接到一个终端设备</span></span><br><span class="line">truncate([size])</span><br><span class="line"><span class="hljs-comment"># 无 size 时, 从当前位置截断, 删除后面内容</span></span><br><span class="line"><span class="hljs-comment"># 有 size 时, 从开头偏移 size 处截断</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 读取</span></span><br><span class="line">readable()      <span class="hljs-comment"># 判断文件是否为可读模式</span></span><br><span class="line">read([size])    <span class="hljs-comment"># 读取文件内容, size未指定或为负则全部读取</span></span><br><span class="line">readline()      <span class="hljs-comment"># 读取一行</span></span><br><span class="line">readlines()     <span class="hljs-comment"># 以列表形式返回所有行</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 文件指针</span></span><br><span class="line">tell()          <span class="hljs-comment"># 返回当前文件指针位置</span></span><br><span class="line">seekable()      <span class="hljs-comment"># 判断文件是否可以随机访问</span></span><br><span class="line">seek(offset, whence=<span class="hljs-number">0</span>)  <span class="hljs-comment"># 设置文件指针位置</span></span><br><span class="line"><span class="hljs-comment"># whence 可以接收相对位置的起点</span></span><br><span class="line"><span class="hljs-comment"># 0 -- 开始处 (默认值); 此时 offset &gt;= 0</span></span><br><span class="line"><span class="hljs-comment"># 1 -- 当前文件位置;    此时 offset 可正可负</span></span><br><span class="line"><span class="hljs-comment"># 2 -- 结尾处;         此时 offset &lt; 0</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 写入</span></span><br><span class="line">writable()      <span class="hljs-comment"># 文件是否可写</span></span><br><span class="line">write(str)      <span class="hljs-comment"># 将 str 写入文件, 返回写入的长度</span></span><br><span class="line">writelines(seq) <span class="hljs-comment"># 将序列按序写入文件, 如需换行须在序列中自行加入</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 重新配置文件模式</span></span><br><span class="line">reconfigure(</span><br><span class="line">    *,</span><br><span class="line">    encoding=<span class="hljs-literal">None</span>,</span><br><span class="line">    errors=<span class="hljs-literal">None</span>,</span><br><span class="line">    newline=<span class="hljs-literal">None</span>,</span><br><span class="line">    line_buffering=<span class="hljs-literal">None</span>,</span><br><span class="line">    write_through=<span class="hljs-literal">None</span>,</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+<p>通过以上这些函数, 可以实现对文本的多种读取方式:</p>
+<figure class="highlight python hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment"># 一次性读取整个文件内容</span></span><br><span class="line"><span class="hljs-keyword">with</span> open(<span class="hljs-string">'致橡树.txt'</span>, <span class="hljs-string">'r'</span>, encoding=<span class="hljs-string">'utf-8'</span>) <span class="hljs-keyword">as</span> f:</span><br><span class="line">    print(f.read())</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 通过for-in循环逐行读取</span></span><br><span class="line"><span class="hljs-keyword">with</span> open(<span class="hljs-string">'致橡树.txt'</span>, mode=<span class="hljs-string">'r'</span>) <span class="hljs-keyword">as</span> f:</span><br><span class="line">    <span class="hljs-keyword">for</span> line <span class="hljs-keyword">in</span> f:</span><br><span class="line">        print(line, end=<span class="hljs-string">''</span>)</span><br><span class="line">        time.sleep(<span class="hljs-number">0.5</span>)</span><br><span class="line">print()</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 读取文件按行读取到列表中</span></span><br><span class="line"><span class="hljs-keyword">with</span> open(<span class="hljs-string">'致橡树.txt'</span>) <span class="hljs-keyword">as</span> f:</span><br><span class="line">    lines = f.readlines()</span><br><span class="line">print(lines)</span><br></pre></td></tr></table></figure>
+
+<p>文本的写入也很简单, 使用 <code>write()</code> 函数即可, 不再赘述.</p>
+<h2 id="JSON-处理"><a href="#JSON-处理" class="headerlink" title="JSON 处理"></a>JSON 处理</h2><p>使用 <code>json</code> 模块, 可以实现JSON格式数据的处理.</p>
+<figure class="highlight hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment"># JSON 文件  &lt;- -&gt;  Python 对象 (常为 dict)</span></span><br><span class="line">dump(obj, fp)       Python 对象        -&gt;   JSON格式文件 fp</span><br><span class="line">load(fp)            JSON格式文件 fp     -&gt;   Python 对象</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># JSON str  &lt;- -&gt;  Python 对象</span></span><br><span class="line">dumps(obj)          Python 对象        -&gt;   JSON格式字符串 str</span><br><span class="line">loads(str)          JSON格式字符串 str  -&gt;   Python 对象</span><br></pre></td></tr></table></figure>
+        </div>
+        
+            <ul class="post-copyright">
+            <li><strong>本文标题：</strong><a href="http://czccc.github.io/p/53e0edd6/">Python-100-Day ③ 常用/内置模块</a></li>
+            <li><strong>本文作者：</strong><a href="http://czccc.github.io">Cheng</a></li>
+            <li><strong>本文链接：</strong><a href="http://czccc.github.io/p/53e0edd6/">http://czccc.github.io/p/53e0edd6/</a></li>
+            <li><strong>发布时间：</strong>2019-06-11</li>
+            <li><strong>版权声明：</strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！
+            </li>
+            </ul>
+            <br>
+        
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/Python/">Python</a>, <a class="has-link-grey -link" href="/tags/Python-100-Days/">Python-100-Days</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+        <div class="social-share"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/css/share.min.css">
+<script src="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/js/social-share.min.js"></script>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="menu-label has-text-centered">Like this article? Support the author with</h3>
+        <div class="buttons is-centered">
+            
+                
+<a class="button is-info donate">
+    <span class="icon is-small">
+        <i class="fab fa-alipay"></i>
+    </span>
+    <span>Alipay</span>
+    <div class="qrcode"><img src="/images/Alipay.jpg" alt="Alipay"></div>
+</a>
+
+                
+                
+<a class="button is-success donate">
+    <span class="icon is-small">
+        <i class="fab fa-weixin"></i>
+    </span>
+    <span>Wechat</span>
+    <div class="qrcode"><img src="/images/WeChat_pay.png" alt="Wechat"></div>
+</a>
+
+                
+        </div>
+    </div>
+</div>
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/p/24e7dd40/">
+                <span class="level-item">Python-100-Day ② Python 面向对象</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">Comments</h3>
+        
+<script>
+    var disqus_config = function () {
+        this.page.url = 'http://czccc.github.io/p/53e0edd6/';
+        this.page.identifier = 'p/53e0edd6/';
+    };
+    (function() {
+        var d = document, s = d.createElement('script');  
+        s.src = '//' + 'czcc' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+
+<div id="disqus_thread">
+    
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+    </div>
+</div>
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-3-desktop is-3-widescreen  has-order-1 column-left ">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level">
+            <div class="level-item has-text-centered" style="flex-shrink: 1">
+                <div>
+                    
+                        <img class="image is-128x128 has-mb-6" src="/images/avatar.png" alt="Cheng">
+                    
+                    
+                    <p class="is-size-4 is-block">
+                        Cheng
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-block">
+                        A Student
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
+                        <i class="fas fa-map-marker-alt has-mr-7"></i>
+                        <span>Nanjing</span>
+                    </p>
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level is-mobile">
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        Posts
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        17
+                    </p>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        Categories
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        8
+                    </p>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        Tags
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        12
+                    </p>
+                </div>
+            </div>
+        </nav>
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="https://github.com/ppoffice" target="_blank">
+                Follow</a>
+        </div>
+        
+        
+        <div class="level is-mobile">
+            
+            <a class="level-item button is-white is-marginless" target="_blank"
+                title="Github" href="https://github.com/czccc">
+                
+                <i class="fab fa-github"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank"
+                title="RSS" href="/">
+                
+                <i class="fas fa-rss"></i>
+                
+            </a>
+            
+        </div>
+        
+    </div>
+</div>
+    
+        
+<div class="card widget column-left is-sticky" id="toc">
+    <div class="card-content">
+        <div class="menu" style="max-height: calc(100vh - 5rem); overflow-y: auto;">
+            <h3 class="menu-label">
+                Catalogue
+            </h3>
+            <ul class="menu-list"><li>
+        <a class="is-flex" href="#图形用户界面和游戏开发">
+        <span class="has-mr-6">1</span>
+        <span>图形用户界面和游戏开发</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#tkinter">
+        <span class="has-mr-6">1.1</span>
+        <span>tkinter</span>
+        </a></li><li>
+        <a class="is-flex" href="#pygame">
+        <span class="has-mr-6">1.2</span>
+        <span>pygame</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#文件和异常">
+        <span class="has-mr-6">2</span>
+        <span>文件和异常</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#打开文件">
+        <span class="has-mr-6">2.1</span>
+        <span>打开文件</span>
+        </a></li><li>
+        <a class="is-flex" href="#读取文本文件">
+        <span class="has-mr-6">2.2</span>
+        <span>读取文本文件</span>
+        </a></li><li>
+        <a class="is-flex" href="#JSON-处理">
+        <span class="has-mr-6">2.3</span>
+        <span>JSON 处理</span>
+        </a></li></ul></li></ul>
+        </div>
+    </div>
+</div>
+
+    
+        
+
+    
+        
+    
+        
+    
+    
+        <!-- <div class="column-right-shadow is-hidden-widescreen "> -->
+        <div class="column-right-shadow  ">
+        
+            
+        
+            
+        
+            
+        
+        </div>
+    
+</div>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="/images/logo.ico" alt="Python-100-Day ③ 常用/内置模块" height="28">
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2019 Cheng&nbsp;
+                Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> & <a
+                        href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a>
+                
+                </p>
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Creative Commons" href="https://creativecommons.org/">
+                        
+                        <i class="fab fa-creative-commons"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/">
+                        
+                        <i class="fab fa-creative-commons-by"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("en");</script>
+
+<script>
+var IcarusThemeSettings = {
+    article: {
+        highlight: {
+            clipboard: true,
+            fold: 'unfolded'
+        }
+    }
+};
+</script>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+
+
+
+    
+    
+    
+    <script src="/js/animation.js"></script>
+    
+
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+    <script src="/js/gallery.js" defer></script>
+    
+
+    
+    
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+
+    
+    
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+
+    
+    
+
+<a id="back-to-top" title="Back to Top" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="Type something..." />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: 'Posts',
+                PAGES: 'Pages',
+                CATEGORIES: 'Categories',
+                TAGS: 'Tags',
+                UNTITLED: '(Untitled)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+</html>

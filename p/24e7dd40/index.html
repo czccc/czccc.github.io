@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html  lang="en">
+<head>
+    <meta charset="utf-8" />
+
+<meta name="generator" content="Hexo 3.9.0" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+<title>Python-100-Day ② Python 面向对象 - CZCC</title>
+
+
+    <meta name="description" content="Python 100 Days 的学习笔记 ② : Day 8 ~ Day 9 原项目地址 本文主要涉及:  面向对象编程基本 (访问权限, 命名惯例, 调用方法) 面向对象高阶: @property装饰器 __slots__魔法 静态方法和类方法 类之间的关系 继承与多态">
+<meta name="keywords" content="Python,Python-100-Days">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python-100-Day ② Python 面向对象">
+<meta property="og:url" content="http://czccc.github.io/p/24e7dd40/index.html">
+<meta property="og:site_name" content="CZCC">
+<meta property="og:description" content="Python 100 Days 的学习笔记 ② : Day 8 ~ Day 9 原项目地址 本文主要涉及:  面向对象编程基本 (访问权限, 命名惯例, 调用方法) 面向对象高阶: @property装饰器 __slots__魔法 静态方法和类方法 类之间的关系 继承与多态">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http://czccc.github.io/images/og_image.png">
+<meta property="og:updated_time" content="2019-09-07T07:42:44.712Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Python-100-Day ② Python 面向对象">
+<meta name="twitter:description" content="Python 100 Days 的学习笔记 ② : Day 8 ~ Day 9 原项目地址 本文主要涉及:  面向对象编程基本 (访问权限, 命名惯例, 调用方法) 面向对象高阶: @property装饰器 __slots__魔法 静态方法和类方法 类之间的关系 继承与多态">
+<meta name="twitter:image" content="http://czccc.github.io/images/og_image.png">
+
+
+
+
+
+
+
+<link rel="icon" href="/images/favicon.ico">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css">
+
+
+    
+    
+    
+    <style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+    
+
+    
+    
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+    
+
+    
+    
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+
+    
+    
+    
+    
+
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+<link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+
+    
+    
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="is-2-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="/images/logo.ico" alt="Python-100-Day ② Python 面向对象" height="28">
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item"
+                href="/">Home</a>
+                
+                <a class="navbar-item"
+                href="/archives">Archives</a>
+                
+                <a class="navbar-item"
+                href="/categories">Categories</a>
+                
+                <a class="navbar-item"
+                href="/tags">Tags</a>
+                
+                <a class="navbar-item"
+                href="/about">About</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                    
+                    
+                    <a class="navbar-item" target="_blank" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                    
+                
+                
+                <a class="navbar-item is-hidden-tablet catalogue" title="Catalogue" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
+                
+                <a class="navbar-item search" title="Search" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-9-desktop is-9-widescreen has-order-2 column-main"><div class="card">
+    
+    <div class="card-content article ">
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <i class="fas fa-angle-double-right"></i>&nbsp;&nbsp;Python-100-Day ② Python 面向对象
+            
+        </h1>
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <!-- <time class="level-item has-text-grey" datetime="2019-06-10T12:57:08.000Z">2019-06-10</time> -->
+                <time class="level-item has-text-grey" datetime="2019-06-10T12:57:08.000Z">
+                    <i class="far fa-calendar-alt">&nbsp;</i>
+                    2019-06-10
+                </time>
+                
+                    <time class="level-item has-text-grey is-hidden-mobile" datetime="2019-09-07T07:42:44.712Z"><i class="far fa-calendar-check">&nbsp;</i>2019-09-07</time>
+                
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/Python/">Python</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Python/Python-100-Days/">Python-100-Days</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    14 minutes read (About 2039 words)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <!-- <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                Python-100-Day ② Python 面向对象
+            
+        </h1> -->
+        <div class="content">
+            <p>Python 100 Days 的学习笔记 ② : Day 8 ~ Day 9</p>
+<p><a href="https://github.com/jackfrued/Python-100-Days" target="_blank" rel="noopener">原项目地址</a></p>
+<p>本文主要涉及:</p>
+<ul>
+<li>面向对象编程基本 (访问权限, 命名惯例, 调用方法)</li>
+<li>面向对象高阶:<ul>
+<li>@property装饰器</li>
+<li>__slots__魔法</li>
+<li>静态方法和类方法</li>
+<li>类之间的关系</li>
+<li>继承与多态</li>
+</ul>
+</li>
+</ul>
+<a id="more"></a>
+
+<h1 id="面向对象编程基础"><a href="#面向对象编程基础" class="headerlink" title="面向对象编程基础"></a>面向对象编程基础</h1><ol>
+<li>在Python中，属性和方法的访问权限只有两种，也就是公开的和私有的</li>
+<li>如果希望属性是私有的，在给属性命名时可以用两个下划线作为开头, 但事实上私有属性仍可以在外界访问</li>
+<li>一种命名惯例就是让属性名以单下划线开头来表示属性是受保护的，本类之外的代码在访问这样的属性时应该要保持慎重</li>
+<li>面向对象有三大支柱：封装、继承和多态</li>
+<li>对封装的理解是“隐藏一切可以隐藏的实现细节，只向外界暴露（提供）简单的编程接口”</li>
+</ol>
+<p>在使用类的对象方法时, 一种方式是通过对象名调用方法, 另一种方式是通过给类发消息, 但是将需要使用的对象作为参数传给类的方法, 如下所示:</p>
+<figure class="highlight python hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">from</span> math <span class="hljs-keyword">import</span> sqrt</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Triangle</span><span class="hljs-params">(object)</span>:</span></span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self, a, b, c)</span>:</span></span><br><span class="line">        self._a = a</span><br><span class="line">        self._b = b</span><br><span class="line">        self._c = c</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">perimeter</span><span class="hljs-params">(self)</span>:</span></span><br><span class="line">        <span class="hljs-keyword">return</span> self._a + self._b + self._c</span><br><span class="line"></span><br><span class="line">a, b, c = <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span></span><br><span class="line"><span class="hljs-comment"># 静态方法和类方法都是通过给类发消息来调用的</span></span><br><span class="line">t = Triangle(a, b, c)</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 方法 1</span></span><br><span class="line">print(t.perimeter())</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 方法 2</span></span><br><span class="line">print(Triangle.perimeter(t))</span><br></pre></td></tr></table></figure>
+
+<h1 id="面向对象进阶"><a href="#面向对象进阶" class="headerlink" title="面向对象进阶"></a>面向对象进阶</h1><h2 id="property装饰器"><a href="#property装饰器" class="headerlink" title="@property装饰器"></a>@property装饰器</h2><p>为了解决属性和方法的访问权限问题, 虽然可以将属性设置为私有, 但外界仍然可以直接访问, 同时无法检查属性的赋值是否符合要求.</p>
+<p>一个就解决办法就是将属性设置成私有, 然后通过设置类装饰器实现对属性的访问和修改, 即为使用@property装饰器来包装属性的 <code>getter</code>（访问器）和 <code>setter</code>（修改器）方法, 类似于:</p>
+<figure class="highlight python hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Person</span><span class="hljs-params">(object)</span>:</span></span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self, name, age)</span>:</span></span><br><span class="line">        self._name = name</span><br><span class="line">        self._age = age</span><br><span class="line"></span><br><span class="line">    <span class="hljs-comment"># 访问器 - getter方法</span></span><br><span class="line"><span class="hljs-meta">    @property</span></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">name</span><span class="hljs-params">(self)</span>:</span></span><br><span class="line">        <span class="hljs-keyword">return</span> self._name</span><br><span class="line"></span><br><span class="line">    <span class="hljs-comment"># 访问器 - getter方法</span></span><br><span class="line"><span class="hljs-meta">    @property</span></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">age</span><span class="hljs-params">(self)</span>:</span></span><br><span class="line">        <span class="hljs-keyword">return</span> self._age</span><br><span class="line"></span><br><span class="line">    <span class="hljs-comment"># 修改器 - setter方法</span></span><br><span class="line"><span class="hljs-meta">    @age.setter</span></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">age</span><span class="hljs-params">(self, age)</span>:</span></span><br><span class="line">        self._age = age</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">play</span><span class="hljs-params">(self)</span>:</span></span><br><span class="line">        <span class="hljs-keyword">if</span> self._age &lt;= <span class="hljs-number">16</span>:</span><br><span class="line">            print(<span class="hljs-string">'%s正在玩飞行棋.'</span> % self._name)</span><br><span class="line">        <span class="hljs-keyword">else</span>:</span><br><span class="line">            print(<span class="hljs-string">'%s正在玩斗地主.'</span> % self._name)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">main</span><span class="hljs-params">()</span>:</span></span><br><span class="line">    person = Person(<span class="hljs-string">'王大锤'</span>, <span class="hljs-number">12</span>)</span><br><span class="line">    person.play()</span><br><span class="line">    person.age = <span class="hljs-number">22</span></span><br><span class="line">    person.play()</span><br><span class="line">    <span class="hljs-comment"># person.name = '白元芳'  # AttributeError: can't set attribute</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">'__main__'</span>:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
+
+<h2 id="slots-魔法"><a href="#slots-魔法" class="headerlink" title="__slots__魔法"></a>__slots__魔法</h2><p>由于 Python 是动态语言, 因此在运行时可以给对象绑定新的属性和方法.</p>
+<p>而 <code>__slots__</code> 用于限制自定义类型的对象能够绑定的属性.</p>
+<p>需要注意的是__slots__的限定只对当前类的对象生效，对子类并不起任何作用.</p>
+<figure class="highlight python hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Person</span><span class="hljs-params">(object)</span>:</span></span><br><span class="line"></span><br><span class="line">    <span class="hljs-comment"># 限定Person对象只能绑定_name, _age和_gender属性</span></span><br><span class="line">    __slots__ = (<span class="hljs-string">'_name'</span>, <span class="hljs-string">'_age'</span>, <span class="hljs-string">'_gender'</span>)</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self, name, age)</span>:</span></span><br><span class="line">        self._name = name</span><br><span class="line">        self._age = age</span><br><span class="line">    ......</span><br></pre></td></tr></table></figure>
+
+<h2 id="静态方法和类方法"><a href="#静态方法和类方法" class="headerlink" title="静态方法和类方法"></a>静态方法和类方法</h2><ol>
+<li>大部分情况下, 在类中定义的方法都是对象方法</li>
+<li>但写在类中的方法并不需要都是对象方法</li>
+<li>比如在某些情况下, 还未创建好对象时, 便需要使用类中的方法, 那么这个方法是属于类的而并不属于类的对象的</li>
+<li>可以使用静态方法来解决这类问题, 使用装饰器 <code>@staticmethod</code></li>
+</ol>
+<figure class="highlight python hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">from</span> math <span class="hljs-keyword">import</span> sqrt</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Triangle</span><span class="hljs-params">(object)</span>:</span></span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self, a, b, c)</span>:</span></span><br><span class="line">        self._a = a</span><br><span class="line">        self._b = b</span><br><span class="line">        self._c = c</span><br><span class="line"></span><br><span class="line"><span class="hljs-meta">    @staticmethod</span></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">is_valid</span><span class="hljs-params">(a, b, c)</span>:</span></span><br><span class="line">        <span class="hljs-keyword">return</span> a + b &gt; c <span class="hljs-keyword">and</span> b + c &gt; a <span class="hljs-keyword">and</span> a + c &gt; b</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">perimeter</span><span class="hljs-params">(self)</span>:</span></span><br><span class="line">        <span class="hljs-keyword">return</span> self._a + self._b + self._c</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">area</span><span class="hljs-params">(self)</span>:</span></span><br><span class="line">        half = self.perimeter() / <span class="hljs-number">2</span></span><br><span class="line">        <span class="hljs-keyword">return</span> sqrt(half * (half - self._a) *</span><br><span class="line">                    (half - self._b) * (half - self._c))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">main</span><span class="hljs-params">()</span>:</span></span><br><span class="line">    a, b, c = <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span></span><br><span class="line">    <span class="hljs-comment"># 静态方法和类方法都是通过给类发消息来调用的</span></span><br><span class="line">    <span class="hljs-keyword">if</span> Triangle.is_valid(a, b, c):</span><br><span class="line">        t = Triangle(a, b, c)</span><br><span class="line">        print(t.perimeter())</span><br><span class="line">        <span class="hljs-comment"># 也可以通过给类发消息来调用对象方法但是要传入接收消息的对象作为参数</span></span><br><span class="line">        <span class="hljs-comment"># print(Triangle.perimeter(t))</span></span><br><span class="line">        print(t.area())</span><br><span class="line">        <span class="hljs-comment"># print(Triangle.area(t))</span></span><br><span class="line">    <span class="hljs-keyword">else</span>:</span><br><span class="line">        print(<span class="hljs-string">'无法构成三角形.'</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">'__main__'</span>:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
+
+<p>和静态方法比较类似，Python还可以在类中定义<strong>类方法</strong>，类方法可以在类中返回此类创建的对象.</p>
+<p>类方法的第一个参数约定名为cls，它代表的是当前类相关的信息的对象（类本身也是一个对象，有的地方也称之为类的元数据对象），通过这个参数我们可以获取和类相关的信息并且可以创建出类的对象，代码如下所示。</p>
+<figure class="highlight python hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">from</span> time <span class="hljs-keyword">import</span> time, localtime, sleep</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Clock</span><span class="hljs-params">(object)</span>:</span></span><br><span class="line">    <span class="hljs-string">"""数字时钟"""</span></span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self, hour=<span class="hljs-number">0</span>, minute=<span class="hljs-number">0</span>, second=<span class="hljs-number">0</span>)</span>:</span></span><br><span class="line">        self._hour = hour</span><br><span class="line">        self._minute = minute</span><br><span class="line">        self._second = second</span><br><span class="line"></span><br><span class="line"><span class="hljs-meta">    @classmethod</span></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">now</span><span class="hljs-params">(cls)</span>:</span></span><br><span class="line">        ctime = localtime(time())</span><br><span class="line">        <span class="hljs-keyword">return</span> cls(ctime.tm_hour, ctime.tm_min, ctime.tm_sec)</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">run</span><span class="hljs-params">(self)</span>:</span></span><br><span class="line">        <span class="hljs-string">"""走字"""</span></span><br><span class="line">        self._second += <span class="hljs-number">1</span></span><br><span class="line">        <span class="hljs-keyword">if</span> self._second == <span class="hljs-number">60</span>:</span><br><span class="line">            self._second = <span class="hljs-number">0</span></span><br><span class="line">            self._minute += <span class="hljs-number">1</span></span><br><span class="line">            <span class="hljs-keyword">if</span> self._minute == <span class="hljs-number">60</span>:</span><br><span class="line">                self._minute = <span class="hljs-number">0</span></span><br><span class="line">                self._hour += <span class="hljs-number">1</span></span><br><span class="line">                <span class="hljs-keyword">if</span> self._hour == <span class="hljs-number">24</span>:</span><br><span class="line">                    self._hour = <span class="hljs-number">0</span></span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">show</span><span class="hljs-params">(self)</span>:</span></span><br><span class="line">        <span class="hljs-string">"""显示时间"""</span></span><br><span class="line">        <span class="hljs-keyword">return</span> <span class="hljs-string">'%02d:%02d:%02d'</span> % \</span><br><span class="line">               (self._hour, self._minute, self._second)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">main</span><span class="hljs-params">()</span>:</span></span><br><span class="line">    <span class="hljs-comment"># 通过类方法创建对象并获取系统时间</span></span><br><span class="line">    clock = Clock.now()</span><br><span class="line">    <span class="hljs-keyword">while</span> <span class="hljs-literal">True</span>:</span><br><span class="line">        print(clock.show())</span><br><span class="line">        sleep(<span class="hljs-number">1</span>)</span><br><span class="line">        clock.run()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">'__main__'</span>:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
+
+<h2 id="类之间的关系"><a href="#类之间的关系" class="headerlink" title="类之间的关系"></a>类之间的关系</h2><p>简单的说，类和类之间的关系有三种：is-a、has-a和use-a关系。</p>
+<ul>
+<li>is-a关系也叫继承或泛化，比如学生和人的关系、手机和电子产品的关系都属于继承关系。</li>
+<li>has-a关系通常称之为关联，比如部门和员工的关系，汽车和引擎的关系都属于关联关系；关联关系如果是整体和部分的关联，那么我们称之为聚合关系；如果整体进一步负责了部分的生命周期（整体和部分是不可分割的，同时同在也同时消亡），那么这种就是最强的关联关系，我们称之为合成关系。</li>
+<li>use-a关系通常称之为依赖，比如司机有一个驾驶的行为（方法），其中（的参数）使用到了汽车，那么司机和汽车的关系就是依赖关系。</li>
+</ul>
+<p><img src="https://i.loli.net/2019/06/11/5cff93631989d80078.png" alt="类之间的关系"></p>
+<h2 id="继承与多态"><a href="#继承与多态" class="headerlink" title="继承与多态"></a>继承与多态</h2><p>子类在继承了父类的方法后，可以对父类已有的方法给出新的实现版本，这个动作称之为方法重写（override）。通过方法重写我们可以让父类的同一个行为在子类中拥有不同的实现版本，当我们调用这个经过子类重写的方法时，不同的子类对象会表现出不同的行为，这个就是多态（poly-morphism）。</p>
+<figure class="highlight python hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">from</span> abc <span class="hljs-keyword">import</span> ABCMeta, abstractmethod</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Pet</span><span class="hljs-params">(object, metaclass=ABCMeta)</span>:</span></span><br><span class="line">    <span class="hljs-string">"""宠物"""</span></span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self, nickname)</span>:</span></span><br><span class="line">        self._nickname = nickname</span><br><span class="line"></span><br><span class="line"><span class="hljs-meta">    @abstractmethod</span></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">make_voice</span><span class="hljs-params">(self)</span>:</span></span><br><span class="line">        <span class="hljs-string">"""发出声音"""</span></span><br><span class="line">        <span class="hljs-keyword">pass</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Dog</span><span class="hljs-params">(Pet)</span>:</span></span><br><span class="line">    <span class="hljs-string">"""狗"""</span></span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">make_voice</span><span class="hljs-params">(self)</span>:</span></span><br><span class="line">        print(<span class="hljs-string">'%s: 汪汪汪...'</span> % self._nickname)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Cat</span><span class="hljs-params">(Pet)</span>:</span></span><br><span class="line">    <span class="hljs-string">"""猫"""</span></span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">make_voice</span><span class="hljs-params">(self)</span>:</span></span><br><span class="line">        print(<span class="hljs-string">'%s: 喵...喵...'</span> % self._nickname)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">main</span><span class="hljs-params">()</span>:</span></span><br><span class="line">    pets = [Dog(<span class="hljs-string">'旺财'</span>), Cat(<span class="hljs-string">'凯蒂'</span>), Dog(<span class="hljs-string">'大黄'</span>)]</span><br><span class="line">    <span class="hljs-keyword">for</span> pet <span class="hljs-keyword">in</span> pets:</span><br><span class="line">        pet.make_voice()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">'__main__'</span>:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
+
+<p>在上面的代码中，我们将<code>Pet</code>类处理成了一个抽象类，所谓抽象类就是不能够创建对象的类，这种类的存在就是专门为了让其他类去继承它。Python从语法层面并没有像Java或C#那样提供对抽象类的支持，但是我们可以通过 <code>abc</code> 模块的 <code>ABCMeta</code> 元类和 <code>abstractmethod</code> 装饰器来达到抽象类的效果，如果一个类中存在抽象方法那么这个类就不能够实例化（创建对象）。上面的代码中，<code>Dog</code>和<code>Cat</code>两个子类分别对<code>Pet</code>类中的 <code>make_voice</code> 抽象方法进行了重写并给出了不同的实现版本，当我们在 <code>main</code> 函数中调用该方法时，这个方法就表现出了多态行为（同样的方法做了不同的事情）。</p>
+
+        </div>
+        
+            <ul class="post-copyright">
+            <li><strong>本文标题：</strong><a href="http://czccc.github.io/p/24e7dd40/">Python-100-Day ② Python 面向对象</a></li>
+            <li><strong>本文作者：</strong><a href="http://czccc.github.io">Cheng</a></li>
+            <li><strong>本文链接：</strong><a href="http://czccc.github.io/p/24e7dd40/">http://czccc.github.io/p/24e7dd40/</a></li>
+            <li><strong>发布时间：</strong>2019-06-10</li>
+            <li><strong>版权声明：</strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！
+            </li>
+            </ul>
+            <br>
+        
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/Python/">Python</a>, <a class="has-link-grey -link" href="/tags/Python-100-Days/">Python-100-Days</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+        <div class="social-share"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/css/share.min.css">
+<script src="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/js/social-share.min.js"></script>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="menu-label has-text-centered">Like this article? Support the author with</h3>
+        <div class="buttons is-centered">
+            
+                
+<a class="button is-info donate">
+    <span class="icon is-small">
+        <i class="fab fa-alipay"></i>
+    </span>
+    <span>Alipay</span>
+    <div class="qrcode"><img src="/images/Alipay.jpg" alt="Alipay"></div>
+</a>
+
+                
+                
+<a class="button is-success donate">
+    <span class="icon is-small">
+        <i class="fab fa-weixin"></i>
+    </span>
+    <span>Wechat</span>
+    <div class="qrcode"><img src="/images/WeChat_pay.png" alt="Wechat"></div>
+</a>
+
+                
+        </div>
+    </div>
+</div>
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/p/53e0edd6/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">Python-100-Day ③ 常用/内置模块</span>
+            </a>
+        </div>
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/p/6c2dba72/">
+                <span class="level-item">Python-100-Day ① Python 基础</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">Comments</h3>
+        
+<script>
+    var disqus_config = function () {
+        this.page.url = 'http://czccc.github.io/p/24e7dd40/';
+        this.page.identifier = 'p/24e7dd40/';
+    };
+    (function() {
+        var d = document, s = d.createElement('script');  
+        s.src = '//' + 'czcc' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+
+<div id="disqus_thread">
+    
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+    </div>
+</div>
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-3-desktop is-3-widescreen  has-order-1 column-left ">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level">
+            <div class="level-item has-text-centered" style="flex-shrink: 1">
+                <div>
+                    
+                        <img class="image is-128x128 has-mb-6" src="/images/avatar.png" alt="Cheng">
+                    
+                    
+                    <p class="is-size-4 is-block">
+                        Cheng
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-block">
+                        A Student
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
+                        <i class="fas fa-map-marker-alt has-mr-7"></i>
+                        <span>Nanjing</span>
+                    </p>
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level is-mobile">
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        Posts
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        17
+                    </p>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        Categories
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        8
+                    </p>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        Tags
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        12
+                    </p>
+                </div>
+            </div>
+        </nav>
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="https://github.com/ppoffice" target="_blank">
+                Follow</a>
+        </div>
+        
+        
+        <div class="level is-mobile">
+            
+            <a class="level-item button is-white is-marginless" target="_blank"
+                title="Github" href="https://github.com/czccc">
+                
+                <i class="fab fa-github"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank"
+                title="RSS" href="/">
+                
+                <i class="fas fa-rss"></i>
+                
+            </a>
+            
+        </div>
+        
+    </div>
+</div>
+    
+        
+<div class="card widget column-left is-sticky" id="toc">
+    <div class="card-content">
+        <div class="menu" style="max-height: calc(100vh - 5rem); overflow-y: auto;">
+            <h3 class="menu-label">
+                Catalogue
+            </h3>
+            <ul class="menu-list"><li>
+        <a class="is-flex" href="#面向对象编程基础">
+        <span class="has-mr-6">1</span>
+        <span>面向对象编程基础</span>
+        </a></li><li>
+        <a class="is-flex" href="#面向对象进阶">
+        <span class="has-mr-6">2</span>
+        <span>面向对象进阶</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#property装饰器">
+        <span class="has-mr-6">2.1</span>
+        <span>@property装饰器</span>
+        </a></li><li>
+        <a class="is-flex" href="#slots-魔法">
+        <span class="has-mr-6">2.2</span>
+        <span>__slots__魔法</span>
+        </a></li><li>
+        <a class="is-flex" href="#静态方法和类方法">
+        <span class="has-mr-6">2.3</span>
+        <span>静态方法和类方法</span>
+        </a></li><li>
+        <a class="is-flex" href="#类之间的关系">
+        <span class="has-mr-6">2.4</span>
+        <span>类之间的关系</span>
+        </a></li><li>
+        <a class="is-flex" href="#继承与多态">
+        <span class="has-mr-6">2.5</span>
+        <span>继承与多态</span>
+        </a></li></ul></li></ul>
+        </div>
+    </div>
+</div>
+
+    
+        
+
+    
+        
+    
+        
+    
+    
+        <!-- <div class="column-right-shadow is-hidden-widescreen "> -->
+        <div class="column-right-shadow  ">
+        
+            
+        
+            
+        
+            
+        
+        </div>
+    
+</div>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="/images/logo.ico" alt="Python-100-Day ② Python 面向对象" height="28">
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2019 Cheng&nbsp;
+                Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> & <a
+                        href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a>
+                
+                </p>
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Creative Commons" href="https://creativecommons.org/">
+                        
+                        <i class="fab fa-creative-commons"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/">
+                        
+                        <i class="fab fa-creative-commons-by"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("en");</script>
+
+<script>
+var IcarusThemeSettings = {
+    article: {
+        highlight: {
+            clipboard: true,
+            fold: 'unfolded'
+        }
+    }
+};
+</script>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+
+
+
+    
+    
+    
+    <script src="/js/animation.js"></script>
+    
+
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+    <script src="/js/gallery.js" defer></script>
+    
+
+    
+    
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+
+    
+    
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+
+    
+    
+
+<a id="back-to-top" title="Back to Top" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="Type something..." />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: 'Posts',
+                PAGES: 'Pages',
+                CATEGORIES: 'Categories',
+                TAGS: 'Tags',
+                UNTITLED: '(Untitled)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+</html>
