@@ -12,7 +12,7 @@
 
 
     <meta name="description" content="Python 基本模块的使用">
-<meta name="keywords" content="Learn,Code">
+<meta name="keywords" content="Code,Learn">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Python 基本模块的使用">
 <meta property="og:url" content="http://blog.czcc.me/p/644af2bf/index.html">
@@ -199,7 +199,7 @@
 <a id="more"></a>
 
 <h1 id="常用函数"><a href="#常用函数" class="headerlink" title="常用函数"></a>常用函数</h1><h2 id="输入输出"><a href="#输入输出" class="headerlink" title="输入输出"></a>输入输出</h2><h3 id="输入"><a href="#输入" class="headerlink" title="输入"></a>输入</h3><p>Python3.x 中 <code>input([prompt])</code> 函数接受一个标准输入数据(默认接收到的是 <code>str</code> 类型)，返回为 string 类型。</p>
-<figure class="highlight python hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">val = input(<span class="hljs-string">'some text'</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">val = input(<span class="string">'some text'</span>)</span><br></pre></td></tr></table></figure>
 
 <h3 id="print"><a href="#print" class="headerlink" title="print()"></a><code>print()</code></h3><p>Python两种输出值的方式: 表达式语句和 <code>print()</code> 函数。第三种方式是使用文件对象的 <code>write()</code> 方法，标准输出文件可以用 sys.stdout 引用。</p>
 <p>如果你希望输出的形式更加多样，可以使用 <code>str.format()</code> 函数来格式化输出值。</p>
@@ -208,20 +208,20 @@
 <li><code>str()</code>： 函数返回一个用户易读的表达形式。</li>
 <li><code>repr()</code>： 产生一个解释器易读的表达形式。</li>
 </ul>
-<figure class="highlight python hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">f = float(input(<span class="hljs-string">'请输入华氏温度: '</span>))</span><br><span class="line">c = (f - <span class="hljs-number">32</span>) / <span class="hljs-number">1.8</span></span><br><span class="line">print(<span class="hljs-string">'%.1f华氏度 = %.1f摄氏度'</span> % (f, c))</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">f = float(input(<span class="string">'请输入华氏温度: '</span>))</span><br><span class="line">c = (f - <span class="number">32</span>) / <span class="number">1.8</span></span><br><span class="line">print(<span class="string">'%.1f华氏度 = %.1f摄氏度'</span> % (f, c))</span><br></pre></td></tr></table></figure>
 
 <h3 id="str-format-函数"><a href="#str-format-函数" class="headerlink" title="str.format() 函数"></a><code>str.format()</code> 函数</h3><h1 id="安装模块"><a href="#安装模块" class="headerlink" title="安装模块"></a>安装模块</h1><p>使用<code>pip</code>:</p>
-<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install ipython jupyter</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install ipython jupyter</span><br></pre></td></tr></table></figure>
 
 <p>使用<code>python</code>:</p>
-<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python -m pip install ipython jupyter</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python -m pip install ipython jupyter</span><br></pre></td></tr></table></figure>
 
 <p>使用<code>conda</code>:</p>
-<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda install ipython jupyter</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda install ipython jupyter</span><br></pre></td></tr></table></figure>
 
-<h1 id="常用函数-1"><a href="#常用函数-1" class="headerlink" title="常用函数"></a>常用函数</h1><h2 id="print-1"><a href="#print-1" class="headerlink" title="print"></a><code>print</code></h2><figure class="highlight python hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">print(<span class="hljs-string">'hello, world!'</span>)</span><br><span class="line"><span class="hljs-comment"># print("你好,世界！")</span></span><br><span class="line">print(<span class="hljs-string">'你好'</span>, <span class="hljs-string">'世界'</span>)</span><br><span class="line">print(<span class="hljs-string">'hello'</span>, <span class="hljs-string">'world'</span>, sep=<span class="hljs-string">', '</span>, end=<span class="hljs-string">'!'</span>)</span><br><span class="line">print(<span class="hljs-string">'goodbye, world'</span>, end=<span class="hljs-string">'!\n'</span>)</span><br></pre></td></tr></table></figure>
+<h1 id="常用函数-1"><a href="#常用函数-1" class="headerlink" title="常用函数"></a>常用函数</h1><h2 id="print-1"><a href="#print-1" class="headerlink" title="print"></a><code>print</code></h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">print(<span class="string">'hello, world!'</span>)</span><br><span class="line"><span class="comment"># print("你好,世界！")</span></span><br><span class="line">print(<span class="string">'你好'</span>, <span class="string">'世界'</span>)</span><br><span class="line">print(<span class="string">'hello'</span>, <span class="string">'world'</span>, sep=<span class="string">', '</span>, end=<span class="string">'!'</span>)</span><br><span class="line">print(<span class="string">'goodbye, world'</span>, end=<span class="string">'!\n'</span>)</span><br></pre></td></tr></table></figure>
 
-<h1 id="os-模块"><a href="#os-模块" class="headerlink" title="os 模块"></a><code>os</code> 模块</h1><h1 id="sys-模块"><a href="#sys-模块" class="headerlink" title="sys 模块"></a><code>sys</code> 模块</h1><h2 id="查看系统版本"><a href="#查看系统版本" class="headerlink" title="查看系统版本"></a>查看系统版本</h2><figure class="highlight python hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> sys</span><br><span class="line"></span><br><span class="line">print(sys.version_info)</span><br><span class="line">print(sys.version)</span><br></pre></td></tr></table></figure>
+<h1 id="os-模块"><a href="#os-模块" class="headerlink" title="os 模块"></a><code>os</code> 模块</h1><h1 id="sys-模块"><a href="#sys-模块" class="headerlink" title="sys 模块"></a><code>sys</code> 模块</h1><h2 id="查看系统版本"><a href="#查看系统版本" class="headerlink" title="查看系统版本"></a>查看系统版本</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"></span><br><span class="line">print(sys.version_info)</span><br><span class="line">print(sys.version)</span><br></pre></td></tr></table></figure>
 
 
         </div>
@@ -379,7 +379,7 @@
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            24
+                            25
                         </p>
                     </a>
                 </div>

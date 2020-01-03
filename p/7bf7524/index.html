@@ -188,71 +188,71 @@
             <hr>
 <a id="more"></a>
 
-<h1 id="更改软件源"><a href="#更改软件源" class="headerlink" title="更改软件源"></a>更改软件源</h1><p>使用<a href="https://mirror.tuna.tsinghua.edu.cn/help/ubuntu/" target="_blank" rel="noopener">清华的软件源</a></p>
+<h1 id="更改软件源"><a href="#更改软件源" class="headerlink" title="更改软件源"></a>更改软件源</h1><p>使用<a href="https://mirror.tuna.tsinghua.edu.cn/help/ubuntu/">清华的软件源</a></p>
 <p>备份原有的 <code>/etc/apt/sources.list</code></p>
-<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo cp /etc/apt/sources.list /etc/apt/sources.list.backup</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo cp /etc/apt/sources.list /etc/apt/sources.list.backup</span><br></pre></td></tr></table></figure>
 
 <p>编辑 <code>/etc/apt/sources.list</code></p>
-<figure class="highlight plain hljs"><figcaption><span>/etc/apt/sources.list</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"># 默认注释了源码镜像以提高 apt update 速度，如有需要可自行取消注释</span><br><span class="line">deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ bionic main restricted universe multiverse</span><br><span class="line"># deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ bionic main restricted universe multiverse</span><br><span class="line">deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ bionic-updates main restricted universe multiverse</span><br><span class="line"># deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ bionic-updates main restricted universe multiverse</span><br><span class="line">deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ bionic-backports main restricted universe multiverse</span><br><span class="line"># deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ bionic-backports main restricted universe multiverse</span><br><span class="line">deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ bionic-security main restricted universe multiverse</span><br><span class="line"># deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ bionic-security main restricted universe multiverse</span><br><span class="line"></span><br><span class="line"># 预发布软件源，不建议启用</span><br><span class="line"># deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ bionic-proposed main restricted universe multiverse</span><br><span class="line"># deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ bionic-proposed main restricted universe multiverse</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><figcaption><span>/etc/apt/sources.list</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"># 默认注释了源码镜像以提高 apt update 速度，如有需要可自行取消注释</span><br><span class="line">deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ bionic main restricted universe multiverse</span><br><span class="line"># deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ bionic main restricted universe multiverse</span><br><span class="line">deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ bionic-updates main restricted universe multiverse</span><br><span class="line"># deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ bionic-updates main restricted universe multiverse</span><br><span class="line">deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ bionic-backports main restricted universe multiverse</span><br><span class="line"># deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ bionic-backports main restricted universe multiverse</span><br><span class="line">deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ bionic-security main restricted universe multiverse</span><br><span class="line"># deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ bionic-security main restricted universe multiverse</span><br><span class="line"></span><br><span class="line"># 预发布软件源，不建议启用</span><br><span class="line"># deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ bionic-proposed main restricted universe multiverse</span><br><span class="line"># deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ bionic-proposed main restricted universe multiverse</span><br></pre></td></tr></table></figure>
 
 <p>之后进行更新软件源:</p>
-<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt update</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt update</span><br></pre></td></tr></table></figure>
 
-<h1 id="安装-git"><a href="#安装-git" class="headerlink" title="安装 git"></a>安装 <code>git</code></h1><figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install git</span><br></pre></td></tr></table></figure>
+<h1 id="安装-git"><a href="#安装-git" class="headerlink" title="安装 git"></a>安装 <code>git</code></h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install git</span><br></pre></td></tr></table></figure>
 
 <h2 id="配置"><a href="#配置" class="headerlink" title="配置:"></a>配置:</h2><p>查看配置:</p>
-<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --list</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --list</span><br></pre></td></tr></table></figure>
 
 <p>设置名称:</p>
-<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name <span class="hljs-string">"John Doe"</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name <span class="string">"John Doe"</span></span><br></pre></td></tr></table></figure>
 
 <p>设置邮箱:</p>
-<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.email johndoe@example.com</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.email johndoe@example.com</span><br></pre></td></tr></table></figure>
 
 <p>设置文本换行符格式:</p>
-<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --global core.autocrlf input</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --global core.autocrlf input</span><br></pre></td></tr></table></figure>
 
 <h1 id="更改文件夹配色"><a href="#更改文件夹配色" class="headerlink" title="更改文件夹配色"></a>更改文件夹配色</h1><p>导出颜色文件:</p>
-<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dircolors -p &gt; ~/.dircolors</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dircolors -p &gt; ~/.dircolors</span><br></pre></td></tr></table></figure>
 
 <p>使用 vim 编辑:</p>
-<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim ~/.dircolors</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim ~/.dircolors</span><br></pre></td></tr></table></figure>
 
 <p>将以下两行改为:</p>
-<figure class="highlight yml hljs"><figcaption><span>~/.dircolors</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-string">STICKY_OTHER_WRITABLE=02;32</span></span><br><span class="line"><span class="hljs-string">OTHER_WRITABLE=01;34</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight yml"><figcaption><span>~/.dircolors</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">STICKY_OTHER_WRITABLE=02;32</span></span><br><span class="line"><span class="string">OTHER_WRITABLE=01;34</span></span><br></pre></td></tr></table></figure>
 
 <p>然后在 <code>~/.zshrc</code> 中, 加入:</p>
-<figure class="highlight yml hljs"><figcaption><span>~/.zshrc</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-string">eval</span> <span class="hljs-string">$(dircolors</span> <span class="hljs-bullet">-b</span> <span class="hljs-string">$HOME/.dircolors)</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight yml"><figcaption><span>~/.zshrc</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">eval</span> <span class="string">$(dircolors</span> <span class="bullet">-b</span> <span class="string">$HOME/.dircolors)</span></span><br></pre></td></tr></table></figure>
 
 <h1 id="安装-zsh"><a href="#安装-zsh" class="headerlink" title="安装 zsh"></a>安装 <code>zsh</code></h1><p>zsh 是 shell 语言类型，兼容 bash，提供强大的命令行功能，比如 tab 补全，自动纠错功能等。</p>
 <p>缺点就是配置太麻烦，好在有一个叫做 <code>oh-my-zsh</code> 的开源项目，很好的弥补了这一缺陷，只需要修修改改配置文件，就能很顺手。</p>
 <p><strong>查看当前环境shell</strong></p>
-<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-built_in">echo</span> <span class="hljs-variable">$SHELL</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="variable">$SHELL</span></span><br></pre></td></tr></table></figure>
 
 <p><strong>查看系统自带哪些shell</strong></p>
-<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat /etc/shells</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat /etc/shells</span><br></pre></td></tr></table></figure>
 
 <p><strong>使用 <code>apt</code> 安装 <code>zsh</code></strong>:</p>
-<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install zsh</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install zsh</span><br></pre></td></tr></table></figure>
 
 <p><strong>替换 <code>bash</code></strong></p>
-<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chsh -s /bin/zsh</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chsh -s /bin/zsh</span><br></pre></td></tr></table></figure>
 
-<p><strong>安装 <a href="https://github.com/robbyrussell/oh-my-zsh" target="_blank" rel="noopener"><code>oh-my-zsh</code></a></strong></p>
+<p><strong>安装 <a href="https://github.com/robbyrussell/oh-my-zsh"><code>oh-my-zsh</code></a></strong></p>
 <ol>
 <li><p>使用 <code>curl</code>:</p>
- <figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sh -c <span class="hljs-string">"<span class="hljs-variable">$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)</span>"</span></span><br></pre></td></tr></table></figure>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sh -c <span class="string">"<span class="variable">$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)</span>"</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p>使用 <code>wget</code>:</p>
- <figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sh -c <span class="hljs-string">"<span class="hljs-variable">$(wget https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)</span>"</span></span><br></pre></td></tr></table></figure>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sh -c <span class="string">"<span class="variable">$(wget https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)</span>"</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p>手动安装:</p>
- <figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git <span class="hljs-built_in">clone</span> git://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh</span><br><span class="line">cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc</span><br></pre></td></tr></table></figure>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> git://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh</span><br><span class="line">cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc</span><br></pre></td></tr></table></figure>
 
 </li>
 </ol>
 <h1 id="配置-zsh"><a href="#配置-zsh" class="headerlink" title="配置 zsh"></a>配置 <code>zsh</code></h1><h2 id="更改主题"><a href="#更改主题" class="headerlink" title="更改主题"></a>更改主题</h2><p>编辑 <code>~/.zshrc</code> 文件, 更改其中的主题设置:</p>
-<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim ~/.zshrc</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim ~/.zshrc</span><br></pre></td></tr></table></figure>
 
 <p>几个比较好用的主题:</p>
 <ul>
@@ -261,29 +261,29 @@
 <li>random 随机切换</li>
 </ul>
 <p>这里使用简单的 <code>ys</code> 主题:</p>
-<figure class="highlight yml hljs"><figcaption><span>~/.zshrc</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-string">ZSH_THEME="ys"</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight yml"><figcaption><span>~/.zshrc</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">ZSH_THEME="ys"</span></span><br></pre></td></tr></table></figure>
 
 <p>更改之后, 需要使用 <code>source</code> 命令将其生效:</p>
-<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-built_in">source</span> ~/.zshrc</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">source</span> ~/.zshrc</span><br></pre></td></tr></table></figure>
 
 <h2 id="插件"><a href="#插件" class="headerlink" title="插件"></a>插件</h2><p>在 <code>~/.zshrc</code> 中找到 <code>plugins</code> 关键字, 就可以自定义启用的插件了, 系统默认加载 <code>git</code>.</p>
-<figure class="highlight yml hljs"><figcaption><span>~/.zshrc</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-string">plugins=(git</span> <span class="hljs-string">z</span> <span class="hljs-string">zsh-syntax-highlighting)</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight yml"><figcaption><span>~/.zshrc</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">plugins=(git</span> <span class="string">z</span> <span class="string">zsh-syntax-highlighting)</span></span><br></pre></td></tr></table></figure>
 
-<h3 id="autojump"><a href="#autojump" class="headerlink" title="autojump"></a><a href="https://github.com/wting/autojump" target="_blank" rel="noopener">autojump</a></h3><p>快速跳转文件夹，使用 <code>j</code> 代替 <code>cd</code> 命令.</p>
+<h3 id="autojump"><a href="#autojump" class="headerlink" title="autojump"></a><a href="https://github.com/wting/autojump">autojump</a></h3><p>快速跳转文件夹，使用 <code>j</code> 代替 <code>cd</code> 命令.</p>
 <p>使用 <code>apt</code> 命令安装:</p>
-<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install autojump</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install autojump</span><br></pre></td></tr></table></figure>
 
 <p>手动安装:</p>
-<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git <span class="hljs-built_in">clone</span> git://github.com/joelthelion/autojump.git</span><br><span class="line"><span class="hljs-built_in">cd</span> autojump</span><br><span class="line">./install.py</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> git://github.com/joelthelion/autojump.git</span><br><span class="line"><span class="built_in">cd</span> autojump</span><br><span class="line">./install.py</span><br></pre></td></tr></table></figure>
 
 <h3 id="Z"><a href="#Z" class="headerlink" title="Z"></a>Z</h3><p>类似于 <code>autojump</code>, 但是不需要安装 <code>autojump</code>.</p>
 <p>使用 <code>z</code> 替代 <code>cd</code> 命令.</p>
-<h3 id="zsh-syntax-highlighting"><a href="#zsh-syntax-highlighting" class="headerlink" title="zsh-syntax-highlighting"></a><a href="https://github.com/zsh-users/zsh-syntax-highlighting" target="_blank" rel="noopener">zsh-syntax-highlighting</a></h3><p>可以提供 Shell 命令高亮, 正确的路径自带下划线</p>
+<h3 id="zsh-syntax-highlighting"><a href="#zsh-syntax-highlighting" class="headerlink" title="zsh-syntax-highlighting"></a><a href="https://github.com/zsh-users/zsh-syntax-highlighting">zsh-syntax-highlighting</a></h3><p>可以提供 Shell 命令高亮, 正确的路径自带下划线</p>
 <p>需要用户自己手动安装:</p>
-<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="hljs-built_in">clone</span> https://github.com/zsh-users/zsh-syntax-highlighting.git <span class="hljs-variable">$&#123;ZSH_CUSTOM:-~/.oh-my-zsh/custom&#125;</span>/plugins/zsh-syntax-highlighting</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/zsh-users/zsh-syntax-highlighting.git <span class="variable">$&#123;ZSH_CUSTOM:-~/.oh-my-zsh/custom&#125;</span>/plugins/zsh-syntax-highlighting</span><br></pre></td></tr></table></figure>
 
-<h3 id="zsh-autosuggestions"><a href="#zsh-autosuggestions" class="headerlink" title="zsh-autosuggestions"></a><a href="https://github.com/zsh-users/zsh-autosuggestions" target="_blank" rel="noopener">zsh-autosuggestions</a></h3><p>可以通过输入的命令提供最接近的建议, 也需要手动安装:</p>
-<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="hljs-built_in">clone</span> https://github.com/zsh-users/zsh-autosuggestions <span class="hljs-variable">$&#123;ZSH_CUSTOM:-~/.oh-my-zsh/custom&#125;</span>/plugins/zsh-autosuggestions</span><br></pre></td></tr></table></figure>
+<h3 id="zsh-autosuggestions"><a href="#zsh-autosuggestions" class="headerlink" title="zsh-autosuggestions"></a><a href="https://github.com/zsh-users/zsh-autosuggestions">zsh-autosuggestions</a></h3><p>可以通过输入的命令提供最接近的建议, 也需要手动安装:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/zsh-users/zsh-autosuggestions <span class="variable">$&#123;ZSH_CUSTOM:-~/.oh-my-zsh/custom&#125;</span>/plugins/zsh-autosuggestions</span><br></pre></td></tr></table></figure>
 
 
         </div>
@@ -441,7 +441,7 @@
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            24
+                            25
                         </p>
                     </a>
                 </div>

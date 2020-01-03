@@ -12,7 +12,7 @@ button,
 input,
 select,
 textarea {
-  font-family: "Noto Sans CJK SC Regular", sans-serif, "Ubuntu", "Roboto", "Open Sans", "Microsoft YaHei";
+  font-family: "Noto Sans CJK Regular", sans-serif, "Ubuntu", "Roboto", "Open Sans", "Microsoft YaHei";
 }
 @media screen and (min-width: 1280px) {
   .is-1-column .container,
@@ -54,7 +54,7 @@ textarea {
   background: #e7e7e7;
 }
 .card {
-  border-radius: 10px;
+  border-radius: 4px;
   box-shadow: 0 4px 10px rgba(0,0,0,0.05), 0 0 1px rgba(0,0,0,0.1);
 }
 .card:hover {
@@ -144,6 +144,9 @@ img.thumbnail {
 }
 .widget .menu-list a.level {
   display: flex;
+}
+.widget .has-text-centered figure.image {
+  margin: auto;
 }
 .pagination .pagination-link:not(.is-current),
 .pagination .pagination-previous,
@@ -400,13 +403,19 @@ img.thumbnail {
 }
 .content code,
 .content pre {
+  font-family: "Fira Code Retina", "Fira Code", "Noto Mono", "Source Code Pro", monospace, "Microsoft YaHei";
+}
+.content pre {
   font-size: 0.85em;
-  font-family: "Fira Code", "Noto Mono", "Source Code Pro", monospace, "Microsoft YaHei";
 }
 .content code {
-  color: #ff3860;
-  background: transparent;
   padding: 0;
+  background: transparent;
+}
+.content > code,
+.content :not(pre) > code {
+  font-size: 0.85em;
+  color: #ff3860;
 }
 .content blockquote footer strong + cite {
   margin-left: 0.5em;
@@ -455,11 +464,21 @@ figure.highlight table tr:hover {
 figure.highlight table {
   width: auto;
 }
+figure.highlight table tr td {
+  border: none;
+}
+figure.highlight table tr:not(:first-child) td {
+  padding-top: 0;
+}
+figure.highlight table tr:not(:last-child) td {
+  padding-bottom: 0;
+}
 figure.highlight pre {
   padding: 0;
   overflow: visible;
 }
-figure.highlight pre .line {
+figure.highlight pre .line,
+figure.highlight pre code .hljs {
   line-height: 1.5rem;
 }
 figure.highlight figcaption,
@@ -479,7 +498,7 @@ figure.highlight figcaption:after {
 }
 figure.highlight figcaption span {
   font-weight: 500;
-  font-family: "Fira Code", "Noto Mono", "Source Code Pro", monospace, "Microsoft YaHei";
+  font-family: "Fira Code Retina", "Fira Code", "Noto Mono", "Source Code Pro", monospace, "Microsoft YaHei";
 }
 figure.highlight figcaption .fold,
 figure.highlight figcaption a {

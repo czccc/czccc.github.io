@@ -11,14 +11,14 @@
 <title>西瓜书第10章：降维与度量学习 - CZCC</title>
 
 
-    <meta name="keywords" content="ML,Machine Learning,西瓜书">
+    <meta name="keywords" content="Machine Learning,ML,西瓜书">
 <meta property="og:type" content="article">
 <meta property="og:title" content="西瓜书第10章：降维与度量学习">
 <meta property="og:url" content="http://blog.czcc.me/p/7e4fc966/index.html">
 <meta property="og:site_name" content="CZCC">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="http://blog.czcc.me/images/og_image.png">
-<meta property="og:updated_time" content="2020-01-03T08:53:38.254Z">
+<meta property="og:updated_time" content="2020-01-03T15:37:28.883Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="西瓜书第10章：降维与度量学习">
 <meta name="twitter:image" content="http://blog.czcc.me/images/og_image.png">
@@ -154,7 +154,7 @@
                     2020-01-02
                 </time>
                 
-                    <time class="level-item has-text-grey is-hidden-mobile" datetime="2020-01-03T08:53:38.254Z"><i class="far fa-calendar-check">&nbsp;</i>2020-01-03</time>
+                    <time class="level-item has-text-grey is-hidden-mobile" datetime="2020-01-03T15:37:28.883Z"><i class="far fa-calendar-check">&nbsp;</i>2020-01-03</time>
                 
                 
                 
@@ -162,7 +162,7 @@
                     <i class="far fa-hourglass">&nbsp;&nbsp;</i>
                     
                     
-                    2 minutes read (About 273 words)
+                    13 minutes read (About 1897 words)
                 </span>
                 
                 
@@ -192,10 +192,68 @@
 <li>K 值的选取</li>
 <li>距离的计算</li>
 </ul>
-<h2 id="最近邻学习器和贝叶斯最优分类器"><a href="#最近邻学习器和贝叶斯最优分类器" class="headerlink" title="最近邻学习器和贝叶斯最优分类器"></a>最近邻学习器和贝叶斯最优分类器</h2><p>给定测试样本 $x$，若其最近样本为 $z$，则最邻近分类器出错的概率就是 $x$ 与 $z$ 类别标记不同的概率，即</p>
+<h2 id="最近邻学习器的误差分析"><a href="#最近邻学习器的误差分析" class="headerlink" title="最近邻学习器的误差分析"></a>最近邻学习器的误差分析</h2><p>给定测试样本 $x$，若其最近样本为 $z$，则最邻近分类器出错的概率就是 $x$ 与 $z$ 类别标记不同的概率，即</p>
 <p>$$<br>P(err) = 1 - \sum_{c\in \mathcal{Y}}P(c|\boldsymbol{x})P(c|\boldsymbol{z})<br>$$</p>
 <p>假设样本独立同分布，令 $c^\star=arg\ max_{c\in \mathcal{Y}} P(c|\boldsymbol{x})$ 表示贝叶斯最优分类器的结果，则有：</p>
 <p>$$<br>\begin{aligned}<br>P(err) &amp;= 1-\sum_{c\in \mathcal{Y}}P(c|\boldsymbol{x})P(c|\boldsymbol{z})\newline\<br>&amp;\simeq 1-\sum_{c\in \mathcal{Y}}P^2(c|\boldsymbol{x})\newline\<br>&amp;\leq 1-P^2(c^\star|\boldsymbol{x})\newline\<br>&amp;\leq (1 + P(c^\star | \boldsymbol{x}) ) (1 - P(c^\star | \boldsymbol{x}) )\newline\<br>&amp;\leq 2 \times (1 - P(c^\star|\boldsymbol{x}))<br>\end{aligned}<br>$$</p>
+<p>也即：最邻近分类器的泛化误差不会超过贝叶斯最优分类器的两倍！</p>
+<h2 id="维数问题"><a href="#维数问题" class="headerlink" title="维数问题"></a>维数问题</h2><p>上述结论是基于一个重要假设：任意测试样本 $\boldsymbol{x}$ 附近任意小的 $\delta$ 距离范围内总能找到一个训练样本，即训练样本的采样密度足够大，或称为“<strong>密采样</strong>”（dense sample）</p>
+<p>然而这在现实中很难实现！</p>
+<p>但维数为 1 时，若考虑 $\delta=0.001$，则需要 1000 个样本；若属性更多，如属性维数为 20，则需要$(10^3)^{20}=10^{60}$ 个样本！同样，对于一张并不是很清晰的图像：70余万维，我们为了找到恰当的近邻，需要多少样本？</p>
+<p>另外一方面，高维空间给距离计算带来很大的麻烦，当维数很高时甚至连计算内积都不再容易！</p>
+<p>事实上，在高位情况下出现的数据样本稀疏、距离计算困难等问题，是所有机器学习算法共同面临的严重障碍，被称为 “<strong>维数灾难</strong>”</p>
+<h1 id="降维"><a href="#降维" class="headerlink" title="降维"></a>降维</h1><p>缓解维数灾难的一个重要途径是<strong>降维</strong>，亦称“维数约简”（dimension reduction）</p>
+<p>即：通过某种数学变换将原始高维属性空间转变为一个低维子空间，在这个子空间中样本密度大幅提高，距离计算也变得更为容易。</p>
+<blockquote>
+<p>为什么能进行降维？</p>
+<p>数据样本虽是高维的，但与学习任务密切相关的也许仅是某个低维分布，即高维空间中的一个低维“嵌入” (embedding)</p>
+<p><img src="https://s2.ax1x.com/2020/01/03/lagJBt.md.png" alt=""></p>
+</blockquote>
+<h2 id="多维缩放方法（MDS）"><a href="#多维缩放方法（MDS）" class="headerlink" title="多维缩放方法（MDS）"></a>多维缩放方法（MDS）</h2><p>如果要求原始空间中样本之间的距离在低维空间中得以保持，即为：多维缩放（Multiple Dimensional Scaling）</p>
+<h3 id="如何在距离矩阵和内积矩阵之间建立联系？"><a href="#如何在距离矩阵和内积矩阵之间建立联系？" class="headerlink" title="如何在距离矩阵和内积矩阵之间建立联系？"></a>如何在距离矩阵和内积矩阵之间建立联系？</h3><p>假定 m 个样本在原始空间的距离矩阵为 $D \in \mathbb{R}^{m \times m}$，其 $dist_{ij}$ 为样本 $\boldsymbol{x}_i$ 到 $\boldsymbol{x}_j$ 的距离。</p>
+<p>目标为获得样本在 $d’$ 维空间的表示 $Z \in \mathbb{R}^{d’ \times m}, d’ \leq d$，且这两种表示下的距离不变，即有：</p>
+<p>$\Vert\boldsymbol{z}_i - \boldsymbol{z}_j\Vert=dist_{ij}$</p>
+<p>令 $B=Z^TZ \in \mathbb{R}^{m \times m}$ 为降维后的样本的内积矩阵，即： $b_{ij}=\boldsymbol{z}_i^T\boldsymbol{z}_j$，有：</p>
+<p>$$<br>\begin{aligned}<br>dist_{ij}^2 &amp;= \Vert\boldsymbol{z}_i^2\Vert + \Vert\boldsymbol{z}_j^2\Vert - 2\boldsymbol{z}_i^T\boldsymbol{z}_j \newline\<br>&amp;= b_{ii} + b_{jj} - 2b_{ij}<br>\end{aligned}<br>$$</p>
+<p>设降维后的样本 $Z$ 被中心化，即：$\sum_{i=1}^m\boldsymbol{z}_i=0$</p>
+<p>则：矩阵 $B$ 中行与列之和均为0，即：$\sum_{i=1}^mb_{ij}=\sum_{j=1}^mb_{ij}=0$</p>
+<p>$$<br>\sum_{i=1}^mdist_{ij}^2=tr(B) + mb_{jj}<br>$$</p>
+<p>$$<br>\sum_{j=1}^mdist_{ij}^2=tr(B) + mb_{ii}<br>$$</p>
+<p>$$<br>\sum_{i=1}^m\sum_{j=1}^mdist_{ij}^2=2m\ tr(B)<br>$$</p>
+<p>其中 $tr(\cdot)$ 表示矩阵的迹，$tr(B)=\sum_{i=1}^m\Vert\boldsymbol{z}_i\Vert$。令：</p>
+<p>$$<br>dist_{i\cdot}^2=\frac{1}{m}\sum_{j=1}^mdist_{ij}^2<br>$$</p>
+<p>$$<br>dist_{\cdot j}^2=\frac{1}{m}\sum_{i=1}^mdist_{ij}^2<br>$$</p>
+<p>$$<br>dist_{\cdot\cdot}^2=\frac{1}{m^2}\sum_{i=1}^m\sum_{j=1}^mdist_{ij}^2<br>$$</p>
+<p>则可得：</p>
+<p>$$<br>b_{ij}=-\frac{1}{2}(dist_{ij}^2 - dist_{i\cdot}^2 - dist_{\cdot j}^2 + dist_{\cdot\cdot}^2)<br>$$</p>
+<p>至此，得到了<strong>距离矩阵</strong>到<strong>内积矩阵</strong>的变换公式。</p>
+<h3 id="如何在低维子空间和高维空间之间保持样本之间的内积不变？"><a href="#如何在低维子空间和高维空间之间保持样本之间的内积不变？" class="headerlink" title="如何在低维子空间和高维空间之间保持样本之间的内积不变？"></a>如何在低维子空间和高维空间之间保持样本之间的内积不变？</h3><p>对矩阵 $B$ 进行特征值分解：$B=V\Lambda V^T$</p>
+<p>由谱分解的数学性质，我们知道：谱分布长尾，存在相当数量的小特征值，而只有少量的较大的特征值</p>
+<p>因此可取 $d’\ll d$ 个最大特征值构成对角矩阵 $\tilde{\Lambda}=diag(\lambda_1, \dots, \lambda_{d’})$，且 $\tilde{V}$ 表示相应的特征向量矩阵，则可得到：</p>
+<p>$$<br>Z = \tilde{\Lambda^{1/2}}\tilde{V}^T \in \mathbb{R}^{d’ \times m}<br>$$</p>
+<p><img src="https://s2.ax1x.com/2020/01/03/laIwXF.png" alt="MDS算法"></p>
+<h2 id="主成分分析（PCA）"><a href="#主成分分析（PCA）" class="headerlink" title="主成分分析（PCA）"></a>主成分分析（PCA）</h2><p>另一种常用的降维方法为<strong>主成分分析</strong>（principal Component Analysis）</p>
+<blockquote>
+<p>正交属性空间中的样本点，如何使用一个超平面对所有样本进行恰当的表达？</p>
+</blockquote>
+<p>若存在这样的超平面，那么它大概应具有这样的性质：</p>
+<ul>
+<li>最近重构性：样本点到这个超平面的距离都足够近</li>
+<li>最大可分性：样本点在这个超平面上的投影能尽可能分开</li>
+</ul>
+<p>基于最近重构性和最大可分性，可以得到主成分分析的两种等价推导。</p>
+<h3 id="最近重构性"><a href="#最近重构性" class="headerlink" title="最近重构性"></a>最近重构性</h3><p>假定对样本进行了中心化：$\sum_i\boldsymbol{x}_i=0$</p>
+<p>假定投影变换后得到的新坐标系为 ${\boldsymbol{w}_1,\dots ,\boldsymbol{w}_d}$ ， 其中 $\boldsymbol{w}_i$ 是标准正交基向量，$\Vert\boldsymbol{w}_i\Vert_2=1, \boldsymbol{w}_i^T\boldsymbol{w}_j=0 (i\not ={j})$</p>
+<p>若丢弃新坐标系中的部分坐标，即将维度降低到 $d’&lt;d$，则样本点$\boldsymbol{x}_i$在低维坐标系中的投影是 $z_{i}=(z_{i1};z_{i2};\dots;z_{id’})$，其中$z_{ij}=\boldsymbol{w}_j^T\boldsymbol{x}_i$是 $\boldsymbol{x}_i$ 在低维坐标系下第 $j$ 维的坐标。</p>
+<p>若基于 $\boldsymbol{z}_i$ 来重构 $\boldsymbol{x}_i$，则会得到 $\hat{\boldsymbol{x}}_i=\sum_{j=1}^{d’}z_{ij}\boldsymbol{w}_j$</p>
+<p>则原样本点 $\boldsymbol{x}_i$ 与基于投影重构的样本点 $\hat{\boldsymbol{x}}_i$ 之间的距离为：</p>
+<p>$$<br>\begin{aligned}<br>\sum_{i=1}^m\Vert\sum_{j=1}^{d’}z_{ij}\boldsymbol{w}_j-\boldsymbol{x}_i\Vert_2^2 &amp;= \sum_{i=1}^m\boldsymbol{z}_i^T\boldsymbol{z}_i-2\sum_{i=1}^m\boldsymbol{z}_i^TW^T\boldsymbol{x}_i+const \newline\<br>&amp;\propto -tr\left(W^T\left(\sum_{i=1}^m \boldsymbol{x}_i\boldsymbol{x}_i^T\right)W \right)<br>\end{aligned}<br>$$</p>
+<p>其中 $W=(\boldsymbol{w}_1,\dots,\boldsymbol{w}_d)$，根据最近重构性，上式应该被最小化，由于 $\boldsymbol{w}_j$ 是标准正交基，$\sum_i\boldsymbol{x}_i\boldsymbol{x}_i^T$ 是协方差矩阵，则有主成分分析的优化目标：</p>
+<p>$$<br>{min}\ -tr(W^TXX^TW), \ s.t.\ W^TW=I<br>$$</p>
+<h3 id="最大可分性"><a href="#最大可分性" class="headerlink" title="最大可分性"></a>最大可分性</h3><p>样本点 $\boldsymbol{x}_i$ 在新空间中超平面上的投影为 $W^T\boldsymbol{x}_i$，若所有的样本点的投影尽可能分开，则应该使投影后样本点的方差最大化</p>
+<p>由于投影后样本点的协方差矩阵是 $\sum_iW^T\boldsymbol{x}_i\boldsymbol{x}_i^TW$，因此优化目标即为：</p>
+<p>$$<br>{max}\ tr(W^TXX^TW), \ s.t.\ W^TW=I<br>$$</p>
+<h3 id="PCA-求解"><a href="#PCA-求解" class="headerlink" title="PCA 求解"></a>PCA 求解</h3><p>// TODO</p>
 
         </div>
         
@@ -263,6 +321,13 @@
 
 <div class="card card-transparent">
     <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/p/fcc15206/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">Hexo 中 Latex 公式渲染问题</span>
+            </a>
+        </div>
         
         
         <div class="level-end">
@@ -345,7 +410,7 @@
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            24
+                            25
                         </p>
                     </a>
                 </div>
@@ -417,10 +482,46 @@
         <span class="has-mr-6">1</span>
         <span>K 近邻学习 (k-Nearest Neighbor, kNN)</span>
         </a><ul class="menu-list"><li>
-        <a class="is-flex" href="#最近邻学习器和贝叶斯最优分类器">
+        <a class="is-flex" href="#最近邻学习器的误差分析">
         <span class="has-mr-6">1.1</span>
-        <span>最近邻学习器和贝叶斯最优分类器</span>
-        </a></li></ul></li></ul>
+        <span>最近邻学习器的误差分析</span>
+        </a></li><li>
+        <a class="is-flex" href="#维数问题">
+        <span class="has-mr-6">1.2</span>
+        <span>维数问题</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#降维">
+        <span class="has-mr-6">2</span>
+        <span>降维</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#多维缩放方法（MDS）">
+        <span class="has-mr-6">2.1</span>
+        <span>多维缩放方法（MDS）</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#如何在距离矩阵和内积矩阵之间建立联系？">
+        <span class="has-mr-6">2.1.1</span>
+        <span>如何在距离矩阵和内积矩阵之间建立联系？</span>
+        </a></li><li>
+        <a class="is-flex" href="#如何在低维子空间和高维空间之间保持样本之间的内积不变？">
+        <span class="has-mr-6">2.1.2</span>
+        <span>如何在低维子空间和高维空间之间保持样本之间的内积不变？</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#主成分分析（PCA）">
+        <span class="has-mr-6">2.2</span>
+        <span>主成分分析（PCA）</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#最近重构性">
+        <span class="has-mr-6">2.2.1</span>
+        <span>最近重构性</span>
+        </a></li><li>
+        <a class="is-flex" href="#最大可分性">
+        <span class="has-mr-6">2.2.2</span>
+        <span>最大可分性</span>
+        </a></li><li>
+        <a class="is-flex" href="#PCA-求解">
+        <span class="has-mr-6">2.2.3</span>
+        <span>PCA 求解</span>
+        </a></li></ul></li></ul></li></ul>
         </div>
     </div>
 </div>

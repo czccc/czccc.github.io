@@ -192,92 +192,92 @@
 <hr>
 <a id="more"></a>
 
-<h1 id="安装-Python"><a href="#安装-Python" class="headerlink" title="安装 Python"></a>安装 Python</h1><h2 id="Windows"><a href="#Windows" class="headerlink" title="Windows"></a>Windows</h2><p>Windows 下没有自带的 Python 环境, 因此需要手动下载 Python 的<a href="https://www.python.org/downloads/" target="_blank" rel="noopener">安装包</a>, 可以选择最新版本的 Python 安装包, 或者在下面的列表中选择特定版本.</p>
+<h1 id="安装-Python"><a href="#安装-Python" class="headerlink" title="安装 Python"></a>安装 Python</h1><h2 id="Windows"><a href="#Windows" class="headerlink" title="Windows"></a>Windows</h2><p>Windows 下没有自带的 Python 环境, 因此需要手动下载 Python 的<a href="https://www.python.org/downloads/">安装包</a>, 可以选择最新版本的 Python 安装包, 或者在下面的列表中选择特定版本.</p>
 <p>之后进行安装, 推荐进行自定义安装, 可以选择安装位置, 并且建议勾选上 “Add Python to environment variables”</p>
 <p><img src="https://i.loli.net/2019/06/09/5cfce3a29146023624.png" alt="20190609184656.png"></p>
 <p>设置好安装位置后, 便可以进行安装.</p>
 <p>安装完成后, 打开 <code>cmd</code> 或者 <code>powershell</code>, 在命令行中输入:</p>
-<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python -VV</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python -VV</span><br></pre></td></tr></table></figure>
 
 <p>如果执行结果类似于:</p>
-<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Python 3.7.3 (default, Mar 27 2019, 17:13:21) [MSC v.1915 64 bit (AMD64)]</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Python 3.7.3 (default, Mar 27 2019, 17:13:21) [MSC v.1915 64 bit (AMD64)]</span><br></pre></td></tr></table></figure>
 
 <p>出现相应的版本信息, 以及系统信息, 便说明完成了安装过程.</p>
 <h2 id="linux"><a href="#linux" class="headerlink" title="linux"></a>linux</h2><p>在 linux 系统下, 已经自带了对 Python 的支持, 因此不必重新安装 Python 环境.</p>
 <p>如果想要使用不同的 Python 版本, 推荐使用 <code>Pyenv</code> 进行 Python 环境管理, 从而使得系统的 Python 环境不会受到影响.</p>
 <p>参考另一篇文章: <a href="/p/c144/">在 Ubuntu 上安装 Pyenv</a></p>
 <p>在 linux 系统下, 测试 <code>python -VV</code>:</p>
-<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Python 3.7.3 (default, Jun  7 2019, 22:10:36)</span><br><span class="line">[GCC 7.4.0]</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Python 3.7.3 (default, Jun  7 2019, 22:10:36)</span><br><span class="line">[GCC 7.4.0]</span><br></pre></td></tr></table></figure>
 
-<h1 id="安装-Anaconda"><a href="#安装-Anaconda" class="headerlink" title="安装 Anaconda"></a>安装 Anaconda</h1><p>在 Anaconda 官方网站的<a href="https://www.anaconda.com/distribution/" target="_blank" rel="noopener">下载页面</a>上, 可以下载 Python 2 或 3 的安装程序, 二者没有太多区别, 推荐使用 Python 3</p>
-<h2 id="Windows-1"><a href="#Windows-1" class="headerlink" title="Windows"></a>Windows</h2><p>参考教程(英): <a href="https://docs.anaconda.com/anaconda/install/windows/" target="_blank" rel="noopener">Installing on Windows</a></p>
-<p>参考教程(中): <a href="https://zhuanlan.zhihu.com/p/32925500" target="_blank" rel="noopener">Anaconda介绍、安装及使用教程</a></p>
-<h2 id="Linux"><a href="#Linux" class="headerlink" title="Linux"></a>Linux</h2><p>参考教程(英): <a href="https://docs.anaconda.com/anaconda/install/linux/" target="_blank" rel="noopener">Installing on linux</a></p>
-<p>参考教程(中): <a href="https://segmentfault.com/a/1190000016359391" target="_blank" rel="noopener">Linux环境下的Anaconda安装</a></p>
-<h2 id="管理-conda"><a href="#管理-conda" class="headerlink" title="管理 conda"></a>管理 conda</h2><h3 id="验证"><a href="#验证" class="headerlink" title="验证"></a>验证</h3><figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda --version</span><br></pre></td></tr></table></figure>
+<h1 id="安装-Anaconda"><a href="#安装-Anaconda" class="headerlink" title="安装 Anaconda"></a>安装 Anaconda</h1><p>在 Anaconda 官方网站的<a href="https://www.anaconda.com/distribution/">下载页面</a>上, 可以下载 Python 2 或 3 的安装程序, 二者没有太多区别, 推荐使用 Python 3</p>
+<h2 id="Windows-1"><a href="#Windows-1" class="headerlink" title="Windows"></a>Windows</h2><p>参考教程(英): <a href="https://docs.anaconda.com/anaconda/install/windows/">Installing on Windows</a></p>
+<p>参考教程(中): <a href="https://zhuanlan.zhihu.com/p/32925500">Anaconda介绍、安装及使用教程</a></p>
+<h2 id="Linux"><a href="#Linux" class="headerlink" title="Linux"></a>Linux</h2><p>参考教程(英): <a href="https://docs.anaconda.com/anaconda/install/linux/">Installing on linux</a></p>
+<p>参考教程(中): <a href="https://segmentfault.com/a/1190000016359391">Linux环境下的Anaconda安装</a></p>
+<h2 id="管理-conda"><a href="#管理-conda" class="headerlink" title="管理 conda"></a>管理 conda</h2><h3 id="验证"><a href="#验证" class="headerlink" title="验证"></a>验证</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda --version</span><br></pre></td></tr></table></figure>
 
 <p>终端上将会以 <code>conda 版本号</code> 的形式显示当前安装conda的版本号。如： conda 3.11.0</p>
-<h3 id="更新-conda"><a href="#更新-conda" class="headerlink" title="更新 conda"></a>更新 conda</h3><figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda update conda</span><br></pre></td></tr></table></figure>
+<h3 id="更新-conda"><a href="#更新-conda" class="headerlink" title="更新 conda"></a>更新 conda</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda update conda</span><br></pre></td></tr></table></figure>
 
-<h3 id="查看帮助信息"><a href="#查看帮助信息" class="headerlink" title="查看帮助信息"></a>查看帮助信息</h3><figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda -h</span><br></pre></td></tr></table></figure>
+<h3 id="查看帮助信息"><a href="#查看帮助信息" class="headerlink" title="查看帮助信息"></a>查看帮助信息</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda -h</span><br></pre></td></tr></table></figure>
 
-<h2 id="管理环境"><a href="#管理环境" class="headerlink" title="管理环境"></a>管理环境</h2><h3 id="创建新环境"><a href="#创建新环境" class="headerlink" title="创建新环境"></a>创建新环境</h3><figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda create --name &lt;env_name&gt; &lt;package_names&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="管理环境"><a href="#管理环境" class="headerlink" title="管理环境"></a>管理环境</h2><h3 id="创建新环境"><a href="#创建新环境" class="headerlink" title="创建新环境"></a>创建新环境</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda create --name &lt;env_name&gt; &lt;package_names&gt;</span><br></pre></td></tr></table></figure>
 
 <p>如果要安装指定的版本号，则只需要在包名后面以 = 和版本号的形式执行。</p>
 <p>如： <code>conda create --name python2 python=2.7</code> ，即创建一个名为“python2”的环境，环境中安装版本为2.7的python。</p>
-<p>如果要在新创建的环境中创建多个包，则直接在 <package_names> 后以空格隔开，添加多个包名即可。</package_names></p>
+<p>如果要在新创建的环境中创建多个包，则直接在 <package_names> 后以空格隔开，添加多个包名即可。</p>
 <p>如： <code>conda create -n python3 python=3.5 numpy pandas</code> ，即创建一个名为“python3”的环境，环境中安装版本为3.5的python，同时也安装了numpy和pandas。</p>
 <h3 id="切换环境"><a href="#切换环境" class="headerlink" title="切换环境"></a>切换环境</h3><ol>
 <li><p>Linux 或 macOS</p>
- <figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-built_in">source</span> activate &lt;env_name&gt;</span><br></pre></td></tr></table></figure>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">source</span> activate &lt;env_name&gt;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>Windows</p>
- <figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">activate &lt;env_name&gt;</span><br></pre></td></tr></table></figure>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">activate &lt;env_name&gt;</span><br></pre></td></tr></table></figure>
 
 </li>
 </ol>
 <h3 id="退出环境至root"><a href="#退出环境至root" class="headerlink" title="退出环境至root"></a>退出环境至root</h3><ol>
 <li><p>Linux 或 macOS</p>
- <figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-built_in">source</span> deactivate</span><br></pre></td></tr></table></figure>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">source</span> deactivate</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>Windows</p>
- <figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">deactivate</span><br></pre></td></tr></table></figure>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">deactivate</span><br></pre></td></tr></table></figure>
 
 </li>
 </ol>
 <h3 id="显示已创建环境"><a href="#显示已创建环境" class="headerlink" title="显示已创建环境"></a>显示已创建环境</h3><p>以下三条命令等价:</p>
-<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">conda info --envs</span><br><span class="line">conda info -e</span><br><span class="line">conda env list</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">conda info --envs</span><br><span class="line">conda info -e</span><br><span class="line">conda env list</span><br></pre></td></tr></table></figure>
 
-<h3 id="复制环境"><a href="#复制环境" class="headerlink" title="复制环境"></a>复制环境</h3><figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda create --name &lt;new_env_name&gt; --<span class="hljs-built_in">clone</span> &lt;copied_env_name&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="复制环境"><a href="#复制环境" class="headerlink" title="复制环境"></a>复制环境</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda create --name &lt;new_env_name&gt; --<span class="built_in">clone</span> &lt;copied_env_name&gt;</span><br></pre></td></tr></table></figure>
 
-<h3 id="删除环境"><a href="#删除环境" class="headerlink" title="删除环境"></a>删除环境</h3><figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda remove --name &lt;env_name&gt; --all</span><br></pre></td></tr></table></figure>
+<h3 id="删除环境"><a href="#删除环境" class="headerlink" title="删除环境"></a>删除环境</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda remove --name &lt;env_name&gt; --all</span><br></pre></td></tr></table></figure>
 
 <h2 id="管理包"><a href="#管理包" class="headerlink" title="管理包"></a>管理包</h2><h3 id="查找可供安装的包版本"><a href="#查找可供安装的包版本" class="headerlink" title="查找可供安装的包版本"></a>查找可供安装的包版本</h3><ol>
 <li><p>精确查找</p>
- <figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda search --full-name &lt;package_full_name&gt;</span><br></pre></td></tr></table></figure>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda search --full-name &lt;package_full_name&gt;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>模糊查找</p>
- <figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda search &lt;text&gt;</span><br></pre></td></tr></table></figure>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda search &lt;text&gt;</span><br></pre></td></tr></table></figure>
 
 </li>
 </ol>
-<h3 id="获取当前环境中已安装的包信息"><a href="#获取当前环境中已安装的包信息" class="headerlink" title="获取当前环境中已安装的包信息"></a>获取当前环境中已安装的包信息</h3><figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda list</span><br></pre></td></tr></table></figure>
+<h3 id="获取当前环境中已安装的包信息"><a href="#获取当前环境中已安装的包信息" class="headerlink" title="获取当前环境中已安装的包信息"></a>获取当前环境中已安装的包信息</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda list</span><br></pre></td></tr></table></figure>
 
 <p>执行上述命令后将在终端显示当前环境已安装包的包名及其版本号。</p>
 <h3 id="安装包"><a href="#安装包" class="headerlink" title="安装包"></a>安装包</h3><ol>
 <li><p>在指定环境中安装包</p>
- <figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda install --name &lt;env_name&gt; &lt;package_name&gt;</span><br></pre></td></tr></table></figure>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda install --name &lt;env_name&gt; &lt;package_name&gt;</span><br></pre></td></tr></table></figure>
 
 <p> 例如： <strong>conda install –name python2 pandas</strong> 即在名为“python2”的环境中安装pandas包。</p>
 </li>
 <li><p>在当前环境中安装包</p>
- <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda install &lt;package_name&gt;</span><br></pre></td></tr></table></figure>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda install &lt;package_name&gt;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>使用pip安装包</p>
 <p> <strong>→ 使用场景</strong></p>
 <p> 当使用 <strong><em>conda install</em></strong> 无法进行安装时，可以使用pip进行安装。例如：see包。</p>
 <p> <strong>→ 命令</strong></p>
- <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install &lt;package_name&gt;</span><br></pre></td></tr></table></figure>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install &lt;package_name&gt;</span><br></pre></td></tr></table></figure>
 
 <p> <strong>→ 注意</strong></p>
 <ol>
@@ -289,56 +289,56 @@
 </ol>
 <h3 id="卸载包"><a href="#卸载包" class="headerlink" title="卸载包"></a>卸载包</h3><ol>
 <li><p>卸载指定环境中的包</p>
- <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda remove --name &lt;env_name&gt; &lt;package_name&gt;</span><br></pre></td></tr></table></figure>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda remove --name &lt;env_name&gt; &lt;package_name&gt;</span><br></pre></td></tr></table></figure>
 
 <ul>
 <li>例如： <strong><em>conda remove –name python2 pandas</em></strong> 即卸载名为“python2”中的pandas包。</li>
 </ul>
 </li>
 <li><p>卸载当前环境中的包</p>
- <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda remove &lt;package_name&gt;</span><br></pre></td></tr></table></figure>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda remove &lt;package_name&gt;</span><br></pre></td></tr></table></figure>
 
 </li>
 </ol>
 <h3 id="更新包"><a href="#更新包" class="headerlink" title="更新包"></a>更新包</h3><ol>
 <li><p>更新所有包</p>
- <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda update --all</span><br></pre></td></tr></table></figure>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda update --all</span><br></pre></td></tr></table></figure>
 
 <p> 或</p>
- <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda upgrade --all</span><br></pre></td></tr></table></figure>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda upgrade --all</span><br></pre></td></tr></table></figure>
 
 <p> 建议：在安装Anaconda之后执行上述命令更新Anaconda中的所有包至最新版本，便于使用。</p>
 </li>
 </ol>
 <ol start="2">
 <li><p>更新指定包</p>
- <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda update &lt;package_name&gt;</span><br></pre></td></tr></table></figure>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda update &lt;package_name&gt;</span><br></pre></td></tr></table></figure>
 
 <p> 或</p>
- <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda upgrade &lt;package_name&gt;</span><br></pre></td></tr></table></figure>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda upgrade &lt;package_name&gt;</span><br></pre></td></tr></table></figure>
 
 <p> 注意：更新多个指定包，则包名以<strong>空格</strong>隔开，向后排列。如： <strong>conda update pandas numpy matplotlib</strong> 即更新pandas、numpy、matplotlib包。</p>
 </li>
 </ol>
 <h1 id="配置镜像"><a href="#配置镜像" class="headerlink" title="配置镜像"></a>配置镜像</h1><h2 id="pip-镜像"><a href="#pip-镜像" class="headerlink" title="pip 镜像"></a>pip 镜像</h2><ul>
-<li><a href="http://mirrors.aliyun.com/pypi/simple/" target="_blank" rel="noopener">阿里云</a> </li>
-<li><a href="https://pypi.mirrors.ustc.edu.cn/simple/" target="_blank" rel="noopener">中国科技大学</a> </li>
-<li><a href="http://pypi.douban.com/simple/" target="_blank" rel="noopener">豆瓣(douban)</a> </li>
-<li><a href="https://pypi.tuna.tsinghua.edu.cn/simple/" target="_blank" rel="noopener">清华大学</a> </li>
-<li><a href="http://pypi.mirrors.ustc.edu.cn/simple/" target="_blank" rel="noopener">中国科学技术大学</a> </li>
+<li><a href="http://mirrors.aliyun.com/pypi/simple/">阿里云</a> </li>
+<li><a href="https://pypi.mirrors.ustc.edu.cn/simple/">中国科技大学</a> </li>
+<li><a href="http://pypi.douban.com/simple/">豆瓣(douban)</a> </li>
+<li><a href="https://pypi.tuna.tsinghua.edu.cn/simple/">清华大学</a> </li>
+<li><a href="http://pypi.mirrors.ustc.edu.cn/simple/">中国科学技术大学</a> </li>
 </ul>
-<p>本文使用<a href="https://mirror.tuna.tsinghua.edu.cn/help/pypi/" target="_blank" rel="noopener">清华的镜像源</a></p>
-<h3 id="临时使用"><a href="#临时使用" class="headerlink" title="临时使用"></a>临时使用</h3><figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install -i https://pypi.tuna.tsinghua.edu.cn/simple some-package</span><br></pre></td></tr></table></figure>
+<p>本文使用<a href="https://mirror.tuna.tsinghua.edu.cn/help/pypi/">清华的镜像源</a></p>
+<h3 id="临时使用"><a href="#临时使用" class="headerlink" title="临时使用"></a>临时使用</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install -i https://pypi.tuna.tsinghua.edu.cn/simple some-package</span><br></pre></td></tr></table></figure>
 
 <p>注意，<code>simple</code> 不能少, 是 <code>https</code> 而不是 <code>http</code></p>
 <h3 id="使用配置文件"><a href="#使用配置文件" class="headerlink" title="使用配置文件"></a>使用配置文件</h3><p>在 linux 系统下, 新建 <code>~/.pip/pip.conf</code> 文件, Windows 系统下在个人文件夹中创建一个 <code>pip</code> 目录，如：C:\Users\xx\pip，新建文件 <code>pip.ini</code>，内容如下</p>
-<figure class="highlight plain hljs"><figcaption><span>~/.pip/pip.conf</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[global]</span><br><span class="line">index-url = https://pypi.tuna.tsinghua.edu.cn/simple</span><br><span class="line"></span><br><span class="line">[list]</span><br><span class="line">format=columns</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><figcaption><span>~/.pip/pip.conf</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[global]</span><br><span class="line">index-url = https://pypi.tuna.tsinghua.edu.cn/simple</span><br><span class="line"></span><br><span class="line">[list]</span><br><span class="line">format=columns</span><br></pre></td></tr></table></figure>
 
 <h3 id="使用-config-命令"><a href="#使用-config-命令" class="headerlink" title="使用 config 命令"></a>使用 config 命令</h3><p>升级 pip 到最新的版本 (&gt;=10.0.0) 后进行配置：</p>
-<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pip install pip -U</span><br><span class="line">pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pip install pip -U</span><br><span class="line">pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple</span><br></pre></td></tr></table></figure>
 
 <p>如果 pip 默认源的网络连接较差，临时使用镜像站来升级 pip：</p>
-<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install -i https://pypi.tuna.tsinghua.edu.cn/simple pip -U</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install -i https://pypi.tuna.tsinghua.edu.cn/simple pip -U</span><br></pre></td></tr></table></figure>
 
 <h2 id="conda-镜像"><a href="#conda-镜像" class="headerlink" title="conda 镜像"></a>conda 镜像</h2><p>目前国内的 conda 镜像站基本都已经关闭.</p>
 <hr>
@@ -498,7 +498,7 @@
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            24
+                            25
                         </p>
                     </a>
                 </div>
