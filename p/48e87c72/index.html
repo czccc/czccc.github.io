@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html  lang="en">
+<html  lang="zh">
 
 <head>
     <meta charset="utf-8" />
@@ -12,14 +12,15 @@
 
 
     <meta name="description" content="Docker 的安装与镜像加速">
+<meta name="keywords" content="Docker,应用安装">
 <meta property="og:type" content="article">
 <meta property="og:title" content="安装 Docker">
 <meta property="og:url" content="http://blog.czcc.me/p/48e87c72/index.html">
 <meta property="og:site_name" content="CZCC">
 <meta property="og:description" content="Docker 的安装与镜像加速">
-<meta property="og:locale" content="en">
+<meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://blog.czcc.me/images/og_image.png">
-<meta property="og:updated_time" content="2019-09-07T07:42:44.696Z">
+<meta property="og:updated_time" content="2020-01-13T15:11:17.965Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="安装 Docker">
 <meta name="twitter:description" content="Docker 的安装与镜像加速">
@@ -106,6 +107,9 @@
                 href="/tags">Tags</a>
                 
                 <a class="navbar-item"
+                href="/categories/LeetCode">LeetCode</a>
+                
+                <a class="navbar-item"
                 href="/about">About</a>
                 
             </div>
@@ -126,7 +130,7 @@
                 </a>
                 
                 
-                <a class="navbar-item search" title="Search" href="javascript:;">
+                <a class="navbar-item search" title="搜索" href="javascript:;">
                     <i class="fas fa-search"></i>
                 </a>
                 
@@ -144,11 +148,11 @@
     <div class="card-content article ">
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <i class="fas fa-angle-double-right"></i>&nbsp;&nbsp;安装 Docker
+            <i class="fas fa-angle-double-right"></i>&nbsp;&nbsp;安装 Docker
             
         </h1>
         
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+        <div class="level article-meta is-size-7 is-mobile is-overflow-x-auto">
             <div class="level-left">
                 <!-- <time class="level-item has-text-grey" datetime="2019-05-27T01:58:04.000Z">2019-05-27</time> -->
                 <time class="level-item has-text-grey" datetime="2019-05-27T01:58:04.000Z">
@@ -156,12 +160,13 @@
                     2019-05-27
                 </time>
                 
-                    <time class="level-item has-text-grey is-hidden-mobile" datetime="2019-09-07T07:42:44.696Z"><i class="far fa-calendar-check">&nbsp;</i>2019-09-07</time>
+                <time class="level-item has-text-grey is-hidden-mobile" datetime="2020-01-13T15:11:17.965Z"><i
+                        class="far fa-calendar-check">&nbsp;</i>2020-01-13</time>
                 
                 
                 <div class="level-item">
-                <i class="far fa-folder">&nbsp;</i>
-                <a class="has-link-grey -link" href="/categories/Docker/">Docker</a>
+                    <i class="far fa-folder">&nbsp;</i>
+                    <a class="has-link-grey -link" href="/categories/Docker/">Docker</a>
                 </div>
                 
                 
@@ -169,13 +174,13 @@
                     <i class="far fa-hourglass">&nbsp;&nbsp;</i>
                     
                     
-                    10 minutes read (About 1503 words)
+                    10 分钟   (约 1503 字)
                 </span>
                 
                 
                 <span class="level-item has-text-grey" id="busuanzi_container_page_pv">
                     <i class="far fa-eye"></i>
-                    <span id="busuanzi_value_page_pv">0</span> visits
+                    <span id="busuanzi_value_page_pv">0</span>次访问
                 </span>
                 
             </div>
@@ -191,18 +196,18 @@
 <hr>
 <a id="more"></a>
 
-<h1 id="安装-Docker"><a href="#安装-Docker" class="headerlink" title="安装 Docker"></a>安装 Docker</h1><h2 id="Ubuntu-安装-Docker-CE"><a href="#Ubuntu-安装-Docker-CE" class="headerlink" title="Ubuntu 安装 Docker CE"></a>Ubuntu 安装 Docker CE</h2><blockquote>
+<h1 id="安装 -Docker"><a href="# 安装 -Docker" class="headerlink" title="安装 Docker"></a>安装 Docker</h1><h2 id="Ubuntu- 安装 -Docker-CE"><a href="#Ubuntu- 安装 -Docker-CE" class="headerlink" title="Ubuntu 安装 Docker CE"></a>Ubuntu 安装 Docker CE</h2><blockquote>
 <p>警告：切勿在没有配置 Docker APT 源的情况下直接使用 apt 命令安装 Docker.</p>
 </blockquote>
-<h3 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h3><h4 id="系统要求"><a href="#系统要求" class="headerlink" title="系统要求"></a>系统要求</h4><p>Docker CE 支持以下版本的 <a href="https://www.ubuntu.com/server">Ubuntu</a> 操作系统：</p>
+<h3 id="准备工作"><a href="# 准备工作" class="headerlink" title="准备工作"></a>准备工作 </h3><h4 id="系统要求"><a href="# 系统要求" class="headerlink" title="系统要求"></a> 系统要求</h4><p>Docker CE 支持以下版本的 <a href="https://www.ubuntu.com/server">Ubuntu</a> 操作系统：</p>
 <ul>
 <li>Bionic 18.04 (LTS)</li>
 <li>Xenial 16.04 (LTS)</li>
 </ul>
-<h4 id="卸载旧版本"><a href="#卸载旧版本" class="headerlink" title="卸载旧版本"></a>卸载旧版本</h4><p>旧版本的 Docker 称为 <code>docker</code> 或者 <code>docker-engine</code>，使用以下命令卸载旧版本：</p>
+<h4 id="卸载旧版本"><a href="# 卸载旧版本" class="headerlink" title="卸载旧版本"></a>卸载旧版本 </h4><p> 旧版本的 Docker 称为 <code>docker</code> 或者 <code>docker-engine</code>，使用以下命令卸载旧版本：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt-get remove docker \</span><br><span class="line">               docker-engine \</span><br><span class="line">               docker.io</span><br></pre></td></tr></table></figure>
 
-<h3 id="使用-APT-安装"><a href="#使用-APT-安装" class="headerlink" title="使用 APT 安装"></a>使用 APT 安装</h3><p>由于 <code>apt</code> 源使用 HTTPS 以确保软件下载过程中不被篡改。因此，我们首先需要添加使用 HTTPS 传输的软件包以及 CA 证书。</p>
+<h3 id="使用 -APT- 安装"><a href="# 使用 -APT- 安装" class="headerlink" title="使用 APT 安装"></a>使用 APT 安装 </h3><p> 由于 <code>apt</code> 源使用 HTTPS 以确保软件下载过程中不被篡改。因此，我们首先需要添加使用 HTTPS 传输的软件包以及 CA 证书。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt-get update</span><br><span class="line">$ sudo apt-get install apt-transport-https ca-certificates curl software-properties-common</span><br></pre></td></tr></table></figure>
 
 <p>鉴于国内网络问题，强烈建议使用国内源，官方源请在注释中查看。</p>
@@ -212,16 +217,16 @@
 <p>然后，我们需要向 <code>source.list</code> 中添加 Docker 软件源</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">$ sudo add-apt-repository \</span><br><span class="line">    <span class="string">"deb [arch=amd64] https://mirrors.ustc.edu.cn/docker-ce/linux/ubuntu \</span></span><br><span class="line"><span class="string">    <span class="variable">$(lsb_release -cs)</span> \</span></span><br><span class="line"><span class="string">    stable"</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 官方源</span></span><br><span class="line"><span class="comment"># $ sudo add-apt-repository \</span></span><br><span class="line"><span class="comment">#    "deb [arch=amd64] https://download.docker.com/linux/ubuntu \</span></span><br><span class="line"><span class="comment">#    $(lsb_release -cs) \</span></span><br><span class="line"><span class="comment">#    stable"</span></span><br></pre></td></tr></table></figure>
 
-<h4 id="安装-Docker-CE"><a href="#安装-Docker-CE" class="headerlink" title="安装 Docker CE"></a>安装 Docker CE</h4><p>更新 apt 软件包缓存，并安装 <code>docker-ce</code>：</p>
+<h4 id="安装 -Docker-CE"><a href="# 安装 -Docker-CE" class="headerlink" title="安装 Docker CE"></a>安装 Docker CE</h4><p>更新 apt 软件包缓存，并安装 <code>docker-ce</code>：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt-get update</span><br><span class="line"></span><br><span class="line">$ sudo apt-get install docker-ce</span><br></pre></td></tr></table></figure>
 
-<h3 id="使用脚本自动安装"><a href="#使用脚本自动安装" class="headerlink" title="使用脚本自动安装"></a>使用脚本自动安装</h3><p>在测试或开发环境中 Docker 官方为了简化安装流程，提供了一套便捷的安装脚本，Ubuntu 系统上可以使用这套脚本安装：</p>
+<h3 id="使用脚本自动安装"><a href="# 使用脚本自动安装" class="headerlink" title="使用脚本自动安装"></a>使用脚本自动安装 </h3><p> 在测试或开发环境中 Docker 官方为了简化安装流程，提供了一套便捷的安装脚本，Ubuntu 系统上可以使用这套脚本安装：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ curl -fsSL get.docker.com -o get-docker.sh</span><br><span class="line">$ sudo sh get-docker.sh --mirror Aliyun</span><br></pre></td></tr></table></figure>
 
 <p>执行这个命令后，脚本就会自动的将一切准备工作做好，并且把 Docker CE 的 Edge 版本安装在系统中。</p>
-<h3 id="启动-Docker-CE"><a href="#启动-Docker-CE" class="headerlink" title="启动 Docker CE"></a>启动 Docker CE</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ sudo systemctl <span class="built_in">enable</span> docker</span><br><span class="line">$ sudo systemctl start docker</span><br></pre></td></tr></table></figure>
+<h3 id="启动 -Docker-CE"><a href="# 启动 -Docker-CE" class="headerlink" title="启动 Docker CE"></a>启动 Docker CE</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ sudo systemctl <span class="built_in">enable</span> docker</span><br><span class="line">$ sudo systemctl start docker</span><br></pre></td></tr></table></figure>
 
-<h3 id="建立-docker-用户组"><a href="#建立-docker-用户组" class="headerlink" title="建立 docker 用户组"></a>建立 docker 用户组</h3><p>默认情况下，<code>docker</code> 命令会使用 <a href="https://en.wikipedia.org/wiki/Unix_domain_socket">Unix socket</a> 与 Docker 引擎通讯。而只有 <code>root</code> 用户和 <code>docker</code> 组的用户才可以访问 Docker 引擎的 Unix socket。出于安全考虑，一般 Linux 系统上不会直接使用 <code>root</code> 用户。因此，更好地做法是将需要使用 <code>docker</code> 的用户加入 <code>docker</code> 用户组。</p>
+<h3 id="建立 -docker- 用户组"><a href="# 建立 -docker- 用户组" class="headerlink" title="建立 docker 用户组"></a>建立 docker 用户组 </h3><p> 默认情况下，<code>docker</code> 命令会使用 <a href="https://en.wikipedia.org/wiki/Unix_domain_socket">Unix socket</a> 与 Docker 引擎通讯。而只有 <code>root</code> 用户和 <code>docker</code> 组的用户才可以访问 Docker 引擎的 Unix socket。出于安全考虑，一般 Linux 系统上不会直接使用 <code>root</code> 用户。因此，更好地做法是将需要使用 <code>docker</code> 的用户加入 <code>docker</code> 用户组。</p>
 <p>建立 <code>docker</code> 组：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo groupadd docker</span><br></pre></td></tr></table></figure>
 
@@ -229,16 +234,16 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo usermod -aG docker <span class="variable">$USER</span></span><br></pre></td></tr></table></figure>
 
 <p>退出当前终端并重新登录，进行如下测试。</p>
-<h3 id="测试-Docker-是否安装正确"><a href="#测试-Docker-是否安装正确" class="headerlink" title="测试 Docker 是否安装正确"></a>测试 Docker 是否安装正确</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">$ docker run hello-world</span><br><span class="line"></span><br><span class="line">Unable to find image <span class="string">'hello-world:latest'</span> locally</span><br><span class="line">latest: Pulling from library/hello-world</span><br><span class="line">d1725b59e92d: Pull complete</span><br><span class="line">Digest: sha256:0add3ace90ecb4adbf7777e9aacf18357296e799f81cabc9fde470971e499788</span><br><span class="line">Status: Downloaded newer image <span class="keyword">for</span> hello-world:latest</span><br><span class="line"></span><br><span class="line">Hello from Docker!</span><br><span class="line">This message shows that your installation appears to be working correctly.</span><br><span class="line">......</span><br></pre></td></tr></table></figure>
+<h3 id="测试 -Docker- 是否安装正确"><a href="# 测试 -Docker- 是否安装正确" class="headerlink" title="测试 Docker 是否安装正确"></a>测试 Docker 是否安装正确</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">$ docker run hello-world</span><br><span class="line"></span><br><span class="line">Unable to find image <span class="string">'hello-world:latest'</span> locally</span><br><span class="line">latest: Pulling from library/hello-world</span><br><span class="line">d1725b59e92d: Pull complete</span><br><span class="line">Digest: sha256:0add3ace90ecb4adbf7777e9aacf18357296e799f81cabc9fde470971e499788</span><br><span class="line">Status: Downloaded newer image <span class="keyword">for</span> hello-world:latest</span><br><span class="line"></span><br><span class="line">Hello from Docker!</span><br><span class="line">This message shows that your installation appears to be working correctly.</span><br><span class="line">......</span><br></pre></td></tr></table></figure>
 
 <p>若能正常输出以上信息，则说明安装成功。</p>
-<h2 id="Windows-10-PC-安装-Docker-CE"><a href="#Windows-10-PC-安装-Docker-CE" class="headerlink" title="Windows 10 PC 安装 Docker CE"></a>Windows 10 PC 安装 Docker CE</h2><h3 id="系统要求-1"><a href="#系统要求-1" class="headerlink" title="系统要求"></a>系统要求</h3><p><a href="https://docs.docker.com/docker-for-windows/install/">Docker for Windows</a> 支持 64 位版本的 Windows 10 Pro，且必须开启 Hyper-V。</p>
-<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>点击以下链接下载 <a href="https://download.docker.com/win/stable/Docker%20for%20Windows%20Installer.exe">Stable</a> 或 <a href="https://download.docker.com/win/edge/Docker%20for%20Windows%20Installer.exe">Edge</a> 版本的 Docker for Windows。</p>
+<h2 id="Windows-10-PC- 安装 -Docker-CE"><a href="#Windows-10-PC- 安装 -Docker-CE" class="headerlink" title="Windows 10 PC 安装 Docker CE"></a>Windows 10 PC 安装 Docker CE</h2><h3 id="系统要求 -1"><a href="# 系统要求 -1" class="headerlink" title="系统要求"></a>系统要求</h3><p><a href="https://docs.docker.com/docker-for-windows/install/">Docker for Windows</a> 支持 64 位版本的 Windows 10 Pro，且必须开启 Hyper-V。</p>
+<h3 id="安装"><a href="# 安装" class="headerlink" title="安装"></a>安装 </h3><p> 点击以下链接下载 <a href="https://download.docker.com/win/stable/Docker%20for%20Windows%20Installer.exe">Stable</a> 或 <a href="https://download.docker.com/win/edge/Docker%20for%20Windows%20Installer.exe">Edge</a> 版本的 Docker for Windows。</p>
 <p>下载好之后双击 Docker for Windows Installer.exe 开始安装。</p>
-<h3 id="运行"><a href="#运行" class="headerlink" title="运行"></a>运行</h3><p>在 Windows 搜索栏输入 Docker 点击 Docker for Windows 开始运行。</p>
+<h3 id="运行"><a href="# 运行" class="headerlink" title="运行"></a>运行 </h3><p> 在 Windows 搜索栏输入 Docker 点击 Docker for Windows 开始运行。</p>
 <p>Docker CE 启动之后会在 Windows 任务栏出现鲸鱼图标。</p>
 <p><img src="docker/install-win-taskbar-circle-1557802432624.png" alt="img"></p>
-<h2 id="镜像加速器"><a href="#镜像加速器" class="headerlink" title="镜像加速器"></a>镜像加速器</h2><p>国内从 Docker Hub 拉取镜像有时会遇到困难，此时可以配置镜像加速器。国内很多云服务商都提供了国内加速器服务，例如：</p>
+<h2 id="镜像加速器"><a href="# 镜像加速器" class="headerlink" title="镜像加速器"></a>镜像加速器 </h2><p> 国内从 Docker Hub 拉取镜像有时会遇到困难，此时可以配置镜像加速器。国内很多云服务商都提供了国内加速器服务，例如：</p>
 <ul>
 <li><a href="https://github.com/Azure/container-service-for-azure-china/blob/master/aks/README.md#22-container-registry-proxy">Azure 中国镜像 <code>https://dockerhub.azk8s.cn</code></a></li>
 <li><a href="https://cr.console.aliyun.com/cn-hangzhou/mirrors">阿里云加速器(需登录账号获取)</a></li>
@@ -260,27 +265,38 @@
 
 <h3 id="Windows-10"><a href="#Windows-10" class="headerlink" title="Windows 10"></a>Windows 10</h3><p>对于使用 Windows 10 的系统，在系统右下角托盘 Docker 图标内右键菜单选择 <code>Settings</code>，打开配置窗口后左侧导航菜单选择 <code>Daemon</code>。在 <code>Registry mirrors</code>一栏中填写加速器地址 <code>https://dockerhub.azk8s.cn</code>，之后点击 <code>Apply</code> 保存后 Docker 就会重启并应用配置的镜像地址了。</p>
 <h3 id="macOS"><a href="#macOS" class="headerlink" title="macOS"></a>macOS</h3><p>对于使用 macOS 的用户，在任务栏点击 Docker Desktop 应用图标 -&gt; Perferences… -&gt; Daemon -&gt; Registry mirrors。在列表中填写加速器地址 <code>https://dockerhub.azk8s.cn</code>。修改完成之后，点击 <code>Apply &amp; Restart</code> 按钮，Docker 就会重启并应用配置的镜像地址了。</p>
-<h3 id="检查加速器是否生效"><a href="#检查加速器是否生效" class="headerlink" title="检查加速器是否生效"></a>检查加速器是否生效</h3><p>执行 <code>$ docker info</code>，如果从结果中看到了如下内容，说明配置成功。</p>
+<h3 id="检查加速器是否生效"><a href="# 检查加速器是否生效" class="headerlink" title="检查加速器是否生效"></a>检查加速器是否生效 </h3><p> 执行 <code>$ docker info</code>，如果从结果中看到了如下内容，说明配置成功。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Registry Mirrors:</span><br><span class="line"> https://dockerhub.azk8s.cn/</span><br></pre></td></tr></table></figure>
 
-<h3 id="gcr-io-镜像"><a href="#gcr-io-镜像" class="headerlink" title="gcr.io 镜像"></a>gcr.io 镜像</h3><p>国内无法直接获取 <code>gcr.io/*</code> 镜像，我们可以将 <code>gcr.io/&lt;repo-name&gt;/&lt;image-name&gt;:&lt;version&gt;</code> 替换为 <code>gcr.azk8s.cn/&lt;repo-name&gt;/&lt;image-name&gt;:&lt;version&gt;</code> ,例如</p>
+<h3 id="gcr-io- 镜像"><a href="#gcr-io- 镜像" class="headerlink" title="gcr.io 镜像"></a>gcr.io 镜像 </h3><p> 国内无法直接获取 <code>gcr.io/*</code> 镜像，我们可以将 <code>gcr.io/&lt;repo-name&gt;/&lt;image-name&gt;:&lt;version&gt;</code> 替换为 <code>gcr.azk8s.cn/&lt;repo-name&gt;/&lt;image-name&gt;:&lt;version&gt;</code> , 例如</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># docker pull gcr.io/google_containers/hyperkube-amd64:v1.9.2</span></span><br><span class="line"></span><br><span class="line">docker pull gcr.azk8s.cn/google_containers/hyperkube-amd64:v1.9.2</span><br></pre></td></tr></table></figure>
 
-<h1 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h1><p><a href="https://yeasy.gitbooks.io/docker_practice/">Docker — 从入门到实践</a></p>
+<h1 id="参考文档"><a href="# 参考文档" class="headerlink" title="参考文档"></a>参考文档</h1><p><a href="https://yeasy.gitbooks.io/docker_practice/">Docker — 从入门到实践</a></p>
 <p><a href="https://docs.docker.com/install/linux/docker-ce/ubuntu/">Docker 官方 Ubuntu 安装文档</a></p>
 
         </div>
         
-            <ul class="post-copyright">
+        <ul class="post-copyright">
             <li><strong>本文标题：</strong><a href="http://blog.czcc.me/p/48e87c72/">安装 Docker</a></li>
             <li><strong>本文作者：</strong><a href="http://blog.czcc.me">Cheng</a></li>
             <li><strong>本文链接：</strong><a href="http://blog.czcc.me/p/48e87c72/">http://blog.czcc.me/p/48e87c72/</a></li>
             <li><strong>发布时间：</strong>2019-05-27</li>
-            <li><strong>版权声明：</strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！
+            <li><strong>版权声明：</strong>本博客所有文章除特别声明外，均采用 <a
+                    href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="external nofollow"
+                    target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！
             </li>
-            </ul>
-            <br>
+        </ul>
+        <br>
         
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/Docker/">Docker</a>, <a class="has-link-grey -link" href="/tags/应用安装/">应用安装</a>
+                </div>
+            </div>
+        </div>
         
         
         
@@ -295,29 +311,29 @@
 
 <div class="card">
     <div class="card-content">
-        <h3 class="menu-label has-text-centered">Like this article? Support the author with</h3>
+        <h3 class="menu-label has-text-centered">喜欢这篇文章？打赏一下作者吧</h3>
         <div class="buttons is-centered">
             
-                
+            
 <a class="button is-info donate">
     <span class="icon is-small">
         <i class="fab fa-alipay"></i>
     </span>
-    <span>Alipay</span>
-    <div class="qrcode"><img src="/images/Alipay.jpg" alt="Alipay"></div>
+    <span>支付宝</span>
+    <div class="qrcode"><img src="/images/Alipay.jpg" alt="支付宝"></div>
 </a>
 
-                
-                
+            
+            
 <a class="button is-success donate">
     <span class="icon is-small">
         <i class="fab fa-weixin"></i>
     </span>
-    <span>Wechat</span>
-    <div class="qrcode"><img src="/images/WeChat_pay.png" alt="Wechat"></div>
+    <span>微信</span>
+    <div class="qrcode"><img src="/images/WeChat_pay.png" alt="微信"></div>
 </a>
 
-                
+            
         </div>
     </div>
 </div>
@@ -328,15 +344,17 @@
     <div class="level post-navigation is-flex-wrap is-mobile">
         
         <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/p/473e4e11/">
+            <a class="level level-item has-link-grey  article-nav-prev"
+                href="/p/473e4e11/">
                 <i class="level-item fas fa-chevron-left"></i>
-                <span class="level-item">搭建Hexo (一) : 安装Hexo</span>
+                <span class="level-item">搭建 Hexo (一) : 安装 Hexo</span>
             </a>
         </div>
         
         
         <div class="level-end">
-            <a class="level level-item has-link-grey  article-nav-next" href="/p/be0ddb94/">
+            <a class="level level-item has-link-grey  article-nav-next"
+                href="/p/be0ddb94/">
                 <span class="level-item">The Art Of Command Line</span>
                 <i class="level-item fas fa-chevron-right"></i>
             </a>
@@ -349,7 +367,7 @@
 
 <div class="card">
     <div class="card-content">
-        <h3 class="title is-5 has-text-weight-normal">Comments</h3>
+        <h3 class="title is-5 has-text-weight-normal">评论</h3>
         
 <script>
     var disqus_config = function () {
@@ -386,7 +404,7 @@
                 <div>
                     
                     <figure class="image is-128x128 has-mb-6">
-                        <img class="" src="/images/avatar.png" alt="Cheng">
+                        <img class="" src="/images/avatar.jpg" alt="Cheng">
                     </figure>
                     
                     <p class="is-size-4 is-block">
@@ -411,11 +429,11 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Posts
+                        Post
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            25
+                            36
                         </p>
                     </a>
                 </div>
@@ -423,11 +441,11 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Categories
+                        Category
                     </p>
                     <a href="/categories">
                         <p class="title has-text-weight-normal">
-                            8
+                            14
                         </p>
                     </a>
                 </div>
@@ -435,11 +453,11 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Tags
+                        Tag
                     </p>
                     <a href="/tags">
                         <p class="title has-text-weight-normal">
-                            20
+                            38
                         </p>
                     </a>
                 </div>
@@ -483,57 +501,57 @@
                 Catalogue
             </h3>
             <ul class="menu-list"><li>
-        <a class="is-flex" href="#安装-Docker">
+        <a class="is-flex" href="#安装 -Docker">
         <span class="has-mr-6">1</span>
         <span>安装 Docker</span>
         </a><ul class="menu-list"><li>
-        <a class="is-flex" href="#Ubuntu-安装-Docker-CE">
+        <a class="is-flex" href="#Ubuntu- 安装 -Docker-CE">
         <span class="has-mr-6">1.1</span>
         <span>Ubuntu 安装 Docker CE</span>
         </a><ul class="menu-list"><li>
         <a class="is-flex" href="#准备工作">
         <span class="has-mr-6">1.1.1</span>
-        <span>准备工作</span>
+        <span>准备工作 </span>
         </a></li><li>
-        <a class="is-flex" href="#使用-APT-安装">
+        <a class="is-flex" href="#使用 -APT- 安装">
         <span class="has-mr-6">1.1.2</span>
-        <span>使用 APT 安装</span>
+        <span>使用 APT 安装 </span>
         </a></li><li>
         <a class="is-flex" href="#使用脚本自动安装">
         <span class="has-mr-6">1.1.3</span>
-        <span>使用脚本自动安装</span>
+        <span>使用脚本自动安装 </span>
         </a></li><li>
-        <a class="is-flex" href="#启动-Docker-CE">
+        <a class="is-flex" href="#启动 -Docker-CE">
         <span class="has-mr-6">1.1.4</span>
         <span>启动 Docker CE</span>
         </a></li><li>
-        <a class="is-flex" href="#建立-docker-用户组">
+        <a class="is-flex" href="#建立 -docker- 用户组">
         <span class="has-mr-6">1.1.5</span>
-        <span>建立 docker 用户组</span>
+        <span>建立 docker 用户组 </span>
         </a></li><li>
-        <a class="is-flex" href="#测试-Docker-是否安装正确">
+        <a class="is-flex" href="#测试 -Docker- 是否安装正确">
         <span class="has-mr-6">1.1.6</span>
         <span>测试 Docker 是否安装正确</span>
         </a></li></ul></li><li>
-        <a class="is-flex" href="#Windows-10-PC-安装-Docker-CE">
+        <a class="is-flex" href="#Windows-10-PC- 安装 -Docker-CE">
         <span class="has-mr-6">1.2</span>
         <span>Windows 10 PC 安装 Docker CE</span>
         </a><ul class="menu-list"><li>
-        <a class="is-flex" href="#系统要求-1">
+        <a class="is-flex" href="#系统要求 -1">
         <span class="has-mr-6">1.2.1</span>
         <span>系统要求</span>
         </a></li><li>
         <a class="is-flex" href="#安装">
         <span class="has-mr-6">1.2.2</span>
-        <span>安装</span>
+        <span>安装 </span>
         </a></li><li>
         <a class="is-flex" href="#运行">
         <span class="has-mr-6">1.2.3</span>
-        <span>运行</span>
+        <span>运行 </span>
         </a></li></ul></li><li>
         <a class="is-flex" href="#镜像加速器">
         <span class="has-mr-6">1.3</span>
-        <span>镜像加速器</span>
+        <span>镜像加速器 </span>
         </a><ul class="menu-list"><li>
         <a class="is-flex" href="#Ubuntu-16-04-、Debian-8-、CentOS-7">
         <span class="has-mr-6">1.3.1</span>
@@ -549,11 +567,11 @@
         </a></li><li>
         <a class="is-flex" href="#检查加速器是否生效">
         <span class="has-mr-6">1.3.4</span>
-        <span>检查加速器是否生效</span>
+        <span>检查加速器是否生效 </span>
         </a></li><li>
-        <a class="is-flex" href="#gcr-io-镜像">
+        <a class="is-flex" href="#gcr-io- 镜像">
         <span class="has-mr-6">1.3.5</span>
-        <span>gcr.io 镜像</span>
+        <span>gcr.io 镜像 </span>
         </a></li></ul></li></ul></li><li>
         <a class="is-flex" href="#参考文档">
         <span class="has-mr-6">2</span>
@@ -592,7 +610,7 @@
                 
                 <br>
                 <span id="busuanzi_container_site_uv">
-                Visited by <span id="busuanzi_value_site_uv">0</span> users
+                共<span id="busuanzi_value_site_uv">0</span>个访客
                 </span>
                 
                 </p>
@@ -633,7 +651,7 @@
 </footer>
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
-<script>moment.locale("en");</script>
+<script>moment.locale("zh-CN");</script>
 
 
 <script>
@@ -710,7 +728,7 @@ document.addEventListener('DOMContentLoaded', function () {
 </script>
 
 
-<a id="back-to-top" title="Back to Top" href="javascript:;">
+<a id="back-to-top" title="回到顶端" href="javascript:;">
     <i class="fas fa-chevron-up"></i>
 </a>
 <script src="/js/back-to-top.js" defer></script>
@@ -734,7 +752,7 @@ document.addEventListener('DOMContentLoaded', function () {
     <div class="searchbox ins-search">
     <div class="searchbox-container ins-search-container">
         <div class="searchbox-input-wrapper">
-            <input type="text" class="searchbox-input ins-search-input" placeholder="Type something..." />
+            <input type="text" class="searchbox-input ins-search-input" placeholder="想要查找什么..." />
             <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
         </div>
         <div class="searchbox-result-wrapper ins-section-wrapper">
@@ -746,11 +764,11 @@ document.addEventListener('DOMContentLoaded', function () {
     (function (window) {
         var INSIGHT_CONFIG = {
             TRANSLATION: {
-                POSTS: 'Posts',
-                PAGES: 'Pages',
-                CATEGORIES: 'Categories',
-                TAGS: 'Tags',
-                UNTITLED: '(Untitled)',
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(无标题)',
             },
             CONTENT_URL: '/content.json',
         };

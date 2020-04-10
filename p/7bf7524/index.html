@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html  lang="en">
+<html  lang="zh">
 
 <head>
     <meta charset="utf-8" />
@@ -16,9 +16,9 @@
 <meta property="og:title" content="Ubuntu 系统的简单配置">
 <meta property="og:url" content="http://blog.czcc.me/p/7bf7524/index.html">
 <meta property="og:site_name" content="CZCC">
-<meta property="og:locale" content="en">
+<meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://blog.czcc.me/images/og_image.png">
-<meta property="og:updated_time" content="2019-09-09T15:17:34.580Z">
+<meta property="og:updated_time" content="2020-01-13T15:11:17.965Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Ubuntu 系统的简单配置">
 <meta name="twitter:image" content="http://blog.czcc.me/images/og_image.png">
@@ -104,6 +104,9 @@
                 href="/tags">Tags</a>
                 
                 <a class="navbar-item"
+                href="/categories/LeetCode">LeetCode</a>
+                
+                <a class="navbar-item"
                 href="/about">About</a>
                 
             </div>
@@ -124,7 +127,7 @@
                 </a>
                 
                 
-                <a class="navbar-item search" title="Search" href="javascript:;">
+                <a class="navbar-item search" title="搜索" href="javascript:;">
                     <i class="fas fa-search"></i>
                 </a>
                 
@@ -142,11 +145,11 @@
     <div class="card-content article ">
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <i class="fas fa-angle-double-right"></i>&nbsp;&nbsp;Ubuntu 系统的简单配置
+            <i class="fas fa-angle-double-right"></i>&nbsp;&nbsp;Ubuntu 系统的简单配置
             
         </h1>
         
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+        <div class="level article-meta is-size-7 is-mobile is-overflow-x-auto">
             <div class="level-left">
                 <!-- <time class="level-item has-text-grey" datetime="2019-06-05T07:16:30.000Z">2019-06-05</time> -->
                 <time class="level-item has-text-grey" datetime="2019-06-05T07:16:30.000Z">
@@ -154,12 +157,13 @@
                     2019-06-05
                 </time>
                 
-                    <time class="level-item has-text-grey is-hidden-mobile" datetime="2019-09-09T15:17:34.580Z"><i class="far fa-calendar-check">&nbsp;</i>2019-09-09</time>
+                <time class="level-item has-text-grey is-hidden-mobile" datetime="2020-01-13T15:11:17.965Z"><i
+                        class="far fa-calendar-check">&nbsp;</i>2020-01-13</time>
                 
                 
                 <div class="level-item">
-                <i class="far fa-folder">&nbsp;</i>
-                <a class="has-link-grey -link" href="/categories/Linux/">Linux</a>
+                    <i class="far fa-folder">&nbsp;</i>
+                    <a class="has-link-grey -link" href="/categories/Linux/">Linux</a>
                 </div>
                 
                 
@@ -167,13 +171,13 @@
                     <i class="far fa-hourglass">&nbsp;&nbsp;</i>
                     
                     
-                    6 minutes read (About 882 words)
+                    6 分钟   (约 882 字)
                 </span>
                 
                 
                 <span class="level-item has-text-grey" id="busuanzi_container_page_pv">
                     <i class="far fa-eye"></i>
-                    <span id="busuanzi_value_page_pv">0</span> visits
+                    <span id="busuanzi_value_page_pv">0</span>次访问
                 </span>
                 
             </div>
@@ -188,7 +192,7 @@
             <hr>
 <a id="more"></a>
 
-<h1 id="更改软件源"><a href="#更改软件源" class="headerlink" title="更改软件源"></a>更改软件源</h1><p>使用<a href="https://mirror.tuna.tsinghua.edu.cn/help/ubuntu/">清华的软件源</a></p>
+<h1 id="更改软件源"><a href="# 更改软件源" class="headerlink" title="更改软件源"></a>更改软件源 </h1><p> 使用 <a href="https://mirror.tuna.tsinghua.edu.cn/help/ubuntu/"> 清华的软件源</a></p>
 <p>备份原有的 <code>/etc/apt/sources.list</code></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo cp /etc/apt/sources.list /etc/apt/sources.list.backup</span><br></pre></td></tr></table></figure>
 
@@ -198,9 +202,9 @@
 <p>之后进行更新软件源:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt update</span><br></pre></td></tr></table></figure>
 
-<h1 id="安装-git"><a href="#安装-git" class="headerlink" title="安装 git"></a>安装 <code>git</code></h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install git</span><br></pre></td></tr></table></figure>
+<h1 id="安装 -git"><a href="# 安装 -git" class="headerlink" title="安装 git"></a>安装 <code>git</code></h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install git</span><br></pre></td></tr></table></figure>
 
-<h2 id="配置"><a href="#配置" class="headerlink" title="配置:"></a>配置:</h2><p>查看配置:</p>
+<h2 id="配置"><a href="# 配置" class="headerlink" title="配置:"></a>配置:</h2><p>查看配置:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --list</span><br></pre></td></tr></table></figure>
 
 <p>设置名称:</p>
@@ -212,7 +216,7 @@
 <p>设置文本换行符格式:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --global core.autocrlf input</span><br></pre></td></tr></table></figure>
 
-<h1 id="更改文件夹配色"><a href="#更改文件夹配色" class="headerlink" title="更改文件夹配色"></a>更改文件夹配色</h1><p>导出颜色文件:</p>
+<h1 id="更改文件夹配色"><a href="# 更改文件夹配色" class="headerlink" title="更改文件夹配色"></a>更改文件夹配色 </h1><p> 导出颜色文件:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dircolors -p &gt; ~/.dircolors</span><br></pre></td></tr></table></figure>
 
 <p>使用 vim 编辑:</p>
@@ -224,12 +228,12 @@
 <p>然后在 <code>~/.zshrc</code> 中, 加入:</p>
 <figure class="highlight yml"><figcaption><span>~/.zshrc</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">eval</span> <span class="string">$(dircolors</span> <span class="bullet">-b</span> <span class="string">$HOME/.dircolors)</span></span><br></pre></td></tr></table></figure>
 
-<h1 id="安装-zsh"><a href="#安装-zsh" class="headerlink" title="安装 zsh"></a>安装 <code>zsh</code></h1><p>zsh 是 shell 语言类型，兼容 bash，提供强大的命令行功能，比如 tab 补全，自动纠错功能等。</p>
+<h1 id="安装 -zsh"><a href="# 安装 -zsh" class="headerlink" title="安装 zsh"></a>安装 <code>zsh</code></h1><p>zsh 是 shell 语言类型，兼容 bash，提供强大的命令行功能，比如 tab 补全，自动纠错功能等。</p>
 <p>缺点就是配置太麻烦，好在有一个叫做 <code>oh-my-zsh</code> 的开源项目，很好的弥补了这一缺陷，只需要修修改改配置文件，就能很顺手。</p>
-<p><strong>查看当前环境shell</strong></p>
+<p><strong>查看当前环境 shell</strong></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="variable">$SHELL</span></span><br></pre></td></tr></table></figure>
 
-<p><strong>查看系统自带哪些shell</strong></p>
+<p><strong>查看系统自带哪些 shell</strong></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat /etc/shells</span><br></pre></td></tr></table></figure>
 
 <p><strong>使用 <code>apt</code> 安装 <code>zsh</code></strong>:</p>
@@ -251,7 +255,7 @@
 
 </li>
 </ol>
-<h1 id="配置-zsh"><a href="#配置-zsh" class="headerlink" title="配置 zsh"></a>配置 <code>zsh</code></h1><h2 id="更改主题"><a href="#更改主题" class="headerlink" title="更改主题"></a>更改主题</h2><p>编辑 <code>~/.zshrc</code> 文件, 更改其中的主题设置:</p>
+<h1 id="配置 -zsh"><a href="# 配置 -zsh" class="headerlink" title="配置 zsh"></a>配置 <code>zsh</code></h1><h2 id="更改主题"><a href="# 更改主题" class="headerlink" title="更改主题"></a>更改主题 </h2><p> 编辑 <code>~/.zshrc</code> 文件, 更改其中的主题设置:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim ~/.zshrc</span><br></pre></td></tr></table></figure>
 
 <p>几个比较好用的主题:</p>
@@ -266,7 +270,7 @@
 <p>更改之后, 需要使用 <code>source</code> 命令将其生效:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">source</span> ~/.zshrc</span><br></pre></td></tr></table></figure>
 
-<h2 id="插件"><a href="#插件" class="headerlink" title="插件"></a>插件</h2><p>在 <code>~/.zshrc</code> 中找到 <code>plugins</code> 关键字, 就可以自定义启用的插件了, 系统默认加载 <code>git</code>.</p>
+<h2 id="插件"><a href="# 插件" class="headerlink" title="插件"></a>插件 </h2><p> 在 <code>~/.zshrc</code> 中找到 <code>plugins</code> 关键字, 就可以自定义启用的插件了, 系统默认加载 <code>git</code>.</p>
 <figure class="highlight yml"><figcaption><span>~/.zshrc</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">plugins=(git</span> <span class="string">z</span> <span class="string">zsh-syntax-highlighting)</span></span><br></pre></td></tr></table></figure>
 
 <h3 id="autojump"><a href="#autojump" class="headerlink" title="autojump"></a><a href="https://github.com/wting/autojump">autojump</a></h3><p>快速跳转文件夹，使用 <code>j</code> 代替 <code>cd</code> 命令.</p>
@@ -288,15 +292,17 @@
 
         </div>
         
-            <ul class="post-copyright">
+        <ul class="post-copyright">
             <li><strong>本文标题：</strong><a href="http://blog.czcc.me/p/7bf7524/">Ubuntu 系统的简单配置</a></li>
             <li><strong>本文作者：</strong><a href="http://blog.czcc.me">Cheng</a></li>
             <li><strong>本文链接：</strong><a href="http://blog.czcc.me/p/7bf7524/">http://blog.czcc.me/p/7bf7524/</a></li>
             <li><strong>发布时间：</strong>2019-06-05</li>
-            <li><strong>版权声明：</strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！
+            <li><strong>版权声明：</strong>本博客所有文章除特别声明外，均采用 <a
+                    href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="external nofollow"
+                    target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！
             </li>
-            </ul>
-            <br>
+        </ul>
+        <br>
         
         
         <div class="level is-size-7 is-uppercase">
@@ -321,29 +327,29 @@
 
 <div class="card">
     <div class="card-content">
-        <h3 class="menu-label has-text-centered">Like this article? Support the author with</h3>
+        <h3 class="menu-label has-text-centered">喜欢这篇文章？打赏一下作者吧</h3>
         <div class="buttons is-centered">
             
-                
+            
 <a class="button is-info donate">
     <span class="icon is-small">
         <i class="fab fa-alipay"></i>
     </span>
-    <span>Alipay</span>
-    <div class="qrcode"><img src="/images/Alipay.jpg" alt="Alipay"></div>
+    <span>支付宝</span>
+    <div class="qrcode"><img src="/images/Alipay.jpg" alt="支付宝"></div>
 </a>
 
-                
-                
+            
+            
 <a class="button is-success donate">
     <span class="icon is-small">
         <i class="fab fa-weixin"></i>
     </span>
-    <span>Wechat</span>
-    <div class="qrcode"><img src="/images/WeChat_pay.png" alt="Wechat"></div>
+    <span>微信</span>
+    <div class="qrcode"><img src="/images/WeChat_pay.png" alt="微信"></div>
 </a>
 
-                
+            
         </div>
     </div>
 </div>
@@ -354,7 +360,8 @@
     <div class="level post-navigation is-flex-wrap is-mobile">
         
         <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/p/ff8dd6c4/">
+            <a class="level level-item has-link-grey  article-nav-prev"
+                href="/p/ff8dd6c4/">
                 <i class="level-item fas fa-chevron-left"></i>
                 <span class="level-item">在 Ubuntu 上安装 Pyenv</span>
             </a>
@@ -362,7 +369,8 @@
         
         
         <div class="level-end">
-            <a class="level level-item has-link-grey  article-nav-next" href="/p/9b5105cd/">
+            <a class="level level-item has-link-grey  article-nav-next"
+                href="/p/9b5105cd/">
                 <span class="level-item">Windows 下使用 WSL 安装 Ubuntu</span>
                 <i class="level-item fas fa-chevron-right"></i>
             </a>
@@ -375,7 +383,7 @@
 
 <div class="card">
     <div class="card-content">
-        <h3 class="title is-5 has-text-weight-normal">Comments</h3>
+        <h3 class="title is-5 has-text-weight-normal">评论</h3>
         
 <script>
     var disqus_config = function () {
@@ -412,7 +420,7 @@
                 <div>
                     
                     <figure class="image is-128x128 has-mb-6">
-                        <img class="" src="/images/avatar.png" alt="Cheng">
+                        <img class="" src="/images/avatar.jpg" alt="Cheng">
                     </figure>
                     
                     <p class="is-size-4 is-block">
@@ -437,11 +445,11 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Posts
+                        Post
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            25
+                            36
                         </p>
                     </a>
                 </div>
@@ -449,11 +457,11 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Categories
+                        Category
                     </p>
                     <a href="/categories">
                         <p class="title has-text-weight-normal">
-                            8
+                            14
                         </p>
                     </a>
                 </div>
@@ -461,11 +469,11 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Tags
+                        Tag
                     </p>
                     <a href="/tags">
                         <p class="title has-text-weight-normal">
-                            20
+                            38
                         </p>
                     </a>
                 </div>
@@ -511,9 +519,9 @@
             <ul class="menu-list"><li>
         <a class="is-flex" href="#更改软件源">
         <span class="has-mr-6">1</span>
-        <span>更改软件源</span>
+        <span>更改软件源 </span>
         </a></li><li>
-        <a class="is-flex" href="#安装-git">
+        <a class="is-flex" href="#安装 -git">
         <span class="has-mr-6">2</span>
         <span>安装 git</span>
         </a><ul class="menu-list"><li>
@@ -523,23 +531,23 @@
         </a></li></ul></li><li>
         <a class="is-flex" href="#更改文件夹配色">
         <span class="has-mr-6">3</span>
-        <span>更改文件夹配色</span>
+        <span>更改文件夹配色 </span>
         </a></li><li>
-        <a class="is-flex" href="#安装-zsh">
+        <a class="is-flex" href="#安装 -zsh">
         <span class="has-mr-6">4</span>
         <span>安装 zsh</span>
         </a></li><li>
-        <a class="is-flex" href="#配置-zsh">
+        <a class="is-flex" href="#配置 -zsh">
         <span class="has-mr-6">5</span>
         <span>配置 zsh</span>
         </a><ul class="menu-list"><li>
         <a class="is-flex" href="#更改主题">
         <span class="has-mr-6">5.1</span>
-        <span>更改主题</span>
+        <span>更改主题 </span>
         </a></li><li>
         <a class="is-flex" href="#插件">
         <span class="has-mr-6">5.2</span>
-        <span>插件</span>
+        <span>插件 </span>
         </a><ul class="menu-list"><li>
         <a class="is-flex" href="#autojump">
         <span class="has-mr-6">5.2.1</span>
@@ -590,7 +598,7 @@
                 
                 <br>
                 <span id="busuanzi_container_site_uv">
-                Visited by <span id="busuanzi_value_site_uv">0</span> users
+                共<span id="busuanzi_value_site_uv">0</span>个访客
                 </span>
                 
                 </p>
@@ -631,7 +639,7 @@
 </footer>
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
-<script>moment.locale("en");</script>
+<script>moment.locale("zh-CN");</script>
 
 
 <script>
@@ -708,7 +716,7 @@ document.addEventListener('DOMContentLoaded', function () {
 </script>
 
 
-<a id="back-to-top" title="Back to Top" href="javascript:;">
+<a id="back-to-top" title="回到顶端" href="javascript:;">
     <i class="fas fa-chevron-up"></i>
 </a>
 <script src="/js/back-to-top.js" defer></script>
@@ -732,7 +740,7 @@ document.addEventListener('DOMContentLoaded', function () {
     <div class="searchbox ins-search">
     <div class="searchbox-container ins-search-container">
         <div class="searchbox-input-wrapper">
-            <input type="text" class="searchbox-input ins-search-input" placeholder="Type something..." />
+            <input type="text" class="searchbox-input ins-search-input" placeholder="想要查找什么..." />
             <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
         </div>
         <div class="searchbox-result-wrapper ins-section-wrapper">
@@ -744,11 +752,11 @@ document.addEventListener('DOMContentLoaded', function () {
     (function (window) {
         var INSIGHT_CONFIG = {
             TRANSLATION: {
-                POSTS: 'Posts',
-                PAGES: 'Pages',
-                CATEGORIES: 'Categories',
-                TAGS: 'Tags',
-                UNTITLED: '(Untitled)',
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(无标题)',
             },
             CONTENT_URL: '/content.json',
         };

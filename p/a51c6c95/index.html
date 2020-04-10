@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html  lang="en">
+<html  lang="zh">
 
 <head>
     <meta charset="utf-8" />
@@ -12,15 +12,15 @@
 
 
     <meta name="description" content="Manjaro 是基于 Arch 系的一个 Linux 发行版，和 Arch 一样，采用滚动更新，但拥有自己独立的软件仓库。Manjaro 的目标是让强大的 Arch 更方便用户使用，使用著名的 Pacman 且可以直接利用 AUR 上的资源。 Manjaro 本身使用三个软件仓库：不稳定库，即含有那些不成熟的 Arch 包，这些包与 Arch 源有 1-2 天 的延后；测试库，每周同步一次，包含">
-<meta name="keywords" content="Manjaro,Arch,Linux,系统配置">
+<meta name="keywords" content="Linux,系统配置,Manjaro,Arch">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Manjaro 安装与配置">
 <meta property="og:url" content="http://blog.czcc.me/p/a51c6c95/index.html">
 <meta property="og:site_name" content="CZCC">
 <meta property="og:description" content="Manjaro 是基于 Arch 系的一个 Linux 发行版，和 Arch 一样，采用滚动更新，但拥有自己独立的软件仓库。Manjaro 的目标是让强大的 Arch 更方便用户使用，使用著名的 Pacman 且可以直接利用 AUR 上的资源。 Manjaro 本身使用三个软件仓库：不稳定库，即含有那些不成熟的 Arch 包，这些包与 Arch 源有 1-2 天 的延后；测试库，每周同步一次，包含">
-<meta property="og:locale" content="en">
+<meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://blog.czcc.me/images/og_image.png">
-<meta property="og:updated_time" content="2020-01-03T08:00:00.765Z">
+<meta property="og:updated_time" content="2020-01-13T15:11:17.965Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Manjaro 安装与配置">
 <meta name="twitter:description" content="Manjaro 是基于 Arch 系的一个 Linux 发行版，和 Arch 一样，采用滚动更新，但拥有自己独立的软件仓库。Manjaro 的目标是让强大的 Arch 更方便用户使用，使用著名的 Pacman 且可以直接利用 AUR 上的资源。 Manjaro 本身使用三个软件仓库：不稳定库，即含有那些不成熟的 Arch 包，这些包与 Arch 源有 1-2 天 的延后；测试库，每周同步一次，包含">
@@ -107,6 +107,9 @@
                 href="/tags">Tags</a>
                 
                 <a class="navbar-item"
+                href="/categories/LeetCode">LeetCode</a>
+                
+                <a class="navbar-item"
                 href="/about">About</a>
                 
             </div>
@@ -127,7 +130,7 @@
                 </a>
                 
                 
-                <a class="navbar-item search" title="Search" href="javascript:;">
+                <a class="navbar-item search" title="搜索" href="javascript:;">
                     <i class="fas fa-search"></i>
                 </a>
                 
@@ -145,11 +148,11 @@
     <div class="card-content article ">
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <i class="fas fa-angle-double-right"></i>&nbsp;&nbsp;Manjaro 安装与配置
+            <i class="fas fa-angle-double-right"></i>&nbsp;&nbsp;Manjaro 安装与配置
             
         </h1>
         
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+        <div class="level article-meta is-size-7 is-mobile is-overflow-x-auto">
             <div class="level-left">
                 <!-- <time class="level-item has-text-grey" datetime="2019-09-08T13:44:28.000Z">2019-09-08</time> -->
                 <time class="level-item has-text-grey" datetime="2019-09-08T13:44:28.000Z">
@@ -157,12 +160,13 @@
                     2019-09-08
                 </time>
                 
-                    <time class="level-item has-text-grey is-hidden-mobile" datetime="2020-01-03T08:00:00.765Z"><i class="far fa-calendar-check">&nbsp;</i>2020-01-03</time>
+                <time class="level-item has-text-grey is-hidden-mobile" datetime="2020-01-13T15:11:17.965Z"><i
+                        class="far fa-calendar-check">&nbsp;</i>2020-01-13</time>
                 
                 
                 <div class="level-item">
-                <i class="far fa-folder">&nbsp;</i>
-                <a class="has-link-grey -link" href="/categories/Linux/">Linux</a>
+                    <i class="far fa-folder">&nbsp;</i>
+                    <a class="has-link-grey -link" href="/categories/Linux/">Linux</a>
                 </div>
                 
                 
@@ -170,13 +174,13 @@
                     <i class="far fa-hourglass">&nbsp;&nbsp;</i>
                     
                     
-                    11 minutes read (About 1579 words)
+                    11 分钟   (约 1579 字)
                 </span>
                 
                 
                 <span class="level-item has-text-grey" id="busuanzi_container_page_pv">
                     <i class="far fa-eye"></i>
-                    <span id="busuanzi_value_page_pv">0</span> visits
+                    <span id="busuanzi_value_page_pv">0</span>次访问
                 </span>
                 
             </div>
@@ -194,19 +198,19 @@
 <hr>
 <a id="more"></a>
 
-<h1 id="下载与安装"><a href="#下载与安装" class="headerlink" title="下载与安装"></a>下载与安装</h1><h2 id="镜像下载"><a href="#镜像下载" class="headerlink" title="镜像下载"></a>镜像下载</h2><p>官方网站：<a href="https://manjaro.org/get-manjaro/">https://manjaro.org/get-manjaro/</a></p>
+<h1 id="下载与安装"><a href="# 下载与安装" class="headerlink" title="下载与安装"></a>下载与安装 </h1><h2 id="镜像下载"><a href="# 镜像下载" class="headerlink" title="镜像下载"></a> 镜像下载 </h2><p> 官方网站：<a href="https://manjaro.org/get-manjaro/">https://manjaro.org/get-manjaro/</a></p>
 <p>清华大学开源镜像：<a href="https://mirrors.tuna.tsinghua.edu.cn/manjaro-cd/">https://mirrors.tuna.tsinghua.edu.cn/manjaro-cd/</a></p>
-<p>推荐使用官方网站，如果下载速度不佳可以选择国内镜像。同时可以选择自己习惯的桌面环境，目前官方支持xfce、kde、gnome三种桌面环境（后来加入了 architect），在社区版本中提供更多桌面环境的支持，比如国产的deepin桌面环境<em>（正在使用）</em></p>
-<h2 id="安装过程"><a href="#安装过程" class="headerlink" title="安装过程"></a>安装过程</h2><p>安装过程参考 <a href="https://manjaro.org/support/userguide/">User Guide</a></p>
-<h1 id="系统配置"><a href="#系统配置" class="headerlink" title="系统配置"></a>系统配置</h1><p>在安装好系统之后，需要进行一些简单的配置，以便在国内使用更加顺畅。</p>
+<p>推荐使用官方网站，如果下载速度不佳可以选择国内镜像。同时可以选择自己习惯的桌面环境，目前官方支持 xfce、kde、gnome 三种桌面环境（后来加入了 architect），在社区版本中提供更多桌面环境的支持，比如国产的 deepin 桌面环境<em>（正在使用）</em></p>
+<h2 id="安装过程"><a href="# 安装过程" class="headerlink" title="安装过程"></a>安装过程 </h2><p> 安装过程参考 <a href="https://manjaro.org/support/userguide/">User Guide</a></p>
+<h1 id="系统配置"><a href="# 系统配置" class="headerlink" title="系统配置"></a>系统配置 </h1><p> 在安装好系统之后，需要进行一些简单的配置，以便在国内使用更加顺畅。</p>
 <p>清华源：<a href="https://mirrors.tuna.tsinghua.edu.cn/help/archlinux/">https://mirrors.tuna.tsinghua.edu.cn/help/archlinux/</a><br>中科大：<a href="https://mirrors.ustc.edu.cn/">https://mirrors.ustc.edu.cn/</a><br>阿里源：<a href="https://opsx.alibaba.com/">https://opsx.alibaba.com/</a></p>
-<h2 id="更换国内源"><a href="#更换国内源" class="headerlink" title="更换国内源"></a>更换国内源</h2><p>使用 <code>pacman</code> 进行测试镜像源的速度，并对其进行排名，从中选择一个最快的。</p>
+<h2 id="更换国内源"><a href="# 更换国内源" class="headerlink" title="更换国内源"></a>更换国内源 </h2><p> 使用 <code>pacman</code> 进行测试镜像源的速度，并对其进行排名，从中选择一个最快的。</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo  pacman-mirrors -i -c China -m rank</span><br></pre></td></tr></table></figure>
 
 <p>之后进行更新系统：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman -Syyu</span><br></pre></td></tr></table></figure>
 
-<h2 id="添加-archlinuxcn"><a href="#添加-archlinuxcn" class="headerlink" title="添加 archlinuxcn"></a>添加 archlinuxcn</h2><p>编辑 <code>/etc/pacman.conf</code> 文件，在其中添加：</p>
+<h2 id="添加 -archlinuxcn"><a href="# 添加 -archlinuxcn" class="headerlink" title="添加 archlinuxcn"></a>添加 archlinuxcn</h2><p>编辑 <code>/etc/pacman.conf</code> 文件，在其中添加：</p>
 <figure class="highlight plain"><figcaption><span>/etc/pacman.conf</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[archlinuxcn]</span><br><span class="line">SigLevel = Optional TrustedOnly</span><br><span class="line">Server = https://mirrors.tuna.tsinghua.edu.cn/archlinuxcn/$arch</span><br><span class="line"></span><br><span class="line">[arch4edu]</span><br><span class="line">SigLevel = Never</span><br><span class="line">Server = https://mirrors.tuna.tsinghua.edu.cn/arch4edu/$arch</span><br></pre></td></tr></table></figure>
 
 <p>之后更新缓存</p>
@@ -215,9 +219,9 @@
 <p>安装 archlinuxcn-keyring 包导入 GPG key</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman -S archlinuxcn-keyring</span><br></pre></td></tr></table></figure>
 
-<h2 id="使用-AUR"><a href="#使用-AUR" class="headerlink" title="使用 AUR"></a>使用 AUR</h2><p>清华 AUR 镜像使用帮助：<a href="https://mirror.tuna.tsinghua.edu.cn/help/AUR/">https://mirror.tuna.tsinghua.edu.cn/help/AUR/</a></p>
+<h2 id="使用 -AUR"><a href="# 使用 -AUR" class="headerlink" title="使用 AUR"></a>使用 AUR</h2><p>清华 AUR 镜像使用帮助：<a href="https://mirror.tuna.tsinghua.edu.cn/help/AUR/">https://mirror.tuna.tsinghua.edu.cn/help/AUR/</a></p>
 <p>AUR（<a href="https://wiki.archlinux.org/index.php/Arch_User_Repository">Arch User Repository</a>）是为用户而建、由用户主导的 Arch 软件仓库。</p>
-<p>Yaourt 是之前最常用的 AUR 助手，但它已经<a href="https://linux.cn/article-9925-1.html">停止更新</a>，现在常用的有 yay，aurman。</p>
+<p>Yaourt 是之前最常用的 AUR 助手，但它已经 <a href="https://linux.cn/article-9925-1.html"> 停止更新</a>，现在常用的有 yay，aurman。</p>
 <h3 id="yay"><a href="#yay" class="headerlink" title="yay"></a>yay</h3><p>本文中使用 yay，Github 地址：<a href="https://github.com/Jguer/yay">https://github.com/Jguer/yay</a></p>
 <p>可以使用 pacman 安装 yay：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman -S yay</span><br></pre></td></tr></table></figure>
@@ -226,25 +230,25 @@
 <p>相关命令：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">yay             同步和更新 repos 和 AUR 中的所有包</span><br><span class="line">yay &lt;item&gt;      从 repos 和 AUR 交互式搜索和安装包</span><br><span class="line">yay -S &lt;item&gt;   从 repos 和 AUR 安装新包</span><br><span class="line">yay -Ps         打印系统状态</span><br><span class="line">yay -Yc         清理不需要的依赖</span><br></pre></td></tr></table></figure>
 
-<h3 id="为输出信息添加颜色"><a href="#为输出信息添加颜色" class="headerlink" title="为输出信息添加颜色"></a>为输出信息添加颜色</h3><p>参考 Github 上的 issue：<a href="https://github.com/Jguer/yay/issues/123">https://github.com/Jguer/yay/issues/123</a></p>
+<h3 id="为输出信息添加颜色"><a href="# 为输出信息添加颜色" class="headerlink" title="为输出信息添加颜色"></a>为输出信息添加颜色 </h3><p> 参考 Github 上的 issue：<a href="https://github.com/Jguer/yay/issues/123">https://github.com/Jguer/yay/issues/123</a></p>
 <blockquote>
 <p>yay now follows pacman’s config /etc/pacman.conf for colors.<br>You need to add Color to your options /etc/pacman.conf</p>
 </blockquote>
 <p>即：在 pacman.conf 中添加 color 选项即可</p>
 <figure class="highlight plain"><figcaption><span>/etc/pacman.conf</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"># Misc options</span><br><span class="line">UseSyslog</span><br><span class="line">Color</span><br><span class="line">TotalDownload</span><br><span class="line"># We cannot check disk space from within a chroot environment</span><br><span class="line">CheckSpace</span><br><span class="line">VerbosePkgLists</span><br></pre></td></tr></table></figure>
 
-<h1 id="常用软件"><a href="#常用软件" class="headerlink" title="常用软件"></a>常用软件</h1><h2 id="zsh"><a href="#zsh" class="headerlink" title="zsh"></a>zsh</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman -S zsh</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 切换默认 shell</span></span><br><span class="line">chsh -s /bin/zsh</span><br></pre></td></tr></table></figure>
+<h1 id="常用软件"><a href="# 常用软件" class="headerlink" title="常用软件"></a>常用软件</h1><h2 id="zsh"><a href="#zsh" class="headerlink" title="zsh"></a>zsh</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman -S zsh</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 切换默认 shell</span></span><br><span class="line">chsh -s /bin/zsh</span><br></pre></td></tr></table></figure>
 
 <h3 id="oh-my-zsh"><a href="#oh-my-zsh" class="headerlink" title="oh-my-zsh"></a>oh-my-zsh</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> oh-my-zsh 四选一即可</span></span><br><span class="line">yay oh-my-zsh-git</span><br><span class="line"></span><br><span class="line">sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"</span><br><span class="line"></span><br><span class="line">sh -c "$(wget https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"</span><br><span class="line"></span><br><span class="line">git clone git://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh</span><br><span class="line">cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc</span><br></pre></td></tr></table></figure>
 
-<h3 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h3><h4 id="更改主题"><a href="#更改主题" class="headerlink" title="更改主题"></a>更改主题</h4><p>编辑 <code>~/.zshrc</code> 文件, 更改其中的主题设置:</p>
+<h3 id="配置"><a href="# 配置" class="headerlink" title="配置"></a>配置 </h3><h4 id="更改主题"><a href="# 更改主题" class="headerlink" title="更改主题"></a> 更改主题 </h4><p> 编辑 <code>~/.zshrc</code> 文件, 更改其中的主题设置:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim ~/.zshrc &amp;&amp; <span class="built_in">source</span> ~/.zshrc</span><br></pre></td></tr></table></figure>
 
 <p>这里使用简单的 <code>ys</code> 主题:</p>
 <figure class="highlight yml"><figcaption><span>~/.zshrc</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">ZSH_THEME="agnoster"</span></span><br><span class="line"><span class="string">DEFAULT_USER="cheng"</span>    <span class="comment"># 隐藏用户名</span></span><br></pre></td></tr></table></figure>
 
 <p>更改之后, 需要使用 <code>source</code> 命令将其生效。</p>
-<h4 id="插件"><a href="#插件" class="headerlink" title="插件"></a>插件</h4><p>在 <code>~/.zshrc</code> 中找到 <code>plugins</code> 关键字, 就可以自定义启用的插件了, 系统默认加载 <code>git</code>.</p>
+<h4 id="插件"><a href="# 插件" class="headerlink" title="插件"></a>插件 </h4><p> 在 <code>~/.zshrc</code> 中找到 <code>plugins</code> 关键字, 就可以自定义启用的插件了, 系统默认加载 <code>git</code>.</p>
 <figure class="highlight yml"><figcaption><span>~/.zshrc</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">plugins=(git</span> <span class="string">z</span> <span class="string">zsh-syntax-highlighting</span> <span class="string">zsh-autosuggestions)</span></span><br></pre></td></tr></table></figure>
 
 <h4 id="zsh-syntax-highlighting"><a href="#zsh-syntax-highlighting" class="headerlink" title="zsh-syntax-highlighting"></a><a href="https://github.com/zsh-users/zsh-syntax-highlighting">zsh-syntax-highlighting</a></h4><p>可以提供 Shell 命令高亮, 正确的路径自带下划线</p>
@@ -254,9 +258,9 @@
 <h4 id="zsh-autosuggestions"><a href="#zsh-autosuggestions" class="headerlink" title="zsh-autosuggestions"></a><a href="https://github.com/zsh-users/zsh-autosuggestions">zsh-autosuggestions</a></h4><p>可以通过输入的命令提供最接近的建议, 也需要手动安装:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/zsh-users/zsh-autosuggestions <span class="variable">$&#123;ZSH_CUSTOM:-~/.oh-my-zsh/custom&#125;</span>/plugins/zsh-autosuggestions</span><br></pre></td></tr></table></figure>
 
-<h2 id="字体"><a href="#字体" class="headerlink" title="字体"></a>字体</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman -S noto-fonts-cjk</span><br><span class="line">sudo pacman -S otf-fira-code</span><br><span class="line">sudo pacman -S powerline-fonts</span><br></pre></td></tr></table></figure>
+<h2 id="字体"><a href="# 字体" class="headerlink" title="字体"></a>字体</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman -S noto-fonts-cjk</span><br><span class="line">sudo pacman -S otf-fira-code</span><br><span class="line">sudo pacman -S powerline-fonts</span><br></pre></td></tr></table></figure>
 
-<h2 id="网络"><a href="#网络" class="headerlink" title="网络"></a>网络</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman -S google-chrome            # 浏览器</span><br><span class="line">yay electron-ssr                        # 科学上网</span><br><span class="line">yay deepin-wine-thunderspeed            # 下载工具</span><br></pre></td></tr></table></figure>
+<h2 id="网络"><a href="# 网络" class="headerlink" title="网络"></a>网络</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman -S google-chrome            # 浏览器</span><br><span class="line">yay electron-ssr                        # 科学上网</span><br><span class="line">yay deepin-wine-thunderspeed            # 下载工具</span><br></pre></td></tr></table></figure>
 
 <p>为了实现终端代理，可以使用 proxychains-ng 软件：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman -S proxychains-ng</span><br></pre></td></tr></table></figure>
@@ -268,38 +272,40 @@
 <figure class="highlight plain"><figcaption><span>~/.zshrc</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alias pc=&quot;proxychains4&quot;</span><br></pre></td></tr></table></figure>
 
 <p>之后可以通过在命令之前加入 <code>pc</code> 来使当前命令使用代理联网。</p>
-<h2 id="输入法"><a href="#输入法" class="headerlink" title="输入法"></a>输入法</h2><p>安装fcitx和搜狗拼音输入法：</p>
+<h2 id="输入法"><a href="# 输入法" class="headerlink" title="输入法"></a>输入法 </h2><p> 安装 fcitx 和搜狗拼音输入法：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman -S fcitx-sogoupinyin</span><br><span class="line">sudo pacman -S fcitx-im</span><br><span class="line">sudo pacman -S fcitx-configtool</span><br></pre></td></tr></table></figure>
 
-<p>设置环境变量，在~/.xprofile文件（如果文件不存在就新建一个）末尾加上：</p>
+<p>设置环境变量，在~/.xprofile 文件（如果文件不存在就新建一个）末尾加上：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">export GTK_MODULE=fcitx</span><br><span class="line">export QT_IM_MODULE=fcitx</span><br><span class="line">export XMODIFIERS="@im=fcitx"</span><br></pre></td></tr></table></figure>
 
 <p>如果提示“搜狗输入法异常！请删除.config/SogouPY 并重启”，可能的原因是文件缺失，考虑安装 <code>sudo pacman -S fcitx-qt5</code> 进行解决。</p>
-<h2 id="办公"><a href="#办公" class="headerlink" title="办公"></a>办公</h2><p>安装 WPS 以及相关字体文件：</p>
+<h2 id="办公"><a href="# 办公" class="headerlink" title="办公"></a>办公 </h2><p> 安装 WPS 以及相关字体文件：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman -S wps-office</span><br><span class="line">sudo pacman -S ttf-wps-fonts</span><br></pre></td></tr></table></figure>
 
-<h2 id="聊天"><a href="#聊天" class="headerlink" title="聊天"></a>聊天</h2><p>TIM：</p>
+<h2 id="聊天"><a href="# 聊天" class="headerlink" title="聊天"></a>聊天</h2><p>TIM：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman -S deepin.com.qq.office</span><br><span class="line">sudo pacman -S deepin-wine-tim</span><br></pre></td></tr></table></figure>
 
 <p>Wechat:</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman -S deepin-wine-wechat</span><br><span class="line">sudo pacman -S electronic-wechat</span><br></pre></td></tr></table></figure>
 
-<h2 id="程序开发环境"><a href="#程序开发环境" class="headerlink" title="程序开发环境"></a>程序开发环境</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman -S clang make cmake gdb    # 编译调试环境</span><br><span class="line">sudo pacman -S visual-studio-code-bin  # 牛逼的编辑器</span><br><span class="line">sudo pacman -S vim                     # 命令行下的编辑器</span><br><span class="line"></span><br><span class="line">sudo pacman -S git                     # 版本管理工具</span><br><span class="line">git config --global user.name "John Doe"</span><br><span class="line">git config --global user.email johndoe@example.com</span><br><span class="line"></span><br><span class="line">yay docker</span><br></pre></td></tr></table></figure>
+<h2 id="程序开发环境"><a href="# 程序开发环境" class="headerlink" title="程序开发环境"></a>程序开发环境</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman -S clang make cmake gdb    # 编译调试环境</span><br><span class="line">sudo pacman -S visual-studio-code-bin  # 牛逼的编辑器</span><br><span class="line">sudo pacman -S vim                     # 命令行下的编辑器</span><br><span class="line"></span><br><span class="line">sudo pacman -S git                     # 版本管理工具</span><br><span class="line">git config --global user.name "John Doe"</span><br><span class="line">git config --global user.email johndoe@example.com</span><br><span class="line"></span><br><span class="line">yay docker</span><br></pre></td></tr></table></figure>
 
-<h2 id="娱乐"><a href="#娱乐" class="headerlink" title="娱乐"></a>娱乐</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman -S netease-cloud-music</span><br><span class="line">yay steam</span><br><span class="line">yay deepin-image-viewer</span><br><span class="line">yay deepin-movie</span><br><span class="line">yay deepin-music</span><br><span class="line">yay deepin-screenshot</span><br></pre></td></tr></table></figure>
+<h2 id="娱乐"><a href="# 娱乐" class="headerlink" title="娱乐"></a>娱乐</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman -S netease-cloud-music</span><br><span class="line">yay steam</span><br><span class="line">yay deepin-image-viewer</span><br><span class="line">yay deepin-movie</span><br><span class="line">yay deepin-music</span><br><span class="line">yay deepin-screenshot</span><br></pre></td></tr></table></figure>
 
-<h2 id="插件-or-工具"><a href="#插件-or-工具" class="headerlink" title="插件 or 工具"></a>插件 or 工具</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">yay thefuck</span><br><span class="line">echo "eval $(thefuck --alias)" &gt;&gt; ~/.zshrc</span><br><span class="line"></span><br><span class="line">yay screenfetch</span><br><span class="line">yay neofetch</span><br></pre></td></tr></table></figure>
+<h2 id="插件 -or- 工具"><a href="# 插件 -or- 工具" class="headerlink" title="插件 or 工具"></a>插件 or 工具</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">yay thefuck</span><br><span class="line">echo "eval $(thefuck --alias)" &gt;&gt; ~/.zshrc</span><br><span class="line"></span><br><span class="line">yay screenfetch</span><br><span class="line">yay neofetch</span><br></pre></td></tr></table></figure>
         </div>
         
-            <ul class="post-copyright">
+        <ul class="post-copyright">
             <li><strong>本文标题：</strong><a href="http://blog.czcc.me/p/a51c6c95/">Manjaro 安装与配置</a></li>
             <li><strong>本文作者：</strong><a href="http://blog.czcc.me">Cheng</a></li>
             <li><strong>本文链接：</strong><a href="http://blog.czcc.me/p/a51c6c95/">http://blog.czcc.me/p/a51c6c95/</a></li>
             <li><strong>发布时间：</strong>2019-09-08</li>
-            <li><strong>版权声明：</strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！
+            <li><strong>版权声明：</strong>本博客所有文章除特别声明外，均采用 <a
+                    href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="external nofollow"
+                    target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！
             </li>
-            </ul>
-            <br>
+        </ul>
+        <br>
         
         
         <div class="level is-size-7 is-uppercase">
@@ -324,29 +330,29 @@
 
 <div class="card">
     <div class="card-content">
-        <h3 class="menu-label has-text-centered">Like this article? Support the author with</h3>
+        <h3 class="menu-label has-text-centered">喜欢这篇文章？打赏一下作者吧</h3>
         <div class="buttons is-centered">
             
-                
+            
 <a class="button is-info donate">
     <span class="icon is-small">
         <i class="fab fa-alipay"></i>
     </span>
-    <span>Alipay</span>
-    <div class="qrcode"><img src="/images/Alipay.jpg" alt="Alipay"></div>
+    <span>支付宝</span>
+    <div class="qrcode"><img src="/images/Alipay.jpg" alt="支付宝"></div>
 </a>
 
-                
-                
+            
+            
 <a class="button is-success donate">
     <span class="icon is-small">
         <i class="fab fa-weixin"></i>
     </span>
-    <span>Wechat</span>
-    <div class="qrcode"><img src="/images/WeChat_pay.png" alt="Wechat"></div>
+    <span>微信</span>
+    <div class="qrcode"><img src="/images/WeChat_pay.png" alt="微信"></div>
 </a>
 
-                
+            
         </div>
     </div>
 </div>
@@ -357,7 +363,8 @@
     <div class="level post-navigation is-flex-wrap is-mobile">
         
         <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/p/5c7cc0d4/">
+            <a class="level level-item has-link-grey  article-nav-prev"
+                href="/p/5c7cc0d4/">
                 <i class="level-item fas fa-chevron-left"></i>
                 <span class="level-item">西瓜书第一章</span>
             </a>
@@ -365,8 +372,9 @@
         
         
         <div class="level-end">
-            <a class="level level-item has-link-grey  article-nav-next" href="/p/53e0edd6/">
-                <span class="level-item">Python-100-Day ③ 常用/内置模块</span>
+            <a class="level level-item has-link-grey  article-nav-next"
+                href="/p/53e0edd6/">
+                <span class="level-item">Python-100-Day ③ 常用 / 内置模块</span>
                 <i class="level-item fas fa-chevron-right"></i>
             </a>
         </div>
@@ -378,7 +386,7 @@
 
 <div class="card">
     <div class="card-content">
-        <h3 class="title is-5 has-text-weight-normal">Comments</h3>
+        <h3 class="title is-5 has-text-weight-normal">评论</h3>
         
 <script>
     var disqus_config = function () {
@@ -415,7 +423,7 @@
                 <div>
                     
                     <figure class="image is-128x128 has-mb-6">
-                        <img class="" src="/images/avatar.png" alt="Cheng">
+                        <img class="" src="/images/avatar.jpg" alt="Cheng">
                     </figure>
                     
                     <p class="is-size-4 is-block">
@@ -440,11 +448,11 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Posts
+                        Post
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            25
+                            36
                         </p>
                     </a>
                 </div>
@@ -452,11 +460,11 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Categories
+                        Category
                     </p>
                     <a href="/categories">
                         <p class="title has-text-weight-normal">
-                            8
+                            14
                         </p>
                     </a>
                 </div>
@@ -464,11 +472,11 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Tags
+                        Tag
                     </p>
                     <a href="/tags">
                         <p class="title has-text-weight-normal">
-                            20
+                            38
                         </p>
                     </a>
                 </div>
@@ -514,29 +522,29 @@
             <ul class="menu-list"><li>
         <a class="is-flex" href="#下载与安装">
         <span class="has-mr-6">1</span>
-        <span>下载与安装</span>
+        <span>下载与安装 </span>
         </a><ul class="menu-list"><li>
         <a class="is-flex" href="#镜像下载">
         <span class="has-mr-6">1.1</span>
-        <span>镜像下载</span>
+        <span> 镜像下载 </span>
         </a></li><li>
         <a class="is-flex" href="#安装过程">
         <span class="has-mr-6">1.2</span>
-        <span>安装过程</span>
+        <span>安装过程 </span>
         </a></li></ul></li><li>
         <a class="is-flex" href="#系统配置">
         <span class="has-mr-6">2</span>
-        <span>系统配置</span>
+        <span>系统配置 </span>
         </a><ul class="menu-list"><li>
         <a class="is-flex" href="#更换国内源">
         <span class="has-mr-6">2.1</span>
-        <span>更换国内源</span>
+        <span>更换国内源 </span>
         </a></li><li>
-        <a class="is-flex" href="#添加-archlinuxcn">
+        <a class="is-flex" href="#添加 -archlinuxcn">
         <span class="has-mr-6">2.2</span>
         <span>添加 archlinuxcn</span>
         </a></li><li>
-        <a class="is-flex" href="#使用-AUR">
+        <a class="is-flex" href="#使用 -AUR">
         <span class="has-mr-6">2.3</span>
         <span>使用 AUR</span>
         </a><ul class="menu-list"><li>
@@ -546,7 +554,7 @@
         </a></li><li>
         <a class="is-flex" href="#为输出信息添加颜色">
         <span class="has-mr-6">2.3.2</span>
-        <span>为输出信息添加颜色</span>
+        <span>为输出信息添加颜色 </span>
         </a></li></ul></li></ul></li><li>
         <a class="is-flex" href="#常用软件">
         <span class="has-mr-6">3</span>
@@ -562,7 +570,7 @@
         </a></li><li>
         <a class="is-flex" href="#配置">
         <span class="has-mr-6">3.1.2</span>
-        <span>配置</span>
+        <span>配置 </span>
         </a></li></ul></li><li>
         <a class="is-flex" href="#字体">
         <span class="has-mr-6">3.2</span>
@@ -574,11 +582,11 @@
         </a></li><li>
         <a class="is-flex" href="#输入法">
         <span class="has-mr-6">3.4</span>
-        <span>输入法</span>
+        <span>输入法 </span>
         </a></li><li>
         <a class="is-flex" href="#办公">
         <span class="has-mr-6">3.5</span>
-        <span>办公</span>
+        <span>办公 </span>
         </a></li><li>
         <a class="is-flex" href="#聊天">
         <span class="has-mr-6">3.6</span>
@@ -592,7 +600,7 @@
         <span class="has-mr-6">3.8</span>
         <span>娱乐</span>
         </a></li><li>
-        <a class="is-flex" href="#插件-or-工具">
+        <a class="is-flex" href="#插件 -or- 工具">
         <span class="has-mr-6">3.9</span>
         <span>插件 or 工具</span>
         </a></li></ul></li></ul>
@@ -629,7 +637,7 @@
                 
                 <br>
                 <span id="busuanzi_container_site_uv">
-                Visited by <span id="busuanzi_value_site_uv">0</span> users
+                共<span id="busuanzi_value_site_uv">0</span>个访客
                 </span>
                 
                 </p>
@@ -670,7 +678,7 @@
 </footer>
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
-<script>moment.locale("en");</script>
+<script>moment.locale("zh-CN");</script>
 
 
 <script>
@@ -747,7 +755,7 @@ document.addEventListener('DOMContentLoaded', function () {
 </script>
 
 
-<a id="back-to-top" title="Back to Top" href="javascript:;">
+<a id="back-to-top" title="回到顶端" href="javascript:;">
     <i class="fas fa-chevron-up"></i>
 </a>
 <script src="/js/back-to-top.js" defer></script>
@@ -771,7 +779,7 @@ document.addEventListener('DOMContentLoaded', function () {
     <div class="searchbox ins-search">
     <div class="searchbox-container ins-search-container">
         <div class="searchbox-input-wrapper">
-            <input type="text" class="searchbox-input ins-search-input" placeholder="Type something..." />
+            <input type="text" class="searchbox-input ins-search-input" placeholder="想要查找什么..." />
             <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
         </div>
         <div class="searchbox-result-wrapper ins-section-wrapper">
@@ -783,11 +791,11 @@ document.addEventListener('DOMContentLoaded', function () {
     (function (window) {
         var INSIGHT_CONFIG = {
             TRANSLATION: {
-                POSTS: 'Posts',
-                PAGES: 'Pages',
-                CATEGORIES: 'Categories',
-                TAGS: 'Tags',
-                UNTITLED: '(Untitled)',
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(无标题)',
             },
             CONTENT_URL: '/content.json',
         };

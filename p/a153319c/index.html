@@ -1,0 +1,980 @@
+<!DOCTYPE html>
+<html  lang="zh">
+
+<head>
+    <meta charset="utf-8" />
+
+<meta name="generator" content="Hexo 3.9.0" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+<title>计算机系统基础 - CZCC</title>
+
+
+    <meta name="description" content="ICS 中的基本运算和概念">
+<meta name="keywords" content="Learn,ICS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="计算机系统基础">
+<meta property="og:url" content="http://blog.czcc.me/p/a153319c/index.html">
+<meta property="og:site_name" content="CZCC">
+<meta property="og:description" content="ICS 中的基本运算和概念">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://blog.czcc.me/images/og_image.png">
+<meta property="og:updated_time" content="2020-01-13T15:11:17.980Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="计算机系统基础">
+<meta name="twitter:description" content="ICS 中的基本运算和概念">
+<meta name="twitter:image" content="http://blog.czcc.me/images/og_image.png">
+
+
+
+
+
+<link rel="alternative" href="/atom.xml" title="计算机系统基础" type="application/atom+xml">
+
+
+
+<link rel="icon" href="/images/favicon.ico">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css">
+
+
+    
+    
+<style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+    
+    
+    
+    
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+    
+    
+    
+    
+    
+    
+    
+    <link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+    
+    <script async="" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+    <meta name="google-site-verification" content="_ziiq9TAo7q1mceEFdwp1hTrurp8QZCDVr8866sHj44" />
+</head>
+
+<body class="is-2-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="/images/logo.ico" alt="计算机系统基础" height="28">
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item"
+                href="/">Home</a>
+                
+                <a class="navbar-item"
+                href="/archives">Archives</a>
+                
+                <a class="navbar-item"
+                href="/categories">Categories</a>
+                
+                <a class="navbar-item"
+                href="/tags">Tags</a>
+                
+                <a class="navbar-item"
+                href="/categories/LeetCode">LeetCode</a>
+                
+                <a class="navbar-item"
+                href="/about">About</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                    
+                    <a class="navbar-item" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                    
+                
+                
+                <a class="navbar-item is-hidden-tablet catalogue" title="Catalogue" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
+                
+                <a class="navbar-item search" title="搜索" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-9-desktop is-9-widescreen has-order-2 column-main">
+<div class="card">
+    
+    <div class="card-content article ">
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+            <i class="fas fa-angle-double-right"></i>&nbsp;&nbsp;计算机系统基础
+            
+        </h1>
+        
+        <div class="level article-meta is-size-7 is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <!-- <time class="level-item has-text-grey" datetime="2018-08-18T09:04:52.000Z">2018-08-18</time> -->
+                <time class="level-item has-text-grey" datetime="2018-08-18T09:04:52.000Z">
+                    <i class="far fa-calendar-alt">&nbsp;</i>
+                    2018-08-18
+                </time>
+                
+                <time class="level-item has-text-grey is-hidden-mobile" datetime="2020-01-13T15:11:17.980Z"><i
+                        class="far fa-calendar-check">&nbsp;</i>2020-01-13</time>
+                
+                
+                <div class="level-item">
+                    <i class="far fa-folder">&nbsp;</i>
+                    <a class="has-link-grey -link" href="/categories/NJU/">NJU</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    <i class="far fa-hourglass">&nbsp;&nbsp;</i>
+                    
+                    
+                    14 分钟   (约 2153 字)
+                </span>
+                
+                
+                <span class="level-item has-text-grey" id="busuanzi_container_page_pv">
+                    <i class="far fa-eye"></i>
+                    <span id="busuanzi_value_page_pv">0</span>次访问
+                </span>
+                
+            </div>
+        </div>
+        
+        <!-- <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                计算机系统基础
+            
+        </h1> -->
+        <div class="content">
+            <p>ICS 中的基本运算和概念  </p>
+<a id="more"></a>
+
+<h1 id="计算机系统概述"><a href="# 计算机系统概述" class="headerlink" title="计算机系统概述"></a>计算机系统概述 </h1><h2 id="计算机的发展"><a href="# 计算机的发展" class="headerlink" title="计算机的发展"></a> 计算机的发展</h2><ol>
+<li>1946 年，第 1 台通用电子计算机 ENIAC 诞⽣生<ul>
+<li>由电子真空管组成</li>
+</ul>
+</li>
+<li>电子管计算机</li>
+<li>晶体管</li>
+<li>SSI, MSI, LSI, VLSI, ULSI</li>
+</ol>
+<h2 id="冯 - 诺依曼计算机结构"><a href="# 冯 - 诺依曼计算机结构" class="headerlink" title="冯. 诺依曼计算机结构"></a>冯. 诺依曼计算机结构</h2><ol>
+<li>计算机由运算器, 控制器, 存储器, 输入设备, 输出设备组成</li>
+<li>指令和数据用二进制表示, <strong>形式上没有差别 </strong>, 通过<strong>CPU 访问阶段</strong> 进行区别</li>
+<li>指令和数据存储在存储器中, <strong>按地址访问</strong></li>
+<li>指令由 <strong>操作码和地址码 </strong> 组成, 操作码指定操作性质, 地址码指定操作数地址</li>
+<li>采用 <strong>“存储程序”</strong> 方式进行工作</li>
+</ol>
+<h2 id="计算机系统抽象层的转换"><a href="# 计算机系统抽象层的转换" class="headerlink" title="计算机系统抽象层的转换"></a>计算机系统抽象层的转换</h2><p><img src="ICS/layouts.png" alt=""></p>
+<p><strong>高级语言虚拟机 - 汇编语言虚拟机 - 操作系统虚拟机 - 机器语言机器</strong></p>
+<h2 id="程序开发与执行过程"><a href="# 程序开发与执行过程" class="headerlink" title="程序开发与执行过程"></a>程序开发与执行过程 </h2><p> 从一个程序的编写到完成程序的执行整个过程简述如下：</p>
+<ol>
+<li>通过本文编辑软件编写源程序文件（如 hello.c）</li>
+<li>然后使用语言处理工具，<strong>对源程序文件进行预处理、编译、汇编和链接</strong>，最终生成可执行目标文件。</li>
+<li>通过双击程序图标或在命令行中输入命令等方式，<strong>启动可执行目标文件执行</strong>。</li>
+<li>每一个可执行文件的执行都 <strong> 采用”存储程序”工作方式 </strong>。一旦程序被启动就会装入主存，CPU 从主存储器中取出指令，并对指令译码，根据译码结果控制数据的运算、传送或存储，每条指令执行完后，CPU 能<strong> 自动控制执行下一条指令或跳转到某一条指令处执行</strong>，当可执行文件中包含的所有指令都执行结束，则程序执行结束。</li>
+</ol>
+<h2 id="性能参数"><a href="# 性能参数" class="headerlink" title="性能参数"></a>性能参数</h2><ul>
+<li>时钟周期 = 时钟频率的倒数</li>
+<li>CPI</li>
+<li>MIPS  峰值 MIPS  平均每秒执行多少百万条整数运算指令</li>
+<li>MFLOPS 百万次浮点运算 GFLOPS TFLOPS</li>
+<li><strong>执行时间</strong></li>
+</ul>
+<h1 id="数据的机器级表示与处理"><a href="# 数据的机器级表示与处理" class="headerlink" title="数据的机器级表示与处理"></a>数据的机器级表示与处理 </h1><h2 id="整数"><a href="# 整数" class="headerlink" title="整数"></a> 整数 </h2><h3 id="加减运算"><a href="# 加减运算" class="headerlink" title="加减运算"></a> 加减运算</h3><ol>
+<li><p>原码 -&gt; 变成绝对值的运算</p>
+</li>
+<li><p>补码 -&gt;     $[X] = 2^n + X$</p>
+</li>
+</ol>
+<p>加法直接相加, 减法中, <strong>被减数取反加 1</strong> 再相加</p>
+<h3 id="C 中的整数"><a href="#C 中的整数" class="headerlink" title="C 中的整数"></a>C 中的整数 </h3><p> 类型转换:  带符号数 -&gt; 无符号数</p>
+<p>常用数据:</p>
+<ul>
+<li><p>$2147483647 = 2^{31} - 1$</p>
+</li>
+<li><p>$2147483648 = 2^{31}$</p>
+</li>
+</ul>
+<p>在 ISO C90 下, 2147483648 为 <strong><code>unsigned int</code></strong>型 </p>
+<p><img src="ICS/CwithInteger.png" alt=""></p>
+<p><img src="ICS/DefaultConstType.png" alt=""></p>
+<h3 id="溢出判断"><a href="# 溢出判断" class="headerlink" title="溢出判断"></a>溢出判断 </h3><p> 对于补码而言, 在进行加法时, 如果两个数的 <strong> 最高位不同, 不会发生溢出 </strong>.<br> 否则, 如果</p>
+<ol>
+<li>运算结果的最高位与加数的最高位不同</li>
+<li>最高位进位与次高位进位的异或为 1</li>
+</ol>
+<p>则发生了溢出.</p>
+<h3 id="比较判断"><a href="# 比较判断" class="headerlink" title="比较判断"></a>比较判断</h3><table>
+<thead>
+<tr>
+<th>关系</th>
+<th>无符号数</th>
+<th>有符号数</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>等于</td>
+<td>$ZF$</td>
+<td>$ZF$</td>
+</tr>
+<tr>
+<td>大于</td>
+<td>$\overline{CF+ZF}$</td>
+<td>$\overline{ZF}\cdot\overline{(SF \bigoplus OF)}$</td>
+</tr>
+<tr>
+<td>小于</td>
+<td>$CF\cdot\overline{ZF}$</td>
+<td>$\overline{ZF} \cdot(SF \bigoplus OF)$</td>
+</tr>
+<tr>
+<td>大于等于</td>
+<td>$\overline{CF}+ZF$</td>
+<td>$ZF+\overline{(SF \bigoplus OF)}$</td>
+</tr>
+<tr>
+<td>小于等于</td>
+<td>$CF+ZF$</td>
+<td>$ZF+(SF \bigoplus OF)$</td>
+</tr>
+</tbody></table>
+<ol>
+<li>无符号数情况<ol>
+<li>等于: 相减后结果为零</li>
+<li>大于: 没有借位且相减后不为 0</li>
+<li>小于: 有借位且相减后不为 0</li>
+<li>大于等于: 没有借位或相减后结果为 0</li>
+<li>小于等于: 有借位或相减后结果为 0</li>
+</ol>
+</li>
+<li>带符号整数情况<ol>
+<li>等于: 相减后结果为零</li>
+<li>大于: 相减后结果不为 0，并且，不溢出时为正，溢出时为负。</li>
+<li>小于: 相减后结果不为 0，并且，不溢出时为负，溢出时为正。</li>
+<li>大于等于: 相减后结果为 0，或者，不溢出时为正，溢出时为负。</li>
+<li>小于等于: 相减后结果为 0，或者，不溢出时为负，溢出时为正。</li>
+</ol>
+</li>
+</ol>
+<h2 id="浮点数"><a href="# 浮点数" class="headerlink" title="浮点数"></a>浮点数</h2><h3 id="IEEE-754- 标准"><a href="#IEEE-754- 标准" class="headerlink" title="IEEE 754 标准"></a>IEEE 754 标准</h3><p><img src="ICS/floatNumber.png" alt=""></p>
+<h4 id="单精度"><a href="# 单精度" class="headerlink" title="单精度"></a>单精度</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">S EEEE EEEE MMM MMMM MMMM MMMM MMMM MMMM</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>1  位符号位</li>
+<li>8  位阶码 (移码)</li>
+<li>23 位尾数 (原码)</li>
+<li>阶码的偏置常数为 127</li>
+<li>尾数最高位默认为 1</li>
+</ul>
+<p><img src="ICS/desForfloat.png" alt=""></p>
+<h1 id="程序的转换及机器级表示"><a href="# 程序的转换及机器级表示" class="headerlink" title="程序的转换及机器级表示"></a>程序的转换及机器级表示 </h1><h2 id="ISA"><a href="#ISA" class="headerlink" title="ISA"></a>ISA</h2><p>ISA 定义了<strong> 机器语言级虚拟机的属性和功能特性</strong></p>
+<ul>
+<li>可执行的 <strong> 指令的集合</strong></li>
+<li>指令可以接受的 <strong> 操作数的类型</strong></li>
+<li>操作数所能存放的 <strong> 寄存器组的结构</strong></li>
+<li>操作数所能存放的 <strong> 存储空间的大小和编址方 </strong> 式</li>
+<li>操作数在存储空间存放时按照 <strong> 大端方式还是小端方式 </strong> 存放</li>
+<li>指令获取操作数的方式，即 <strong> 寻址方式</strong>；</li>
+<li>指令执行过程的 <strong> 控制方式</strong>，包括程序计数器、条件码定义等。</li>
+</ul>
+<h2 id="生成机器代码"><a href="# 生成机器代码" class="headerlink" title="生成机器代码"></a>生成机器代码 </h2><p> 这个转换过程分为以下 4 个步骤。</p>
+<ol>
+<li>预处理。例如，在 C 语言源程序中有一些以＃开头的语句，可以在预处理阶段对这些语句进行处理，在源程序中插入所有用 <code>#include</code> 命令指定的文件和用 <code>#define</code> 声明指定的宏。</li>
+<li>编译。将预处理后的源程序文件编译生成相应的汇编语言程序。</li>
+<li>汇编。由汇编程序将汇编语言源程序文件转换为可重定位的机器语言目标代码文件。</li>
+<li>链接。由链接器将多个可重定位的机器语言目标文件以及库例程（如 <code>printf()</code> 库函数）链接起来，生成最终的可执行文件。</li>
+</ol>
+<h3 id="ADD- 程序示例"><a href="#ADD- 程序示例" class="headerlink" title="ADD 程序示例"></a>ADD 程序示例</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// test.c</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> i, <span class="keyword">int</span> j)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> x = i + j;</span><br><span class="line">    <span class="keyword">return</span> x;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">add:</span><br><span class="line">    pushl	%ebp</span><br><span class="line">    movl	%esp, %ebp</span><br><span class="line">    subl	$16, %esp</span><br><span class="line">    movl	8(%ebp), %edx</span><br><span class="line">    movl	12(%ebp), %eax</span><br><span class="line">    # leal	(%edx, %eax), %eax</span><br><span class="line">    addl	%edx, %eax</span><br><span class="line">    movl	%eax, -4(%ebp)</span><br><span class="line">    movl	-4(%ebp), %eax</span><br><span class="line">    leave</span><br><span class="line">    ret</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"># test.o:     file format elf32-i386</span><br><span class="line"></span><br><span class="line">00000000 &lt;add&gt;:</span><br><span class="line">   0:   55                      push   %ebp</span><br><span class="line">   1:   89 e5                   mov    %esp,%ebp</span><br><span class="line">   3:   83 ec 10                sub    $0x10,%esp</span><br><span class="line">   6:   8b 55 08                mov    0x8(%ebp),%edx</span><br><span class="line">   9:   8b 45 0c                mov    0xc(%ebp),%eax</span><br><span class="line">   c:   01 d0                   add    %edx,%eax</span><br><span class="line">   e:   89 45 fc                mov    %eax,-0x4(%ebp)</span><br><span class="line">  11:   8b 45 fc                mov    -0x4(%ebp),%eax</span><br><span class="line">  14:   c9                      leave</span><br><span class="line">  15:   c3                      ret</span><br></pre></td></tr></table></figure>
+
+<p>对于 <code>test.o</code> 文件</p>
+<ul>
+<li>目标代码从相对地址 <code>0</code> 开始</li>
+<li>机器指令的长度不同, 即为变长指令字结构</li>
+</ul>
+<p>可执行文件中:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">08048403 &lt;add&gt;:</span><br><span class="line"> 8048403:       55                      push   %ebp</span><br><span class="line"> 8048404:       89 e5                   mov    %esp,%ebp</span><br><span class="line"> 8048406:       83 ec 10                sub    $0x10,%esp</span><br><span class="line"> 8048409:       8b 55 08                mov    0x8(%ebp),%edx</span><br><span class="line"> 804840c:       8b 45 0c                mov    0xc(%ebp),%eax</span><br><span class="line"> 804840f:       01 d0                   add    %edx,%eax</span><br><span class="line"> 8048411:       89 45 fc                mov    %eax,-0x4(%ebp)</span><br><span class="line"> 8048414:       8b 45 fc                mov    -0x4(%ebp),%eax</span><br><span class="line"> 8048417:       c9                      leave</span><br><span class="line"> 8048418:       c3                      ret</span><br><span class="line"> 8048419:       66 90                   xchg   %ax,%ax</span><br><span class="line"> 804841b:       66 90                   xchg   %ax,%ax</span><br><span class="line"> 804841d:       66 90                   xchg   %ax,%ax</span><br><span class="line"> 804841f:       90                      nop</span><br></pre></td></tr></table></figure>
+
+<h2 id="IA32- 指令"><a href="#IA32- 指令" class="headerlink" title="IA32 指令"></a>IA32 指令 </h2><h3 id="数据类型与寄存器"><a href="# 数据类型与寄存器" class="headerlink" title="数据类型与寄存器"></a> 数据类型与寄存器</h3><p><img src="ICS/IA32-basicDS.png" alt=""><br><img src="ICS/findAdress.png"alt=""></p>
+<p>x87 浮点寄存器中含有 <strong> 专用的状态寄存器</strong>, <strong>8 个浮点寄存器</strong></p>
+<h3 id="mov- 传送指令"><a href="#mov- 传送指令" class="headerlink" title="mov 传送指令"></a>mov 传送指令</h3><p><img src="ICS/mov.png" alt=""></p>
+<h3 id="算术运算指令"><a href="# 算术运算指令" class="headerlink" title="算术运算指令"></a>算术运算指令</h3><p><img src="ICS/arithmetic.png" alt=""></p>
+<h4 id="乘法运算"><a href="# 乘法运算" class="headerlink" title="乘法运算"></a>乘法运算</h4><ul>
+<li>1 个操作数 SRC : 另一个操作数隐含在 <strong>AL / AX / EAX</strong> 中, 结果存放在 <strong>AX / DX-AX / EDX-EAX</strong></li>
+<li>2 个操作数 DST, SRC : <strong>DST * SRC -&gt; DST</strong></li>
+<li>3 个操作数 REG, SRC, IMM : <strong>SRC * IMM -&gt; REG</strong></li>
+</ul>
+<h4 id="除法运算"><a href="# 除法运算" class="headerlink" title="除法运算"></a>除法运算</h4><ul>
+<li>1 个操作数 SRC : 另一个操作数隐含在 <strong>AL / AX / EAX</strong> 中</li>
+<li>被除数的位数为除数的 2 倍</li>
+<li>16 / 8 :  商: AL 余数: AH</li>
+<li>32 / 16 : 商: AX 余数: DX</li>
+<li>64 / 32 : 商: EAX 余数: EDX</li>
+</ul>
+<h4 id="移位运算"><a href="# 移位运算" class="headerlink" title="移位运算"></a>移位运算</h4><ul>
+<li>逻辑: SHL SHR</li>
+<li>算术: SAL SAR</li>
+<li>循环: ROL ROR RCL RCR</li>
+</ul>
+<h3 id="控制转移指令"><a href="# 控制转移指令" class="headerlink" title="控制转移指令"></a>控制转移指令</h3><p><img src="ICS/controlJump.png" alt=""></p>
+<h2 id="C 语言程序的机器级表示"><a href="#C 语言程序的机器级表示" class="headerlink" title="C 语言程序的机器级表示"></a>C 语言程序的机器级表示 </h2><h3 id="过程调用的执行步骤"><a href="# 过程调用的执行步骤" class="headerlink" title="过程调用的执行步骤"></a> 过程调用的执行步骤 </h3><p> 假定 <strong> 过程 P</strong>调用 <strong> 过程 Q</strong>, 则 P 称为 <strong> 调用者 </strong>， Q 称为<strong> 被调用者</strong>。</p>
+<ol>
+<li>P 将入口参数 (实参) 放到 Q 能访问到的地方。</li>
+<li>P 将返回地址存到特定的地方，然后将控制转移到 Q。(CALL)</li>
+<li>Q 保存 P 的现场，并为自己的非静态局部变量分配空间。</li>
+<li>执行 Q 的过程体(函数体)。</li>
+<li>Q 恢复 P 的现场，并释放局部变量所占空间。</li>
+<li>Q 取出返回地址，将控制转移到 P。(RET)</li>
+</ol>
+<h3 id="寄存器使用约定"><a href="# 寄存器使用约定" class="headerlink" title="寄存器使用约定"></a>寄存器使用约定</h3><ul>
+<li>寄存器 <code>EAX</code> 、<code>ECX</code> 、<code>EDX</code> 是<strong> 调用者保存寄存器</strong></li>
+<li>寄存器 <code>EBX</code> 、<code>ESI</code> 、<code>EDI</code> 是<strong> 被调用者保存寄存器</strong></li>
+</ul>
+<h3 id="栈与栈帧"><a href="# 栈与栈帧" class="headerlink" title="栈与栈帧"></a>栈与栈帧</h3><p><img src="ICS/%E8%BF%87%E7%A8%8B%E8%B0%83%E7%94%A8%E7%9A%84%E6%A0%88.png" alt=""></p>
+<h2 id="C 语句的汇编形式"><a href="#C 语句的汇编形式" class="headerlink" title="C 语句的汇编形式"></a>C 语句的汇编形式</h2><h3 id="if- 选择语句"><a href="#if- 选择语句" class="headerlink" title="if 选择语句"></a>if 选择语句</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// if </span></span><br><span class="line"><span class="keyword">if</span> (cond_expr)</span><br><span class="line">    then_statement</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">    else_statement</span><br></pre></td></tr></table></figure>
+
+<p>汇编格式</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">    c=cond_expr;</span><br><span class="line">    if(!c)</span><br><span class="line">        goto false_label;</span><br><span class="line">    then_statement</span><br><span class="line">    goto done;</span><br><span class="line">false_label:</span><br><span class="line">    else_statement</span><br><span class="line">done:</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">    c=cond_expr;</span><br><span class="line">    if(c)</span><br><span class="line">        goto true_label;</span><br><span class="line">    else_statement</span><br><span class="line">    goto done;</span><br><span class="line">true_label:</span><br><span class="line">    then_statement</span><br><span class="line">done:</span><br></pre></td></tr></table></figure>
+
+<h3 id="switch"><a href="#switch" class="headerlink" title="switch"></a>switch</h3><p><img src="ICS/switch.png" alt=""></p>
+<h3 id="do-while"><a href="#do-while" class="headerlink" title="do - while"></a>do - while</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">do</span></span><br><span class="line">&#123;</span><br><span class="line">    loop_body_statement</span><br><span class="line">&#125; <span class="keyword">while</span> (cond_expr) ;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">loop:</span><br><span class="line">    loop_body_statement</span><br><span class="line">    c = cond_expr ;</span><br><span class="line">    if (c) goto loop ;</span><br></pre></td></tr></table></figure>
+
+<h3 id="while"><a href="#while" class="headerlink" title="while"></a>while</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span> (cond_expr)</span><br><span class="line">    loop_body_statement</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">    c = cond_expr;</span><br><span class="line">    if (!c) goto done;</span><br><span class="line">loop:</span><br><span class="line">    loop_body_statement</span><br><span class="line">    c = conct_expr;</span><br><span class="line">    if (c) goto loop;</span><br><span class="line">done:</span><br></pre></td></tr></table></figure>
+
+<h3 id="for"><a href="#for" class="headerlink" title="for"></a>for</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (begin_expr; cond_expr; update_expr)</span><br><span class="line">    loop_body_statement</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">    begin_expr ;</span><br><span class="line">    c = conct_expr;</span><br><span class="line">    if (!c) goto done ;</span><br><span class="line">loop:</span><br><span class="line">    loop_body_statement</span><br><span class="line">    update_expr;</span><br><span class="line">    c = cond_expr;</span><br><span class="line">    if (c) goto loop ;</span><br><span class="line">done:</span><br></pre></td></tr></table></figure>
+
+<h2 id="数据对齐"><a href="# 数据对齐" class="headerlink" title="数据对齐"></a>数据对齐</h2><p>Windows : 按其长度对齐</p>
+<p>IA32 :  </p>
+<ul>
+<li>short : 2</li>
+<li>int float double char* : 4</li>
+<li>double : 80 位, 分配 12 字节(96 位)
+ </li>
+</ul>
+
+        </div>
+        
+        <ul class="post-copyright">
+            <li><strong>本文标题：</strong><a href="http://blog.czcc.me/p/a153319c/">计算机系统基础</a></li>
+            <li><strong>本文作者：</strong><a href="http://blog.czcc.me">Cheng</a></li>
+            <li><strong>本文链接：</strong><a href="http://blog.czcc.me/p/a153319c/">http://blog.czcc.me/p/a153319c/</a></li>
+            <li><strong>发布时间：</strong>2018-08-18</li>
+            <li><strong>版权声明：</strong>本博客所有文章除特别声明外，均采用 <a
+                    href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="external nofollow"
+                    target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！
+            </li>
+        </ul>
+        <br>
+        
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/ICS/">ICS</a>, <a class="has-link-grey -link" href="/tags/Learn/">Learn</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+        <div class="social-share"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/css/share.min.css">
+<script src="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/js/social-share.min.js"></script>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="menu-label has-text-centered">喜欢这篇文章？打赏一下作者吧</h3>
+        <div class="buttons is-centered">
+            
+            
+<a class="button is-info donate">
+    <span class="icon is-small">
+        <i class="fab fa-alipay"></i>
+    </span>
+    <span>支付宝</span>
+    <div class="qrcode"><img src="/images/Alipay.jpg" alt="支付宝"></div>
+</a>
+
+            
+            
+<a class="button is-success donate">
+    <span class="icon is-small">
+        <i class="fab fa-weixin"></i>
+    </span>
+    <span>微信</span>
+    <div class="qrcode"><img src="/images/WeChat_pay.png" alt="微信"></div>
+</a>
+
+            
+        </div>
+    </div>
+</div>
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev"
+                href="/p/857a870e/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">Markdown 中插入 latex 公式</span>
+            </a>
+        </div>
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next"
+                href="/p/170cf1e2/">
+                <span class="level-item">Tree</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">评论</h3>
+        
+<script>
+    var disqus_config = function () {
+        this.page.url = 'http://blog.czcc.me/p/a153319c/';
+        this.page.identifier = 'p/a153319c/';
+    };
+    (function() {
+        var d = document, s = d.createElement('script');  
+        s.src = '//' + 'czcc' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+
+<div id="disqus_thread">
+    
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+    </div>
+</div>
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-3-desktop is-3-widescreen  has-order-1 column-left ">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level">
+            <div class="level-item has-text-centered" style="flex-shrink: 1">
+                <div>
+                    
+                    <figure class="image is-128x128 has-mb-6">
+                        <img class="" src="/images/avatar.jpg" alt="Cheng">
+                    </figure>
+                    
+                    <p class="is-size-4 is-block">
+                        Cheng
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-block">
+                        A Student
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
+                        <i class="fas fa-map-marker-alt has-mr-7"></i>
+                        <span>Nanjing</span>
+                    </p>
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level is-mobile">
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        Post
+                    </p>
+                    <a href="/archives">
+                        <p class="title has-text-weight-normal">
+                            36
+                        </p>
+                    </a>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        Category
+                    </p>
+                    <a href="/categories">
+                        <p class="title has-text-weight-normal">
+                            14
+                        </p>
+                    </a>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        Tag
+                    </p>
+                    <a href="/tags">
+                        <p class="title has-text-weight-normal">
+                            38
+                        </p>
+                    </a>
+                </div>
+            </div>
+        </nav>
+        
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="https://github.com/czccc" target="_blank" rel="noopener">
+                Follow</a>
+        </div>
+        
+        
+        
+        <div class="level is-mobile">
+            
+            <a class="level-item button is-white is-marginless" target="_blank" rel="noopener"
+                title="Github" href="https://github.com/czccc">
+                
+                <i class="fab fa-github"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" rel="noopener"
+                title="RSS" href="/atom.xml">
+                
+                <i class="fas fa-rss"></i>
+                
+            </a>
+            
+        </div>
+        
+    </div>
+</div>
+    
+        
+
+<div class="card widget column-left is-sticky" id="toc">
+    <div class="card-content">
+        <div class="menu" style="max-height: calc(100vh - 5rem); overflow-y: auto;">
+            <h3 class="menu-label">
+                Catalogue
+            </h3>
+            <ul class="menu-list"><li>
+        <a class="is-flex" href="#计算机系统概述">
+        <span class="has-mr-6">1</span>
+        <span>计算机系统概述 </span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#计算机的发展">
+        <span class="has-mr-6">1.1</span>
+        <span> 计算机的发展</span>
+        </a></li><li>
+        <a class="is-flex" href="#冯 - 诺依曼计算机结构">
+        <span class="has-mr-6">1.2</span>
+        <span>冯. 诺依曼计算机结构</span>
+        </a></li><li>
+        <a class="is-flex" href="#计算机系统抽象层的转换">
+        <span class="has-mr-6">1.3</span>
+        <span>计算机系统抽象层的转换</span>
+        </a></li><li>
+        <a class="is-flex" href="#程序开发与执行过程">
+        <span class="has-mr-6">1.4</span>
+        <span>程序开发与执行过程 </span>
+        </a></li><li>
+        <a class="is-flex" href="#性能参数">
+        <span class="has-mr-6">1.5</span>
+        <span>性能参数</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#数据的机器级表示与处理">
+        <span class="has-mr-6">2</span>
+        <span>数据的机器级表示与处理 </span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#整数">
+        <span class="has-mr-6">2.1</span>
+        <span> 整数 </span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#加减运算">
+        <span class="has-mr-6">2.1.1</span>
+        <span> 加减运算</span>
+        </a></li><li>
+        <a class="is-flex" href="#C 中的整数">
+        <span class="has-mr-6">2.1.2</span>
+        <span>C 中的整数 </span>
+        </a></li><li>
+        <a class="is-flex" href="#溢出判断">
+        <span class="has-mr-6">2.1.3</span>
+        <span>溢出判断 </span>
+        </a></li><li>
+        <a class="is-flex" href="#比较判断">
+        <span class="has-mr-6">2.1.4</span>
+        <span>比较判断</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#浮点数">
+        <span class="has-mr-6">2.2</span>
+        <span>浮点数</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#IEEE-754- 标准">
+        <span class="has-mr-6">2.2.1</span>
+        <span>IEEE 754 标准</span>
+        </a></li></ul></li></ul></li><li>
+        <a class="is-flex" href="#程序的转换及机器级表示">
+        <span class="has-mr-6">3</span>
+        <span>程序的转换及机器级表示 </span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#ISA">
+        <span class="has-mr-6">3.1</span>
+        <span>ISA</span>
+        </a></li><li>
+        <a class="is-flex" href="#生成机器代码">
+        <span class="has-mr-6">3.2</span>
+        <span>生成机器代码 </span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#ADD- 程序示例">
+        <span class="has-mr-6">3.2.1</span>
+        <span>ADD 程序示例</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#IA32- 指令">
+        <span class="has-mr-6">3.3</span>
+        <span>IA32 指令 </span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#数据类型与寄存器">
+        <span class="has-mr-6">3.3.1</span>
+        <span> 数据类型与寄存器</span>
+        </a></li><li>
+        <a class="is-flex" href="#mov- 传送指令">
+        <span class="has-mr-6">3.3.2</span>
+        <span>mov 传送指令</span>
+        </a></li><li>
+        <a class="is-flex" href="#算术运算指令">
+        <span class="has-mr-6">3.3.3</span>
+        <span>算术运算指令</span>
+        </a></li><li>
+        <a class="is-flex" href="#控制转移指令">
+        <span class="has-mr-6">3.3.4</span>
+        <span>控制转移指令</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#C 语言程序的机器级表示">
+        <span class="has-mr-6">3.4</span>
+        <span>C 语言程序的机器级表示 </span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#过程调用的执行步骤">
+        <span class="has-mr-6">3.4.1</span>
+        <span> 过程调用的执行步骤 </span>
+        </a></li><li>
+        <a class="is-flex" href="#寄存器使用约定">
+        <span class="has-mr-6">3.4.2</span>
+        <span>寄存器使用约定</span>
+        </a></li><li>
+        <a class="is-flex" href="#栈与栈帧">
+        <span class="has-mr-6">3.4.3</span>
+        <span>栈与栈帧</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#C 语句的汇编形式">
+        <span class="has-mr-6">3.5</span>
+        <span>C 语句的汇编形式</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#if- 选择语句">
+        <span class="has-mr-6">3.5.1</span>
+        <span>if 选择语句</span>
+        </a></li><li>
+        <a class="is-flex" href="#switch">
+        <span class="has-mr-6">3.5.2</span>
+        <span>switch</span>
+        </a></li><li>
+        <a class="is-flex" href="#do-while">
+        <span class="has-mr-6">3.5.3</span>
+        <span>do - while</span>
+        </a></li><li>
+        <a class="is-flex" href="#while">
+        <span class="has-mr-6">3.5.4</span>
+        <span>while</span>
+        </a></li><li>
+        <a class="is-flex" href="#for">
+        <span class="has-mr-6">3.5.5</span>
+        <span>for</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#数据对齐">
+        <span class="has-mr-6">3.6</span>
+        <span>数据对齐</span>
+        </a></li></ul></li></ul>
+        </div>
+    </div>
+</div>
+
+    
+    
+        <!-- <div class="column-right-shadow is-hidden-widescreen "> -->
+        <div class="column-right-shadow  ">
+        
+        </div>
+    
+</div>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="/images/logo.ico" alt="计算机系统基础" height="28">
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2020 Cheng&nbsp;
+                Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> & <a
+                        href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a>
+                
+                <br>
+                <span id="busuanzi_container_site_uv">
+                共<span id="busuanzi_value_site_uv">0</span>个访客
+                </span>
+                
+                </p>
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/">
+                        
+                        <i class="fab fa-creative-commons"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/">
+                        
+                        <i class="fab fa-creative-commons-by"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("zh-CN");</script>
+
+
+<script>
+var IcarusThemeSettings = {
+    site: {
+        url: 'http://blog.czcc.me',
+        external_link: {"enable":true,"exclude":[]}
+    },
+    article: {
+        highlight: {
+            clipboard: true,
+            fold: 'unfolded'
+        }
+    }
+};
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+
+
+
+
+
+<script src="/js/animation.js"></script>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+<script src="/js/gallery.js" defer></script>
+
+
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+
+
+<a id="back-to-top" title="回到顶端" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="想要查找什么..." />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(无标题)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+
+</html>

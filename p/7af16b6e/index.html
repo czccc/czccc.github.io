@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html  lang="en">
+<html  lang="zh">
 
 <head>
     <meta charset="utf-8" />
@@ -12,14 +12,15 @@
 
 
     <meta name="description" content="分布式系统期末总结">
+<meta name="keywords" content="NJU,课程总结,分布式系统">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Distributed System">
 <meta property="og:url" content="http://blog.czcc.me/p/7af16b6e/index.html">
 <meta property="og:site_name" content="CZCC">
 <meta property="og:description" content="分布式系统期末总结">
-<meta property="og:locale" content="en">
+<meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://blog.czcc.me/images/og_image.png">
-<meta property="og:updated_time" content="2020-01-03T08:00:00.764Z">
+<meta property="og:updated_time" content="2020-01-13T15:11:17.965Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Distributed System">
 <meta name="twitter:description" content="分布式系统期末总结">
@@ -106,6 +107,9 @@
                 href="/tags">Tags</a>
                 
                 <a class="navbar-item"
+                href="/categories/LeetCode">LeetCode</a>
+                
+                <a class="navbar-item"
                 href="/about">About</a>
                 
             </div>
@@ -126,7 +130,7 @@
                 </a>
                 
                 
-                <a class="navbar-item search" title="Search" href="javascript:;">
+                <a class="navbar-item search" title="搜索" href="javascript:;">
                     <i class="fas fa-search"></i>
                 </a>
                 
@@ -144,11 +148,11 @@
     <div class="card-content article ">
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <i class="fas fa-angle-double-right"></i>&nbsp;&nbsp;Distributed System
+            <i class="fas fa-angle-double-right"></i>&nbsp;&nbsp;Distributed System
             
         </h1>
         
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+        <div class="level article-meta is-size-7 is-mobile is-overflow-x-auto">
             <div class="level-left">
                 <!-- <time class="level-item has-text-grey" datetime="2019-12-31T05:56:23.000Z">2019-12-31</time> -->
                 <time class="level-item has-text-grey" datetime="2019-12-31T05:56:23.000Z">
@@ -156,21 +160,27 @@
                     2019-12-31
                 </time>
                 
-                    <time class="level-item has-text-grey is-hidden-mobile" datetime="2020-01-03T08:00:00.764Z"><i class="far fa-calendar-check">&nbsp;</i>2020-01-03</time>
+                <time class="level-item has-text-grey is-hidden-mobile" datetime="2020-01-13T15:11:17.965Z"><i
+                        class="far fa-calendar-check">&nbsp;</i>2020-01-13</time>
                 
+                
+                <div class="level-item">
+                    <i class="far fa-folder">&nbsp;</i>
+                    <a class="has-link-grey -link" href="/categories/NJU/">NJU</a>
+                </div>
                 
                 
                 <span class="level-item has-text-grey">
                     <i class="far fa-hourglass">&nbsp;&nbsp;</i>
                     
                     
-                    26 minutes read (About 3832 words)
+                    26 分钟   (约 3832 字)
                 </span>
                 
                 
                 <span class="level-item has-text-grey" id="busuanzi_container_page_pv">
                     <i class="far fa-eye"></i>
-                    <span id="busuanzi_value_page_pv">0</span> visits
+                    <span id="busuanzi_value_page_pv">0</span>次访问
                 </span>
                 
             </div>
@@ -186,18 +196,18 @@
 <hr>
 <a id="more"></a>
 
-<h1 id="分布式系统模型"><a href="#分布式系统模型" class="headerlink" title="分布式系统模型"></a>分布式系统模型</h1><h2 id="什么是分布式系统"><a href="#什么是分布式系统" class="headerlink" title="什么是分布式系统"></a>什么是分布式系统</h2><blockquote>
+<h1 id="分布式系统模型"><a href="# 分布式系统模型" class="headerlink" title="分布式系统模型"></a>分布式系统模型 </h1><h2 id="什么是分布式系统"><a href="# 什么是分布式系统" class="headerlink" title="什么是分布式系统"></a> 什么是分布式系统</h2><blockquote>
 <p> A distributed system is a collection of autonomous computing elements that appears to its users as a single coherent system.</p>
 </blockquote>
-<p>分布式系统是一组自主计算的集合,在用户看来是一个单一的一致系统</p>
+<p>分布式系统是一组自主计算的集合, 在用户看来是一个单一的一致系统</p>
 <p><img src="https://s2.ax1x.com/2019/12/31/l1ordS.png" alt="l1ordS.png"></p>
-<h2 id="分布式系统的目标"><a href="#分布式系统的目标" class="headerlink" title="分布式系统的目标"></a>分布式系统的目标</h2><ul>
+<h2 id="分布式系统的目标"><a href="# 分布式系统的目标" class="headerlink" title="分布式系统的目标"></a>分布式系统的目标</h2><ul>
 <li>Making resources available: 使资源多处可用</li>
 <li>Distribution transparency: 分布式透明性</li>
 <li>Openness: 开放性</li>
 <li>Scalability: 可扩展性</li>
 </ul>
-<h2 id="为什么要分布式？"><a href="#为什么要分布式？" class="headerlink" title="为什么要分布式？"></a>为什么要分布式？</h2><blockquote>
+<h2 id="为什么要分布式？"><a href="# 为什么要分布式？" class="headerlink" title="为什么要分布式？"></a>为什么要分布式？</h2><blockquote>
 <p>Because people are distributed</p>
 </blockquote>
 <p><img src="https://s2.ax1x.com/2019/12/31/l1o5ZT.png" alt="l1o5ZT.png"></p>
@@ -229,7 +239,7 @@
 <td>算力可以一点点地增加</td>
 </tr>
 </tbody></table>
-<h2 id="分布式系统透明性和开放性的含义。"><a href="#分布式系统透明性和开放性的含义。" class="headerlink" title="分布式系统透明性和开放性的含义。"></a>分布式系统透明性和开放性的含义。</h2><h3 id="透明性"><a href="#透明性" class="headerlink" title="透明性"></a>透明性</h3><p><img src="https://s2.ax1x.com/2019/12/31/l1OB1e.png" alt="l1OB1e.png"></p>
+<h2 id="分布式系统透明性和开放性的含义。"><a href="# 分布式系统透明性和开放性的含义。" class="headerlink" title="分布式系统透明性和开放性的含义。"></a>分布式系统透明性和开放性的含义。</h2><h3 id="透明性"><a href="# 透明性" class="headerlink" title="透明性"></a>透明性</h3><p><img src="https://s2.ax1x.com/2019/12/31/l1OB1e.png" alt="l1OB1e.png"></p>
 <p>隐藏底层的资源获取方式、资源位置、资源移动、重定位、复制、并发性、资源错误与恢复</p>
 <ul>
 <li>想要实现完全的透明可能比较困难:<ul>
@@ -240,14 +250,14 @@
 </ul>
 </li>
 <li>完全的透明性将会影响性能，暴露系统的分布式环境<ul>
-<li>保存Web缓存与服务器同步</li>
+<li>保存 Web 缓存与服务器同步</li>
 <li>将写操作立即写入磁盘以免导致错误</li>
 </ul>
 </li>
 </ul>
 </li>
 </ul>
-<h3 id="开放性"><a href="#开放性" class="headerlink" title="开放性"></a>开放性</h3><ul>
+<h3 id="开放性"><a href="# 开放性" class="headerlink" title="开放性"></a>开放性</h3><ul>
 <li>能够与其他开放系统的服务进行交互，不管底层的环境如何<ul>
 <li>系统应该定义良好的接口</li>
 <li>系统应该支持应用的迁移</li>
@@ -256,8 +266,8 @@
 </li>
 <li>至少使分布式系统独立于底层的运行环境</li>
 </ul>
-<h2 id="分布式操作系统、网络操作系统和基于中间件的系统。"><a href="#分布式操作系统、网络操作系统和基于中间件的系统。" class="headerlink" title="分布式操作系统、网络操作系统和基于中间件的系统。"></a>分布式操作系统、网络操作系统和基于中间件的系统。</h2><p>// TODO</p>
-<h2 id="分布式系统的类型。"><a href="#分布式系统的类型。" class="headerlink" title="分布式系统的类型。"></a>分布式系统的类型。</h2><ul>
+<h2 id="分布式操作系统、网络操作系统和基于中间件的系统。"><a href="# 分布式操作系统、网络操作系统和基于中间件的系统。" class="headerlink" title="分布式操作系统、网络操作系统和基于中间件的系统。"></a>分布式操作系统、网络操作系统和基于中间件的系统。</h2><p>// TODO</p>
+<h2 id="分布式系统的类型。"><a href="# 分布式系统的类型。" class="headerlink" title="分布式系统的类型。"></a>分布式系统的类型。</h2><ul>
 <li>分布式计算系统：Distributed computing systems<ul>
 <li>集群计算：Cluster computing<ul>
 <li>a group of high-end systems connected through a LAN</li>
@@ -277,14 +287,14 @@
 <li>分布式信息系统：Distributed information systems<ul>
 <li>当今使用最广泛的分布式系统是各种各样的传统信息系统</li>
 <li>Example: 交易处理系统.</li>
-<li>交易是在一组对象上进行的一系列操作，满足ACID：<ul>
+<li>交易是在一组对象上进行的一系列操作，满足 ACID：<ul>
 <li>Atomicity</li>
 <li>Consistency</li>
 <li>Isolation</li>
 <li>Durability</li>
 </ul>
 </li>
-<li>通常，交易涉及的数据会分布在不同的服务器上。TP控制器用于管理交易的执行。</li>
+<li>通常，交易涉及的数据会分布在不同的服务器上。TP 控制器用于管理交易的执行。</li>
 </ul>
 </li>
 <li>Distributed pervasive systems<ul>
@@ -295,7 +305,7 @@
 </ul>
 </li>
 </ul>
-<h1 id="分布式系统架构"><a href="#分布式系统架构" class="headerlink" title="分布式系统架构"></a>分布式系统架构</h1><h2 id="分布式系统架构风格"><a href="#分布式系统架构风格" class="headerlink" title="分布式系统架构风格"></a>分布式系统架构风格</h2><h3 id="Centralized"><a href="#Centralized" class="headerlink" title="Centralized"></a>Centralized</h3><ul>
+<h1 id="分布式系统架构"><a href="# 分布式系统架构" class="headerlink" title="分布式系统架构"></a>分布式系统架构 </h1><h2 id="分布式系统架构风格"><a href="# 分布式系统架构风格" class="headerlink" title="分布式系统架构风格"></a> 分布式系统架构风格</h2><h3 id="Centralized"><a href="#Centralized" class="headerlink" title="Centralized"></a>Centralized</h3><ul>
 <li>Basic Client–Server Model<ul>
 <li>Characteristics:<ul>
 <li>There are processes offering services (servers)</li>
@@ -337,21 +347,21 @@
 <li>Three-tiered: each layer on separate machine</li>
 </ul>
 <h3 id="Decentralized"><a href="#Decentralized" class="headerlink" title="Decentralized"></a>Decentralized</h3><ul>
-<li>Structured P2P: 节点按照特定的分布式数据结构进行组织，可以直接按照节点ID进行查找</li>
-<li>Unstructured P2P: 节点随机的选择邻居，使用（有限/概率）洪泛法进行查找</li>
+<li>Structured P2P: 节点按照特定的分布式数据结构进行组织，可以直接按照节点 ID 进行查找</li>
+<li>Unstructured P2P: 节点随机的选择邻居，使用（有限 / 概率）洪泛法进行查找</li>
 <li>Hybrid P2P: 某些节点（Superpeer）具有特定的功能</li>
 </ul>
 <h3 id="Hybrid"><a href="#Hybrid" class="headerlink" title="Hybrid"></a>Hybrid</h3><ul>
 <li>Client-server combined with P2P</li>
 <li>Edge-server architectures, which are often used for Content<br>Delivery Networks.</li>
 </ul>
-<h2 id="分布式系统组织形式"><a href="#分布式系统组织形式" class="headerlink" title="分布式系统组织形式"></a>分布式系统组织形式</h2><p>Multitiered Architectures (1)</p>
+<h2 id="分布式系统组织形式"><a href="# 分布式系统组织形式" class="headerlink" title="分布式系统组织形式"></a>分布式系统组织形式</h2><p>Multitiered Architectures (1)</p>
 <ul>
 <li>Single-tiered: dumb terminal/mainframe configuration</li>
 <li>Two-tiered: client/single server configuration</li>
 <li>Three-tiered: each layer on separate machine</li>
 </ul>
-<h2 id="客户-服务器模式和对等模式"><a href="#客户-服务器模式和对等模式" class="headerlink" title="客户-服务器模式和对等模式"></a>客户-服务器模式和对等模式</h2><h2 id="分布式系统组织为中间件"><a href="#分布式系统组织为中间件" class="headerlink" title="分布式系统组织为中间件"></a>分布式系统组织为中间件</h2><p><img src="https://s2.ax1x.com/2019/12/31/l1xbMF.png" alt="l1xbMF.png"></p>
+<h2 id="客户 - 服务器模式和对等模式"><a href="# 客户 - 服务器模式和对等模式" class="headerlink" title="客户 - 服务器模式和对等模式"></a>客户 - 服务器模式和对等模式 </h2><h2 id="分布式系统组织为中间件"><a href="# 分布式系统组织为中间件" class="headerlink" title="分布式系统组织为中间件"></a> 分布式系统组织为中间件</h2><p><img src="https://s2.ax1x.com/2019/12/31/l1xbMF.png" alt="l1xbMF.png"></p>
 <p>Middleware</p>
 <ul>
 <li>In many cases, distributed systems/applications are developed according to a specific architectural style. The chosen style may not be optimal in all cases </li>
@@ -359,7 +369,7 @@
 <li>Interceptors</li>
 <li>Intercept the usual flow of control when invoking a remote<br>object.</li>
 </ul>
-<h1 id="进程与线程"><a href="#进程与线程" class="headerlink" title="进程与线程"></a>进程与线程</h1><h2 id="进程和线程"><a href="#进程和线程" class="headerlink" title="进程和线程"></a>进程和线程</h2><p>Process: An execution stream in the context of a process<br>state</p>
+<h1 id="进程与线程"><a href="# 进程与线程" class="headerlink" title="进程与线程"></a>进程与线程 </h1><h2 id="进程和线程"><a href="# 进程和线程" class="headerlink" title="进程和线程"></a> 进程和线程</h2><p>Process: An execution stream in the context of a process<br>state</p>
 <ul>
 <li>Execution stream<br>• Stream of executing instructions<br>• Running piece of code<br>• Sequential sequence of instructions<br>• “thread of control”</li>
 <li>Process state</li>
@@ -382,7 +392,7 @@
 </ul>
 </li>
 </ul>
-<h2 id="代码迁移"><a href="#代码迁移" class="headerlink" title="代码迁移"></a>代码迁移</h2><ul>
+<h2 id="代码迁移"><a href="# 代码迁移" class="headerlink" title="代码迁移"></a>代码迁移</h2><ul>
 <li>Approaches to code migration</li>
 <li>Migration and local resources<ul>
 <li>Resource types<ul>
@@ -413,7 +423,7 @@
 </ul>
 </li>
 </ul>
-<h2 id="强迁移vs-弱迁移"><a href="#强迁移vs-弱迁移" class="headerlink" title="强迁移vs.弱迁移"></a>强迁移vs.弱迁移</h2><p>Strong and weak mobility</p>
+<h2 id="强迁移 vs- 弱迁移"><a href="# 强迁移 vs- 弱迁移" class="headerlink" title="强迁移 vs. 弱迁移"></a>强迁移 vs. 弱迁移</h2><p>Strong and weak mobility</p>
 <ul>
 <li>Code segment: contains the actual code</li>
 <li>Data segment: contains the state</li>
@@ -431,7 +441,7 @@
 </ul>
 </li>
 </ul>
-<h1 id="通信"><a href="#通信" class="headerlink" title="通信"></a>通信</h1><h2 id="通信的类型"><a href="#通信的类型" class="headerlink" title="通信的类型"></a>通信的类型</h2><ul>
+<h1 id="通信"><a href="# 通信" class="headerlink" title="通信"></a>通信 </h1><h2 id="通信的类型"><a href="# 通信的类型" class="headerlink" title="通信的类型"></a> 通信的类型</h2><ul>
 <li>Transient vs. persistent communication<ul>
 <li>Transient communication: Comm. server discards message when it cannot be delivered at the next server, or at the receiver.</li>
 <li>Persistent communication: A message is stored at a communication server as long as it takes to deliver it.</li>
@@ -466,7 +476,7 @@
 <li>Sender need not wait for immediate reply, but can do other<br>things</li>
 <li>Middleware often ensures fault tolerance</li>
 </ul>
-<h2 id="远程过程调用RPC"><a href="#远程过程调用RPC" class="headerlink" title="远程过程调用RPC"></a>远程过程调用RPC</h2><h3 id="RPC的工作过程"><a href="#RPC的工作过程" class="headerlink" title="RPC的工作过程"></a>RPC的工作过程</h3><ul>
+<h2 id="远程过程调用 RPC"><a href="# 远程过程调用 RPC" class="headerlink" title="远程过程调用 RPC"></a>远程过程调用 RPC</h2><h3 id="RPC 的工作过程"><a href="#RPC 的工作过程" class="headerlink" title="RPC 的工作过程"></a>RPC 的工作过程</h3><ul>
 <li>Observations<ul>
 <li>Application developers are familiar with simple procedure model</li>
 <li>Well-engineered procedures operate in isolation (black box)</li>
@@ -475,7 +485,7 @@
 </li>
 <li>Communication between caller &amp; callee can be hidden by using procedurecall mechanism.</li>
 </ul>
-<h3 id="参数传递"><a href="#参数传递" class="headerlink" title="参数传递"></a>参数传递</h3><ul>
+<h3 id="参数传递"><a href="# 参数传递" class="headerlink" title="参数传递"></a>参数传递</h3><ul>
 <li>There’s more than just wrapping parameters into a message:<ul>
 <li>Client and server machines may have different data representations (think of byte ordering)</li>
 <li>Wrapping a parameter means transforming a value into a sequence of bytes</li>
@@ -499,11 +509,11 @@
 </ul>
 </li>
 </ul>
-<h3 id="故障处理"><a href="#故障处理" class="headerlink" title="故障处理"></a>故障处理</h3><p>// TODO</p>
+<h3 id="故障处理"><a href="# 故障处理" class="headerlink" title="故障处理"></a>故障处理</h3><p>// TODO</p>
 <ul>
 <li>客户端无法定位到服务器<ul>
 <li>服务器下线、服务器与客户端版本不一致</li>
-<li>使用特定的符号作为RPC的返回值</li>
+<li>使用特定的符号作为 RPC 的返回值</li>
 <li>抛出一个异常或者信号</li>
 </ul>
 </li>
@@ -519,19 +529,19 @@
 </ul>
 </li>
 <li>服务器崩溃<ul>
-<li>等待服务器重启，重新操作，保证RPC至少被运行一次</li>
-<li>立刻放弃并报告错误，保证RPC至多被运行一次</li>
+<li>等待服务器重启，重新操作，保证 RPC 至少被运行一次</li>
+<li>立刻放弃并报告错误，保证 RPC 至多被运行一次</li>
 <li>什么都不做，不保证任何情况</li>
 </ul>
 </li>
 <li>客户端崩溃<ul>
-<li>使用日志记录每个RPC</li>
+<li>使用日志记录每个 RPC</li>
 <li>按时间进行分片</li>
-<li>为每个RPC记录一个过期时间</li>
+<li>为每个 RPC 记录一个过期时间</li>
 </ul>
 </li>
 </ul>
-<h3 id="动态绑定"><a href="#动态绑定" class="headerlink" title="动态绑定"></a>动态绑定</h3><ul>
+<h3 id="动态绑定"><a href="# 动态绑定" class="headerlink" title="动态绑定"></a>动态绑定</h3><ul>
 <li><p>To register, the server gives the binder its name, its version number, a unique identifier (32-bits), and a handle used to locate it</p>
 </li>
 <li><p>The handle is system dependent (e.g., Ethernet address, IP address, an X.500 address, …)</p>
@@ -563,7 +573,7 @@
 <li>The extra overhead of exporting/importing interfaces costs time</li>
 <li>The binder may become a bottleneck in a large distributed system</li>
 </ul>
-<h2 id="基于消息的通信"><a href="#基于消息的通信" class="headerlink" title="基于消息的通信"></a>基于消息的通信</h2><ul>
+<h2 id="基于消息的通信"><a href="# 基于消息的通信" class="headerlink" title="基于消息的通信"></a>基于消息的通信</h2><ul>
 <li>Lower-level interface to provide more flexibility</li>
 <li>Two (abstract) primitives are used to implement these</li>
 <li>Send</li>
@@ -572,21 +582,21 @@
 <li>Are primitives blocking or nonblocking (synchronous or<br>asynchronous)?</li>
 <li>Are primitives reliable or unreliable (persistent or transient)?</li>
 </ul>
-<h3 id="持久性-非持久性"><a href="#持久性-非持久性" class="headerlink" title="持久性/非持久性"></a>持久性/非持久性</h3><ul>
+<h3 id="持久性 - 非持久性"><a href="# 持久性 - 非持久性" class="headerlink" title="持久性 / 非持久性"></a>持久性 / 非持久性</h3><ul>
 <li>Transient</li>
 <li>The sender puts the message on the net and if it cannot be<br>delivered to the sender or to the next communication host, it is<br>lost.</li>
 <li>There can be different types depending on whether it is<br>asynchronous or synchronous</li>
 <li>Persistent</li>
 <li>The message is stored in the communication system as long as it<br>takes to deliver the message to the receiver</li>
 </ul>
-<h3 id="同步-异步"><a href="#同步-异步" class="headerlink" title="同步/异步"></a>同步/异步</h3><ul>
+<h3 id="同步 - 异步"><a href="# 同步 - 异步" class="headerlink" title="同步 / 异步"></a>同步 / 异步</h3><ul>
 <li>Synchronous</li>
 <li>The sender is blocked until its message is stored in the local<br>buffer at the receiving host or delivered to the receiver.</li>
 <li>Asynchronous</li>
 <li>The sender continues immediately after executing a send</li>
 <li>The message is stored in the local buffer at the sending host or<br>at the first communication server.</li>
 </ul>
-<h3 id="流数据"><a href="#流数据" class="headerlink" title="流数据"></a>流数据</h3><ul>
+<h3 id="流数据"><a href="# 流数据" class="headerlink" title="流数据"></a>流数据</h3><ul>
 <li>A (continuous) data stream is a connection-oriented communication facility that supports isochronous data transmission.</li>
 <li>Some common stream characteristics<ul>
 <li>Streams are unidirectional</li>
@@ -597,7 +607,7 @@
 </ul>
 </li>
 </ul>
-<h1 id="同步与资源管理"><a href="#同步与资源管理" class="headerlink" title="同步与资源管理"></a>同步与资源管理</h1><h2 id="同步问题"><a href="#同步问题" class="headerlink" title="同步问题"></a>同步问题</h2><ul>
+<h1 id="同步与资源管理"><a href="# 同步与资源管理" class="headerlink" title="同步与资源管理"></a>同步与资源管理 </h1><h2 id="同步问题"><a href="# 同步问题" class="headerlink" title="同步问题"></a> 同步问题</h2><ul>
 <li>How processes cooperate and synchronize with one another in a distributed system<ul>
 <li>In single CPU systems, critical regions, mutual exclusion, and other synchronization problems are solved using methods such as semaphores.</li>
 <li>These methods will not work in distributed systems because they implicitly rely on the existence of shared memory.<ul>
@@ -612,13 +622,13 @@
 </ul>
 </li>
 </ul>
-<h2 id="时钟同步机制"><a href="#时钟同步机制" class="headerlink" title="时钟同步机制"></a>时钟同步机制</h2><ul>
+<h2 id="时钟同步机制"><a href="# 时钟同步机制" class="headerlink" title="时钟同步机制"></a>时钟同步机制</h2><ul>
 <li>In a centralized system:<ul>
 <li>Time is unambiguous: A process gets the time by issuing a system call to the kernel. If process A gets the time and latter process B gets the time. The value B gets is higher than (or possibly equal to) the value A got </li>
 </ul>
 </li>
 </ul>
-<h2 id="逻辑时钟"><a href="#逻辑时钟" class="headerlink" title="逻辑时钟"></a>逻辑时钟</h2><ul>
+<h2 id="逻辑时钟"><a href="# 逻辑时钟" class="headerlink" title="逻辑时钟"></a>逻辑时钟</h2><ul>
 <li>How do we maintain a global view on the system’s behavior<br>that is consistent with the happened-before relation?</li>
 <li>Attach a timestamp C(e) to each event e, satisfying the<br>following properties:</li>
 <li>P1: If a and b are two events in the same process, and a!=b, then<br>we demand that C 𝑎𝑎 &lt; 𝐶𝐶(𝑏𝑏).</li>
@@ -635,7 +645,7 @@
 <li>For algorithms where only internal consistency of clocks matters (not whether clocks are close to real time), we speak of logical clocks.</li>
 <li>For algorithms where clocks must not only be the same, but also must not deviate from real-time, we speak of physical clocks.</li>
 </ul>
-<h3 id="Lamport算法"><a href="#Lamport算法" class="headerlink" title="Lamport算法"></a>Lamport算法</h3><ul>
+<h3 id="Lamport 算法"><a href="#Lamport 算法" class="headerlink" title="Lamport 算法"></a>Lamport 算法</h3><ul>
 <li>Each process 𝑃𝑃𝑖𝑖 maintains a local counter 𝐶𝐶𝑖𝑖 and adjusts this counter according to the following rules:<ol>
 <li>For any two successive events that take place within $P_i$ , $C_i$ is incremented by 1.</li>
 <li>Each time a message m is sent by process $P_i$ , the message receives a timestamp $ts(m)=C_i$ .</li>
@@ -645,15 +655,15 @@
 <li>Property P1 is satisfied by (1); Property P2 by (2) and (3).</li>
 <li>It can still occur that two events happen at the same time. Avoid this by breaking ties through process IDs.</li>
 </ul>
-<h3 id="向量时戳"><a href="#向量时戳" class="headerlink" title="向量时戳"></a>向量时戳</h3><p><img src="https://s2.ax1x.com/2020/01/01/lJ0TFx.png" alt="lJ0TFx.png"></p>
-<h2 id="分布式系统中的互斥访问"><a href="#分布式系统中的互斥访问" class="headerlink" title="分布式系统中的互斥访问"></a>分布式系统中的互斥访问</h2><ul>
+<h3 id="向量时戳"><a href="# 向量时戳" class="headerlink" title="向量时戳"></a>向量时戳</h3><p><img src="https://s2.ax1x.com/2020/01/01/lJ0TFx.png" alt="lJ0TFx.png"></p>
+<h2 id="分布式系统中的互斥访问"><a href="# 分布式系统中的互斥访问" class="headerlink" title="分布式系统中的互斥访问"></a>分布式系统中的互斥访问</h2><ul>
 <li>Basic solutions</li>
 <li>Via a centralized server.</li>
 <li>Completely decentralized, using a peer-to-peer system.</li>
 <li>Completely distributed, with no topology imposed.</li>
 <li>Completely distributed along a (logical) ring.</li>
 </ul>
-<h2 id="分布式系统中的选举机制"><a href="#分布式系统中的选举机制" class="headerlink" title="分布式系统中的选举机制"></a>分布式系统中的选举机制</h2><h1 id="复制与一致性"><a href="#复制与一致性" class="headerlink" title="复制与一致性"></a>复制与一致性</h1><h2 id="复制的优势与不足"><a href="#复制的优势与不足" class="headerlink" title="复制的优势与不足"></a>复制的优势与不足</h2><ul>
+<h2 id="分布式系统中的选举机制"><a href="# 分布式系统中的选举机制" class="headerlink" title="分布式系统中的选举机制"></a>分布式系统中的选举机制 </h2><h1 id="复制与一致性"><a href="# 复制与一致性" class="headerlink" title="复制与一致性"></a> 复制与一致性 </h1><h2 id="复制的优势与不足"><a href="# 复制的优势与不足" class="headerlink" title="复制的优势与不足"></a> 复制的优势与不足</h2><ul>
 <li>Why replicate?<ul>
 <li>Reliability<ul>
 <li>Avoid single points of failure</li>
@@ -675,7 +685,7 @@
 </ul>
 </li>
 </ul>
-<h2 id="数据一致性模型"><a href="#数据一致性模型" class="headerlink" title="数据一致性模型"></a>数据一致性模型</h2><p><img src="https://s2.ax1x.com/2019/12/31/l1zoTA.png" alt="l1zoTA.png"></p>
+<h2 id="数据一致性模型"><a href="# 数据一致性模型" class="headerlink" title="数据一致性模型"></a>数据一致性模型</h2><p><img src="https://s2.ax1x.com/2019/12/31/l1zoTA.png" alt="l1zoTA.png"></p>
 <p>Client-Centric Consistency</p>
 <ul>
 <li>More relaxed form of consistency </li>
@@ -686,7 +696,7 @@
 </ul>
 </li>
 </ul>
-<h2 id="数据一致性协议实例"><a href="#数据一致性协议实例" class="headerlink" title="数据一致性协议实例"></a>数据一致性协议实例</h2><ul>
+<h2 id="数据一致性协议实例"><a href="# 数据一致性协议实例" class="headerlink" title="数据一致性协议实例"></a>数据一致性协议实例</h2><ul>
 <li>Linearizability<ul>
 <li>Primary-Backup</li>
 <li>Chain Replication</li>
@@ -706,8 +716,8 @@
 </ul>
 </li>
 </ul>
-<h3 id="基于法定数量的协议"><a href="#基于法定数量的协议" class="headerlink" title="基于法定数量的协议"></a>基于法定数量的协议</h3><p><img src="https://s2.ax1x.com/2020/01/02/lYHE9K.png" alt="lYHE9K.png"></p>
-<h1 id="容错"><a href="#容错" class="headerlink" title="容错"></a>容错</h1><h2 id="可信系统-DependableSystem-特征"><a href="#可信系统-DependableSystem-特征" class="headerlink" title="可信系统(DependableSystem)特征"></a>可信系统(DependableSystem)特征</h2><ul>
+<h3 id="基于法定数量的协议"><a href="# 基于法定数量的协议" class="headerlink" title="基于法定数量的协议"></a>基于法定数量的协议</h3><p><img src="https://s2.ax1x.com/2020/01/02/lYHE9K.png" alt="lYHE9K.png"></p>
+<h1 id="容错"><a href="# 容错" class="headerlink" title="容错"></a>容错 </h1><h2 id="可信系统 -DependableSystem- 特征"><a href="# 可信系统 -DependableSystem- 特征" class="headerlink" title="可信系统(DependableSystem) 特征"></a>可信系统 (DependableSystem) 特征</h2><ul>
 <li>可靠性：Reliability<ul>
 <li>系统的表现符合预期设定</li>
 <li>系统在给定时间内不出现任何故障的概率</li>
@@ -728,7 +738,7 @@
 </ul>
 </li>
 </ul>
-<h2 id="提高系统可信性的途径"><a href="#提高系统可信性的途径" class="headerlink" title="提高系统可信性的途径"></a>提高系统可信性的途径</h2><ul>
+<h2 id="提高系统可信性的途径"><a href="# 提高系统可信性的途径" class="headerlink" title="提高系统可信性的途径"></a>提高系统可信性的途径</h2><ul>
 <li>通过冗余掩饰系统异常<ul>
 <li>冗余信息<ul>
 <li>通过附加额外的比特检测和恢复传输错误</li>
@@ -756,7 +766,7 @@
 </ul>
 </li>
 </ul>
-<h2 id="K容错系统"><a href="#K容错系统" class="headerlink" title="K容错系统"></a>K容错系统</h2><ul>
+<h2 id="K 容错系统"><a href="#K 容错系统" class="headerlink" title="K 容错系统"></a>K 容错系统</h2><ul>
 <li>K 容错系统需要的备份数:<ul>
 <li>Fail-silent faults : K+1</li>
 <li>Byzantine faults : 2K+1 : majority</li>
@@ -769,15 +779,15 @@
 </ul>
 </li>
 </ul>
-<h2 id="拜占庭问题（Byzantine-Problem）"><a href="#拜占庭问题（Byzantine-Problem）" class="headerlink" title="拜占庭问题（Byzantine Problem）"></a>拜占庭问题（Byzantine Problem）</h2><p>Algorithm to reach agreement. They perform the following :</p>
+<h2 id="拜占庭问题（Byzantine-Problem）"><a href="# 拜占庭问题（Byzantine-Problem）" class="headerlink" title="拜占庭问题（Byzantine Problem）"></a>拜占庭问题（Byzantine Problem）</h2><p>Algorithm to reach agreement. They perform the following :</p>
 <ol>
-<li>step 1: every general sends a message to every other general telling his strength ( true or lie)</li>
+<li>step 1: every general sends a message to every other general telling his strength (true or lie)</li>
 <li>step 2: each general collects received messages to form a vector</li>
 <li>step 3: every general passes his vector to every other general</li>
 <li>step 4: each general examines the ith element of each of the newly received vectors. </li>
 <li>If any value has a majority, that value is put into the result vector</li>
 </ol>
-<h2 id="系统恢复"><a href="#系统恢复" class="headerlink" title="系统恢复"></a>系统恢复</h2><p><img src="https://s2.ax1x.com/2019/12/31/l3SDc8.png" alt="l3SDc8.png"></p>
+<h2 id="系统恢复"><a href="# 系统恢复" class="headerlink" title="系统恢复"></a>系统恢复</h2><p><img src="https://s2.ax1x.com/2019/12/31/l3SDc8.png" alt="l3SDc8.png"></p>
 <ul>
 <li>回退恢复</li>
 <li>前向恢复</li>
@@ -786,16 +796,27 @@
 
         </div>
         
-            <ul class="post-copyright">
+        <ul class="post-copyright">
             <li><strong>本文标题：</strong><a href="http://blog.czcc.me/p/7af16b6e/">Distributed System</a></li>
             <li><strong>本文作者：</strong><a href="http://blog.czcc.me">Cheng</a></li>
             <li><strong>本文链接：</strong><a href="http://blog.czcc.me/p/7af16b6e/">http://blog.czcc.me/p/7af16b6e/</a></li>
             <li><strong>发布时间：</strong>2019-12-31</li>
-            <li><strong>版权声明：</strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！
+            <li><strong>版权声明：</strong>本博客所有文章除特别声明外，均采用 <a
+                    href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="external nofollow"
+                    target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！
             </li>
-            </ul>
-            <br>
+        </ul>
+        <br>
         
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/NJU/">NJU</a>, <a class="has-link-grey -link" href="/tags/分布式系统/">分布式系统</a>, <a class="has-link-grey -link" href="/tags/课程总结/">课程总结</a>
+                </div>
+            </div>
+        </div>
         
         
         
@@ -810,29 +831,29 @@
 
 <div class="card">
     <div class="card-content">
-        <h3 class="menu-label has-text-centered">Like this article? Support the author with</h3>
+        <h3 class="menu-label has-text-centered">喜欢这篇文章？打赏一下作者吧</h3>
         <div class="buttons is-centered">
             
-                
+            
 <a class="button is-info donate">
     <span class="icon is-small">
         <i class="fab fa-alipay"></i>
     </span>
-    <span>Alipay</span>
-    <div class="qrcode"><img src="/images/Alipay.jpg" alt="Alipay"></div>
+    <span>支付宝</span>
+    <div class="qrcode"><img src="/images/Alipay.jpg" alt="支付宝"></div>
 </a>
 
-                
-                
+            
+            
 <a class="button is-success donate">
     <span class="icon is-small">
         <i class="fab fa-weixin"></i>
     </span>
-    <span>Wechat</span>
-    <div class="qrcode"><img src="/images/WeChat_pay.png" alt="Wechat"></div>
+    <span>微信</span>
+    <div class="qrcode"><img src="/images/WeChat_pay.png" alt="微信"></div>
 </a>
 
-                
+            
         </div>
     </div>
 </div>
@@ -843,15 +864,17 @@
     <div class="level post-navigation is-flex-wrap is-mobile">
         
         <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/p/7e4fc966/">
+            <a class="level level-item has-link-grey  article-nav-prev"
+                href="/p/7e4fc966/">
                 <i class="level-item fas fa-chevron-left"></i>
-                <span class="level-item">西瓜书第10章：降维与度量学习</span>
+                <span class="level-item">西瓜书第 10 章：降维与度量学习</span>
             </a>
         </div>
         
         
         <div class="level-end">
-            <a class="level level-item has-link-grey  article-nav-next" href="/p/c27cf766/">
+            <a class="level level-item has-link-grey  article-nav-next"
+                href="/p/c27cf766/">
                 <span class="level-item">MapReduce 课程总结</span>
                 <i class="level-item fas fa-chevron-right"></i>
             </a>
@@ -864,7 +887,7 @@
 
 <div class="card">
     <div class="card-content">
-        <h3 class="title is-5 has-text-weight-normal">Comments</h3>
+        <h3 class="title is-5 has-text-weight-normal">评论</h3>
         
 <script>
     var disqus_config = function () {
@@ -901,7 +924,7 @@
                 <div>
                     
                     <figure class="image is-128x128 has-mb-6">
-                        <img class="" src="/images/avatar.png" alt="Cheng">
+                        <img class="" src="/images/avatar.jpg" alt="Cheng">
                     </figure>
                     
                     <p class="is-size-4 is-block">
@@ -926,11 +949,11 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Posts
+                        Post
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            25
+                            36
                         </p>
                     </a>
                 </div>
@@ -938,11 +961,11 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Categories
+                        Category
                     </p>
                     <a href="/categories">
                         <p class="title has-text-weight-normal">
-                            8
+                            14
                         </p>
                     </a>
                 </div>
@@ -950,11 +973,11 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Tags
+                        Tag
                     </p>
                     <a href="/tags">
                         <p class="title has-text-weight-normal">
-                            20
+                            38
                         </p>
                     </a>
                 </div>
@@ -1000,11 +1023,11 @@
             <ul class="menu-list"><li>
         <a class="is-flex" href="#分布式系统模型">
         <span class="has-mr-6">1</span>
-        <span>分布式系统模型</span>
+        <span>分布式系统模型 </span>
         </a><ul class="menu-list"><li>
         <a class="is-flex" href="#什么是分布式系统">
         <span class="has-mr-6">1.1</span>
-        <span>什么是分布式系统</span>
+        <span> 什么是分布式系统</span>
         </a></li><li>
         <a class="is-flex" href="#分布式系统的目标">
         <span class="has-mr-6">1.2</span>
@@ -1036,11 +1059,11 @@
         </a></li></ul></li><li>
         <a class="is-flex" href="#分布式系统架构">
         <span class="has-mr-6">2</span>
-        <span>分布式系统架构</span>
+        <span>分布式系统架构 </span>
         </a><ul class="menu-list"><li>
         <a class="is-flex" href="#分布式系统架构风格">
         <span class="has-mr-6">2.1</span>
-        <span>分布式系统架构风格</span>
+        <span> 分布式系统架构风格</span>
         </a><ul class="menu-list"><li>
         <a class="is-flex" href="#Centralized">
         <span class="has-mr-6">2.1.1</span>
@@ -1058,45 +1081,45 @@
         <span class="has-mr-6">2.2</span>
         <span>分布式系统组织形式</span>
         </a></li><li>
-        <a class="is-flex" href="#客户-服务器模式和对等模式">
+        <a class="is-flex" href="#客户 - 服务器模式和对等模式">
         <span class="has-mr-6">2.3</span>
-        <span>客户-服务器模式和对等模式</span>
+        <span>客户 - 服务器模式和对等模式 </span>
         </a></li><li>
         <a class="is-flex" href="#分布式系统组织为中间件">
         <span class="has-mr-6">2.4</span>
-        <span>分布式系统组织为中间件</span>
+        <span> 分布式系统组织为中间件</span>
         </a></li></ul></li><li>
         <a class="is-flex" href="#进程与线程">
         <span class="has-mr-6">3</span>
-        <span>进程与线程</span>
+        <span>进程与线程 </span>
         </a><ul class="menu-list"><li>
         <a class="is-flex" href="#进程和线程">
         <span class="has-mr-6">3.1</span>
-        <span>进程和线程</span>
+        <span> 进程和线程</span>
         </a></li><li>
         <a class="is-flex" href="#代码迁移">
         <span class="has-mr-6">3.2</span>
         <span>代码迁移</span>
         </a></li><li>
-        <a class="is-flex" href="#强迁移vs-弱迁移">
+        <a class="is-flex" href="#强迁移 vs- 弱迁移">
         <span class="has-mr-6">3.3</span>
-        <span>强迁移vs.弱迁移</span>
+        <span>强迁移 vs. 弱迁移</span>
         </a></li></ul></li><li>
         <a class="is-flex" href="#通信">
         <span class="has-mr-6">4</span>
-        <span>通信</span>
+        <span>通信 </span>
         </a><ul class="menu-list"><li>
         <a class="is-flex" href="#通信的类型">
         <span class="has-mr-6">4.1</span>
-        <span>通信的类型</span>
+        <span> 通信的类型</span>
         </a></li><li>
-        <a class="is-flex" href="#远程过程调用RPC">
+        <a class="is-flex" href="#远程过程调用 RPC">
         <span class="has-mr-6">4.2</span>
-        <span>远程过程调用RPC</span>
+        <span>远程过程调用 RPC</span>
         </a><ul class="menu-list"><li>
-        <a class="is-flex" href="#RPC的工作过程">
+        <a class="is-flex" href="#RPC 的工作过程">
         <span class="has-mr-6">4.2.1</span>
-        <span>RPC的工作过程</span>
+        <span>RPC 的工作过程</span>
         </a></li><li>
         <a class="is-flex" href="#参数传递">
         <span class="has-mr-6">4.2.2</span>
@@ -1114,13 +1137,13 @@
         <span class="has-mr-6">4.3</span>
         <span>基于消息的通信</span>
         </a><ul class="menu-list"><li>
-        <a class="is-flex" href="#持久性-非持久性">
+        <a class="is-flex" href="#持久性 - 非持久性">
         <span class="has-mr-6">4.3.1</span>
-        <span>持久性/非持久性</span>
+        <span>持久性 / 非持久性</span>
         </a></li><li>
-        <a class="is-flex" href="#同步-异步">
+        <a class="is-flex" href="#同步 - 异步">
         <span class="has-mr-6">4.3.2</span>
-        <span>同步/异步</span>
+        <span>同步 / 异步</span>
         </a></li><li>
         <a class="is-flex" href="#流数据">
         <span class="has-mr-6">4.3.3</span>
@@ -1128,11 +1151,11 @@
         </a></li></ul></li></ul></li><li>
         <a class="is-flex" href="#同步与资源管理">
         <span class="has-mr-6">5</span>
-        <span>同步与资源管理</span>
+        <span>同步与资源管理 </span>
         </a><ul class="menu-list"><li>
         <a class="is-flex" href="#同步问题">
         <span class="has-mr-6">5.1</span>
-        <span>同步问题</span>
+        <span> 同步问题</span>
         </a></li><li>
         <a class="is-flex" href="#时钟同步机制">
         <span class="has-mr-6">5.2</span>
@@ -1142,9 +1165,9 @@
         <span class="has-mr-6">5.3</span>
         <span>逻辑时钟</span>
         </a><ul class="menu-list"><li>
-        <a class="is-flex" href="#Lamport算法">
+        <a class="is-flex" href="#Lamport 算法">
         <span class="has-mr-6">5.3.1</span>
-        <span>Lamport算法</span>
+        <span>Lamport 算法</span>
         </a></li><li>
         <a class="is-flex" href="#向量时戳">
         <span class="has-mr-6">5.3.2</span>
@@ -1156,15 +1179,15 @@
         </a></li><li>
         <a class="is-flex" href="#分布式系统中的选举机制">
         <span class="has-mr-6">5.5</span>
-        <span>分布式系统中的选举机制</span>
+        <span>分布式系统中的选举机制 </span>
         </a></li></ul></li><li>
         <a class="is-flex" href="#复制与一致性">
         <span class="has-mr-6">6</span>
-        <span>复制与一致性</span>
+        <span> 复制与一致性 </span>
         </a><ul class="menu-list"><li>
         <a class="is-flex" href="#复制的优势与不足">
         <span class="has-mr-6">6.1</span>
-        <span>复制的优势与不足</span>
+        <span> 复制的优势与不足</span>
         </a></li><li>
         <a class="is-flex" href="#数据一致性模型">
         <span class="has-mr-6">6.2</span>
@@ -1180,19 +1203,19 @@
         </a></li></ul></li></ul></li><li>
         <a class="is-flex" href="#容错">
         <span class="has-mr-6">7</span>
-        <span>容错</span>
+        <span>容错 </span>
         </a><ul class="menu-list"><li>
-        <a class="is-flex" href="#可信系统-DependableSystem-特征">
+        <a class="is-flex" href="#可信系统 -DependableSystem- 特征">
         <span class="has-mr-6">7.1</span>
-        <span>可信系统(DependableSystem)特征</span>
+        <span>可信系统 (DependableSystem) 特征</span>
         </a></li><li>
         <a class="is-flex" href="#提高系统可信性的途径">
         <span class="has-mr-6">7.2</span>
         <span>提高系统可信性的途径</span>
         </a></li><li>
-        <a class="is-flex" href="#K容错系统">
+        <a class="is-flex" href="#K 容错系统">
         <span class="has-mr-6">7.3</span>
-        <span>K容错系统</span>
+        <span>K 容错系统</span>
         </a></li><li>
         <a class="is-flex" href="#拜占庭问题（Byzantine-Problem）">
         <span class="has-mr-6">7.4</span>
@@ -1235,7 +1258,7 @@
                 
                 <br>
                 <span id="busuanzi_container_site_uv">
-                Visited by <span id="busuanzi_value_site_uv">0</span> users
+                共<span id="busuanzi_value_site_uv">0</span>个访客
                 </span>
                 
                 </p>
@@ -1276,7 +1299,7 @@
 </footer>
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
-<script>moment.locale("en");</script>
+<script>moment.locale("zh-CN");</script>
 
 
 <script>
@@ -1353,7 +1376,7 @@ document.addEventListener('DOMContentLoaded', function () {
 </script>
 
 
-<a id="back-to-top" title="Back to Top" href="javascript:;">
+<a id="back-to-top" title="回到顶端" href="javascript:;">
     <i class="fas fa-chevron-up"></i>
 </a>
 <script src="/js/back-to-top.js" defer></script>
@@ -1377,7 +1400,7 @@ document.addEventListener('DOMContentLoaded', function () {
     <div class="searchbox ins-search">
     <div class="searchbox-container ins-search-container">
         <div class="searchbox-input-wrapper">
-            <input type="text" class="searchbox-input ins-search-input" placeholder="Type something..." />
+            <input type="text" class="searchbox-input ins-search-input" placeholder="想要查找什么..." />
             <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
         </div>
         <div class="searchbox-result-wrapper ins-section-wrapper">
@@ -1389,11 +1412,11 @@ document.addEventListener('DOMContentLoaded', function () {
     (function (window) {
         var INSIGHT_CONFIG = {
             TRANSLATION: {
-                POSTS: 'Posts',
-                PAGES: 'Pages',
-                CATEGORIES: 'Categories',
-                TAGS: 'Tags',
-                UNTITLED: '(Untitled)',
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(无标题)',
             },
             CONTENT_URL: '/content.json',
         };

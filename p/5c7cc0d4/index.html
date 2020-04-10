@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html  lang="en">
+<html  lang="zh">
 
 <head>
     <meta charset="utf-8" />
@@ -12,15 +12,15 @@
 
 
     <meta name="description" content="第一章  绪论">
-<meta name="keywords" content="ML">
+<meta name="keywords" content="机器学习,Machine Learning,西瓜书">
 <meta property="og:type" content="article">
 <meta property="og:title" content="西瓜书第一章">
 <meta property="og:url" content="http://blog.czcc.me/p/5c7cc0d4/index.html">
 <meta property="og:site_name" content="CZCC">
 <meta property="og:description" content="第一章  绪论">
-<meta property="og:locale" content="en">
+<meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://blog.czcc.me/images/og_image.png">
-<meta property="og:updated_time" content="2020-01-03T08:18:06.218Z">
+<meta property="og:updated_time" content="2020-01-13T15:11:17.980Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="西瓜书第一章">
 <meta name="twitter:description" content="第一章  绪论">
@@ -107,6 +107,9 @@
                 href="/tags">Tags</a>
                 
                 <a class="navbar-item"
+                href="/categories/LeetCode">LeetCode</a>
+                
+                <a class="navbar-item"
                 href="/about">About</a>
                 
             </div>
@@ -127,7 +130,7 @@
                 </a>
                 
                 
-                <a class="navbar-item search" title="Search" href="javascript:;">
+                <a class="navbar-item search" title="搜索" href="javascript:;">
                     <i class="fas fa-search"></i>
                 </a>
                 
@@ -145,11 +148,11 @@
     <div class="card-content article ">
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <i class="fas fa-angle-double-right"></i>&nbsp;&nbsp;西瓜书第一章
+            <i class="fas fa-angle-double-right"></i>&nbsp;&nbsp;西瓜书第一章
             
         </h1>
         
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+        <div class="level article-meta is-size-7 is-mobile is-overflow-x-auto">
             <div class="level-left">
                 <!-- <time class="level-item has-text-grey" datetime="2019-09-18T14:40:18.000Z">2019-09-18</time> -->
                 <time class="level-item has-text-grey" datetime="2019-09-18T14:40:18.000Z">
@@ -157,21 +160,27 @@
                     2019-09-18
                 </time>
                 
-                    <time class="level-item has-text-grey is-hidden-mobile" datetime="2020-01-03T08:18:06.218Z"><i class="far fa-calendar-check">&nbsp;</i>2020-01-03</time>
+                <time class="level-item has-text-grey is-hidden-mobile" datetime="2020-01-13T15:11:17.980Z"><i
+                        class="far fa-calendar-check">&nbsp;</i>2020-01-13</time>
                 
+                
+                <div class="level-item">
+                    <i class="far fa-folder">&nbsp;</i>
+                    <a class="has-link-grey -link" href="/categories/NJU/">NJU</a>
+                </div>
                 
                 
                 <span class="level-item has-text-grey">
                     <i class="far fa-hourglass">&nbsp;&nbsp;</i>
                     
                     
-                    12 minutes read (About 1779 words)
+                    12 分钟   (约 1779 字)
                 </span>
                 
                 
                 <span class="level-item has-text-grey" id="busuanzi_container_page_pv">
                     <i class="far fa-eye"></i>
-                    <span id="busuanzi_value_page_pv">0</span> visits
+                    <span id="busuanzi_value_page_pv">0</span>次访问
                 </span>
                 
             </div>
@@ -187,35 +196,35 @@
 <hr>
 <a id="more"></a>
 
-<h1 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h1><ol>
+<h1 id="基本概念"><a href="# 基本概念" class="headerlink" title="基本概念"></a>基本概念</h1><ol>
 <li><strong>学习算法</strong>：假设用 <code>P</code> 来估计计算机程序在某任务 <code>T</code> 上的性能，若一个程序通过利用经验 <code>E</code> 在 <code>T</code> 任务上获得了性能改善，则我们就说关于 <code>T</code> 和 <code>P</code>，该程序对 <code>E</code> 进行了学习。</li>
 <li><strong>模型</strong>：本书中泛指从数据中学得的结果</li>
-<li><strong>示例</strong>（instance）或<strong>样本</strong>（sample）：关于一个事件或对象的描述，也可称为<strong>特征向量</strong></li>
+<li><strong>示例 </strong>（instance）或<strong> 样本 </strong>（sample）：关于一个事件或对象的描述，也可称为<strong> 特征向量</strong></li>
 <li><strong>样例</strong>（example）：拥有标记信息的示例</li>
-<li><strong>属性</strong>（attribute）或<strong>特征</strong>（feature）：反映事件或对象在某方面的表现或性质，其值为<strong>属性值</strong></li>
+<li><strong>属性 </strong>（attribute）或<strong> 特征 </strong>（feature）：反映事件或对象在某方面的表现或性质，其值为<strong> 属性值</strong></li>
 <li><strong>数据集</strong>（data set）：记录的集合，每条记录都是一个示例或样本</li>
 <li><strong>属性空间、样本空间、输入空间</strong>：属性张成的空间</li>
 <li><strong>标记空间、输出空间</strong>：所有标记的集合</li>
-<li><strong>监督学习</strong>：预测离散值：<strong>分类</strong>（二分类（正类、反类）、多分类）；预测连续值：<strong>回归</strong></li>
-<li><strong>无监督学习</strong>：<strong>聚类</strong>（clustering）：将训练集（无标记）中的样本自动分为若干组，每组称为一个簇（cluster）</li>
+<li><strong>监督学习 </strong>：预测离散值：<strong> 分类 </strong>（二分类（正类、反类）、多分类）；预测连续值：<strong> 回归</strong></li>
+<li><strong>无监督学习 </strong>：<strong> 聚类</strong>（clustering）：将训练集（无标记）中的样本自动分为若干组，每组称为一个簇（cluster）</li>
 <li><strong>泛化</strong>（generalization）能力：学得模型适用于新样本的能力</li>
 </ol>
-<h1 id="假设空间"><a href="#假设空间" class="headerlink" title="假设空间"></a>假设空间</h1><p>若“好瓜”仅由“色泽”、“根蒂”、“敲声”完全确定：“ <strong>$好瓜 \longleftrightarrow (色泽=?) \bigwedge (根蒂=?) \bigwedge (敲声=?)$</strong> ”</p>
-<p>我们可以把学习过程看做在一个所有假设组成的空间内进行搜索的过程，搜索目标是寻找与训练集匹配(fit)的假设。</p>
-<p>这样，若色泽、根蒂、敲声分别有3，3，3种可能取值，再考虑可以取任意值(*)，则假设空间的规模即为 4*4*4+1=65</p>
-<p>对<strong>假设空间</strong>进行搜索，搜索过程中不断删除与正例不一致、与反例一致的假设，最终即可得到与训练集一致的假设，可能会包含多个假设，称之为<strong>版本空间</strong></p>
+<h1 id="假设空间"><a href="# 假设空间" class="headerlink" title="假设空间"></a>假设空间 </h1><p> 若“好瓜”仅由“色泽”、“根蒂”、“敲声”完全确定：“ <strong>$ 好瓜 \longleftrightarrow (色泽 =?) \bigwedge (根蒂 =?) \bigwedge (敲声 =?)$</strong> ”</p>
+<p>我们可以把学习过程看做在一个所有假设组成的空间内进行搜索的过程，搜索目标是寻找与训练集匹配 (fit) 的假设。</p>
+<p>这样，若色泽、根蒂、敲声分别有 3，3，3 种可能取值，再考虑可以取任意值(*)，则假设空间的规模即为 4*4*4+1=65</p>
+<p>对 <strong> 假设空间 </strong> 进行搜索，搜索过程中不断删除与正例不一致、与反例一致的假设，最终即可得到与训练集一致的假设，可能会包含多个假设，称之为 <strong> 版本空间</strong></p>
 <p>版本空间从假设空间剔除了与正例不一致和与反例一致的假设，它可以看成是对正例的最大泛化。</p>
-<h1 id="归纳偏好"><a href="#归纳偏好" class="headerlink" title="归纳偏好"></a>归纳偏好</h1><p>机器学习算法再学习过程中对某种类型假设的偏好，称之为<strong>归纳偏好</strong></p>
+<h1 id="归纳偏好"><a href="# 归纳偏好" class="headerlink" title="归纳偏好"></a>归纳偏好 </h1><p> 机器学习算法再学习过程中对某种类型假设的偏好，称之为 <strong> 归纳偏好</strong></p>
 <p>任何一种机器学习算法必有其归纳偏好，否则它将被假设空间内看似“等效”的假设所迷惑，而无法产生确定的结果。</p>
 <p><strong>奥卡姆剃刀</strong>（Occam’s razor）是一种常用的、自然科学研究最基本的原则：若有多个假设与观察一致，则选择最简单的那个</p>
-<p><strong>没有免费的午餐</strong>（NFL定理：No Free Lunch Theorem）：在所有问题出现的概率相等、所有问题同等重要的情况下，任何一种算法的总误差与学习算法无关。</p>
+<p><strong>没有免费的午餐</strong>（NFL 定理：No Free Lunch Theorem）：在所有问题出现的概率相等、所有问题同等重要的情况下，任何一种算法的总误差与学习算法无关。</p>
 <blockquote>
-<p>证明：<br>假设样本空间 $\chi$ 和假设空间 $H$ 都是离散的. 令 $P(h|X,L_a)$ 代表算法 $L_a$ 基于训练数据 X 产生假设 h 的概率, 再令 $f$ 表示希望学到的真实目标函数.<br>则 $L_a$ 的训练集外误差, 即 $L_a$ 在训练集外的所有样本上的误差为:($\prod(.)是指示函数$)<br>$$E_{ote}(L_a|X,f) = \sum_{h}\sum_{x\in\chi-X}{P(x)\prod(h(x)\neq f(x))P(h|X, L_a)}$$<br>考虑二分类问题, 且真实目标函数可以是任何函数 $\chi \rightarrow {\lbrace0,1\rbrace}$, 函数空间为 ${\lbrace0,1\rbrace}^{|\chi|}$<br>对所有可能的 $f$ 按均匀分布对误差求和:<br>$$<br>\begin{aligned}<br>\sum_fE_{ote}(L_a|X,f)&amp;=\sum_f\sum_h\sum_{x\in\chi-X}P(x)\prod(h(x)\neq f(x))P(h|X,L_a)\newline\<br>&amp;=\sum_{x\in\chi-X}P(x)\sum_hP(h|X,L_a)\sum_f\prod(h(x)\neq f(x))\newline\<br>&amp;=\sum_{x\in\chi-X}P(x)\sum_hP(h|X,L_a)\frac{1}{2}2^{|\chi|}\newline\<br>&amp;=\frac{1}{2}2^{|\chi|}\sum_{x\in\chi-X}P(x)\sum_hP(h|X,L_a)\newline\<br>&amp;=2^{|\chi|-1}\sum_{x\in\chi-X}P(x)<br>\end{aligned}$$<br>也即,学习算法的总误差与学习算法无关</p>
+<p>证明：<br>假设样本空间 $\chi$ 和假设空间 $H$ 都是离散的. 令 $P(h|X,L_a)$ 代表算法 $L_a$ 基于训练数据 X 产生假设 h 的概率, 再令 $f$ 表示希望学到的真实目标函数.<br>则 $L_a$ 的训练集外误差, 即 $L_a$ 在训练集外的所有样本上的误差为:($\prod(.)是指示函数 $)<br>$$E_{ote}(L_a|X,f) = \sum_{h}\sum_{x\in\chi-X}{P(x)\prod(h(x)\neq f(x))P(h|X, L_a)}$$<br>考虑二分类问题, 且真实目标函数可以是任何函数 $\chi \rightarrow {\lbrace0,1\rbrace}$, 函数空间为 ${\lbrace0,1\rbrace}^{|\chi|}$<br>对所有可能的 $f$ 按均匀分布对误差求和:<br>$$<br>\begin{aligned}<br>\sum_fE_{ote}(L_a|X,f)&amp;=\sum_f\sum_h\sum_{x\in\chi-X}P(x)\prod(h(x)\neq f(x))P(h|X,L_a)\newline\<br>&amp;=\sum_{x\in\chi-X}P(x)\sum_hP(h|X,L_a)\sum_f\prod(h(x)\neq f(x))\newline\<br>&amp;=\sum_{x\in\chi-X}P(x)\sum_hP(h|X,L_a)\frac{1}{2}2^{|\chi|}\newline\<br>&amp;=\frac{1}{2}2^{|\chi|}\sum_{x\in\chi-X}P(x)\sum_hP(h|X,L_a)\newline\<br>&amp;=2^{|\chi|-1}\sum_{x\in\chi-X}P(x)<br>\end{aligned}$$<br>也即, 学习算法的总误差与学习算法无关</p>
 </blockquote>
 <p>但是现实生活中的问题并非如此，因此必须结合具体的学习问题，设计相应的算法。</p>
 <p>要讨论学习算法的相对优劣，必须针对具体的学习问题，学习算法自身的归纳偏好与问题是否相配，往往会起到决定性的作用。</p>
-<h1 id="习题"><a href="#习题" class="headerlink" title="习题"></a>习题</h1><p>答案解析部分转载自CSDN博主「四去六进一」的原创文章：<a href="https://blog.csdn.net/icefire_tyh/article/details/52064910">参考答案总目录</a>， <a href="https://blog.csdn.net/icefire_tyh/article/details/52065224">第一章答案</a>， <a href="http://blog.csdn.net/icefire_tyh/article/details/52065626">第一章第二题答案</a></p>
-<h2 id="习题-1-1"><a href="#习题-1-1" class="headerlink" title="习题 1.1"></a>习题 1.1</h2><p>表 1.1 中若只包含编号为1,4的两个样例，试给出相应的版本空间</p>
+<h1 id="习题"><a href="# 习题" class="headerlink" title="习题"></a>习题 </h1><p> 答案解析部分转载自 CSDN 博主「四去六进一」的原创文章：<a href="https://blog.csdn.net/icefire_tyh/article/details/52064910">参考答案总目录 </a>， <a href="https://blog.csdn.net/icefire_tyh/article/details/52065224"> 第一章答案 </a>， <a href="http://blog.csdn.net/icefire_tyh/article/details/52065626"> 第一章第二题答案</a></p>
+<h2 id="习题 -1-1"><a href="# 习题 -1-1" class="headerlink" title="习题 1.1"></a>习题 1.1</h2><p>表 1.1 中若只包含编号为 1,4 的两个样例，试给出相应的版本空间</p>
 <table>
 <thead>
 <tr>
@@ -241,61 +250,63 @@
 <td>否</td>
 </tr>
 </tbody></table>
-<p>数据集有3个属性，每个属性2种取值，一共 3∗3∗3+1=283∗3∗3+1=28种假设，分别为</p>
+<p>数据集有 3 个属性，每个属性 2 种取值，一共 3∗3∗3+1=283∗3∗3+1=28 种假设，分别为</p>
 <ol>
-<li>色泽=青绿 根蒂=蜷缩 敲声=浊响</li>
-<li>色泽=青绿 根蒂=蜷缩 敲声=沉闷</li>
-<li>色泽=青绿 根蒂=稍蜷 敲声=浊响</li>
-<li>色泽=青绿 根蒂=稍蜷 敲声=沉闷</li>
-<li>色泽=乌黑 根蒂=蜷缩 敲声=浊响</li>
-<li>色泽=乌黑 根蒂=蜷缩 敲声=沉闷</li>
-<li>色泽=乌黑 根蒂=稍蜷 敲声=浊响</li>
-<li>色泽=乌黑 根蒂=稍蜷 敲声=沉闷</li>
-<li>色泽=青绿 根蒂=蜷缩 敲声=*</li>
-<li>色泽=青绿 根蒂=稍蜷 敲声=*</li>
-<li>色泽=乌黑 根蒂=蜷缩 敲声=*</li>
-<li>色泽=乌黑 根蒂=稍蜷 敲声=*</li>
-<li>色泽=青绿 根蒂=* 敲声=浊响</li>
-<li>色泽=青绿 根蒂=* 敲声=沉闷</li>
-<li>色泽=乌黑 根蒂=* 敲声=浊响</li>
-<li>色泽=乌黑 根蒂=* 敲声=沉闷</li>
-<li>色泽=* 根蒂=蜷缩 敲声=浊响</li>
-<li>色泽=* 根蒂=蜷缩 敲声=沉闷</li>
-<li>色泽=* 根蒂=稍蜷 敲声=浊响</li>
-<li>色泽=* 根蒂=稍蜷 敲声=沉闷</li>
-<li>色泽=青绿 根蒂=* 敲声=*</li>
-<li>色泽=乌黑 根蒂=* 敲声=*</li>
-<li>色泽=* 根蒂=蜷缩 敲声=*</li>
-<li>色泽=* 根蒂=稍蜷 敲声=*</li>
-<li>色泽=* 根蒂=* 敲声=浊响</li>
-<li>色泽=* 根蒂=* 敲声=沉闷</li>
-<li>色泽=* 根蒂=* 敲声=*</li>
+<li>色泽 = 青绿 根蒂 = 蜷缩 敲声 = 浊响</li>
+<li>色泽 = 青绿 根蒂 = 蜷缩 敲声 = 沉闷</li>
+<li>色泽 = 青绿 根蒂 = 稍蜷 敲声 = 浊响</li>
+<li>色泽 = 青绿 根蒂 = 稍蜷 敲声 = 沉闷</li>
+<li>色泽 = 乌黑 根蒂 = 蜷缩 敲声 = 浊响</li>
+<li>色泽 = 乌黑 根蒂 = 蜷缩 敲声 = 沉闷</li>
+<li>色泽 = 乌黑 根蒂 = 稍蜷 敲声 = 浊响</li>
+<li>色泽 = 乌黑 根蒂 = 稍蜷 敲声 = 沉闷</li>
+<li>色泽 = 青绿 根蒂 = 蜷缩 敲声 =*</li>
+<li>色泽 = 青绿 根蒂 = 稍蜷 敲声 =*</li>
+<li>色泽 = 乌黑 根蒂 = 蜷缩 敲声 =*</li>
+<li>色泽 = 乌黑 根蒂 = 稍蜷 敲声 =*</li>
+<li>色泽 = 青绿 根蒂 =* 敲声 = 浊响</li>
+<li>色泽 = 青绿 根蒂 =* 敲声 = 沉闷</li>
+<li>色泽 = 乌黑 根蒂 =* 敲声 = 浊响</li>
+<li>色泽 = 乌黑 根蒂 =* 敲声 = 沉闷</li>
+<li>色泽 =* 根蒂 = 蜷缩 敲声 = 浊响</li>
+<li>色泽 =* 根蒂 = 蜷缩 敲声 = 沉闷</li>
+<li>色泽 =* 根蒂 = 稍蜷 敲声 = 浊响</li>
+<li>色泽 =* 根蒂 = 稍蜷 敲声 = 沉闷</li>
+<li>色泽 = 青绿 根蒂 =* 敲声 =*</li>
+<li>色泽 = 乌黑 根蒂 =* 敲声 =*</li>
+<li>色泽 =* 根蒂 = 蜷缩 敲声 =*</li>
+<li>色泽 =* 根蒂 = 稍蜷 敲声 =*</li>
+<li>色泽 =* 根蒂 =* 敲声 = 浊响</li>
+<li>色泽 =* 根蒂 =* 敲声 = 沉闷</li>
+<li>色泽 =* 根蒂 =* 敲声 =*</li>
 <li>空集Ø</li>
 </ol>
-<p>编号1的数据可以删除 2−8，10−12，14−16，18−20，22，24，26，282−8，10−12，14−16，18−20，22，24，26，28(不包含数据1)</p>
-<p>编号1的数据可以删除 2 7 27(包含了数据2)</p>
+<p>编号 1 的数据可以删除 2−8，10−12，14−16，18−20，22，24，26，282−8，10−12，14−16，18−20，22，24，26，28(不包含数据 1)</p>
+<p>编号 1 的数据可以删除 2 7 27(包含了数据 2)</p>
 <p>所以版本空间为:</p>
-<p>1.色泽=青绿 根蒂=蜷缩 敲声=浊响<br>9.色泽=青绿 根蒂=蜷缩 敲声=*<br>13.色泽=青绿 根蒂=* 敲声=浊响<br>17.色泽=* 根蒂=蜷缩 敲声=浊响<br>21.色泽=青绿 根蒂=* 敲声=*<br>23.色泽=* 根蒂=蜷缩 敲声=*<br>25.色泽=* 根蒂=* 敲声=浊响</p>
-<p>一般情况下版本空间是正例的泛化，但由于数据集中只有1个正例，所以在版本空间中依然包含了这个样本的假设(假设1)。</p>
+<p>1. 色泽 = 青绿 根蒂 = 蜷缩 敲声 = 浊响<br>9. 色泽 = 青绿 根蒂 = 蜷缩 敲声 =*<br>13. 色泽 = 青绿 根蒂 =* 敲声 = 浊响<br>17. 色泽 =* 根蒂 = 蜷缩 敲声 = 浊响<br>21. 色泽 = 青绿 根蒂 =* 敲声 =*<br>23. 色泽 =* 根蒂 = 蜷缩 敲声 =*<br>25. 色泽 =* 根蒂 =* 敲声 = 浊响</p>
+<p>一般情况下版本空间是正例的泛化，但由于数据集中只有 1 个正例，所以在版本空间中依然包含了这个样本的假设(假设 1)。</p>
 
         </div>
         
-            <ul class="post-copyright">
+        <ul class="post-copyright">
             <li><strong>本文标题：</strong><a href="http://blog.czcc.me/p/5c7cc0d4/">西瓜书第一章</a></li>
             <li><strong>本文作者：</strong><a href="http://blog.czcc.me">Cheng</a></li>
             <li><strong>本文链接：</strong><a href="http://blog.czcc.me/p/5c7cc0d4/">http://blog.czcc.me/p/5c7cc0d4/</a></li>
             <li><strong>发布时间：</strong>2019-09-18</li>
-            <li><strong>版权声明：</strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！
+            <li><strong>版权声明：</strong>本博客所有文章除特别声明外，均采用 <a
+                    href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="external nofollow"
+                    target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！
             </li>
-            </ul>
-            <br>
+        </ul>
+        <br>
         
         
         <div class="level is-size-7 is-uppercase">
             <div class="level-start">
                 <div class="level-item">
                     <span class="is-size-6 has-text-grey has-mr-7">#</span>
-                    <a class="has-link-grey -link" href="/tags/ML/">ML</a>
+                    <a class="has-link-grey -link" href="/tags/Machine-Learning/">Machine Learning</a>, <a class="has-link-grey -link" href="/tags/机器学习/">机器学习</a>, <a class="has-link-grey -link" href="/tags/西瓜书/">西瓜书</a>
                 </div>
             </div>
         </div>
@@ -313,29 +324,29 @@
 
 <div class="card">
     <div class="card-content">
-        <h3 class="menu-label has-text-centered">Like this article? Support the author with</h3>
+        <h3 class="menu-label has-text-centered">喜欢这篇文章？打赏一下作者吧</h3>
         <div class="buttons is-centered">
             
-                
+            
 <a class="button is-info donate">
     <span class="icon is-small">
         <i class="fab fa-alipay"></i>
     </span>
-    <span>Alipay</span>
-    <div class="qrcode"><img src="/images/Alipay.jpg" alt="Alipay"></div>
+    <span>支付宝</span>
+    <div class="qrcode"><img src="/images/Alipay.jpg" alt="支付宝"></div>
 </a>
 
-                
-                
+            
+            
 <a class="button is-success donate">
     <span class="icon is-small">
         <i class="fab fa-weixin"></i>
     </span>
-    <span>Wechat</span>
-    <div class="qrcode"><img src="/images/WeChat_pay.png" alt="Wechat"></div>
+    <span>微信</span>
+    <div class="qrcode"><img src="/images/WeChat_pay.png" alt="微信"></div>
 </a>
 
-                
+            
         </div>
     </div>
 </div>
@@ -346,15 +357,17 @@
     <div class="level post-navigation is-flex-wrap is-mobile">
         
         <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/p/ad448190/">
+            <a class="level level-item has-link-grey  article-nav-prev"
+                href="/p/8e864b5/">
                 <i class="level-item fas fa-chevron-left"></i>
-                <span class="level-item">MLfoundation-1</span>
+                <span class="level-item">pytorch-tutorials</span>
             </a>
         </div>
         
         
         <div class="level-end">
-            <a class="level level-item has-link-grey  article-nav-next" href="/p/a51c6c95/">
+            <a class="level level-item has-link-grey  article-nav-next"
+                href="/p/a51c6c95/">
                 <span class="level-item">Manjaro 安装与配置</span>
                 <i class="level-item fas fa-chevron-right"></i>
             </a>
@@ -367,7 +380,7 @@
 
 <div class="card">
     <div class="card-content">
-        <h3 class="title is-5 has-text-weight-normal">Comments</h3>
+        <h3 class="title is-5 has-text-weight-normal">评论</h3>
         
 <script>
     var disqus_config = function () {
@@ -404,7 +417,7 @@
                 <div>
                     
                     <figure class="image is-128x128 has-mb-6">
-                        <img class="" src="/images/avatar.png" alt="Cheng">
+                        <img class="" src="/images/avatar.jpg" alt="Cheng">
                     </figure>
                     
                     <p class="is-size-4 is-block">
@@ -429,11 +442,11 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Posts
+                        Post
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            25
+                            36
                         </p>
                     </a>
                 </div>
@@ -441,11 +454,11 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Categories
+                        Category
                     </p>
                     <a href="/categories">
                         <p class="title has-text-weight-normal">
-                            8
+                            14
                         </p>
                     </a>
                 </div>
@@ -453,11 +466,11 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Tags
+                        Tag
                     </p>
                     <a href="/tags">
                         <p class="title has-text-weight-normal">
-                            20
+                            38
                         </p>
                     </a>
                 </div>
@@ -507,17 +520,17 @@
         </a></li><li>
         <a class="is-flex" href="#假设空间">
         <span class="has-mr-6">2</span>
-        <span>假设空间</span>
+        <span>假设空间 </span>
         </a></li><li>
         <a class="is-flex" href="#归纳偏好">
         <span class="has-mr-6">3</span>
-        <span>归纳偏好</span>
+        <span>归纳偏好 </span>
         </a></li><li>
         <a class="is-flex" href="#习题">
         <span class="has-mr-6">4</span>
-        <span>习题</span>
+        <span>习题 </span>
         </a><ul class="menu-list"><li>
-        <a class="is-flex" href="#习题-1-1">
+        <a class="is-flex" href="#习题 -1-1">
         <span class="has-mr-6">4.1</span>
         <span>习题 1.1</span>
         </a></li></ul></li></ul>
@@ -554,7 +567,7 @@
                 
                 <br>
                 <span id="busuanzi_container_site_uv">
-                Visited by <span id="busuanzi_value_site_uv">0</span> users
+                共<span id="busuanzi_value_site_uv">0</span>个访客
                 </span>
                 
                 </p>
@@ -595,7 +608,7 @@
 </footer>
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
-<script>moment.locale("en");</script>
+<script>moment.locale("zh-CN");</script>
 
 
 <script>
@@ -672,7 +685,7 @@ document.addEventListener('DOMContentLoaded', function () {
 </script>
 
 
-<a id="back-to-top" title="Back to Top" href="javascript:;">
+<a id="back-to-top" title="回到顶端" href="javascript:;">
     <i class="fas fa-chevron-up"></i>
 </a>
 <script src="/js/back-to-top.js" defer></script>
@@ -696,7 +709,7 @@ document.addEventListener('DOMContentLoaded', function () {
     <div class="searchbox ins-search">
     <div class="searchbox-container ins-search-container">
         <div class="searchbox-input-wrapper">
-            <input type="text" class="searchbox-input ins-search-input" placeholder="Type something..." />
+            <input type="text" class="searchbox-input ins-search-input" placeholder="想要查找什么..." />
             <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
         </div>
         <div class="searchbox-result-wrapper ins-section-wrapper">
@@ -708,11 +721,11 @@ document.addEventListener('DOMContentLoaded', function () {
     (function (window) {
         var INSIGHT_CONFIG = {
             TRANSLATION: {
-                POSTS: 'Posts',
-                PAGES: 'Pages',
-                CATEGORIES: 'Categories',
-                TAGS: 'Tags',
-                UNTITLED: '(Untitled)',
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(无标题)',
             },
             CONTENT_URL: '/content.json',
         };

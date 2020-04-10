@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html  lang="en">
+<html  lang="zh">
 
 <head>
     <meta charset="utf-8" />
@@ -8,26 +8,26 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-<title>西瓜书第10章：降维与度量学习 - CZCC</title>
+<title>西瓜书第 10 章：降维与度量学习 - CZCC</title>
 
 
-    <meta name="keywords" content="Machine Learning,ML,西瓜书">
+    <meta name="keywords" content="机器学习,Machine Learning,西瓜书">
 <meta property="og:type" content="article">
-<meta property="og:title" content="西瓜书第10章：降维与度量学习">
+<meta property="og:title" content="西瓜书第 10 章：降维与度量学习">
 <meta property="og:url" content="http://blog.czcc.me/p/7e4fc966/index.html">
 <meta property="og:site_name" content="CZCC">
-<meta property="og:locale" content="en">
+<meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://blog.czcc.me/images/og_image.png">
-<meta property="og:updated_time" content="2020-01-03T15:37:28.883Z">
+<meta property="og:updated_time" content="2020-01-13T15:11:17.980Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="西瓜书第10章：降维与度量学习">
+<meta name="twitter:title" content="西瓜书第 10 章：降维与度量学习">
 <meta name="twitter:image" content="http://blog.czcc.me/images/og_image.png">
 
 
 
 
 
-<link rel="alternative" href="/atom.xml" title="西瓜书第10章：降维与度量学习" type="application/atom+xml">
+<link rel="alternative" href="/atom.xml" title="西瓜书第 10 章：降维与度量学习" type="application/atom+xml">
 
 
 
@@ -83,7 +83,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/logo.ico" alt="西瓜书第10章：降维与度量学习" height="28">
+                <img src="/images/logo.ico" alt="西瓜书第 10 章：降维与度量学习" height="28">
             
             </a>
         </div>
@@ -102,6 +102,9 @@
                 
                 <a class="navbar-item"
                 href="/tags">Tags</a>
+                
+                <a class="navbar-item"
+                href="/categories/LeetCode">LeetCode</a>
                 
                 <a class="navbar-item"
                 href="/about">About</a>
@@ -124,7 +127,7 @@
                 </a>
                 
                 
-                <a class="navbar-item search" title="Search" href="javascript:;">
+                <a class="navbar-item search" title="搜索" href="javascript:;">
                     <i class="fas fa-search"></i>
                 </a>
                 
@@ -142,11 +145,11 @@
     <div class="card-content article ">
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <i class="fas fa-angle-double-right"></i>&nbsp;&nbsp;西瓜书第10章：降维与度量学习
+            <i class="fas fa-angle-double-right"></i>&nbsp;&nbsp;西瓜书第 10 章：降维与度量学习
             
         </h1>
         
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+        <div class="level article-meta is-size-7 is-mobile is-overflow-x-auto">
             <div class="level-left">
                 <!-- <time class="level-item has-text-grey" datetime="2020-01-02T10:14:39.000Z">2020-01-02</time> -->
                 <time class="level-item has-text-grey" datetime="2020-01-02T10:14:39.000Z">
@@ -154,21 +157,27 @@
                     2020-01-02
                 </time>
                 
-                    <time class="level-item has-text-grey is-hidden-mobile" datetime="2020-01-03T15:37:28.883Z"><i class="far fa-calendar-check">&nbsp;</i>2020-01-03</time>
+                <time class="level-item has-text-grey is-hidden-mobile" datetime="2020-01-13T15:11:17.980Z"><i
+                        class="far fa-calendar-check">&nbsp;</i>2020-01-13</time>
                 
+                
+                <div class="level-item">
+                    <i class="far fa-folder">&nbsp;</i>
+                    <a class="has-link-grey -link" href="/categories/NJU/">NJU</a>
+                </div>
                 
                 
                 <span class="level-item has-text-grey">
                     <i class="far fa-hourglass">&nbsp;&nbsp;</i>
                     
                     
-                    13 minutes read (About 1897 words)
+                    18 分钟   (约 2661 字)
                 </span>
                 
                 
                 <span class="level-item has-text-grey" id="busuanzi_container_page_pv">
                     <i class="far fa-eye"></i>
-                    <span id="busuanzi_value_page_pv">0</span> visits
+                    <span id="busuanzi_value_page_pv">0</span>次访问
                 </span>
                 
             </div>
@@ -176,47 +185,46 @@
         
         <!-- <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                西瓜书第10章：降维与度量学习
+                西瓜书第 10 章：降维与度量学习
             
         </h1> -->
         <div class="content">
             <hr>
 <a id="more"></a>
 
-<h1 id="K-近邻学习-k-Nearest-Neighbor-kNN"><a href="#K-近邻学习-k-Nearest-Neighbor-kNN" class="headerlink" title="K 近邻学习 (k-Nearest Neighbor, kNN)"></a>K 近邻学习 (k-Nearest Neighbor, kNN)</h1><p>K 近邻学习器是<strong>懒惰学习</strong>(lazy learning) 的代表，基本思路是<strong>近朱者赤，近墨者黑</strong></p>
+<h1 id="K- 近邻学习 -k-Nearest-Neighbor-kNN"><a href="#K- 近邻学习 -k-Nearest-Neighbor-kNN" class="headerlink" title="K 近邻学习 (k-Nearest Neighbor, kNN)"></a>K 近邻学习 (k-Nearest Neighbor, kNN)</h1><p>K 近邻学习器是 <strong> 懒惰学习 </strong>(lazy learning) 的代表，基本思路是<strong> 近朱者赤，近墨者黑</strong></p>
 <blockquote>
-<p>与懒惰学习相反的是<strong>急切学习</strong>（eager learning），二者的差别在于在训练阶段是否对样本进行学习</p>
+<p>与懒惰学习相反的是 <strong> 急切学习</strong>（eager learning），二者的差别在于在训练阶段是否对样本进行学习</p>
 </blockquote>
 <p>主要需要注意两个方面：</p>
 <ul>
 <li>K 值的选取</li>
 <li>距离的计算</li>
 </ul>
-<h2 id="最近邻学习器的误差分析"><a href="#最近邻学习器的误差分析" class="headerlink" title="最近邻学习器的误差分析"></a>最近邻学习器的误差分析</h2><p>给定测试样本 $x$，若其最近样本为 $z$，则最邻近分类器出错的概率就是 $x$ 与 $z$ 类别标记不同的概率，即</p>
+<h2 id="最近邻学习器的误差分析"><a href="# 最近邻学习器的误差分析" class="headerlink" title="最近邻学习器的误差分析"></a>最近邻学习器的误差分析 </h2><p> 给定测试样本 $x$，若其最近样本为 $z$，则最邻近分类器出错的概率就是 $x$ 与 $z$ 类别标记不同的概率，即</p>
 <p>$$<br>P(err) = 1 - \sum_{c\in \mathcal{Y}}P(c|\boldsymbol{x})P(c|\boldsymbol{z})<br>$$</p>
 <p>假设样本独立同分布，令 $c^\star=arg\ max_{c\in \mathcal{Y}} P(c|\boldsymbol{x})$ 表示贝叶斯最优分类器的结果，则有：</p>
 <p>$$<br>\begin{aligned}<br>P(err) &amp;= 1-\sum_{c\in \mathcal{Y}}P(c|\boldsymbol{x})P(c|\boldsymbol{z})\newline\<br>&amp;\simeq 1-\sum_{c\in \mathcal{Y}}P^2(c|\boldsymbol{x})\newline\<br>&amp;\leq 1-P^2(c^\star|\boldsymbol{x})\newline\<br>&amp;\leq (1 + P(c^\star | \boldsymbol{x}) ) (1 - P(c^\star | \boldsymbol{x}) )\newline\<br>&amp;\leq 2 \times (1 - P(c^\star|\boldsymbol{x}))<br>\end{aligned}<br>$$</p>
 <p>也即：最邻近分类器的泛化误差不会超过贝叶斯最优分类器的两倍！</p>
-<h2 id="维数问题"><a href="#维数问题" class="headerlink" title="维数问题"></a>维数问题</h2><p>上述结论是基于一个重要假设：任意测试样本 $\boldsymbol{x}$ 附近任意小的 $\delta$ 距离范围内总能找到一个训练样本，即训练样本的采样密度足够大，或称为“<strong>密采样</strong>”（dense sample）</p>
+<h2 id="维数问题"><a href="# 维数问题" class="headerlink" title="维数问题"></a>维数问题 </h2><p> 上述结论是基于一个重要假设：任意测试样本 $\boldsymbol{x}$ 附近任意小的 $\delta$ 距离范围内总能找到一个训练样本，即训练样本的采样密度足够大，或称为“<strong>密采样</strong>”（dense sample）</p>
 <p>然而这在现实中很难实现！</p>
-<p>但维数为 1 时，若考虑 $\delta=0.001$，则需要 1000 个样本；若属性更多，如属性维数为 20，则需要$(10^3)^{20}=10^{60}$ 个样本！同样，对于一张并不是很清晰的图像：70余万维，我们为了找到恰当的近邻，需要多少样本？</p>
+<p>但维数为 1 时，若考虑 $\delta=0.001$，则需要 1000 个样本；若属性更多，如属性维数为 20，则需要 $(10^3)^{20}=10^{60}$ 个样本！同样，对于一张并不是很清晰的图像：70 余万维，我们为了找到恰当的近邻，需要多少样本？</p>
 <p>另外一方面，高维空间给距离计算带来很大的麻烦，当维数很高时甚至连计算内积都不再容易！</p>
 <p>事实上，在高位情况下出现的数据样本稀疏、距离计算困难等问题，是所有机器学习算法共同面临的严重障碍，被称为 “<strong>维数灾难</strong>”</p>
-<h1 id="降维"><a href="#降维" class="headerlink" title="降维"></a>降维</h1><p>缓解维数灾难的一个重要途径是<strong>降维</strong>，亦称“维数约简”（dimension reduction）</p>
+<h1 id="降维"><a href="# 降维" class="headerlink" title="降维"></a>降维 </h1><p> 缓解维数灾难的一个重要途径是 <strong> 降维</strong>，亦称“维数约简”（dimension reduction）</p>
 <p>即：通过某种数学变换将原始高维属性空间转变为一个低维子空间，在这个子空间中样本密度大幅提高，距离计算也变得更为容易。</p>
 <blockquote>
 <p>为什么能进行降维？</p>
 <p>数据样本虽是高维的，但与学习任务密切相关的也许仅是某个低维分布，即高维空间中的一个低维“嵌入” (embedding)</p>
 <p><img src="https://s2.ax1x.com/2020/01/03/lagJBt.md.png" alt=""></p>
 </blockquote>
-<h2 id="多维缩放方法（MDS）"><a href="#多维缩放方法（MDS）" class="headerlink" title="多维缩放方法（MDS）"></a>多维缩放方法（MDS）</h2><p>如果要求原始空间中样本之间的距离在低维空间中得以保持，即为：多维缩放（Multiple Dimensional Scaling）</p>
-<h3 id="如何在距离矩阵和内积矩阵之间建立联系？"><a href="#如何在距离矩阵和内积矩阵之间建立联系？" class="headerlink" title="如何在距离矩阵和内积矩阵之间建立联系？"></a>如何在距离矩阵和内积矩阵之间建立联系？</h3><p>假定 m 个样本在原始空间的距离矩阵为 $D \in \mathbb{R}^{m \times m}$，其 $dist_{ij}$ 为样本 $\boldsymbol{x}_i$ 到 $\boldsymbol{x}_j$ 的距离。</p>
-<p>目标为获得样本在 $d’$ 维空间的表示 $Z \in \mathbb{R}^{d’ \times m}, d’ \leq d$，且这两种表示下的距离不变，即有：</p>
-<p>$\Vert\boldsymbol{z}_i - \boldsymbol{z}_j\Vert=dist_{ij}$</p>
+<h2 id="多维缩放方法（MDS）"><a href="# 多维缩放方法（MDS）" class="headerlink" title="多维缩放方法（MDS）"></a>多维缩放方法（MDS）</h2><p>如果要求原始空间中样本之间的距离在低维空间中得以保持，即为：多维缩放（Multiple Dimensional Scaling）</p>
+<h3 id="如何在距离矩阵和内积矩阵之间建立联系？"><a href="# 如何在距离矩阵和内积矩阵之间建立联系？" class="headerlink" title="如何在距离矩阵和内积矩阵之间建立联系？"></a>如何在距离矩阵和内积矩阵之间建立联系？</h3><p>假定 m 个样本在原始空间的距离矩阵为 $D \in \mathbb{R}^{m \times m}$，其 $dist_{ij}$ 为样本 $\boldsymbol{x}_i$ 到 $\boldsymbol{x}_j$ 的距离。</p>
+<p>目标为获得样本在 $d’$ 维空间的表示 $Z \in \mathbb{R}^{d’ \times m}, d’ \leq d$，且这两种表示下的距离不变，即有：$\Vert\boldsymbol{z}_i - \boldsymbol{z}_j\Vert=dist_{ij}$</p>
 <p>令 $B=Z^TZ \in \mathbb{R}^{m \times m}$ 为降维后的样本的内积矩阵，即： $b_{ij}=\boldsymbol{z}_i^T\boldsymbol{z}_j$，有：</p>
 <p>$$<br>\begin{aligned}<br>dist_{ij}^2 &amp;= \Vert\boldsymbol{z}_i^2\Vert + \Vert\boldsymbol{z}_j^2\Vert - 2\boldsymbol{z}_i^T\boldsymbol{z}_j \newline\<br>&amp;= b_{ii} + b_{jj} - 2b_{ij}<br>\end{aligned}<br>$$</p>
 <p>设降维后的样本 $Z$ 被中心化，即：$\sum_{i=1}^m\boldsymbol{z}_i=0$</p>
-<p>则：矩阵 $B$ 中行与列之和均为0，即：$\sum_{i=1}^mb_{ij}=\sum_{j=1}^mb_{ij}=0$</p>
+<p>则：矩阵 $B$ 中行与列之和均为 0，即：$\sum_{i=1}^mb_{ij}=\sum_{j=1}^mb_{ij}=0$</p>
 <p>$$<br>\sum_{i=1}^mdist_{ij}^2=tr(B) + mb_{jj}<br>$$</p>
 <p>$$<br>\sum_{j=1}^mdist_{ij}^2=tr(B) + mb_{ii}<br>$$</p>
 <p>$$<br>\sum_{i=1}^m\sum_{j=1}^mdist_{ij}^2=2m\ tr(B)<br>$$</p>
@@ -226,13 +234,13 @@
 <p>$$<br>dist_{\cdot\cdot}^2=\frac{1}{m^2}\sum_{i=1}^m\sum_{j=1}^mdist_{ij}^2<br>$$</p>
 <p>则可得：</p>
 <p>$$<br>b_{ij}=-\frac{1}{2}(dist_{ij}^2 - dist_{i\cdot}^2 - dist_{\cdot j}^2 + dist_{\cdot\cdot}^2)<br>$$</p>
-<p>至此，得到了<strong>距离矩阵</strong>到<strong>内积矩阵</strong>的变换公式。</p>
-<h3 id="如何在低维子空间和高维空间之间保持样本之间的内积不变？"><a href="#如何在低维子空间和高维空间之间保持样本之间的内积不变？" class="headerlink" title="如何在低维子空间和高维空间之间保持样本之间的内积不变？"></a>如何在低维子空间和高维空间之间保持样本之间的内积不变？</h3><p>对矩阵 $B$ 进行特征值分解：$B=V\Lambda V^T$</p>
+<p>至此，得到了 <strong> 距离矩阵 </strong> 到<strong>内积矩阵 </strong> 的变换公式。</p>
+<h3 id="如何在低维子空间和高维空间之间保持样本之间的内积不变？"><a href="# 如何在低维子空间和高维空间之间保持样本之间的内积不变？" class="headerlink" title="如何在低维子空间和高维空间之间保持样本之间的内积不变？"></a>如何在低维子空间和高维空间之间保持样本之间的内积不变？</h3><p>对矩阵 $B$ 进行特征值分解：$B=V\Lambda V^T$</p>
 <p>由谱分解的数学性质，我们知道：谱分布长尾，存在相当数量的小特征值，而只有少量的较大的特征值</p>
 <p>因此可取 $d’\ll d$ 个最大特征值构成对角矩阵 $\tilde{\Lambda}=diag(\lambda_1, \dots, \lambda_{d’})$，且 $\tilde{V}$ 表示相应的特征向量矩阵，则可得到：</p>
 <p>$$<br>Z = \tilde{\Lambda^{1/2}}\tilde{V}^T \in \mathbb{R}^{d’ \times m}<br>$$</p>
-<p><img src="https://s2.ax1x.com/2020/01/03/laIwXF.png" alt="MDS算法"></p>
-<h2 id="主成分分析（PCA）"><a href="#主成分分析（PCA）" class="headerlink" title="主成分分析（PCA）"></a>主成分分析（PCA）</h2><p>另一种常用的降维方法为<strong>主成分分析</strong>（principal Component Analysis）</p>
+<p><img src="https://s2.ax1x.com/2020/01/03/laIwXF.png" alt="MDS 算法"></p>
+<h2 id="主成分分析（PCA）"><a href="# 主成分分析（PCA）" class="headerlink" title="主成分分析（PCA）"></a>主成分分析（PCA）</h2><p>另一种常用的降维方法为 <strong> 主成分分析</strong>（principal Component Analysis）</p>
 <blockquote>
 <p>正交属性空间中的样本点，如何使用一个超平面对所有样本进行恰当的表达？</p>
 </blockquote>
@@ -242,37 +250,146 @@
 <li>最大可分性：样本点在这个超平面上的投影能尽可能分开</li>
 </ul>
 <p>基于最近重构性和最大可分性，可以得到主成分分析的两种等价推导。</p>
-<h3 id="最近重构性"><a href="#最近重构性" class="headerlink" title="最近重构性"></a>最近重构性</h3><p>假定对样本进行了中心化：$\sum_i\boldsymbol{x}_i=0$</p>
+<h3 id="最近重构性"><a href="# 最近重构性" class="headerlink" title="最近重构性"></a>最近重构性 </h3><p> 假定对样本进行了中心化：$\sum_i\boldsymbol{x}_i=0$</p>
 <p>假定投影变换后得到的新坐标系为 ${\boldsymbol{w}_1,\dots ,\boldsymbol{w}_d}$ ， 其中 $\boldsymbol{w}_i$ 是标准正交基向量，$\Vert\boldsymbol{w}_i\Vert_2=1, \boldsymbol{w}_i^T\boldsymbol{w}_j=0 (i\not ={j})$</p>
-<p>若丢弃新坐标系中的部分坐标，即将维度降低到 $d’&lt;d$，则样本点$\boldsymbol{x}_i$在低维坐标系中的投影是 $z_{i}=(z_{i1};z_{i2};\dots;z_{id’})$，其中$z_{ij}=\boldsymbol{w}_j^T\boldsymbol{x}_i$是 $\boldsymbol{x}_i$ 在低维坐标系下第 $j$ 维的坐标。</p>
+<p>若丢弃新坐标系中的部分坐标，即将维度降低到 $d’&lt;d$，则样本点 $\boldsymbol{x}_i$ 在低维坐标系中的投影是 $z_{i}=(z_{i1};z_{i2};\dots;z_{id’})$，其中 $z_{ij}=\boldsymbol{w}_j^T\boldsymbol{x}_i$ 是 $\boldsymbol{x}_i$ 在低维坐标系下第 $j$ 维的坐标。</p>
 <p>若基于 $\boldsymbol{z}_i$ 来重构 $\boldsymbol{x}_i$，则会得到 $\hat{\boldsymbol{x}}_i=\sum_{j=1}^{d’}z_{ij}\boldsymbol{w}_j$</p>
 <p>则原样本点 $\boldsymbol{x}_i$ 与基于投影重构的样本点 $\hat{\boldsymbol{x}}_i$ 之间的距离为：</p>
 <p>$$<br>\begin{aligned}<br>\sum_{i=1}^m\Vert\sum_{j=1}^{d’}z_{ij}\boldsymbol{w}_j-\boldsymbol{x}_i\Vert_2^2 &amp;= \sum_{i=1}^m\boldsymbol{z}_i^T\boldsymbol{z}_i-2\sum_{i=1}^m\boldsymbol{z}_i^TW^T\boldsymbol{x}_i+const \newline\<br>&amp;\propto -tr\left(W^T\left(\sum_{i=1}^m \boldsymbol{x}_i\boldsymbol{x}_i^T\right)W \right)<br>\end{aligned}<br>$$</p>
 <p>其中 $W=(\boldsymbol{w}_1,\dots,\boldsymbol{w}_d)$，根据最近重构性，上式应该被最小化，由于 $\boldsymbol{w}_j$ 是标准正交基，$\sum_i\boldsymbol{x}_i\boldsymbol{x}_i^T$ 是协方差矩阵，则有主成分分析的优化目标：</p>
 <p>$$<br>{min}\ -tr(W^TXX^TW), \ s.t.\ W^TW=I<br>$$</p>
-<h3 id="最大可分性"><a href="#最大可分性" class="headerlink" title="最大可分性"></a>最大可分性</h3><p>样本点 $\boldsymbol{x}_i$ 在新空间中超平面上的投影为 $W^T\boldsymbol{x}_i$，若所有的样本点的投影尽可能分开，则应该使投影后样本点的方差最大化</p>
+<h3 id="最大可分性"><a href="# 最大可分性" class="headerlink" title="最大可分性"></a>最大可分性 </h3><p> 样本点 $\boldsymbol{x}_i$ 在新空间中超平面上的投影为 $W^T\boldsymbol{x}_i$，若所有的样本点的投影尽可能分开，则应该使投影后样本点的方差最大化</p>
 <p>由于投影后样本点的协方差矩阵是 $\sum_iW^T\boldsymbol{x}_i\boldsymbol{x}_i^TW$，因此优化目标即为：</p>
 <p>$$<br>{max}\ tr(W^TXX^TW), \ s.t.\ W^TW=I<br>$$</p>
-<h3 id="PCA-求解"><a href="#PCA-求解" class="headerlink" title="PCA 求解"></a>PCA 求解</h3><p>// TODO</p>
+<h3 id="PCA- 求解"><a href="#PCA- 求解" class="headerlink" title="PCA 求解"></a>PCA 求解 </h3><p> 对优化目标使用拉格朗日乘子法:</p>
+<p>$$<br>XX^T\boldsymbol{w}_i=\lambda_i\boldsymbol{w}_i<br>$$</p>
+<p>于是只需对协方差矩阵 $XX^T$ 进行特征值分解，将求得的特征值排序：$\lambda_1\ge\lambda_2\ge\dots\ge\lambda_d$，再取前 $d’$ 个特征值对应的特征向量构成</p>
+<p>$$<br>W^*=(\boldsymbol{w}_1, \boldsymbol{w}_2, \dots,\boldsymbol{w}_{d’})<br>$$</p>
+<p>这就是主成分分析的解</p>
+<p><img src="https://s2.ax1x.com/2020/01/03/ldPU9f.png" alt="PCA 算法"></p>
+<h3 id="参数设置"><a href="# 参数设置" class="headerlink" title="参数设置"></a>参数设置</h3><p>$d’$ 的设置：</p>
+<ul>
+<li>用户指定</li>
+<li>在低维空间中对 k 近邻或其他分类器进行交叉验证</li>
+<li>设置重构阈值，例如 $t=95%$，然后选取最小的 $d’$ 使得 $\frac{\sum_{i=1}^{d’}\lambda_i}{\sum_{i=1}^d\lambda_i}\ge t$</li>
+</ul>
+<p>PCA 是最常用的降维方法，在不同领域有不同的称谓</p>
+<p>例如在人脸识别中该技术被称为“特征脸”(eigenface)，因为若将前 $d’$ 个特征值对应的特征向量还原为图像，则得到近似于人脸的识别模型示意图</p>
+<h1 id="非线性降维"><a href="# 非线性降维" class="headerlink" title="非线性降维"></a>非线性降维 </h1><p> 线性降维方法假设从高维空间到低维空间的函数映射是线性的，然而在许多现实任务中，可能需要非线性映射才能找到恰当的低维嵌入</p>
+<p><img src="https://s2.ax1x.com/2020/01/04/ld4WfP.png" alt=""></p>
+<p>非线性降维的常用方法：</p>
+<ul>
+<li>核化线性降维: 如 KPCA, KLDA, …</li>
+<li>流形学习(manifold learning)</li>
+</ul>
+<h2 id="核化 PCA 方法（KPCA）"><a href="# 核化 PCA 方法（KPCA）" class="headerlink" title="核化 PCA 方法（KPCA）"></a>核化 PCA 方法（KPCA）</h2><p>首先在高维特征空间中，将数据投影到由 $W=(\boldsymbol{w}_1, \dots , \boldsymbol{w}_d)$ 确定的超平面上。则有：</p>
+<p>$$<br>\left(\sum_{i=1}^m\boldsymbol{z}_i\boldsymbol{z}_i^T \right)\boldsymbol{w}_j=\lambda_j\boldsymbol{w}_j<br>$$</p>
+<p>$$<br>\boldsymbol{w}_j=\frac{1}{\lambda_j}\left(\sum_{i=1}^m\boldsymbol{z}_i\boldsymbol{z}_i^T \right)\boldsymbol{w}_j=\sum_{i=1}^m\boldsymbol{z}_i\frac{\boldsymbol{z}_i^T\boldsymbol{w}_j}{\lambda_j}=\sum_{i=1}^m\boldsymbol{z}_i\alpha_i^j<br>$$</p>
+<p>其中 $\alpha_i^j=\frac{1}{\lambda_j}\boldsymbol{z}_i^T\boldsymbol{w}_j$ 是 $\alpha_i$ 的第 $j$ 个分量，$\boldsymbol{z}_i$ 是由样本点 $\boldsymbol{x}_i$ 在高维特征空间中通过映射 $\phi$ 产生，即 $\boldsymbol{z}_i=\phi(\boldsymbol{x}_i)$。</p>
+<p>若 $\phi$ 能显式的表达出来，则可通过它将样本映射到高维特征空间，再在高维特征空间中实施 PCA 即可。从而有：</p>
+<p>$$<br>\left(\sum_{i=1}^m\phi(\boldsymbol{x}_i)\phi(\boldsymbol{x}_i)^T \right)\boldsymbol{w}_j=\lambda_j\boldsymbol{w}_j<br>$$</p>
+<p>$$<br>\boldsymbol{w}_j=\sum_{i=1}^m\phi(\boldsymbol{x}_i)\alpha_i^j<br>$$</p>
+<p>但是一般情况下， $\phi$ 的形式不清楚，因此引入核函数：$\kappa(\boldsymbol{x}_i,\boldsymbol{x}_j)=\phi(\boldsymbol{x}_i)^T\phi(\boldsymbol{x}_i)， (K)_{ij}=\kappa(\boldsymbol{x}_i,\boldsymbol{x}_j)$，代入可得：</p>
+<p>$$<br>K\boldsymbol{\alpha}^j=\lambda_j\boldsymbol{\alpha}^j<br>$$</p>
+<p>显然这是特征值分解问题，取 $K$ 最大的 $d’$ 个特征值对应的特征向量即可。</p>
+<p>从而，对于样本 $\boldsymbol{x}$ ，其投影后的第 $j$ 维坐标为：</p>
+<p>$$<br>z_j=\boldsymbol{w}_j^T\phi(\boldsymbol{x})=\sum_{i=1}^m\alpha_i^j\phi(\boldsymbol{x}_i)^T\phi(\boldsymbol{x}) = \sum_{i=1}^m\alpha_i^j\kappa(\boldsymbol{x}_i,\boldsymbol{x})<br>$$</p>
+<p>此式表明，为获得投影后的坐标，KPCA 需要对所有样本求和，因此计算开销比较大。</p>
+<h2 id="流形学习"><a href="# 流形学习" class="headerlink" title="流形学习"></a>流形学习</h2><p>“流形”是在局部与欧氏空间同胚的空间，即在局部具有欧氏空间的性质，可用欧氏距离进行距离计算。</p>
+<p>应用到降维：若低维流形嵌入到高维空间中，则数据样本在高维空间上的分布看似复杂，但在局部仍具有欧氏空间的性质，因此可以容易的在局部建立降维映射关系，然后再设法将局部映射推广到全局。</p>
+<h3 id="等度量映射（Isomap）"><a href="# 等度量映射（Isomap）" class="headerlink" title="等度量映射（Isomap）"></a>等度量映射（Isomap）</h3><p>基本出发点：试图保持近邻样本之间的距离</p>
+<p>但：低维流形嵌入到高维空间后，直接在高维空间中计算直线距离具有误导性，因为高维空间上的直线距离在低维空间中是不可达的。</p>
+<p>低维空间上两点的距离是 “测地线” 距离，这是两点之间的本真距离。</p>
+<p>如何计算测地线距离：</p>
+<ul>
+<li>利用流形的距离性质，对每个点基于欧氏距离找出 <strong> 近邻点</strong>，图中近邻点之间存在连接，非近邻点之间无连接</li>
+<li>距离问题就变成了计算近邻连接图上两点之间 <strong> 最短路径问题</strong>，可用 <code>Dijkstra</code> 算法或者 <code>Floyd</code> 算法</li>
+<li>得到距离后，再使用 <code>MDS</code> 方法获得样本在 <strong> 低维空间中的坐标</strong></li>
+</ul>
+<p><img src="https://s2.ax1x.com/2020/01/04/ld7dMV.png" alt="Isomap 算法"></p>
+<blockquote>
+<p>Isomap 算法得到的是训练样本在低维空间的坐标，对于新样本，如何进行映射？</p>
+<p>将训练样本的高维坐标作为输入，低维坐标作为输出，训练一个回归学习器。（权宜之计，暂时没有更好的办法）</p>
+</blockquote>
+<p>如何构造近邻图：</p>
+<ul>
+<li>指定近邻点个数，得到 $k$ 近邻图</li>
+<li>指定距离阈值 $\epsilon$，得到 $\epsilon$ 近邻图</li>
+</ul>
+<p>不足之处：</p>
+<ul>
+<li>若近邻范围过大：距离比较远的点仍认为是近邻，导致“短路”问题</li>
+<li>若距离范围过小：图中某些区域与其他区域会不存在连接，导致“断路”问题</li>
+</ul>
+<h3 id="局部线性嵌入（LLE）"><a href="# 局部线性嵌入（LLE）" class="headerlink" title="局部线性嵌入（LLE）"></a>局部线性嵌入（LLE）</h3><p>基本出发点：试图保持邻域内样本间的线性关系，<strong>重构权值</strong></p>
+<p>// TODO： 添加推导步骤</p>
+<p>基本步骤：</p>
+<ul>
+<li><p>为每个样本构造近邻集合 $Q_i$</p>
+</li>
+<li><p>为每个样本计算基于 $Q_i$ 的线性重构系数：</p>
+<p><img src="https://s2.ax1x.com/2020/01/04/ldHH7F.png" alt=""></p>
+</li>
+<li><p>在低维空间中保持 $W_{ij}$ 不变，求解：</p>
+<p><img src="https://s2.ax1x.com/2020/01/04/ldHv11.png" alt=""></p>
+</li>
+</ul>
+<p><img src="https://s2.ax1x.com/2020/01/04/ldbE9A.png" alt="LLE 算法"></p>
+<h1 id="度量学习"><a href="# 度量学习" class="headerlink" title="度量学习"></a>度量学习</h1><blockquote>
+<p>对高维数据进行降维的主要目的是希望找到一个“合适的”低维空间，从而获得更好的学习性能。</p>
+<p>实际上，每个空间对应了在样本属性上定义的一个距离度量，寻找合适的空间，就是寻找一个合适的距离度量。</p>
+<p>那么，能否直接尝试“学出”合适的距离度量？</p>
+</blockquote>
+<h2 id="马氏距离"><a href="# 马氏距离" class="headerlink" title="马氏距离"></a>马氏距离 </h2><p> 首先，要有可以通过学习来“参数化”的 <strong> 距离度量形式 </strong>: <strong> 马氏距离</strong>(Mahalanobis distance) 是一个很好的选择：</p>
+<p>$$<br>dist_{mah}^2(\boldsymbol{x}_i,\boldsymbol{x}_j) = (\boldsymbol{x}_i-\boldsymbol{x}_j)^TM(\boldsymbol{x}_i-\boldsymbol{x}_j) = \Vert\boldsymbol{x}_i-\boldsymbol{x}_j\Vert_M^2<br>$$</p>
+<p>其中 $M$ 即称之为 <strong> 度量矩阵</strong>，必须是半正定对称矩阵（$M=PP^T$，$P$ 为正交基），而度量学习即是对 $M$ 进行学习。</p>
+<h2 id="学习目标"><a href="# 学习目标" class="headerlink" title="学习目标"></a>学习目标 </h2><p> 其次，对 $M$ 进行学习需要设置一个目标：</p>
+<ul>
+<li><p><strong>某种分类器的性能</strong></p>
+<p>例如，若以近邻分类器的性能为目标，则得到近邻成分分析（NCA）</p>
+</li>
+<li><p><strong>领域知识</strong></p>
+<p>例如，若已知“必连”(must-link) 约束集合与“勿连”(cannot-link)<br>约束集合 ，则 C 可通过求解这个凸优化问题得到 M:</p>
+</li>
+</ul>
+<h3 id="近邻成分分析（NCA）"><a href="# 近邻成分分析（NCA）" class="headerlink" title="近邻成分分析（NCA）"></a>近邻成分分析（NCA）</h3><p>近邻分类器在进行判别时通常使用多数投票法，邻域内的样本投 1 票，其他投 0 票。</p>
+<p>不妨将其替换为概率投票法：对于任意样本 $\boldsymbol{x}_j$，他对 $\boldsymbol{x}_i$ 分类结果的影响的概率为：</p>
+<p>$$<br>p_{ij} = \frac{\exp(-\Vert\boldsymbol{x}_i-\boldsymbol{x}_j\Vert_M^2)}{\sum_l\exp(-\Vert\boldsymbol{x}_i-\boldsymbol{x}_l\Vert_M^2)}<br>$$</p>
+<p>显然，$\boldsymbol{x}_j$ 对 $\boldsymbol{x}_i$ 的影响随着它们之间距离的增大而减少。若以 <strong> 留一法</strong>（LOO）正确率的最大化为目标，则 $\boldsymbol{x}_i$ 的 LOO 正确率为：</p>
+<p>$$<br>p_i=\sum_{j \in \Omega_i}p_{ij}<br>$$</p>
+<p>整个样本集上的 LOO 正确率为：</p>
+<p>$$<br>\sum_{i=1}^mp_i=\sum_{i=1}^m\sum_{j \in \Omega_i}p_{ij}<br>$$</p>
+<p>则可得 NCA 的优化目标为：</p>
+<p>$$<br>min\ 1-\sum_{i=1}^m\sum_{j \in \Omega_i}\frac{\exp(-\Vert P^T\boldsymbol{x}_i-P^T\boldsymbol{x}_j\Vert_2^2)}{\sum_l\exp(-\Vert P^T\boldsymbol{x}_i-P^T\boldsymbol{x}_l\Vert_2^2)}<br>$$</p>
+<p>求解此式即可得到最大化近邻分类器 LOO 正确率的距离度量矩阵 $M$</p>
+<h3 id="LMNN"><a href="#LMNN" class="headerlink" title="LMNN"></a>LMNN</h3><p>若已知某些样本相似，某些样本不相似，则可定义：</p>
+<ul>
+<li>“必连”约束集合：$M$，$(\boldsymbol{x}_i, \boldsymbol{x}_j)\in M$ 表示 $\boldsymbol{x}_i, \boldsymbol{x}_j$ 相似</li>
+<li>“勿连”约束集合：$C$，$(\boldsymbol{x}_i, \boldsymbol{x}_j)\in C$ 表示 $\boldsymbol{x}_i, \boldsymbol{x}_j$ 不相似</li>
+</ul>
+<p>显然，我们希望相似的样本之间的距离较小，不相似的比较大，因此可以转化为下面这个凸优化问题获取适当的度量矩阵 $M$：</p>
+<p>$$<br>\begin{array}{ll}<br>{\min _{\mathbf{M}}} &amp; {\sum_{\left(\boldsymbol{x}_{i}, \boldsymbol{x}_{j}\right) \in \mathcal{M}}\left|\boldsymbol{x}_{i}-\boldsymbol{x}_{j}\right|_{\mathrm{M}}^{2}} \\<br>{\text { s.t.}} &amp; {\sum_{\left(\boldsymbol{x}_{i}, \boldsymbol{x}_{k}\right) \in \mathcal{C}}\left|\boldsymbol{x}_{i}-\boldsymbol{x}_{k}\right|_{\mathbf{M}}^{2} \geqslant 1} \\<br>{} &amp; {\mathbf{M} \succeq 0}<br>\end{array}<br>$$</p>
 
         </div>
         
-            <ul class="post-copyright">
-            <li><strong>本文标题：</strong><a href="http://blog.czcc.me/p/7e4fc966/">西瓜书第10章：降维与度量学习</a></li>
+        <ul class="post-copyright">
+            <li><strong>本文标题：</strong><a href="http://blog.czcc.me/p/7e4fc966/">西瓜书第 10 章：降维与度量学习</a></li>
             <li><strong>本文作者：</strong><a href="http://blog.czcc.me">Cheng</a></li>
             <li><strong>本文链接：</strong><a href="http://blog.czcc.me/p/7e4fc966/">http://blog.czcc.me/p/7e4fc966/</a></li>
             <li><strong>发布时间：</strong>2020-01-02</li>
-            <li><strong>版权声明：</strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！
+            <li><strong>版权声明：</strong>本博客所有文章除特别声明外，均采用 <a
+                    href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="external nofollow"
+                    target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！
             </li>
-            </ul>
-            <br>
+        </ul>
+        <br>
         
         
         <div class="level is-size-7 is-uppercase">
             <div class="level-start">
                 <div class="level-item">
                     <span class="is-size-6 has-text-grey has-mr-7">#</span>
-                    <a class="has-link-grey -link" href="/tags/ML/">ML</a>, <a class="has-link-grey -link" href="/tags/Machine-Learning/">Machine Learning</a>, <a class="has-link-grey -link" href="/tags/西瓜书/">西瓜书</a>
+                    <a class="has-link-grey -link" href="/tags/Machine-Learning/">Machine Learning</a>, <a class="has-link-grey -link" href="/tags/机器学习/">机器学习</a>, <a class="has-link-grey -link" href="/tags/西瓜书/">西瓜书</a>
                 </div>
             </div>
         </div>
@@ -290,29 +407,29 @@
 
 <div class="card">
     <div class="card-content">
-        <h3 class="menu-label has-text-centered">Like this article? Support the author with</h3>
+        <h3 class="menu-label has-text-centered">喜欢这篇文章？打赏一下作者吧</h3>
         <div class="buttons is-centered">
             
-                
+            
 <a class="button is-info donate">
     <span class="icon is-small">
         <i class="fab fa-alipay"></i>
     </span>
-    <span>Alipay</span>
-    <div class="qrcode"><img src="/images/Alipay.jpg" alt="Alipay"></div>
+    <span>支付宝</span>
+    <div class="qrcode"><img src="/images/Alipay.jpg" alt="支付宝"></div>
 </a>
 
-                
-                
+            
+            
 <a class="button is-success donate">
     <span class="icon is-small">
         <i class="fab fa-weixin"></i>
     </span>
-    <span>Wechat</span>
-    <div class="qrcode"><img src="/images/WeChat_pay.png" alt="Wechat"></div>
+    <span>微信</span>
+    <div class="qrcode"><img src="/images/WeChat_pay.png" alt="微信"></div>
 </a>
 
-                
+            
         </div>
     </div>
 </div>
@@ -323,7 +440,8 @@
     <div class="level post-navigation is-flex-wrap is-mobile">
         
         <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/p/fcc15206/">
+            <a class="level level-item has-link-grey  article-nav-prev"
+                href="/p/fcc15206/">
                 <i class="level-item fas fa-chevron-left"></i>
                 <span class="level-item">Hexo 中 Latex 公式渲染问题</span>
             </a>
@@ -331,7 +449,8 @@
         
         
         <div class="level-end">
-            <a class="level level-item has-link-grey  article-nav-next" href="/p/7af16b6e/">
+            <a class="level level-item has-link-grey  article-nav-next"
+                href="/p/7af16b6e/">
                 <span class="level-item">Distributed System</span>
                 <i class="level-item fas fa-chevron-right"></i>
             </a>
@@ -344,7 +463,7 @@
 
 <div class="card">
     <div class="card-content">
-        <h3 class="title is-5 has-text-weight-normal">Comments</h3>
+        <h3 class="title is-5 has-text-weight-normal">评论</h3>
         
 <script>
     var disqus_config = function () {
@@ -381,7 +500,7 @@
                 <div>
                     
                     <figure class="image is-128x128 has-mb-6">
-                        <img class="" src="/images/avatar.png" alt="Cheng">
+                        <img class="" src="/images/avatar.jpg" alt="Cheng">
                     </figure>
                     
                     <p class="is-size-4 is-block">
@@ -406,11 +525,11 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Posts
+                        Post
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            25
+                            36
                         </p>
                     </a>
                 </div>
@@ -418,11 +537,11 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Categories
+                        Category
                     </p>
                     <a href="/categories">
                         <p class="title has-text-weight-normal">
-                            8
+                            14
                         </p>
                     </a>
                 </div>
@@ -430,11 +549,11 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Tags
+                        Tag
                     </p>
                     <a href="/tags">
                         <p class="title has-text-weight-normal">
-                            20
+                            38
                         </p>
                     </a>
                 </div>
@@ -478,21 +597,21 @@
                 Catalogue
             </h3>
             <ul class="menu-list"><li>
-        <a class="is-flex" href="#K-近邻学习-k-Nearest-Neighbor-kNN">
+        <a class="is-flex" href="#K- 近邻学习 -k-Nearest-Neighbor-kNN">
         <span class="has-mr-6">1</span>
         <span>K 近邻学习 (k-Nearest Neighbor, kNN)</span>
         </a><ul class="menu-list"><li>
         <a class="is-flex" href="#最近邻学习器的误差分析">
         <span class="has-mr-6">1.1</span>
-        <span>最近邻学习器的误差分析</span>
+        <span>最近邻学习器的误差分析 </span>
         </a></li><li>
         <a class="is-flex" href="#维数问题">
         <span class="has-mr-6">1.2</span>
-        <span>维数问题</span>
+        <span>维数问题 </span>
         </a></li></ul></li><li>
         <a class="is-flex" href="#降维">
         <span class="has-mr-6">2</span>
-        <span>降维</span>
+        <span>降维 </span>
         </a><ul class="menu-list"><li>
         <a class="is-flex" href="#多维缩放方法（MDS）">
         <span class="has-mr-6">2.1</span>
@@ -512,15 +631,59 @@
         </a><ul class="menu-list"><li>
         <a class="is-flex" href="#最近重构性">
         <span class="has-mr-6">2.2.1</span>
-        <span>最近重构性</span>
+        <span>最近重构性 </span>
         </a></li><li>
         <a class="is-flex" href="#最大可分性">
         <span class="has-mr-6">2.2.2</span>
-        <span>最大可分性</span>
+        <span>最大可分性 </span>
         </a></li><li>
-        <a class="is-flex" href="#PCA-求解">
+        <a class="is-flex" href="#PCA- 求解">
         <span class="has-mr-6">2.2.3</span>
-        <span>PCA 求解</span>
+        <span>PCA 求解 </span>
+        </a></li><li>
+        <a class="is-flex" href="#参数设置">
+        <span class="has-mr-6">2.2.4</span>
+        <span>参数设置</span>
+        </a></li></ul></li></ul></li><li>
+        <a class="is-flex" href="#非线性降维">
+        <span class="has-mr-6">3</span>
+        <span>非线性降维 </span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#核化 PCA 方法（KPCA）">
+        <span class="has-mr-6">3.1</span>
+        <span>核化 PCA 方法（KPCA）</span>
+        </a></li><li>
+        <a class="is-flex" href="#流形学习">
+        <span class="has-mr-6">3.2</span>
+        <span>流形学习</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#等度量映射（Isomap）">
+        <span class="has-mr-6">3.2.1</span>
+        <span>等度量映射（Isomap）</span>
+        </a></li><li>
+        <a class="is-flex" href="#局部线性嵌入（LLE）">
+        <span class="has-mr-6">3.2.2</span>
+        <span>局部线性嵌入（LLE）</span>
+        </a></li></ul></li></ul></li><li>
+        <a class="is-flex" href="#度量学习">
+        <span class="has-mr-6">4</span>
+        <span>度量学习</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#马氏距离">
+        <span class="has-mr-6">4.1</span>
+        <span>马氏距离 </span>
+        </a></li><li>
+        <a class="is-flex" href="#学习目标">
+        <span class="has-mr-6">4.2</span>
+        <span>学习目标 </span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#近邻成分分析（NCA）">
+        <span class="has-mr-6">4.2.1</span>
+        <span>近邻成分分析（NCA）</span>
+        </a></li><li>
+        <a class="is-flex" href="#LMNN">
+        <span class="has-mr-6">4.2.2</span>
+        <span>LMNN</span>
         </a></li></ul></li></ul></li></ul>
         </div>
     </div>
@@ -545,7 +708,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/logo.ico" alt="西瓜书第10章：降维与度量学习" height="28">
+                    <img src="/images/logo.ico" alt="西瓜书第 10 章：降维与度量学习" height="28">
                 
                 </a>
                 <p class="is-size-7">
@@ -555,7 +718,7 @@
                 
                 <br>
                 <span id="busuanzi_container_site_uv">
-                Visited by <span id="busuanzi_value_site_uv">0</span> users
+                共<span id="busuanzi_value_site_uv">0</span>个访客
                 </span>
                 
                 </p>
@@ -596,7 +759,7 @@
 </footer>
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
-<script>moment.locale("en");</script>
+<script>moment.locale("zh-CN");</script>
 
 
 <script>
@@ -673,7 +836,7 @@ document.addEventListener('DOMContentLoaded', function () {
 </script>
 
 
-<a id="back-to-top" title="Back to Top" href="javascript:;">
+<a id="back-to-top" title="回到顶端" href="javascript:;">
     <i class="fas fa-chevron-up"></i>
 </a>
 <script src="/js/back-to-top.js" defer></script>
@@ -697,7 +860,7 @@ document.addEventListener('DOMContentLoaded', function () {
     <div class="searchbox ins-search">
     <div class="searchbox-container ins-search-container">
         <div class="searchbox-input-wrapper">
-            <input type="text" class="searchbox-input ins-search-input" placeholder="Type something..." />
+            <input type="text" class="searchbox-input ins-search-input" placeholder="想要查找什么..." />
             <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
         </div>
         <div class="searchbox-result-wrapper ins-section-wrapper">
@@ -709,11 +872,11 @@ document.addEventListener('DOMContentLoaded', function () {
     (function (window) {
         var INSIGHT_CONFIG = {
             TRANSLATION: {
-                POSTS: 'Posts',
-                PAGES: 'Pages',
-                CATEGORIES: 'Categories',
-                TAGS: 'Tags',
-                UNTITLED: '(Untitled)',
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(无标题)',
             },
             CONTENT_URL: '/content.json',
         };

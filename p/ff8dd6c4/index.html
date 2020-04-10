@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html  lang="en">
+<html  lang="zh">
 
 <head>
     <meta charset="utf-8" />
@@ -12,15 +12,15 @@
 
 
     <meta name="description" content="Pyenv 是一个 Python 的版本控制系统, 使用它可以在多个 Python 版本, 以及多个不同的发行版(如 Anaconda)中自由切换. Github 项目地址">
-<meta name="keywords" content="Ubuntu,Python">
+<meta name="keywords" content="Python,应用安装,Ubuntu">
 <meta property="og:type" content="article">
 <meta property="og:title" content="在 Ubuntu 上安装 Pyenv">
 <meta property="og:url" content="http://blog.czcc.me/p/ff8dd6c4/index.html">
 <meta property="og:site_name" content="CZCC">
 <meta property="og:description" content="Pyenv 是一个 Python 的版本控制系统, 使用它可以在多个 Python 版本, 以及多个不同的发行版(如 Anaconda)中自由切换. Github 项目地址">
-<meta property="og:locale" content="en">
+<meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://blog.czcc.me/images/og_image.png">
-<meta property="og:updated_time" content="2019-09-07T07:42:44.712Z">
+<meta property="og:updated_time" content="2020-01-13T15:11:17.980Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="在 Ubuntu 上安装 Pyenv">
 <meta name="twitter:description" content="Pyenv 是一个 Python 的版本控制系统, 使用它可以在多个 Python 版本, 以及多个不同的发行版(如 Anaconda)中自由切换. Github 项目地址">
@@ -107,6 +107,9 @@
                 href="/tags">Tags</a>
                 
                 <a class="navbar-item"
+                href="/categories/LeetCode">LeetCode</a>
+                
+                <a class="navbar-item"
                 href="/about">About</a>
                 
             </div>
@@ -127,7 +130,7 @@
                 </a>
                 
                 
-                <a class="navbar-item search" title="Search" href="javascript:;">
+                <a class="navbar-item search" title="搜索" href="javascript:;">
                     <i class="fas fa-search"></i>
                 </a>
                 
@@ -145,11 +148,11 @@
     <div class="card-content article ">
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <i class="fas fa-angle-double-right"></i>&nbsp;&nbsp;在 Ubuntu 上安装 Pyenv
+            <i class="fas fa-angle-double-right"></i>&nbsp;&nbsp;在 Ubuntu 上安装 Pyenv
             
         </h1>
         
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+        <div class="level article-meta is-size-7 is-mobile is-overflow-x-auto">
             <div class="level-left">
                 <!-- <time class="level-item has-text-grey" datetime="2019-06-07T13:17:18.000Z">2019-06-07</time> -->
                 <time class="level-item has-text-grey" datetime="2019-06-07T13:17:18.000Z">
@@ -157,12 +160,13 @@
                     2019-06-07
                 </time>
                 
-                    <time class="level-item has-text-grey is-hidden-mobile" datetime="2019-09-07T07:42:44.712Z"><i class="far fa-calendar-check">&nbsp;</i>2019-09-07</time>
+                <time class="level-item has-text-grey is-hidden-mobile" datetime="2020-01-13T15:11:17.980Z"><i
+                        class="far fa-calendar-check">&nbsp;</i>2020-01-13</time>
                 
                 
                 <div class="level-item">
-                <i class="far fa-folder">&nbsp;</i>
-                <a class="has-link-grey -link" href="/categories/Python/">Python</a>
+                    <i class="far fa-folder">&nbsp;</i>
+                    <a class="has-link-grey -link" href="/categories/Python/">Python</a>
                 </div>
                 
                 
@@ -170,13 +174,13 @@
                     <i class="far fa-hourglass">&nbsp;&nbsp;</i>
                     
                     
-                    4 minutes read (About 611 words)
+                    4 分钟   (约 611 字)
                 </span>
                 
                 
                 <span class="level-item has-text-grey" id="busuanzi_container_page_pv">
                     <i class="far fa-eye"></i>
-                    <span id="busuanzi_value_page_pv">0</span> visits
+                    <span id="busuanzi_value_page_pv">0</span>次访问
                 </span>
                 
             </div>
@@ -188,15 +192,15 @@
             
         </h1> -->
         <div class="content">
-            <p>Pyenv 是一个 Python 的版本控制系统, 使用它可以在多个 Python 版本, 以及多个不同的发行版(如 Anaconda)中自由切换.</p>
+            <p>Pyenv 是一个 Python 的版本控制系统, 使用它可以在多个 Python 版本, 以及多个不同的发行版 (如 Anaconda) 中自由切换.</p>
 <p><a href="https://github.com/pyenv/pyenv">Github 项目地址</a></p>
 <hr>
 <a id="more"></a>
 
-<h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><h2 id="依赖"><a href="#依赖" class="headerlink" title="依赖"></a>依赖</h2><p>在 Ubuntu/Debian 系统下:</p>
+<h1 id="安装"><a href="# 安装" class="headerlink" title="安装"></a>安装 </h1><h2 id="依赖"><a href="# 依赖" class="headerlink" title="依赖"></a> 依赖 </h2><p> 在 Ubuntu/Debian 系统下:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install -y make build-essential libssl-dev zlib1g-dev libbz2-dev \</span><br><span class="line">libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev libncursesw5-dev \</span><br><span class="line">xz-utils tk-dev libffi-dev liblzma-dev python-openssl git</span><br></pre></td></tr></table></figure>
 
-<h2 id="使用脚本自动安装"><a href="#使用脚本自动安装" class="headerlink" title="使用脚本自动安装"></a>使用脚本自动安装</h2><p>使用 <a href="https://github.com/pyenv/pyenv-installer">pyenv-install</a></p>
+<h2 id="使用脚本自动安装"><a href="# 使用脚本自动安装" class="headerlink" title="使用脚本自动安装"></a>使用脚本自动安装 </h2><p> 使用 <a href="https://github.com/pyenv/pyenv-installer">pyenv-install</a></p>
 <p><strong>安装命令</strong>:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl https://pyenv.run | bash</span><br></pre></td></tr></table></figure>
 
@@ -207,43 +211,45 @@
 <p><strong>升级命令</strong>:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pyenv update</span><br></pre></td></tr></table></figure>
 
-<h2 id="手动安装"><a href="#手动安装" class="headerlink" title="手动安装"></a>手动安装</h2><p>也可以使用 Git 工具直接克隆:</p>
+<h2 id="手动安装"><a href="# 手动安装" class="headerlink" title="手动安装"></a>手动安装 </h2><p> 也可以使用 Git 工具直接克隆:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/pyenv/pyenv.git ~/.pyenv</span><br></pre></td></tr></table></figure>
 
-<h2 id="配置文件"><a href="#配置文件" class="headerlink" title="配置文件"></a>配置文件</h2><p>如果使用 zsh, 需要将以下的内容写入 ~/.zshrc 中:</p>
+<h2 id="配置文件"><a href="# 配置文件" class="headerlink" title="配置文件"></a>配置文件 </h2><p> 如果使用 zsh, 需要将以下的内容写入 ~/.zshrc 中:</p>
 <figure class="highlight yml"><figcaption><span>~/.zshrc</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">export</span> <span class="string">PATH="$HOME/.pyenv/bin:$PATH"</span></span><br><span class="line"><span class="string">export</span> <span class="string">PYENV_ROOT=$HOME/.pyenv</span></span><br><span class="line"><span class="string">eval</span> <span class="string">"$(pyenv init -)"</span></span><br><span class="line"><span class="string">eval</span> <span class="string">"$(pyenv virtualenv-init -)"</span></span><br></pre></td></tr></table></figure>
 
-<h2 id="卸载"><a href="#卸载" class="headerlink" title="卸载"></a>卸载</h2><p>如果只是不想在 Shell 中使用 Pyenv, 那么可以将配置文件 (~/.zshrc 或 ~/.bashrc) 中有关 <code>pyenv init</code> 的一行注释掉.</p>
+<h2 id="卸载"><a href="# 卸载" class="headerlink" title="卸载"></a>卸载 </h2><p> 如果只是不想在 Shell 中使用 Pyenv, 那么可以将配置文件 (~/.zshrc 或 ~/.bashrc) 中有关 <code>pyenv init</code> 的一行注释掉.</p>
 <p>如果想要完全卸载 Pyenv, 可以执行 (其中 <code>$(pyenv root)</code> 即为 <code>~/.pyenv</code>):</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rm -rf $(pyenv root)</span><br></pre></td></tr></table></figure>
 
 <p>之后删除配置文件中与 Pyenv 有关的行.</p>
-<h2 id="配置-pip-镜像源"><a href="#配置-pip-镜像源" class="headerlink" title="配置 pip 镜像源"></a>配置 pip 镜像源</h2><figure class="highlight plain"><figcaption><span>~/.pip/pip.conf</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[global]</span><br><span class="line">index-url = https://pypi.tuna.tsinghua.edu.cn/simple</span><br><span class="line"></span><br><span class="line">[list]</span><br><span class="line">format=columns</span><br></pre></td></tr></table></figure>
+<h2 id="配置 -pip- 镜像源"><a href="# 配置 -pip- 镜像源" class="headerlink" title="配置 pip 镜像源"></a>配置 pip 镜像源</h2><figure class="highlight plain"><figcaption><span>~/.pip/pip.conf</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[global]</span><br><span class="line">index-url = https://pypi.tuna.tsinghua.edu.cn/simple</span><br><span class="line"></span><br><span class="line">[list]</span><br><span class="line">format=columns</span><br></pre></td></tr></table></figure>
 
-<h1 id="基本命令"><a href="#基本命令" class="headerlink" title="基本命令"></a>基本命令</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">pyenv install --list        <span class="comment"># 列出可安装版本</span></span><br><span class="line">pyenv install &lt;version&gt;     <span class="comment"># 安装对应版本</span></span><br><span class="line">pyenv install -v &lt;version&gt;  <span class="comment"># 安装对应版本，若发生错误，可以显示详细的错误信息</span></span><br><span class="line">pyenv versions              <span class="comment"># 显示当前使用的 python 版本</span></span><br><span class="line">pyenv <span class="built_in">which</span> python          <span class="comment"># 显示当前 python 安装路径</span></span><br><span class="line">pyenv global &lt;version&gt;      <span class="comment"># 设置默认 Python 版本</span></span><br><span class="line">pyenv <span class="built_in">local</span> &lt;version&gt;       <span class="comment"># 当前路径创建一个 .python-version, 以后进入这个目录自动切换为该版本</span></span><br><span class="line">pyenv shell &lt;version&gt;       <span class="comment"># 当前 shell 的 session 中启用某版本，优先级高于 global 及 local</span></span><br></pre></td></tr></table></figure>
+<h1 id="基本命令"><a href="# 基本命令" class="headerlink" title="基本命令"></a>基本命令</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">pyenv install --list        <span class="comment"># 列出可安装版本</span></span><br><span class="line">pyenv install &lt;version&gt;     <span class="comment"># 安装对应版本</span></span><br><span class="line">pyenv install -v &lt;version&gt;  <span class="comment"># 安装对应版本，若发生错误，可以显示详细的错误信息</span></span><br><span class="line">pyenv versions              <span class="comment"># 显示当前使用的 python 版本</span></span><br><span class="line">pyenv <span class="built_in">which</span> python          <span class="comment"># 显示当前 python 安装路径</span></span><br><span class="line">pyenv global &lt;version&gt;      <span class="comment"># 设置默认 Python 版本</span></span><br><span class="line">pyenv <span class="built_in">local</span> &lt;version&gt;       <span class="comment"># 当前路径创建一个 .python-version, 以后进入这个目录自动切换为该版本</span></span><br><span class="line">pyenv shell &lt;version&gt;       <span class="comment"># 当前 shell 的 session 中启用某版本，优先级高于 global 及 local</span></span><br></pre></td></tr></table></figure>
 
 <p>使用 <code>virtualenv</code>:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">pyenv virtualenv env                <span class="comment"># 从默认版本创建虚拟环境</span></span><br><span class="line">pyenv virtualenv 3.6.4 env-3.6.4    <span class="comment"># 创建3.6.4版本的虚拟环境</span></span><br><span class="line">pyenv activate env-3.6.4            <span class="comment"># 激活 env-3.6.4 这个虚拟环境</span></span><br><span class="line">pyenv deactivate                    <span class="comment"># 停用当前的虚拟环境</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 自动激活</span></span><br><span class="line"><span class="comment"># 使用pyenv local 虚拟环境名</span></span><br><span class="line"><span class="comment"># 会把`虚拟环境名`写入当前目录的.python-version文件中</span></span><br><span class="line"><span class="comment"># 关闭自动激活 -&gt; pyenv deactivate</span></span><br><span class="line"><span class="comment"># 启动自动激活 -&gt; pyenv activate env-3.6.4</span></span><br><span class="line">pyenv <span class="built_in">local</span> env-3.6.4</span><br><span class="line"></span><br><span class="line">pyenv uninstall env-3.6.4           <span class="comment"># 删除 env-3.6.4 这个虚拟环境</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">pyenv virtualenv env                <span class="comment"># 从默认版本创建虚拟环境</span></span><br><span class="line">pyenv virtualenv 3.6.4 env-3.6.4    <span class="comment"># 创建 3.6.4 版本的虚拟环境</span></span><br><span class="line">pyenv activate env-3.6.4            <span class="comment"># 激活 env-3.6.4 这个虚拟环境</span></span><br><span class="line">pyenv deactivate                    <span class="comment"># 停用当前的虚拟环境</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 自动激活</span></span><br><span class="line"><span class="comment"># 使用 pyenv local 虚拟环境名</span></span><br><span class="line"><span class="comment"># 会把 ` 虚拟环境名 ` 写入当前目录的.python-version 文件中</span></span><br><span class="line"><span class="comment"># 关闭自动激活 -&gt; pyenv deactivate</span></span><br><span class="line"><span class="comment"># 启动自动激活 -&gt; pyenv activate env-3.6.4</span></span><br><span class="line">pyenv <span class="built_in">local</span> env-3.6.4</span><br><span class="line"></span><br><span class="line">pyenv uninstall env-3.6.4           <span class="comment"># 删除 env-3.6.4 这个虚拟环境</span></span><br></pre></td></tr></table></figure>
 
 
         </div>
         
-            <ul class="post-copyright">
+        <ul class="post-copyright">
             <li><strong>本文标题：</strong><a href="http://blog.czcc.me/p/ff8dd6c4/">在 Ubuntu 上安装 Pyenv</a></li>
             <li><strong>本文作者：</strong><a href="http://blog.czcc.me">Cheng</a></li>
             <li><strong>本文链接：</strong><a href="http://blog.czcc.me/p/ff8dd6c4/">http://blog.czcc.me/p/ff8dd6c4/</a></li>
             <li><strong>发布时间：</strong>2019-06-07</li>
-            <li><strong>版权声明：</strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！
+            <li><strong>版权声明：</strong>本博客所有文章除特别声明外，均采用 <a
+                    href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="external nofollow"
+                    target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！
             </li>
-            </ul>
-            <br>
+        </ul>
+        <br>
         
         
         <div class="level is-size-7 is-uppercase">
             <div class="level-start">
                 <div class="level-item">
                     <span class="is-size-6 has-text-grey has-mr-7">#</span>
-                    <a class="has-link-grey -link" href="/tags/Python/">Python</a>, <a class="has-link-grey -link" href="/tags/Ubuntu/">Ubuntu</a>
+                    <a class="has-link-grey -link" href="/tags/Python/">Python</a>, <a class="has-link-grey -link" href="/tags/Ubuntu/">Ubuntu</a>, <a class="has-link-grey -link" href="/tags/应用安装/">应用安装</a>
                 </div>
             </div>
         </div>
@@ -261,29 +267,29 @@
 
 <div class="card">
     <div class="card-content">
-        <h3 class="menu-label has-text-centered">Like this article? Support the author with</h3>
+        <h3 class="menu-label has-text-centered">喜欢这篇文章？打赏一下作者吧</h3>
         <div class="buttons is-centered">
             
-                
+            
 <a class="button is-info donate">
     <span class="icon is-small">
         <i class="fab fa-alipay"></i>
     </span>
-    <span>Alipay</span>
-    <div class="qrcode"><img src="/images/Alipay.jpg" alt="Alipay"></div>
+    <span>支付宝</span>
+    <div class="qrcode"><img src="/images/Alipay.jpg" alt="支付宝"></div>
 </a>
 
-                
-                
+            
+            
 <a class="button is-success donate">
     <span class="icon is-small">
         <i class="fab fa-weixin"></i>
     </span>
-    <span>Wechat</span>
-    <div class="qrcode"><img src="/images/WeChat_pay.png" alt="Wechat"></div>
+    <span>微信</span>
+    <div class="qrcode"><img src="/images/WeChat_pay.png" alt="微信"></div>
 </a>
 
-                
+            
         </div>
     </div>
 </div>
@@ -294,7 +300,8 @@
     <div class="level post-navigation is-flex-wrap is-mobile">
         
         <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/p/a8f23fb8/">
+            <a class="level level-item has-link-grey  article-nav-prev"
+                href="/p/a8f23fb8/">
                 <i class="level-item fas fa-chevron-left"></i>
                 <span class="level-item">Python 环境搭建</span>
             </a>
@@ -302,7 +309,8 @@
         
         
         <div class="level-end">
-            <a class="level level-item has-link-grey  article-nav-next" href="/p/7bf7524/">
+            <a class="level level-item has-link-grey  article-nav-next"
+                href="/p/7bf7524/">
                 <span class="level-item">Ubuntu 系统的简单配置</span>
                 <i class="level-item fas fa-chevron-right"></i>
             </a>
@@ -315,7 +323,7 @@
 
 <div class="card">
     <div class="card-content">
-        <h3 class="title is-5 has-text-weight-normal">Comments</h3>
+        <h3 class="title is-5 has-text-weight-normal">评论</h3>
         
 <script>
     var disqus_config = function () {
@@ -352,7 +360,7 @@
                 <div>
                     
                     <figure class="image is-128x128 has-mb-6">
-                        <img class="" src="/images/avatar.png" alt="Cheng">
+                        <img class="" src="/images/avatar.jpg" alt="Cheng">
                     </figure>
                     
                     <p class="is-size-4 is-block">
@@ -377,11 +385,11 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Posts
+                        Post
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            25
+                            36
                         </p>
                     </a>
                 </div>
@@ -389,11 +397,11 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Categories
+                        Category
                     </p>
                     <a href="/categories">
                         <p class="title has-text-weight-normal">
-                            8
+                            14
                         </p>
                     </a>
                 </div>
@@ -401,11 +409,11 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Tags
+                        Tag
                     </p>
                     <a href="/tags">
                         <p class="title has-text-weight-normal">
-                            20
+                            38
                         </p>
                     </a>
                 </div>
@@ -451,29 +459,29 @@
             <ul class="menu-list"><li>
         <a class="is-flex" href="#安装">
         <span class="has-mr-6">1</span>
-        <span>安装</span>
+        <span>安装 </span>
         </a><ul class="menu-list"><li>
         <a class="is-flex" href="#依赖">
         <span class="has-mr-6">1.1</span>
-        <span>依赖</span>
+        <span> 依赖 </span>
         </a></li><li>
         <a class="is-flex" href="#使用脚本自动安装">
         <span class="has-mr-6">1.2</span>
-        <span>使用脚本自动安装</span>
+        <span>使用脚本自动安装 </span>
         </a></li><li>
         <a class="is-flex" href="#手动安装">
         <span class="has-mr-6">1.3</span>
-        <span>手动安装</span>
+        <span>手动安装 </span>
         </a></li><li>
         <a class="is-flex" href="#配置文件">
         <span class="has-mr-6">1.4</span>
-        <span>配置文件</span>
+        <span>配置文件 </span>
         </a></li><li>
         <a class="is-flex" href="#卸载">
         <span class="has-mr-6">1.5</span>
-        <span>卸载</span>
+        <span>卸载 </span>
         </a></li><li>
-        <a class="is-flex" href="#配置-pip-镜像源">
+        <a class="is-flex" href="#配置 -pip- 镜像源">
         <span class="has-mr-6">1.6</span>
         <span>配置 pip 镜像源</span>
         </a></li></ul></li><li>
@@ -514,7 +522,7 @@
                 
                 <br>
                 <span id="busuanzi_container_site_uv">
-                Visited by <span id="busuanzi_value_site_uv">0</span> users
+                共<span id="busuanzi_value_site_uv">0</span>个访客
                 </span>
                 
                 </p>
@@ -555,7 +563,7 @@
 </footer>
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
-<script>moment.locale("en");</script>
+<script>moment.locale("zh-CN");</script>
 
 
 <script>
@@ -632,7 +640,7 @@ document.addEventListener('DOMContentLoaded', function () {
 </script>
 
 
-<a id="back-to-top" title="Back to Top" href="javascript:;">
+<a id="back-to-top" title="回到顶端" href="javascript:;">
     <i class="fas fa-chevron-up"></i>
 </a>
 <script src="/js/back-to-top.js" defer></script>
@@ -656,7 +664,7 @@ document.addEventListener('DOMContentLoaded', function () {
     <div class="searchbox ins-search">
     <div class="searchbox-container ins-search-container">
         <div class="searchbox-input-wrapper">
-            <input type="text" class="searchbox-input ins-search-input" placeholder="Type something..." />
+            <input type="text" class="searchbox-input ins-search-input" placeholder="想要查找什么..." />
             <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
         </div>
         <div class="searchbox-result-wrapper ins-section-wrapper">
@@ -668,11 +676,11 @@ document.addEventListener('DOMContentLoaded', function () {
     (function (window) {
         var INSIGHT_CONFIG = {
             TRANSLATION: {
-                POSTS: 'Posts',
-                PAGES: 'Pages',
-                CATEGORIES: 'Categories',
-                TAGS: 'Tags',
-                UNTITLED: '(Untitled)',
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(无标题)',
             },
             CONTENT_URL: '/content.json',
         };
