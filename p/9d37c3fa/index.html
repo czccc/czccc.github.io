@@ -1,198 +1,5 @@
-<!DOCTYPE html>
-<html  lang="zh">
-
-<head>
-    <meta charset="utf-8" />
-
-<meta name="generator" content="Hexo 3.9.0" />
-
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-
-<title>Makefile 入门 - CZCC</title>
-
-
-    <meta name="description" content="在 Linux（ Unix ）环境下使用 GNU 的 make 工具能够比较容易的构建一个属于你自己的工程，整个工程的编译只需要一个命令就可以完成编译、连接以至于最后的执行。不过这需要我们投入一些时间去完成一个或者多个称之为 Makefile 文件的编写。 所要完成的 Makefile 文件描述了整个工程的编译、连接等规则。其中包括：  工程中的哪些源文件需要编译以及如何编译 需要创建哪些库文件">
-<meta name="keywords" content="C,CPP,C++,Makefile">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Makefile 入门">
-<meta property="og:url" content="http://blog.czcc.me/p/9d37c3fa/index.html">
-<meta property="og:site_name" content="CZCC">
-<meta property="og:description" content="在 Linux（ Unix ）环境下使用 GNU 的 make 工具能够比较容易的构建一个属于你自己的工程，整个工程的编译只需要一个命令就可以完成编译、连接以至于最后的执行。不过这需要我们投入一些时间去完成一个或者多个称之为 Makefile 文件的编写。 所要完成的 Makefile 文件描述了整个工程的编译、连接等规则。其中包括：  工程中的哪些源文件需要编译以及如何编译 需要创建哪些库文件">
-<meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://blog.czcc.me/images/og_image.png">
-<meta property="og:updated_time" content="2020-04-10T03:15:54.997Z">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Makefile 入门">
-<meta name="twitter:description" content="在 Linux（ Unix ）环境下使用 GNU 的 make 工具能够比较容易的构建一个属于你自己的工程，整个工程的编译只需要一个命令就可以完成编译、连接以至于最后的执行。不过这需要我们投入一些时间去完成一个或者多个称之为 Makefile 文件的编写。 所要完成的 Makefile 文件描述了整个工程的编译、连接等规则。其中包括：  工程中的哪些源文件需要编译以及如何编译 需要创建哪些库文件">
-<meta name="twitter:image" content="http://blog.czcc.me/images/og_image.png">
-
-
-
-
-
-<link rel="alternative" href="/atom.xml" title="Makefile 入门" type="application/atom+xml">
-
-
-
-<link rel="icon" href="/images/favicon.ico">
-
-
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css">
-
-
-    
-    
-<style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
-
-    
-    
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
-
-    
-    
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
-
-    
-    
-    
-    
-<link rel="stylesheet" href="/css/back-to-top.css">
-
-    
-    
-    
-    
-    
-    
-    
-    <link rel="stylesheet" href="/css/progressbar.css">
-<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
-    
-    <script async="" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-    
-
-
-<link rel="stylesheet" href="/css/style.css">
-    <meta name="google-site-verification" content="_ziiq9TAo7q1mceEFdwp1hTrurp8QZCDVr8866sHj44" />
-</head>
-
-<body class="is-2-column">
-    <nav class="navbar navbar-main">
-    <div class="container">
-        <div class="navbar-brand is-flex-center">
-            <a class="navbar-item navbar-logo" href="/">
-            
-                <img src="/images/logo.ico" alt="Makefile 入门" height="28">
-            
-            </a>
-        </div>
-        <div class="navbar-menu">
-            
-            <div class="navbar-start">
-                
-                <a class="navbar-item"
-                href="/">Home</a>
-                
-                <a class="navbar-item"
-                href="/archives">Archives</a>
-                
-                <a class="navbar-item"
-                href="/categories">Categories</a>
-                
-                <a class="navbar-item"
-                href="/tags">Tags</a>
-                
-                <a class="navbar-item"
-                href="/categories/LeetCode">LeetCode</a>
-                
-                <a class="navbar-item"
-                href="/about">About</a>
-                
-            </div>
-            
-            <div class="navbar-end">
-                
-                    
-                    <a class="navbar-item" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus">
-                        
-                        <i class="fab fa-github"></i>
-                        
-                    </a>
-                    
-                
-                
-                <a class="navbar-item is-hidden-tablet catalogue" title="Catalogue" href="javascript:;">
-                    <i class="fas fa-list-ul"></i>
-                </a>
-                
-                
-                <a class="navbar-item search" title="搜索" href="javascript:;">
-                    <i class="fas fa-search"></i>
-                </a>
-                
-            </div>
-        </div>
-    </div>
-</nav>
-    
-    <section class="section">
-        <div class="container">
-            <div class="columns">
-                <div class="column is-8-tablet is-9-desktop is-9-widescreen has-order-2 column-main">
-<div class="card">
-    
-    <div class="card-content article ">
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-            <i class="fas fa-angle-double-right"></i>&nbsp;&nbsp;Makefile 入门
-            
-        </h1>
-        
-        <div class="level article-meta is-size-7 is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <!-- <time class="level-item has-text-grey" datetime="2020-04-09T07:12:54.000Z">2020-04-09</time> -->
-                <time class="level-item has-text-grey" datetime="2020-04-09T07:12:54.000Z">
-                    <i class="far fa-calendar-alt">&nbsp;</i>
-                    2020-04-09
-                </time>
-                
-                <time class="level-item has-text-grey is-hidden-mobile" datetime="2020-04-10T03:15:54.997Z"><i
-                        class="far fa-calendar-check">&nbsp;</i>2020-04-10</time>
-                
-                
-                <div class="level-item">
-                    <i class="far fa-folder">&nbsp;</i>
-                    <a class="has-link-grey -link" href="/categories/C-CPP/">C-CPP</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    <i class="far fa-hourglass">&nbsp;&nbsp;</i>
-                    
-                    
-                    26 分钟   (约 3929 字)
-                </span>
-                
-                
-                <span class="level-item has-text-grey" id="busuanzi_container_page_pv">
-                    <i class="far fa-eye"></i>
-                    <span id="busuanzi_value_page_pv">0</span>次访问
-                </span>
-                
-            </div>
-        </div>
-        
-        <!-- <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                Makefile 入门
-            
-        </h1> -->
-        <div class="content">
-            <hr>
+<!doctype html>
+<html lang="zh"><head><meta charset="utf-8"><meta name="generator" content="Hexo 4.2.0"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>Makefile 入门 - CZCC</title><meta description="在 Linux（ Unix ）环境下使用 GNU 的 make 工具能够比较容易的构建一个属于你自己的工程，整个工程的编译只需要一个命令就可以完成编译、连接以至于最后的执行。不过这需要我们投入一些时间去完成一个或者多个称之为 Makefile 文件的编写。 所要完成的 Makefile 文件描述了整个工程的编译、连接等规则。其中包括：  工程中的哪些源文件需要编译以及如何编译 需要创建哪些库文件"><meta property="og:type" content="blog"><meta property="og:title" content="Makefile 入门"><meta property="og:url" content="http://blog.czcc.me/"><meta property="og:site_name" content="CZCC"><meta property="og:description" content="在 Linux（ Unix ）环境下使用 GNU 的 make 工具能够比较容易的构建一个属于你自己的工程，整个工程的编译只需要一个命令就可以完成编译、连接以至于最后的执行。不过这需要我们投入一些时间去完成一个或者多个称之为 Makefile 文件的编写。 所要完成的 Makefile 文件描述了整个工程的编译、连接等规则。其中包括：  工程中的哪些源文件需要编译以及如何编译 需要创建哪些库文件"><meta property="og:locale" content="zh_CN"><meta property="article:published_time" content="2020-04-09T07:12:54.000Z"><meta property="article:modified_time" content="2020-04-10T10:37:50.203Z"><meta property="article:author" content="Cheng"><meta property="article:tag" content="C"><meta property="article:tag" content="CPP"><meta property="article:tag" content="C++"><meta property="article:tag" content="Makefile"><meta property="twitter:card" content="summary"><meta property="twitter:image" content="http://blog.czcc.me/img/og_image.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"http://blog.czcc.me/p/9d37c3fa/"},"headline":"CZCC","image":["http://blog.czcc.me/img/og_image.png"],"datePublished":"2020-04-09T07:12:54.000Z","dateModified":"2020-04-10T10:37:50.203Z","author":{"@type":"Person","name":"Cheng"},"description":"在 Linux（ Unix ）环境下使用 GNU 的 make 工具能够比较容易的构建一个属于你自己的工程，整个工程的编译只需要一个命令就可以完成编译、连接以至于最后的执行。不过这需要我们投入一些时间去完成一个或者多个称之为 Makefile 文件的编写。 所要完成的 Makefile 文件描述了整个工程的编译、连接等规则。其中包括：  工程中的哪些源文件需要编译以及如何编译 需要创建哪些库文件"}</script><link rel="canonical" href="http://blog.czcc.me/p/9d37c3fa/"><link rel="alternative" href="/atom.xml" title="CZCC" type="application/atom+xml"><link rel="icon" href="/img/favicon.ico"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css"><link rel="stylesheet" href="/css/default.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><!--!--><script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" defer></script><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css"><!--!--><!--!--><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script></head><body class="is-2-column"><nav class="navbar navbar-main"><div class="container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img src="/img/logo.ico" alt="CZCC" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">Home</a><a class="navbar-item" href="/archives">Archives</a><a class="navbar-item" href="/categories">Categories</a><a class="navbar-item" href="/tags">Tags</a><a class="navbar-item" href="/categories/LeetCode">LeetCode</a><a class="navbar-item" href="/about">About</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus"><i class="fab fa-github"></i></a><a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;"><i class="fas fa-list-ul"></i></a><a class="navbar-item search" title="搜索" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-9-desktop is-9-widescreen"><div class="card"><article class="card-content article" role="article"><h1 class="title is-3 is-size-4-mobile"><i class="fas fa-angle-double-right"></i>  Makefile 入门</h1><div class="article-meta size-small is-uppercase level is-mobile"><div class="level-left"><i class="far fa-calendar-alt"> </i><time class="level-item" dateTime="2020-04-09T07:12:54.000Z" title="2020-04-09T07:12:54.000Z">2020-04-09</time><i class="far fa-calendar-check"> </i><time class="level-item" dateTime="2020-04-10T10:37:50.203Z" title="2020-04-09T07:12:54.000Z">2020-04-10</time><i class="far fa-folder"> </i><span class="level-item"><a class="link-muted" href="/categories/C-CPP/">C-CPP</a></span><i class="far fa-hourglass">  </i><span class="level-item">26 分钟 读完 (大约 3923 个字)</span><i class="far fa-eye"></i><span class="level-item" id="busuanzi_container_page_pv"><i class="far fa-eye"></i>&nbsp;&nbsp;<span id="busuanzi_value_page_pv">0</span>次访问</span></div></div><div class="content"><hr>
 <p>在 Linux（ Unix ）环境下使用 GNU 的 <code>make</code> 工具能够比较容易的构建一个属于你自己的工程，整个工程的编译只需要一个命令就可以完成编译、连接以至于最后的执行。不过这需要我们投入一些时间去完成一个或者多个称之为 <code>Makefile</code> 文件的编写。</p>
 <p>所要完成的 <code>Makefile</code> 文件描述了整个工程的编译、连接等规则。其中包括：</p>
 <ul>
@@ -307,18 +114,33 @@
 <figure class="highlight makefile"><figcaption><span>Makefie</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">output:</span></span><br><span class="line">    <span class="variable">$(CC)</span> -o output input.c</span><br></pre></td></tr></table></figure>
 
 <h2 id="自动变量（Automatic-Variables）"><a href="# 自动变量（Automatic-Variables）" class="headerlink" title="自动变量（Automatic Variables）"></a>自动变量（Automatic Variables）</h2><p>Make 命令还提供一些自动变量，它们的值与当前规则有关。主要有以下几个。</p>
-<h3 id=""><a href="#"class="headerlink"title="$@"></a><code>$@</code></h3><p><code>$@</code> 指代当前目标，就是 Make 命令当前构建的那个目标。比如，<code>make foo</code>的 <code>$@</code> 就指代 foo。</p>
+<ul>
+<li><strong><code>$@</code></strong></li>
+</ul>
+<p><code>$@</code> 指代当前目标，就是 Make 命令当前构建的那个目标。比如，<code>make foo</code>的 <code>$@</code> 就指代 foo。</p>
+<p><code>$(@D)</code> 和 <code>$(@F)</code> 分别指向 <code>$@</code> 的 <strong> 目录名 </strong> 和<strong>文件名</strong>。</p>
+<p>比如，<code>$@</code> 是 <code>src/input.c</code>，那么 <code>$(@D)</code> 的值为 <code>src</code> ，<code>$(@F)</code> 的值为 <code>input.c</code>。</p>
 <figure class="highlight makefile"><figcaption><span>Makefie</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">a.txt b.txt: </span><br><span class="line">    touch <span class="variable">$@</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 等同于下面的写法。</span></span><br><span class="line"><span class="section">a.txt:</span></span><br><span class="line">    touch a.txt</span><br><span class="line"><span class="section">b.txt:</span></span><br><span class="line">    touch b.txt</span><br></pre></td></tr></table></figure>
 
-<h3 id="lt"><a href="#lt" class="headerlink" title="$&lt;"></a><code>$&lt;</code></h3><p><code>$&lt;</code> 指代第一个前置条件。比如，规则为 <code>t: p1 p2</code>，那么 <code>$&lt;</code> 就指代 <code>p1</code> 。</p>
+<ul>
+<li><strong><code>$&lt;</code></strong></li>
+</ul>
+<p><code>$&lt;</code> 指代第一个前置条件。比如，规则为 <code>t: p1 p2</code>，那么 <code>$&lt;</code> 就指代 <code>p1</code> 。</p>
+<p><code>$(&lt;D)</code> 和 <code>$(&lt;F)</code> 分别指向 <code>$&lt;</code> 的 <strong> 目录名 </strong> 和<strong>文件名</strong>。</p>
 <figure class="highlight makefile"><figcaption><span>Makefie</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">a.txt: b.txt c.txt</span></span><br><span class="line">    cp <span class="variable">$&lt;</span> <span class="variable">$@</span> </span><br><span class="line"></span><br><span class="line"><span class="comment"># 等同于下面的写法。</span></span><br><span class="line"><span class="section">a.txt: b.txt c.txt</span></span><br><span class="line">    cp b.txt a.txt</span><br></pre></td></tr></table></figure>
 
-<h3 id="D- 和 -F"><a href="#D- 和 -F" class="headerlink" title="$(@D) 和 $(@F)"></a><code>$(@D)</code> 和 <code>$(@F)</code></h3><p><code>$(@D)</code> 和 <code>$(@F)</code> 分别指向 <code>$@</code> 的 <strong> 目录名 </strong> 和<strong>文件名</strong>。</p>
-<p>比如，<code>$@</code> 是 <code>src/input.c</code>，那么 <code>$(@D)</code> 的值为 <code>src</code> ，<code>$(@F)</code> 的值为 <code>input.c</code>。</p>
-<h3 id="lt-D- 和 -lt-F"><a href="#lt-D- 和 -lt-F" class="headerlink" title="$(&lt;D) 和 $(&lt;F)"></a><code>$(&lt;D)</code> 和 <code>$(&lt;F)</code></h3><p><code>$(&lt;D)</code> 和 <code>$(&lt;F)</code> 分别指向 <code>$&lt;</code> 的 <strong> 目录名 </strong> 和<strong>文件名</strong>。</p>
-<h3 id="-1"><a href="#-1" class="headerlink" title="$?"></a><code>$?</code></h3><p><code>$?</code> 指代比目标更新的所有前置条件，之间以空格分隔。比如，规则为<code>t: p1 p2</code>，其中 <code>p2</code> 的时间戳比 <code>t</code> 新，<code>$?</code> 就指代 <code>p2</code>。</p>
-<h3 id="-2"><a href="#-2" class="headerlink" title="$^"></a><code>$^</code></h3><p><code>$^</code> 指代所有前置条件，之间以空格分隔。比如，规则为 <code>t: p1 p2</code>，那么 <code>$^</code> 就指代 <code>p1 p2</code> 。</p>
-<h3 id="-3"><a href="#-3" class="headerlink" title="$*"></a><code>$*</code></h3><p><code>$*</code> 指代匹配符 <code>%</code> 匹配的部分， 比如 <code>%</code> 匹配 <code>f1.txt</code> 中的 <code>f1</code> ，<code>$*</code> 就表示 <code>f1</code>。</p>
+<ul>
+<li><code>$?</code></li>
+</ul>
+<p><code>$?</code> 指代比目标更新的所有前置条件，之间以空格分隔。比如，规则为<code>t: p1 p2</code>，其中 <code>p2</code> 的时间戳比 <code>t</code> 新，<code>$?</code> 就指代 <code>p2</code>。</p>
+<ul>
+<li><code>$^</code></li>
+</ul>
+<p><code>$^</code> 指代所有前置条件，之间以空格分隔。比如，规则为 <code>t: p1 p2</code>，那么 <code>$^</code> 就指代 <code>p1 p2</code> 。</p>
+<ul>
+<li><code>$*</code></li>
+</ul>
+<p><code>$*</code> 指代匹配符 <code>%</code> 匹配的部分， 比如 <code>%</code> 匹配 <code>f1.txt</code> 中的 <code>f1</code> ，<code>$*</code> 就表示 <code>f1</code>。</p>
 <p>所有的自动变量清单，请看<a href="https://www.gnu.org/software/make/manual/html_node/Automatic-Variables.html">Make 手册</a>。下面是自动变量的一个例子。</p>
 <figure class="highlight makefile"><figcaption><span>Makefie</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">dest/%.txt: src/%.txt</span></span><br><span class="line">    @[-d dest] || mkdir dest</span><br><span class="line">    cp <span class="variable">$&lt;</span> <span class="variable">$@</span></span><br></pre></td></tr></table></figure>
 
@@ -365,541 +187,58 @@
 
 <p>上面代码可以调用不同目标，删除不同后缀名的文件，也可以调用一个目标（cleanall），删除所有指定类型的文件。</p>
 <h2 id="编译 C 语言项目"><a href="# 编译 C 语言项目" class="headerlink" title="编译 C 语言项目"></a>编译 C 语言项目</h2><figure class="highlight makefile"><figcaption><span>Makefie</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">edit : main.o kbd.o command.o display.o </span><br><span class="line">    cc -o edit main.o kbd.o command.o display.o</span><br><span class="line"></span><br><span class="line">main.o : main.c defs.h</span><br><span class="line">    cc -c main.c</span><br><span class="line">kbd.o : kbd.c defs.h command.h</span><br><span class="line">    cc -c kbd.c</span><br><span class="line">command.o : command.c defs.h command.h</span><br><span class="line">    cc -c command.c</span><br><span class="line">display.o : display.c defs.h</span><br><span class="line">    cc -c display.c</span><br><span class="line"></span><br><span class="line">clean :</span><br><span class="line">     rm edit main.o kbd.o command.o display.o</span><br><span class="line"></span><br><span class="line"><span class="meta"><span class="meta-keyword">.PHONY</span>: edit clean</span></span><br></pre></td></tr></table></figure>
-
-
-        </div>
-        
-        <ul class="post-copyright">
-            <li><strong>本文标题：</strong><a href="http://blog.czcc.me/p/9d37c3fa/">Makefile 入门</a></li>
-            <li><strong>本文作者：</strong><a href="http://blog.czcc.me">Cheng</a></li>
-            <li><strong>本文链接：</strong><a href="http://blog.czcc.me/p/9d37c3fa/">http://blog.czcc.me/p/9d37c3fa/</a></li>
-            <li><strong>发布时间：</strong>2020-04-09</li>
-            <li><strong>版权声明：</strong>本博客所有文章除特别声明外，均采用 <a
-                    href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="external nofollow"
-                    target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！
-            </li>
-        </ul>
-        <br>
-        
-        
-        <div class="level is-size-7 is-uppercase">
-            <div class="level-start">
-                <div class="level-item">
-                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
-                    <a class="has-link-grey -link" href="/tags/C/">C</a>, <a class="has-link-grey -link" href="/tags/C/">C++</a>, <a class="has-link-grey -link" href="/tags/CPP/">CPP</a>, <a class="has-link-grey -link" href="/tags/Makefile/">Makefile</a>
-                </div>
-            </div>
-        </div>
-        
-        
-        
-        <div class="social-share"></div>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/css/share.min.css">
-<script src="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/js/social-share.min.js"></script>
-        
-    </div>
-</div>
-
-
-
-<div class="card">
-    <div class="card-content">
-        <h3 class="menu-label has-text-centered">喜欢这篇文章？打赏一下作者吧</h3>
-        <div class="buttons is-centered">
-            
-            
-<a class="button is-info donate">
-    <span class="icon is-small">
-        <i class="fab fa-alipay"></i>
-    </span>
-    <span>支付宝</span>
-    <div class="qrcode"><img src="/images/Alipay.jpg" alt="支付宝"></div>
-</a>
-
-            
-            
-<a class="button is-success donate">
-    <span class="icon is-small">
-        <i class="fab fa-weixin"></i>
-    </span>
-    <span>微信</span>
-    <div class="qrcode"><img src="/images/WeChat_pay.png" alt="微信"></div>
-</a>
-
-            
-        </div>
-    </div>
-</div>
-
-
-
-<div class="card card-transparent">
-    <div class="level post-navigation is-flex-wrap is-mobile">
-        
-        
-        <div class="level-end">
-            <a class="level level-item has-link-grey  article-nav-next"
-                href="/p/7c8c7b3f/">
-                <span class="level-item">Python 中的魔术方法</span>
-                <i class="level-item fas fa-chevron-right"></i>
-            </a>
-        </div>
-        
-    </div>
-</div>
-
-
-
-<div class="card">
-    <div class="card-content">
-        <h3 class="title is-5 has-text-weight-normal">评论</h3>
-        
-<script>
-    var disqus_config = function () {
-        this.page.url = 'http://blog.czcc.me/p/9d37c3fa/';
-        this.page.identifier = 'p/9d37c3fa/';
-    };
-    (function() {
-        var d = document, s = d.createElement('script');  
-        s.src = '//' + 'czcc' + '.disqus.com/embed.js';
-        s.setAttribute('data-timestamp', +new Date());
-        (d.head || d.body).appendChild(s);
-    })();
-</script>
-
-<div id="disqus_thread">
-    
-    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-</div>
-    </div>
-</div>
-</div>
-                
-
-
-
-
-<div class="column is-4-tablet is-3-desktop is-3-widescreen  has-order-1 column-left ">
-    
-        
-<div class="card widget">
-    <div class="card-content">
-        <nav class="level">
-            <div class="level-item has-text-centered" style="flex-shrink: 1">
-                <div>
-                    
-                    <figure class="image is-128x128 has-mb-6">
-                        <img class="" src="/images/avatar.jpg" alt="Cheng">
-                    </figure>
-                    
-                    <p class="is-size-4 is-block">
-                        Cheng
-                    </p>
-                    
-                    
-                    <p class="is-size-6 is-block">
-                        A Student
-                    </p>
-                    
-                    
-                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
-                        <i class="fas fa-map-marker-alt has-mr-7"></i>
-                        <span>Nanjing</span>
-                    </p>
-                    
-                </div>
-            </div>
-        </nav>
-        <nav class="level is-mobile">
-            <div class="level-item has-text-centered is-marginless">
-                <div>
-                    <p class="heading">
-                        Post
-                    </p>
-                    <a href="/archives">
-                        <p class="title has-text-weight-normal">
-                            36
-                        </p>
-                    </a>
-                </div>
-            </div>
-            <div class="level-item has-text-centered is-marginless">
-                <div>
-                    <p class="heading">
-                        Category
-                    </p>
-                    <a href="/categories">
-                        <p class="title has-text-weight-normal">
-                            14
-                        </p>
-                    </a>
-                </div>
-            </div>
-            <div class="level-item has-text-centered is-marginless">
-                <div>
-                    <p class="heading">
-                        Tag
-                    </p>
-                    <a href="/tags">
-                        <p class="title has-text-weight-normal">
-                            38
-                        </p>
-                    </a>
-                </div>
-            </div>
-        </nav>
-        
-        <div class="level">
-            <a class="level-item button is-link is-rounded" href="https://github.com/czccc" target="_blank" rel="noopener">
-                Follow</a>
-        </div>
-        
-        
-        
-        <div class="level is-mobile">
-            
-            <a class="level-item button is-white is-marginless" target="_blank" rel="noopener"
-                title="Github" href="https://github.com/czccc">
-                
-                <i class="fab fa-github"></i>
-                
-            </a>
-            
-            <a class="level-item button is-white is-marginless" target="_blank" rel="noopener"
-                title="RSS" href="/atom.xml">
-                
-                <i class="fas fa-rss"></i>
-                
-            </a>
-            
-        </div>
-        
-    </div>
-</div>
-    
-        
-
-<div class="card widget column-left is-sticky" id="toc">
-    <div class="card-content">
-        <div class="menu" style="max-height: calc(100vh - 5rem); overflow-y: auto;">
-            <h3 class="menu-label">
-                Catalogue
-            </h3>
-            <ul class="menu-list"><li>
-        <a class="is-flex" href="#Makefile- 基本规则">
-        <span class="has-mr-6">1</span>
-        <span>Makefile 基本规则 </span>
-        </a><ul class="menu-list"><li>
-        <a class="is-flex" href="#target">
-        <span class="has-mr-6">1.1</span>
-        <span>target</span>
-        </a></li><li>
-        <a class="is-flex" href="#prerequisites">
-        <span class="has-mr-6">1.2</span>
-        <span>prerequisites</span>
-        </a></li><li>
-        <a class="is-flex" href="#commands">
-        <span class="has-mr-6">1.3</span>
-        <span>commands</span>
-        </a></li></ul></li><li>
-        <a class="is-flex" href="#Makefile- 语法">
-        <span class="has-mr-6">2</span>
-        <span>Makefile 语法 </span>
-        </a><ul class="menu-list"><li>
-        <a class="is-flex" href="#回声（echoing）">
-        <span class="has-mr-6">2.1</span>
-        <span> 回声（echoing）</span>
-        </a></li><li>
-        <a class="is-flex" href="#通配符（wildcard）">
-        <span class="has-mr-6">2.2</span>
-        <span>通配符（wildcard）</span>
-        </a></li><li>
-        <a class="is-flex" href="#模式匹配">
-        <span class="has-mr-6">2.3</span>
-        <span>模式匹配</span>
-        </a></li><li>
-        <a class="is-flex" href="#变量和赋值符">
-        <span class="has-mr-6">2.4</span>
-        <span>变量和赋值符</span>
-        </a></li><li>
-        <a class="is-flex" href="#内置变量（Implicit-Variables）">
-        <span class="has-mr-6">2.5</span>
-        <span>内置变量（Implicit Variables）</span>
-        </a></li><li>
-        <a class="is-flex" href="#自动变量（Automatic-Variables）">
-        <span class="has-mr-6">2.6</span>
-        <span>自动变量（Automatic Variables）</span>
-        </a><ul class="menu-list"><li>
-        <a class="is-flex" href="#">
-        <span class="has-mr-6">2.6.1</span>
-        <span>$@</span>
-        </a></li><li>
-        <a class="is-flex" href="#lt">
-        <span class="has-mr-6">2.6.2</span>
-        <span>$&lt;</span>
-        </a></li><li>
-        <a class="is-flex" href="#D- 和 -F">
-        <span class="has-mr-6">2.6.3</span>
-        <span>$(@D) 和 $(@F)</span>
-        </a></li><li>
-        <a class="is-flex" href="#lt-D- 和 -lt-F">
-        <span class="has-mr-6">2.6.4</span>
-        <span>$(&lt;D) 和 $(&lt;F)</span>
-        </a></li><li>
-        <a class="is-flex" href="#-1">
-        <span class="has-mr-6">2.6.5</span>
-        <span>$?</span>
-        </a></li><li>
-        <a class="is-flex" href="#-2">
-        <span class="has-mr-6">2.6.6</span>
-        <span>$^</span>
-        </a></li><li>
-        <a class="is-flex" href="#-3">
-        <span class="has-mr-6">2.6.7</span>
-        <span>$*</span>
-        </a></li></ul></li><li>
-        <a class="is-flex" href="#判断和循环">
-        <span class="has-mr-6">2.7</span>
-        <span>判断和循环</span>
-        </a></li><li>
-        <a class="is-flex" href="#函数">
-        <span class="has-mr-6">2.8</span>
-        <span>函数</span>
-        </a><ul class="menu-list"><li>
-        <a class="is-flex" href="#shell- 函数">
-        <span class="has-mr-6">2.8.1</span>
-        <span>shell 函数</span>
-        </a></li><li>
-        <a class="is-flex" href="#wildcard- 函数">
-        <span class="has-mr-6">2.8.2</span>
-        <span>wildcard 函数</span>
-        </a></li><li>
-        <a class="is-flex" href="#subst- 函数">
-        <span class="has-mr-6">2.8.3</span>
-        <span>subst 函数</span>
-        </a></li><li>
-        <a class="is-flex" href="#patsubst 函数">
-        <span class="has-mr-6">2.8.4</span>
-        <span>patsubst 函数</span>
-        </a></li><li>
-        <a class="is-flex" href="#替换后缀名">
-        <span class="has-mr-6">2.8.5</span>
-        <span>替换后缀名 </span>
-        </a></li></ul></li></ul></li><li>
-        <a class="is-flex" href="#Makefile- 的实例">
-        <span class="has-mr-6">3</span>
-        <span>Makefile 的实例 </span>
-        </a><ul class="menu-list"><li>
-        <a class="is-flex" href="#执行多个目标">
-        <span class="has-mr-6">3.1</span>
-        <span> 执行多个目标</span>
-        </a></li><li>
-        <a class="is-flex" href="#编译 C 语言项目">
-        <span class="has-mr-6">3.2</span>
-        <span>编译 C 语言项目</span>
-        </a></li></ul></li></ul>
-        </div>
-    </div>
-</div>
-
-    
-    
-        <!-- <div class="column-right-shadow is-hidden-widescreen "> -->
-        <div class="column-right-shadow  ">
-        
-        </div>
-    
-</div>
-
-                
-            </div>
-        </div>
-    </section>
-    <footer class="footer">
-    <div class="container">
-        <div class="level">
-            <div class="level-start has-text-centered-mobile">
-                <a class="footer-logo is-block has-mb-6" href="/">
-                
-                    <img src="/images/logo.ico" alt="Makefile 入门" height="28">
-                
-                </a>
-                <p class="is-size-7">
-                &copy; 2020 Cheng&nbsp;
-                Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> & <a
-                        href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a>
-                
-                <br>
-                <span id="busuanzi_container_site_uv">
-                共<span id="busuanzi_value_site_uv">0</span>个访客
-                </span>
-                
-                </p>
-            </div>
-            <div class="level-end">
-            
-                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
-                
-                <p class="control">
-                    <a class="button is-white is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/">
-                        
-                        <i class="fab fa-creative-commons"></i>
-                        
-                    </a>
-                </p>
-                
-                <p class="control">
-                    <a class="button is-white is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/">
-                        
-                        <i class="fab fa-creative-commons-by"></i>
-                        
-                    </a>
-                </p>
-                
-                <p class="control">
-                    <a class="button is-white is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus">
-                        
-                        <i class="fab fa-github"></i>
-                        
-                    </a>
-                </p>
-                
-                </div>
-            
-            </div>
-        </div>
-    </div>
-</footer>
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
-<script>moment.locale("zh-CN");</script>
-
-
-<script>
-var IcarusThemeSettings = {
-    site: {
-        url: 'http://blog.czcc.me',
-        external_link: {"enable":true,"exclude":[]}
-    },
-    article: {
-        highlight: {
-            clipboard: true,
-            fold: 'unfolded'
-        }
-    }
-};
-</script>
-
-
-<script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
-
-
-
-
-
-<script src="/js/animation.js"></script>
-
-
-
-<script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
-<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
-<script src="/js/gallery.js" defer></script>
-
-
-
-<div id="outdated">
-    <h6>Your browser is out-of-date!</h6>
-    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
-            my browser now </a></p>
-    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
-</div>
-<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-        outdatedBrowser({
-            bgColor: '#f25648',
-            color: '#ffffff',
-            lowerThan: 'flex'
-        });
-    });
-</script>
-
-
-<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
-<script>
-document.addEventListener('DOMContentLoaded', function () {
-    MathJax.Hub.Config({
-        'HTML-CSS': {
-            matchFontHeight: false
-        },
-        SVG: {
-            matchFontHeight: false
-        },
-        CommonHTML: {
-            matchFontHeight: false
-        },
-        tex2jax: {
-            inlineMath: [
-                ['$','$'],
-                ['\\(','\\)']
-            ]
-        }
-    });
-});
-</script>
-
-
-<a id="back-to-top" title="回到顶端" href="javascript:;">
-    <i class="fas fa-chevron-up"></i>
-</a>
-<script src="/js/back-to-top.js" defer></script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<script src="/js/main.js" defer></script>
-
-    
-    <div class="searchbox ins-search">
-    <div class="searchbox-container ins-search-container">
-        <div class="searchbox-input-wrapper">
-            <input type="text" class="searchbox-input ins-search-input" placeholder="想要查找什么..." />
-            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
-        </div>
-        <div class="searchbox-result-wrapper ins-section-wrapper">
-            <div class="ins-section-container"></div>
-        </div>
-    </div>
-</div>
-<script>
-    (function (window) {
-        var INSIGHT_CONFIG = {
-            TRANSLATION: {
-                POSTS: '文章',
-                PAGES: '页面',
-                CATEGORIES: '分类',
-                TAGS: '标签',
-                UNTITLED: '(无标题)',
-            },
-            CONTENT_URL: '/content.json',
+</div><ul class="post-copyright"><li><strong>本文标题：</strong><a href="http://blog.czcc.me/p/9d37c3fa/">Makefile 入门</a></li><li><strong>本文作者：</strong><a href="/">Cheng</a></li><li><strong>本文链接：</strong><a href="http://blog.czcc.me/p/9d37c3fa/">http://blog.czcc.me/p/9d37c3fa/</a></li><li><strong>发布时间：</strong>2020-04-09</li><li><strong>版权声明：</strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！</li></ul><br><div class="article-tags size-small is-uppercase mb-4"><span class="mr-2">#</span><a class="link-muted mr-2" rel="tag" href="/tags/C/">C</a><a class="link-muted mr-2" rel="tag" href="/tags/CPP/">CPP</a><a class="link-muted mr-2" rel="tag" href="/tags/C/">C++</a><a class="link-muted mr-2" rel="tag" href="/tags/Makefile/">Makefile</a></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/css/share.min.css"><div class="social-share"></div><script src="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/js/social-share.min.js"></script></article></div><div class="card"><div class="card-content"><h3 class="menu-label has-text-centered">喜欢这篇文章？打赏一下作者吧</h3><div class="buttons is-centered"><a class="button is-info donate"><span class="icon is-small"><i class="fab fa-alipay"></i></span><span>支付宝</span><span class="qrcode"><img src="/img/Alipay.jpg" alt="支付宝"></span></a><a class="button donate" href="/" style="background-color:rgba(255,128,62,.87);border-color:transparent;color:white;" target="_blank" rel="noopener"><span class="icon is-small"><i class="fas fa-coffee"></i></span><span>送我杯咖啡</span></a><a class="button is-danger donate" href="/" target="_blank" rel="noopener"><span class="icon is-small"><i class="fab fa-patreon"></i></span><span>Patreon</span></a><div class="notification is-danger">You forgot to set the <code>business</code> or <code>currency_code</code> for Paypal. Please set it in <code>_config.yml</code>.</div><a class="button is-success donate"><span class="icon is-small"><i class="fab fa-weixin"></i></span><span>微信</span><span class="qrcode"><img src="/img/WeChat_pay.png" alt="微信"></span></a></div></div></div><nav class="post-navigation mt-4 level is-mobile"><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/p/7c8c7b3f/"><span class="level-item">Python 中的魔术方法</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><div class="card"><div class="card-content"><h3 class="title is-5">评论</h3><div id="disqus_thread"><noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></div><script>var disqus_config = function () {
+            this.page.url = 'http://blog.czcc.me/p/9d37c3fa/';
+            this.page.identifier = 'p/9d37c3fa/';
         };
-        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
-    })(window);
-</script>
-<script src="/js/insight.js" defer></script>
-<link rel="stylesheet" href="/css/search.css">
-<link rel="stylesheet" href="/css/insight.css">
-    
-</body>
-
-</html>
+        (function() {
+            var d = document, s = d.createElement('script');  
+            s.src = '//' + 'czcc' + '.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();</script></div></div></div><div class="column column-left is-4-tablet is-3-desktop is-3-widescreen  order-1"><div class="card widget"><div class="card-content"><nav class="level"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-128x128 mx-auto mb-2"><img class="" src="/img/avatar.jpg" alt="Cheng"></figure><p class="title is-size-4 is-block line-height-inherit">Cheng</p><p class="is-size-6 is-block">A Student</p><p class="is-size-6 is-flex justify-content-center"><i class="fas fa-map-marker-alt mr-1"></i><span>Nanjing</span></p></div></div></nav><nav class="level is-mobile"><div class="level-item has-text-centered is-marginless"><div><p class="heading">文章</p><a href="/archives"><p class="title">36</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">分类</p><a href="/categories"><p class="title">14</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">标签</p><a href="/tags"><p class="title">38</p></a></div></div></nav><div class="level"><a class="level-item button is-primary is-rounded" href="https://github.com/czccc" target="_blank" rel="noopener">关注我</a></div><div class="level is-mobile"><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Github" href="https://github.com/czccc"><i class="fab fa-github"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Facebook" href="https://facebook.com"><i class="fab fa-facebook"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Twitter" href="https://twitter.com"><i class="fab fa-twitter"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Dribbble" href="https://dribbble.com"><i class="fab fa-dribbble"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="RSS" href="/atom.xml"><i class="fas fa-rss"></i></a></div></div></div><div class="card widget column-left is-sticky" id="toc"><div class="card-content"><div class="menu" style="max-height: calc(100vh - 5rem); overflow-y: auto;"><h3 class="menu-label">目录</h3><ul class="menu-list"><li><a class="is-flex" href="#Makefile- 基本规则"><span class="mr-2">1</span><span>Makefile 基本规则 </span></a><ul class="menu-list"><li><a class="is-flex" href="#target"><span class="mr-2">1.1</span><span>target</span></a></li><li><a class="is-flex" href="#prerequisites"><span class="mr-2">1.2</span><span>prerequisites</span></a></li><li><a class="is-flex" href="#commands"><span class="mr-2">1.3</span><span>commands</span></a></li></ul></li><li><a class="is-flex" href="#Makefile- 语法"><span class="mr-2">2</span><span>Makefile 语法 </span></a><ul class="menu-list"><li><a class="is-flex" href="#回声（echoing）"><span class="mr-2">2.1</span><span> 回声（echoing）</span></a></li><li><a class="is-flex" href="#通配符（wildcard）"><span class="mr-2">2.2</span><span>通配符（wildcard）</span></a></li><li><a class="is-flex" href="#模式匹配"><span class="mr-2">2.3</span><span>模式匹配</span></a></li><li><a class="is-flex" href="#变量和赋值符"><span class="mr-2">2.4</span><span>变量和赋值符</span></a></li><li><a class="is-flex" href="#内置变量（Implicit-Variables）"><span class="mr-2">2.5</span><span>内置变量（Implicit Variables）</span></a></li><li><a class="is-flex" href="#自动变量（Automatic-Variables）"><span class="mr-2">2.6</span><span>自动变量（Automatic Variables）</span></a></li><li><a class="is-flex" href="#判断和循环"><span class="mr-2">2.7</span><span>判断和循环</span></a></li><li><a class="is-flex" href="#函数"><span class="mr-2">2.8</span><span>函数</span></a><ul class="menu-list"><li><a class="is-flex" href="#shell- 函数"><span class="mr-2">2.8.1</span><span>shell 函数</span></a></li><li><a class="is-flex" href="#wildcard- 函数"><span class="mr-2">2.8.2</span><span>wildcard 函数</span></a></li><li><a class="is-flex" href="#subst- 函数"><span class="mr-2">2.8.3</span><span>subst 函数</span></a></li><li><a class="is-flex" href="#patsubst 函数"><span class="mr-2">2.8.4</span><span>patsubst 函数</span></a></li><li><a class="is-flex" href="#替换后缀名"><span class="mr-2">2.8.5</span><span>替换后缀名 </span></a></li></ul></li></ul></li><li><a class="is-flex" href="#Makefile- 的实例"><span class="mr-2">3</span><span>Makefile 的实例 </span></a><ul class="menu-list"><li><a class="is-flex" href="#执行多个目标"><span class="mr-2">3.1</span><span> 执行多个目标</span></a></li><li><a class="is-flex" href="#编译 C 语言项目"><span class="mr-2">3.2</span><span>编译 C 语言项目</span></a></li></ul></li></ul></div></div></div></div><!--!--></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img src="/img/logo.ico" alt="CZCC" height="28"></a><p class="size-small"><span>&copy; 2020 Cheng</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a><br><span id="busuanzi_container_site_uv">共<span id="busuanzi_value_site_uv">0</span>个访客</span></p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons-by"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus"><i class="fab fa-github"></i></a></p></div></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script>moment.locale("zh-CN");</script><script>var IcarusThemeSettings = {
+            site: {
+                url: 'http://blog.czcc.me',
+                external_link: {"enable":true,"exclude":[]}
+            },
+            article: {
+                highlight: {
+                    clipboard: true,
+                    fold: 'unfolded'
+                }
+            }
+        };</script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script><script src="/js/animation.js"></script><a id="back-to-top" title="回到顶端" href="javascript:;"><i class="fas fa-chevron-up"></i></a><script src="/js/back_to_top.js" defer></script><!--!--><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script><script>window.addEventListener("load", () => {
+            if (typeof $.fn.lightGallery === 'function') {
+                $('.article').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof $.fn.justifiedGallery === 'function') {
+                if ($('.justified-gallery > p > .gallery-item').length) {
+                    $('.justified-gallery > p > .gallery-item').unwrap();
+                }
+                $('.justified-gallery').justifiedGallery();
+            }
+        });</script><!--!--><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css"><script src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js" defer></script><script>window.addEventListener("load", function() {
+            document.querySelectorAll('[role="article"] > .content').forEach(function(element) {
+                renderMathInElement(element);
+            });
+        });</script><script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script><script>window.addEventListener("load", function () {
+            MathJax.Hub.Config({
+                'HTML-CSS': {
+                    matchFontHeight: false
+                },
+                SVG: {
+                    matchFontHeight: false
+                },
+                CommonHTML: {
+                    matchFontHeight: false
+                },
+                tex2jax: {
+                    inlineMath: [
+                        ['$','$'],
+                        ['\\(','\\)']
+                    ]
+                }
+            });
+        });</script><!--!--><script src="/js/main.js" defer></script><div class="searchbox"><div class="searchbox-container"><div class="searchbox-header"><div class="searchbox-input-container"><input class="searchbox-input" type="text" placeholder="想要查找什么..."></div><a class="searchbox-close" href="javascript:;">×</a></div><div class="searchbox-body"></div></div></div><script src="/js/insight.js" defer></script><script>document.addEventListener('DOMContentLoaded', function () {
+            loadInsight({"contentUrl":"/content.json"}, {"hint":"想要查找什么...","untitled":"(无标题)","posts":"文章","pages":"页面","categories":"分类","tags":"标签"});
+        });</script></body></html>

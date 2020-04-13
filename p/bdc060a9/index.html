@@ -1,226 +1,77 @@
-<!DOCTYPE html>
-<html  lang="zh">
-
-<head>
-    <meta charset="utf-8" />
-
-<meta name="generator" content="Hexo 3.9.0" />
-
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-
-<title>搭建 Hexo (三) : icarus 主题 - CZCC</title>
-
-
-    <meta name="description" content="A simple, delicate, and modern theme for the static site generator Hexo.">
-<meta name="keywords" content="Blog,Hexo">
-<meta property="og:type" content="article">
-<meta property="og:title" content="搭建 Hexo (三) : icarus 主题">
-<meta property="og:url" content="http://blog.czcc.me/p/bdc060a9/index.html">
-<meta property="og:site_name" content="CZCC">
-<meta property="og:description" content="A simple, delicate, and modern theme for the static site generator Hexo.">
-<meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://s2.ax1x.com/2019/05/31/VlOJWF.md.png">
-<meta property="og:updated_time" content="2020-01-13T15:11:17.965Z">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="搭建 Hexo (三) : icarus 主题">
-<meta name="twitter:description" content="A simple, delicate, and modern theme for the static site generator Hexo.">
-<meta name="twitter:image" content="https://s2.ax1x.com/2019/05/31/VlOJWF.md.png">
-
-
-
-
-
-<link rel="alternative" href="/atom.xml" title="搭建 Hexo (三) : icarus 主题" type="application/atom+xml">
-
-
-
-<link rel="icon" href="/images/favicon.ico">
-
-
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css">
-
-
-    
-    
-<style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
-
-    
-    
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
-
-    
-    
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
-
-    
-    
-    
-    
-<link rel="stylesheet" href="/css/back-to-top.css">
-
-    
-    
-    
-    
-    
-    
-    
-    <link rel="stylesheet" href="/css/progressbar.css">
-<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
-    
-    <script async="" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-    
-
-
-<link rel="stylesheet" href="/css/style.css">
-    <meta name="google-site-verification" content="_ziiq9TAo7q1mceEFdwp1hTrurp8QZCDVr8866sHj44" />
-</head>
-
-<body class="is-2-column">
-    <nav class="navbar navbar-main">
-    <div class="container">
-        <div class="navbar-brand is-flex-center">
-            <a class="navbar-item navbar-logo" href="/">
-            
-                <img src="/images/logo.ico" alt="搭建 Hexo (三) : icarus 主题" height="28">
-            
-            </a>
-        </div>
-        <div class="navbar-menu">
-            
-            <div class="navbar-start">
-                
-                <a class="navbar-item"
-                href="/">Home</a>
-                
-                <a class="navbar-item"
-                href="/archives">Archives</a>
-                
-                <a class="navbar-item"
-                href="/categories">Categories</a>
-                
-                <a class="navbar-item"
-                href="/tags">Tags</a>
-                
-                <a class="navbar-item"
-                href="/categories/LeetCode">LeetCode</a>
-                
-                <a class="navbar-item"
-                href="/about">About</a>
-                
-            </div>
-            
-            <div class="navbar-end">
-                
-                    
-                    <a class="navbar-item" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus">
-                        
-                        <i class="fab fa-github"></i>
-                        
-                    </a>
-                    
-                
-                
-                <a class="navbar-item is-hidden-tablet catalogue" title="Catalogue" href="javascript:;">
-                    <i class="fas fa-list-ul"></i>
-                </a>
-                
-                
-                <a class="navbar-item search" title="搜索" href="javascript:;">
-                    <i class="fas fa-search"></i>
-                </a>
-                
-            </div>
-        </div>
-    </div>
-</nav>
-    
-    <section class="section">
-        <div class="container">
-            <div class="columns">
-                <div class="column is-8-tablet is-9-desktop is-9-widescreen has-order-2 column-main">
-<div class="card">
-    
-    <div class="card-image">
-        <span  class="image is-7by1">
-        <img class="thumbnail" src="https://s2.ax1x.com/2019/05/31/VlOJWF.md.png" alt="搭建 Hexo (三) : icarus 主题">
-        </span>
-    </div>
-    
-    <div class="card-content article ">
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-            <i class="fas fa-angle-double-right"></i>&nbsp;&nbsp;搭建 Hexo (三) : icarus 主题
-            
-        </h1>
-        
-        <div class="level article-meta is-size-7 is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <!-- <time class="level-item has-text-grey" datetime="2019-06-04T09:35:58.000Z">2019-06-04</time> -->
-                <time class="level-item has-text-grey" datetime="2019-06-04T09:35:58.000Z">
-                    <i class="far fa-calendar-alt">&nbsp;</i>
-                    2019-06-04
-                </time>
-                
-                <time class="level-item has-text-grey is-hidden-mobile" datetime="2020-01-13T15:11:17.965Z"><i
-                        class="far fa-calendar-check">&nbsp;</i>2020-01-13</time>
-                
-                
-                <div class="level-item">
-                    <i class="far fa-folder">&nbsp;</i>
-                    <a class="has-link-grey -link" href="/categories/Hexo/">Hexo</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    <i class="far fa-hourglass">&nbsp;&nbsp;</i>
-                    
-                    
-                    4 分钟   (约 597 字)
-                </span>
-                
-                
-                <span class="level-item has-text-grey" id="busuanzi_container_page_pv">
-                    <i class="far fa-eye"></i>
-                    <span id="busuanzi_value_page_pv">0</span>次访问
-                </span>
-                
-            </div>
-        </div>
-        
-        <!-- <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                搭建 Hexo (三) : icarus 主题
-            
-        </h1> -->
-        <div class="content">
-            <p>A simple, delicate, and modern theme for the static site generator Hexo.</p>
+<!doctype html>
+<html lang="zh"><head><meta charset="utf-8"><meta name="generator" content="Hexo 4.2.0"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>搭建 Hexo 其三: icarus 主题 - CZCC</title><meta description="A simple, delicate, and modern theme for the static site generator Hexo. icarus 是一个十分简洁高效的 Hexo 主题, 并且支持多种语言, 页面使用响应式布局, 并且使用多个小部件展示不同的内容, 设计得非常漂亮!  本博客便基于 icarus 主题, 并进行了一定的自定义. 官方 Github 地址 个人修改版地址"><meta property="og:type" content="blog"><meta property="og:title" content="搭建 Hexo 其三: icarus 主题"><meta property="og:url" content="http://blog.czcc.me/"><meta property="og:site_name" content="CZCC"><meta property="og:description" content="A simple, delicate, and modern theme for the static site generator Hexo. icarus 是一个十分简洁高效的 Hexo 主题, 并且支持多种语言, 页面使用响应式布局, 并且使用多个小部件展示不同的内容, 设计得非常漂亮!  本博客便基于 icarus 主题, 并进行了一定的自定义. 官方 Github 地址 个人修改版地址"><meta property="og:locale" content="zh_CN"><meta property="og:image" content="https://s2.ax1x.com/2019/05/31/VlOJWF.md.png"><meta property="article:published_time" content="2019-06-04T09:35:58.000Z"><meta property="article:modified_time" content="2020-04-10T10:27:09.654Z"><meta property="article:author" content="Cheng"><meta property="article:tag" content="Blog"><meta property="article:tag" content="Hexo"><meta property="twitter:card" content="summary"><meta property="twitter:image" content="https://s2.ax1x.com/2019/05/31/VlOJWF.md.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"http://blog.czcc.me/p/bdc060a9/"},"headline":"CZCC","image":["https://s2.ax1x.com/2019/05/31/VlOJWF.md.png"],"datePublished":"2019-06-04T09:35:58.000Z","dateModified":"2020-04-10T10:27:09.654Z","author":{"@type":"Person","name":"Cheng"},"description":"A simple, delicate, and modern theme for the static site generator Hexo. icarus 是一个十分简洁高效的 Hexo 主题, 并且支持多种语言, 页面使用响应式布局, 并且使用多个小部件展示不同的内容, 设计得非常漂亮!  本博客便基于 icarus 主题, 并进行了一定的自定义. 官方 Github 地址 个人修改版地址"}</script><link rel="canonical" href="http://blog.czcc.me/p/bdc060a9/"><link rel="alternative" href="/atom.xml" title="CZCC" type="application/atom+xml"><link rel="icon" href="/img/favicon.ico"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css"><link rel="stylesheet" href="/css/default.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><!--!--><script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" defer></script><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css"><!--!--><!--!--><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script></head><body class="is-2-column"><nav class="navbar navbar-main"><div class="container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img src="/img/logo.ico" alt="CZCC" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">Home</a><a class="navbar-item" href="/archives">Archives</a><a class="navbar-item" href="/categories">Categories</a><a class="navbar-item" href="/tags">Tags</a><a class="navbar-item" href="/categories/LeetCode">LeetCode</a><a class="navbar-item" href="/about">About</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus"><i class="fab fa-github"></i></a><a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;"><i class="fas fa-list-ul"></i></a><a class="navbar-item search" title="搜索" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-9-desktop is-9-widescreen"><div class="card"><div class="card-image"><span class="image is-7by3"><img class="thumbnail" src="https://s2.ax1x.com/2019/05/31/VlOJWF.md.png" alt="搭建 Hexo 其三: icarus 主题"></span></div><article class="card-content article" role="article"><h1 class="title is-3 is-size-4-mobile"><i class="fas fa-angle-double-right"></i>  搭建 Hexo 其三: icarus 主题</h1><div class="article-meta size-small is-uppercase level is-mobile"><div class="level-left"><i class="far fa-calendar-alt"> </i><time class="level-item" dateTime="2019-06-04T09:35:58.000Z" title="2019-06-04T09:35:58.000Z">2019-06-04</time><i class="far fa-calendar-check"> </i><time class="level-item" dateTime="2020-04-10T10:27:09.654Z" title="2019-06-04T09:35:58.000Z">2020-04-10</time><i class="far fa-folder"> </i><span class="level-item"><a class="link-muted" href="/categories/Hexo/">Hexo</a></span><i class="far fa-hourglass">  </i><span class="level-item">14 分钟 读完 (大约 2027 个字)</span><i class="far fa-eye"></i><span class="level-item" id="busuanzi_container_page_pv"><i class="far fa-eye"></i>&nbsp;&nbsp;<span id="busuanzi_value_page_pv">0</span>次访问</span></div></div><div class="content"><p>A simple, delicate, and modern theme for the static site generator Hexo.</p>
+<p>icarus 是一个十分简洁高效的 Hexo 主题, 并且支持多种语言, 页面使用响应式布局, 并且使用多个小部件展示不同的内容, 设计得非常漂亮! </p>
+<p>本博客便基于 icarus 主题, 并进行了一定的自定义.</p>
+<p><a href="https://github.com/ppoffice/hexo-theme-icarus">官方 Github 地址</a></p>
+<p><a href="https://github.com/czccc/hexo-theme-icarus">个人修改版地址</a></p>
 <hr>
 <a id="more"></a>
 
-<h1 id="安装"><a href="# 安装" class="headerlink" title="安装"></a>安装 </h1><p> 推荐使用 <code>git clone</code> 安装:</p>
-<p>在 Hexo 的文件夹下, 执行命令:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/ppoffice/hexo-theme-icarus.git themes/icarus</span><br></pre></td></tr></table></figure>
+<h1 id="安装 -icarus"><a href="# 安装 -icarus" class="headerlink" title="安装 icarus"></a>安装 icarus</h1><p>推荐使用 <code>git clone</code> 安装:</p>
+<p>在 Hexo 的文件夹下, 执行命令: </p>
+<blockquote>
+<p>下面程序中使用的是我修改过的主题, 如果想使用官方主题, 请改一下 Git 仓库地址</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/czccc/hexo-theme-icarus.git themes/icarus</span><br></pre></td></tr></table></figure>
 
 <p>如果想要将 <code>icarus</code> 作为 submodule 来安装, 可以使用下面的命令:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git submodule add https://github.com/ppoffice/hexo-theme-icarus.git themes/icarus</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git submodule add https://github.com/czccc/hexo-theme-icarus.git themes/icarus</span><br></pre></td></tr></table></figure>
 
 <p>然后, 在站点配置文件中, 将 theme 改为 <code>icarus</code> :</p>
 <figure class="highlight yml"><figcaption><span>_config.yml</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">theme:</span> <span class="string">icarus</span></span><br></pre></td></tr></table></figure>
 
 <p>然后执行一次 <code>hexo g</code> 操作, 会在 <code>themes/icarus</code> 生成一个 <code>_config.yml</code> 文件, 即为此主题的配置文件.</p>
+<h1 id="重新合并官方分支"><a href="# 重新合并官方分支" class="headerlink" title="重新合并官方分支"></a>重新合并官方分支 </h1><p> 首先, 在 Github 上 fork 了 icarus 仓库后, 那么 fork 得到的项目并不会跟着原仓库进行更新, 那么如果这时候还想要合并原仓库的程序, 以改善某些 bug, 并使用新的特性, 有下面两种方式.</p>
+<h2 id="fetch-gt-merge"><a href="#fetch-gt-merge" class="headerlink" title="fetch -&gt; merge"></a><code>fetch -&gt; merge</code></h2><p>首先, 跟上游仓库同步代码之前，必须配置过 <code>remote</code>，<a href="https://github.com/ppoffice/hexo-theme-icarus">指向上游仓库</a> 。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">git remote add ppoffice https://github.com/ppoffice/hexo-theme-icarus</span><br><span class="line"></span><br><span class="line"><span class="comment"># 再次执行命令 git remote -v 检查是否成功。</span></span><br><span class="line">git remote -v</span><br><span class="line"><span class="comment"># origin  git@github.com:czccc/hexo-theme-icarus (fetch)</span></span><br><span class="line"><span class="comment"># origin  git@github.com:czccc/hexo-theme-icarus (push)</span></span><br><span class="line"><span class="comment"># ppoffice        https://github.com/ppoffice/hexo-theme-icarus (fetch)</span></span><br><span class="line"><span class="comment"># ppoffice        https://github.com/ppoffice/hexo-theme-icarus (push)</span></span><br></pre></td></tr></table></figure>
+
+<p>然后, 从上游仓库获取到分支，及相关的提交信息，它们将被保存在本地的 <code>ppoffice/master</code> 分支</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">git fetch ppoffice</span><br><span class="line"><span class="comment"># remote: Counting objects: 75, done.</span></span><br><span class="line"><span class="comment"># remote: Compressing objects: 100% (53/53), done.</span></span><br><span class="line"><span class="comment"># remote: Total 62 (delta 27), reused 44 (delta 9)</span></span><br><span class="line"><span class="comment"># Unpacking objects: 100% (62/62), done.</span></span><br><span class="line"><span class="comment"># From https://github.com/ppoffice/hexo-theme-icarus</span></span><br><span class="line"><span class="comment">#  * [new branch]      dev        -&gt; ppoffice/dev</span></span><br><span class="line"><span class="comment">#  * [new branch]      gh-pages   -&gt; ppoffice/gh-pages</span></span><br><span class="line"><span class="comment">#  * [new branch]      master     -&gt; ppoffice/master</span></span><br><span class="line"><span class="comment">#  * [new branch]      site       -&gt; ppoffice/site</span></span><br></pre></td></tr></table></figure>
+
+<p>最后, 切换到本地的 <code>master</code> 分支, 把 <code>ppoffice/master</code> 分支合并到本地的 <code>master</code> 分支，本地的 <code>master</code> 分支便跟上游仓库保持同步了，并且没有丢失你本地的修改。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">git checkout master</span><br><span class="line"><span class="comment"># Already on 'master'</span></span><br><span class="line"><span class="comment"># Your branch is up to date with 'origin/master'.</span></span><br><span class="line"></span><br><span class="line">git merge ppoffice/master</span><br><span class="line"><span class="comment"># Updating a422352..5fdff0f</span></span><br><span class="line"><span class="comment"># Fast-forward</span></span><br><span class="line"><span class="comment">#  README                    |    9 -------</span></span><br><span class="line"><span class="comment">#  README.md                 |    7 ++++++</span></span><br><span class="line"><span class="comment">#  2 files changed, 7 insertions(+), 9 deletions(-)</span></span><br><span class="line"><span class="comment">#  delete mode 100644 README</span></span><br><span class="line"><span class="comment">#  create mode 100644 README.md</span></span><br></pre></td></tr></table></figure>
+
+<p>提示：同步后的代码仅仅是保存在本地仓库，记得 <code>push</code> 到 Github 哟。</p>
+<h2 id="参考"><a href="# 参考" class="headerlink" title="参考"></a>参考 </h2><p><a href="https://jinlong.github.io/2015/10/12/syncing-a-fork/"> 如何同步 Github fork 出来的分支</a></p>
+<p><a href="https://github.com/selfteaching/the-craft-of-selfteaching/issues/67">https://github.com/selfteaching/the-craft-of-selfteaching/issues/67</a></p>
 <h1 id="修改主题配置"><a href="# 修改主题配置" class="headerlink" title="修改主题配置"></a>修改主题配置 </h1><h2 id="网站基本设置"><a href="# 网站基本设置" class="headerlink" title="网站基本设置"></a> 网站基本设置</h2><figure class="highlight yml"><figcaption><span>_config.yml</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 图片文件可以存放至 themes/icarus/source/images/xxx</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 网站 icon</span></span><br><span class="line"><span class="attr">favicon:</span> <span class="string">/images/favicon.jpg</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 网站左上角的主页图标</span></span><br><span class="line"><span class="attr">logo:</span> <span class="string">/images/fav.png</span></span><br></pre></td></tr></table></figure>
 
 <h2 id="设置侧边栏滚动类型"><a href="# 设置侧边栏滚动类型" class="headerlink" title="设置侧边栏滚动类型"></a>设置侧边栏滚动类型</h2><ul>
 <li><code>true</code>  : 固定</li>
 <li><code>false</code> : 滚动</li>
 </ul>
-<figure class="highlight yml"><figcaption><span>_config.yml</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Sidebar settings.</span></span><br><span class="line"><span class="comment"># Note: 只有当侧边栏至少包含一个部件时, 才会显示此侧边栏</span></span><br><span class="line"><span class="attr">sidebar:</span></span><br><span class="line"><span class="attr">    left:</span></span><br><span class="line"><span class="attr">        sticky:</span> <span class="literal">false</span></span><br><span class="line"><span class="attr">    right:</span></span><br><span class="line"><span class="attr">        sticky:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight yml"><figcaption><span>_config.yml</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Sidebar settings.</span></span><br><span class="line"><span class="comment"># Note: 只有当侧边栏至少包含一个部件时, 才会显示此侧边栏</span></span><br><span class="line"><span class="attr">sidebar:</span></span><br><span class="line"><span class="attr">    left:</span></span><br><span class="line"><span class="attr">        sticky:</span> <span class="literal">false</span></span><br><span class="line"><span class="attr">    right:</span></span><br><span class="line"><span class="attr">        sticky:</span> <span class="literal">false</span></span><br></pre></td></tr></table></figure>
 
+<h2 id="改为两栏布局"><a href="# 改为两栏布局" class="headerlink" title="改为两栏布局"></a>改为两栏布局 </h2><p><a href="https://github.com/ppoffice/hexo-theme-icarus/issues/658"> 可否将内容三栏格式改成两栏？</a></p>
+<p>将主题下的 <code>_config.yml</code> 复制一份, 改为 <code>_config.post.yml</code>, 再在里面重新排列 <code>Widget</code> 的布局, 将所有的 <code>Widget</code> 都调到左边, 并适当删去不需要的 <code>Widget</code>, 便可实现自动的双栏布局.</p>
+<h2 id="修改双栏布局宽带"><a href="# 修改双栏布局宽带" class="headerlink" title="修改双栏布局宽带"></a>修改双栏布局宽带 </h2><p> 在改成双栏布局后, 会导致文章详情页所占的总宽度变短. 为了解决这个问题, 可以通过更改样式文件. 具体的修改内容如下:</p>
+<figure class="highlight js"><figcaption><span>layout/layout.jsx</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">    <span class="string">'is-12'</span>: columnCount === <span class="number">1</span>,</span><br><span class="line"><span class="comment">//  修改宽度为 8 9 9</span></span><br><span class="line"><span class="comment">//  'is-8-tablet is-8-desktop is-8-widescreen': columnCount === 2,</span></span><br><span class="line">    <span class="string">'is-8-tablet is-9-desktop is-9-widescreen'</span>: columnCount === <span class="number">2</span>,</span><br><span class="line">    <span class="string">'is-8-tablet is-8-desktop is-6-widescreen'</span>: columnCount === <span class="number">3</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight"><figcaption><span>include/style/responsive.styl</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 修改对应的布局 */</span></span><br><span class="line">+<span class="selector-tag">widescreen</span>()</span><br><span class="line">    <span class="selector-class">.is-1-column</span> <span class="selector-class">.container</span>, <span class="selector-class">.is-2-column</span> <span class="selector-class">.container</span></span><br><span class="line">        <span class="comment">/* max-width: $desktop - 2 * $gap */</span></span><br><span class="line">        <span class="comment">/* width: $desktop - 2 * $gap */</span></span><br><span class="line">        max-width: $widescreen - 2 * $gap</span><br><span class="line">        width: $widescreen - 2 * $gap</span><br><span class="line"></span><br><span class="line">+<span class="selector-tag">fullhd</span>()</span><br><span class="line">    <span class="selector-class">.is-2-column</span> <span class="selector-class">.container</span></span><br><span class="line">        <span class="comment">/* max-width: $widescreen - 2 * $gap */</span></span><br><span class="line">        <span class="comment">/* width: $widescreen - 2 * $gap */</span></span><br><span class="line">        max-width: $fullhd - 2 * $gap</span><br><span class="line">        width: $fullhd - 2 * $gap</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight js"><figcaption><span>layout/common/widgets.jsx </span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getColumnSizeClass</span>(<span class="params">columnCount</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">switch</span> (columnCount) &#123;</span><br><span class="line">        <span class="keyword">case</span> <span class="number">2</span>:</span><br><span class="line">            <span class="comment">// 修改为 4 3 3</span></span><br><span class="line">            <span class="comment">// return 'is-4-tablet is-4-desktop is-4-widescreen';</span></span><br><span class="line">            <span class="keyword">return</span> <span class="string">'is-4-tablet is-3-desktop is-3-widescreen'</span>;</span><br><span class="line">        <span class="keyword">case</span> <span class="number">3</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="string">'is-4-tablet is-4-desktop is-3-widescreen'</span>;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="固定目录卡片"><a href="# 固定目录卡片" class="headerlink" title="固定目录卡片"></a>固定目录卡片 </h2><p> 在 icarus 3.0 中, 类似于 toc, tag 等小部件不在默认的主题文件家中, 而是集成到了 <code>hexo-component-inferno</code> 这个依赖模块中. 因此想要改动这些内容的话, 需要手动地将<a href="https://github.com/ppoffice/hexo-component-inferno/blob/master/src/view/widget/toc.jsx">toc.jsx</a> 文件复制到 <code>layout/widget/toc.jsx</code> 中.</p>
+<p>具体内容参考 <a href="https://github.com/ppoffice/hexo-theme-icarus/issues/669">请教几个 3.0 版本修改的问题</a></p>
+<p>因为在使用时并不想简单地将左右两栏固定, 而是想要实现对于不同的卡片, 设置不同的滚动方式. 比如, 对于文章内现实的目录卡片, 设置成固定, 并进入滚动条, 代码修改的内容如下:</p>
+<ul>
+<li>加入了 <code>column-left is-sticky</code> 这两个 class</li>
+<li>设置滚动条: <code>style=&quot;max-height: calc(100vh - 5rem); overflow-y: auto;&quot;</code></li>
+</ul>
+<figure class="highlight js"><figcaption><span>layout/widget/toc.jsx</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 第 5 行</span></span><br><span class="line"><span class="keyword">const</span> &#123; <span class="attr">tocObj</span>: getTocObj, unescapeHTML &#125; = <span class="built_in">require</span>(<span class="string">'hexo-util'</span>);</span><br><span class="line"><span class="keyword">const</span> &#123; Component &#125; = <span class="built_in">require</span>(<span class="string">'inferno'</span>);</span><br><span class="line"><span class="keyword">const</span> &#123; cacheComponent &#125; = <span class="built_in">require</span>(<span class="string">'hexo-component-inferno/lib/util/cache'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 第 112 行</span></span><br><span class="line">    render() &#123;</span><br><span class="line">        <span class="keyword">const</span> toc = getToc(<span class="keyword">this</span>.props.content);</span><br><span class="line">        <span class="keyword">if</span> (!<span class="built_in">Object</span>.keys(toc).length) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// return &lt;div class="card widget" id="toc"&gt;</span></span><br><span class="line">        <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"card widget column-left is-sticky"</span> <span class="attr">id</span>=<span class="string">"toc"</span>&gt;</span></span></span><br><span class="line">            &lt;div class="card-content"&gt;</span><br><span class="line">                &lt;div class="menu" style="max-height: calc(100vh - 5rem); overflow-y: auto;"&gt;</span><br><span class="line">                    &lt;h3 class="menu-label"&gt;&#123;this.props.title&#125;&lt;/h3&gt;</span><br><span class="line">                    &#123;this.renderToc(toc)&#125;</span><br><span class="line">                &lt;/div&gt;</span><br><span class="line"><span class="xml">            <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span>;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="标题自动编号"><a href="# 标题自动编号" class="headerlink" title="标题自动编号"></a>标题自动编号 </h2><p> 在文章的样式文件中加入下面的内容, 便可以实现标题的自动编号.</p>
+<figure class="highlight css"><figcaption><span>include/style/article.styl</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.content</span> &#123;<span class="attribute">counter-reset</span>:section&#125;</span><br><span class="line"><span class="selector-class">.content</span> <span class="selector-tag">h1</span>&#123;<span class="attribute">counter-reset</span>:sub-section&#125;</span><br><span class="line"><span class="selector-class">.content</span> <span class="selector-tag">h2</span>&#123;<span class="attribute">counter-reset</span>:composite&#125;</span><br><span class="line"><span class="selector-class">.content</span> <span class="selector-tag">h3</span>&#123;<span class="attribute">counter-reset</span>:detail&#125;</span><br><span class="line"><span class="selector-class">.content</span> <span class="selector-tag">h1</span><span class="selector-pseudo">:before</span>&#123;<span class="attribute">content</span>:<span class="built_in">counter</span>(section) <span class="string">"."</span>;<span class="attribute">counter-increment</span>:section;<span class="attribute">font-family</span>:$family-sans-serif&#125;</span><br><span class="line"><span class="selector-class">.content</span> <span class="selector-tag">h2</span><span class="selector-pseudo">:before</span>&#123;<span class="attribute">content</span>:<span class="built_in">counter</span>(section) <span class="string">"."</span> <span class="built_in">counter</span>(sub-section) <span class="string">"."</span>;<span class="attribute">counter-increment</span>:sub-section;<span class="attribute">font-family</span>:$family-sans-serif&#125;</span><br><span class="line"><span class="selector-class">.content</span> <span class="selector-tag">h3</span><span class="selector-pseudo">:before</span>&#123;<span class="attribute">content</span>:<span class="built_in">counter</span>(section) <span class="string">"."</span> <span class="built_in">counter</span>(sub-section) <span class="string">"."</span> <span class="built_in">counter</span>(composite) <span class="string">"."</span>;<span class="attribute">counter-increment</span>:composite;<span class="attribute">font-family</span>:$family-sans-serif&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="添加鼠标悬浮阴影"><a href="# 添加鼠标悬浮阴影" class="headerlink" title="添加鼠标悬浮阴影"></a>添加鼠标悬浮阴影 </h2><p> 为 <code>card</code> 加入一个 <code>hover</code> 的属性, 便可实现悬浮阴影.</p>
+<figure class="highlight css"><figcaption><span>include/style/card.styl</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.card</span></span><br><span class="line">    <span class="selector-tag">overflow</span>: <span class="selector-tag">visible</span></span><br><span class="line">    border-radius: $card-radius</span><br><span class="line"></span><br><span class="line">    &amp;<span class="selector-pseudo">:hover</span></span><br><span class="line">        <span class="selector-tag">box-shadow</span>: 0 6<span class="selector-tag">px</span> 15<span class="selector-tag">px</span> <span class="selector-tag">rgba</span>(0,0,0,0<span class="selector-class">.15</span>), 0 0 1<span class="selector-tag">px</span> <span class="selector-tag">rgba</span>(0,0,0,0<span class="selector-class">.1</span>)</span><br></pre></td></tr></table></figure>
+
+<h2 id="加入末尾版权说明"><a href="# 加入末尾版权说明" class="headerlink" title="加入末尾版权说明"></a>加入末尾版权说明 </h2><figure class="highlight js"><figcaption><span>layout/common/article.jsx </span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">    &#123;<span class="comment">/* Content/Excerpt */</span>&#125;</span><br><span class="line">    &lt;div <span class="class"><span class="keyword">class</span></span>=<span class="string">"content"</span> dangerouslySetInnerHTML=&#123;&#123; <span class="attr">__html</span>: index &amp;&amp; page.excerpt ? page.excerpt : page.content &#125;&#125;&gt;<span class="xml"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">+   &#123;!index &amp;&amp; page.layout !== <span class="string">'page'</span> ?</span><br><span class="line">+      <span class="xml"><span class="tag">&lt;<span class="name">ul</span> <span class="attr">class</span>=<span class="string">"post-copyright"</span>&gt;</span></span></span><br><span class="line"><span class="xml">+           <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">strong</span>&gt;</span> 本文标题：<span class="tag">&lt;/<span class="name">strong</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&#123;url_for(page.permalink)&#125;</span>&gt;</span>&#123;page.title&#125;<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span></span><br><span class="line"><span class="xml">+           <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">strong</span>&gt;</span>本文作者：<span class="tag">&lt;/<span class="name">strong</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&#123;url_for(</span>'/')&#125;&gt;</span>&#123;config.author&#125;<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span></span><br><span class="line"><span class="xml">+           <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">strong</span>&gt;</span>本文链接：<span class="tag">&lt;/<span class="name">strong</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&#123;url_for(page.permalink)&#125;</span>&gt;</span>&#123;page.permalink&#125;<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span></span><br><span class="line"><span class="xml">+           <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">strong</span>&gt;</span>发布时间：<span class="tag">&lt;/<span class="name">strong</span>&gt;</span>&#123;page.date.format("YYYY-MM-DD")&#125;<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span></span><br><span class="line"><span class="xml">+           <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">strong</span>&gt;</span>版权声明：<span class="tag">&lt;/<span class="name">strong</span>&gt;</span>本博客所有文章除特别声明外，均采用 <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh"</span> <span class="attr">rel</span>=<span class="string">"external nofollow"</span> <span class="attr">target</span>=<span class="string">"_blank"</span>&gt;</span>CC BY-NC-SA 4.0<span class="tag">&lt;/<span class="name">a</span>&gt;</span> 许可协议。转载请注明出处！<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span></span><br><span class="line"><span class="xml">+       <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span> : <span class="literal">null</span></span><br><span class="line">+   &#125;</span><br><span class="line">+   <span class="xml"><span class="tag">&lt;<span class="name">br</span>&gt;</span><span class="tag">&lt;/<span class="name">br</span>&gt;</span></span></span><br><span class="line">    &#123;<span class="comment">/* Tags */</span>&#125;</span><br><span class="line">    &#123;!index &amp;&amp; page.tags &amp;&amp; page.tags.length ? <span class="xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"article-tags size-small is-uppercase mb-4"</span>&gt;</span></span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"mr-2"</span>&gt;</span>#<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+
+<p>更改样式:</p>
+<figure class="highlight css"><figcaption><span>include/style/article.styl</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.post-copyright</span></span><br><span class="line">    <span class="selector-tag">font-size</span>: 1<span class="selector-tag">rem</span></span><br><span class="line">    <span class="selector-tag">letter-spacing</span>: 0<span class="selector-class">.02rem</span></span><br><span class="line">    <span class="selector-tag">word-break</span>: <span class="selector-tag">break-all</span></span><br><span class="line">    <span class="selector-tag">margin</span>: 2<span class="selector-class">.5rem</span> 0 0</span><br><span class="line">    <span class="selector-tag">padding</span>: 1<span class="selector-tag">rem</span> 1<span class="selector-tag">rem</span></span><br><span class="line">    <span class="selector-tag">border-left</span>: 3<span class="selector-tag">px</span> <span class="selector-tag">solid</span> <span class="selector-id">#FF1700</span></span><br><span class="line">    <span class="selector-tag">background-color</span>: <span class="selector-id">#F9F9F9</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="在元数据前命加入图标"><a href="# 在元数据前命加入图标" class="headerlink" title="在元数据前命加入图标"></a>在元数据前命加入图标 </h2><p> 此处更改较多且比较繁琐, 因此不再贴出代码, 详情请看 <a href="https://github.com/czccc/hexo-theme-icarus/commit/c9b9d011d5cff3296d49b3fc56d97b2c8468d561">commit 记录</a></p>
 <h2 id="启用静态搜索"><a href="# 启用静态搜索" class="headerlink" title="启用静态搜索"></a>启用静态搜索</h2><figure class="highlight yml"><figcaption><span>_config.yml</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Search plugin settings</span></span><br><span class="line"><span class="comment"># https://ppoffice.github.io/hexo-theme-icarus/categories/Plugins/Search</span></span><br><span class="line"><span class="attr">search:</span></span><br><span class="line">    <span class="comment"># Name of the search plugin</span></span><br><span class="line"><span class="attr">    type:</span> <span class="string">insight</span></span><br></pre></td></tr></table></figure>
 
 <h2 id="使用 -valine- 评论"><a href="# 使用 -valine- 评论" class="headerlink" title="使用 valine 评论"></a>使用 <code>valine</code> 评论</h2><p>Valine 诞生于 2017 年 8 月 7 日，是一款基于 Leancloud 的快速、简洁且高效的无后端评论系统。</p>
@@ -241,474 +92,60 @@
 <h2 id="启用分享插件"><a href="# 启用分享插件" class="headerlink" title="启用分享插件"></a>启用分享插件 </h2><p> 使用简单的 <a href="https://github.com/overtrue/share.js"><code>sharejs</code></a> 插件实现分享</p>
 <p>使用 <code>npm</code> 进行安装</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install social-share.js</span><br></pre></td></tr></table></figure>
-
 <p>并且在 <code>_config.yml</code> 中修改:</p>
 <figure class="highlight yml"><figcaption><span>_config.yml</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Share plugin settings</span></span><br><span class="line"><span class="comment"># https://ppoffice.github.io/hexo-theme-icarus/categories/Plugins/Share</span></span><br><span class="line"><span class="attr">share:</span></span><br><span class="line">    <span class="comment"># Share plugin name</span></span><br><span class="line"><span class="attr">    type:</span> <span class="string">sharejs</span></span><br></pre></td></tr></table></figure>
-        </div>
-        
-        <ul class="post-copyright">
-            <li><strong>本文标题：</strong><a href="http://blog.czcc.me/p/bdc060a9/">搭建 Hexo (三) : icarus 主题</a></li>
-            <li><strong>本文作者：</strong><a href="http://blog.czcc.me">Cheng</a></li>
-            <li><strong>本文链接：</strong><a href="http://blog.czcc.me/p/bdc060a9/">http://blog.czcc.me/p/bdc060a9/</a></li>
-            <li><strong>发布时间：</strong>2019-06-04</li>
-            <li><strong>版权声明：</strong>本博客所有文章除特别声明外，均采用 <a
-                    href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="external nofollow"
-                    target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！
-            </li>
-        </ul>
-        <br>
-        
-        
-        <div class="level is-size-7 is-uppercase">
-            <div class="level-start">
-                <div class="level-item">
-                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
-                    <a class="has-link-grey -link" href="/tags/Blog/">Blog</a>, <a class="has-link-grey -link" href="/tags/Hexo/">Hexo</a>
-                </div>
-            </div>
-        </div>
-        
-        
-        
-        <div class="social-share"></div>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/css/share.min.css">
-<script src="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/js/social-share.min.js"></script>
-        
-    </div>
-</div>
-
-
-
-<div class="card">
-    <div class="card-content">
-        <h3 class="menu-label has-text-centered">喜欢这篇文章？打赏一下作者吧</h3>
-        <div class="buttons is-centered">
-            
-            
-<a class="button is-info donate">
-    <span class="icon is-small">
-        <i class="fab fa-alipay"></i>
-    </span>
-    <span>支付宝</span>
-    <div class="qrcode"><img src="/images/Alipay.jpg" alt="支付宝"></div>
-</a>
-
-            
-            
-<a class="button is-success donate">
-    <span class="icon is-small">
-        <i class="fab fa-weixin"></i>
-    </span>
-    <span>微信</span>
-    <div class="qrcode"><img src="/images/WeChat_pay.png" alt="微信"></div>
-</a>
-
-            
-        </div>
-    </div>
-</div>
-
-
-
-<div class="card card-transparent">
-    <div class="level post-navigation is-flex-wrap is-mobile">
-        
-        <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev"
-                href="/p/9b5105cd/">
-                <i class="level-item fas fa-chevron-left"></i>
-                <span class="level-item">Windows 下使用 WSL 安装 Ubuntu</span>
-            </a>
-        </div>
-        
-        
-        <div class="level-end">
-            <a class="level level-item has-link-grey  article-nav-next"
-                href="/p/623c3d8b/">
-                <span class="level-item">搭建 Hexo (二) : 配置 Hexo</span>
-                <i class="level-item fas fa-chevron-right"></i>
-            </a>
-        </div>
-        
-    </div>
-</div>
-
-
-
-<div class="card">
-    <div class="card-content">
-        <h3 class="title is-5 has-text-weight-normal">评论</h3>
-        
-<script>
-    var disqus_config = function () {
-        this.page.url = 'http://blog.czcc.me/p/bdc060a9/';
-        this.page.identifier = 'p/bdc060a9/';
-    };
-    (function() {
-        var d = document, s = d.createElement('script');  
-        s.src = '//' + 'czcc' + '.disqus.com/embed.js';
-        s.setAttribute('data-timestamp', +new Date());
-        (d.head || d.body).appendChild(s);
-    })();
-</script>
-
-<div id="disqus_thread">
-    
-    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-</div>
-    </div>
-</div>
-</div>
-                
-
-
-
-
-<div class="column is-4-tablet is-3-desktop is-3-widescreen  has-order-1 column-left ">
-    
-        
-<div class="card widget">
-    <div class="card-content">
-        <nav class="level">
-            <div class="level-item has-text-centered" style="flex-shrink: 1">
-                <div>
-                    
-                    <figure class="image is-128x128 has-mb-6">
-                        <img class="" src="/images/avatar.jpg" alt="Cheng">
-                    </figure>
-                    
-                    <p class="is-size-4 is-block">
-                        Cheng
-                    </p>
-                    
-                    
-                    <p class="is-size-6 is-block">
-                        A Student
-                    </p>
-                    
-                    
-                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
-                        <i class="fas fa-map-marker-alt has-mr-7"></i>
-                        <span>Nanjing</span>
-                    </p>
-                    
-                </div>
-            </div>
-        </nav>
-        <nav class="level is-mobile">
-            <div class="level-item has-text-centered is-marginless">
-                <div>
-                    <p class="heading">
-                        Post
-                    </p>
-                    <a href="/archives">
-                        <p class="title has-text-weight-normal">
-                            36
-                        </p>
-                    </a>
-                </div>
-            </div>
-            <div class="level-item has-text-centered is-marginless">
-                <div>
-                    <p class="heading">
-                        Category
-                    </p>
-                    <a href="/categories">
-                        <p class="title has-text-weight-normal">
-                            14
-                        </p>
-                    </a>
-                </div>
-            </div>
-            <div class="level-item has-text-centered is-marginless">
-                <div>
-                    <p class="heading">
-                        Tag
-                    </p>
-                    <a href="/tags">
-                        <p class="title has-text-weight-normal">
-                            38
-                        </p>
-                    </a>
-                </div>
-            </div>
-        </nav>
-        
-        <div class="level">
-            <a class="level-item button is-link is-rounded" href="https://github.com/czccc" target="_blank" rel="noopener">
-                Follow</a>
-        </div>
-        
-        
-        
-        <div class="level is-mobile">
-            
-            <a class="level-item button is-white is-marginless" target="_blank" rel="noopener"
-                title="Github" href="https://github.com/czccc">
-                
-                <i class="fab fa-github"></i>
-                
-            </a>
-            
-            <a class="level-item button is-white is-marginless" target="_blank" rel="noopener"
-                title="RSS" href="/atom.xml">
-                
-                <i class="fas fa-rss"></i>
-                
-            </a>
-            
-        </div>
-        
-    </div>
-</div>
-    
-        
-
-<div class="card widget column-left is-sticky" id="toc">
-    <div class="card-content">
-        <div class="menu" style="max-height: calc(100vh - 5rem); overflow-y: auto;">
-            <h3 class="menu-label">
-                Catalogue
-            </h3>
-            <ul class="menu-list"><li>
-        <a class="is-flex" href="#安装">
-        <span class="has-mr-6">1</span>
-        <span>安装 </span>
-        </a></li><li>
-        <a class="is-flex" href="#修改主题配置">
-        <span class="has-mr-6">2</span>
-        <span>修改主题配置 </span>
-        </a><ul class="menu-list"><li>
-        <a class="is-flex" href="#网站基本设置">
-        <span class="has-mr-6">2.1</span>
-        <span> 网站基本设置</span>
-        </a></li><li>
-        <a class="is-flex" href="#设置侧边栏滚动类型">
-        <span class="has-mr-6">2.2</span>
-        <span>设置侧边栏滚动类型</span>
-        </a></li><li>
-        <a class="is-flex" href="#启用静态搜索">
-        <span class="has-mr-6">2.3</span>
-        <span>启用静态搜索</span>
-        </a></li><li>
-        <a class="is-flex" href="#使用 -valine- 评论">
-        <span class="has-mr-6">2.4</span>
-        <span>使用 valine 评论</span>
-        </a><ul class="menu-list"><li>
-        <a class="is-flex" href="#特性">
-        <span class="has-mr-6">2.4.1</span>
-        <span>特性:</span>
-        </a></li><li>
-        <a class="is-flex" href="#获取 APP-ID- 和 -APP-Key">
-        <span class="has-mr-6">2.4.2</span>
-        <span>获取 APP ID 和 APP Key</span>
-        </a></li></ul></li><li>
-        <a class="is-flex" href="#启用分享插件">
-        <span class="has-mr-6">2.5</span>
-        <span>启用分享插件 </span>
-        </a></li></ul></li></ul>
-        </div>
-    </div>
-</div>
-
-    
-    
-        <!-- <div class="column-right-shadow is-hidden-widescreen "> -->
-        <div class="column-right-shadow  ">
-        
-        </div>
-    
-</div>
-
-                
-            </div>
-        </div>
-    </section>
-    <footer class="footer">
-    <div class="container">
-        <div class="level">
-            <div class="level-start has-text-centered-mobile">
-                <a class="footer-logo is-block has-mb-6" href="/">
-                
-                    <img src="/images/logo.ico" alt="搭建 Hexo (三) : icarus 主题" height="28">
-                
-                </a>
-                <p class="is-size-7">
-                &copy; 2020 Cheng&nbsp;
-                Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> & <a
-                        href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a>
-                
-                <br>
-                <span id="busuanzi_container_site_uv">
-                共<span id="busuanzi_value_site_uv">0</span>个访客
-                </span>
-                
-                </p>
-            </div>
-            <div class="level-end">
-            
-                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
-                
-                <p class="control">
-                    <a class="button is-white is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/">
-                        
-                        <i class="fab fa-creative-commons"></i>
-                        
-                    </a>
-                </p>
-                
-                <p class="control">
-                    <a class="button is-white is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/">
-                        
-                        <i class="fab fa-creative-commons-by"></i>
-                        
-                    </a>
-                </p>
-                
-                <p class="control">
-                    <a class="button is-white is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus">
-                        
-                        <i class="fab fa-github"></i>
-                        
-                    </a>
-                </p>
-                
-                </div>
-            
-            </div>
-        </div>
-    </div>
-</footer>
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
-<script>moment.locale("zh-CN");</script>
-
-
-<script>
-var IcarusThemeSettings = {
-    site: {
-        url: 'http://blog.czcc.me',
-        external_link: {"enable":true,"exclude":[]}
-    },
-    article: {
-        highlight: {
-            clipboard: true,
-            fold: 'unfolded'
-        }
-    }
-};
-</script>
-
-
-<script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
-
-
-
-
-
-<script src="/js/animation.js"></script>
-
-
-
-<script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
-<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
-<script src="/js/gallery.js" defer></script>
-
-
-
-<div id="outdated">
-    <h6>Your browser is out-of-date!</h6>
-    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
-            my browser now </a></p>
-    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
-</div>
-<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-        outdatedBrowser({
-            bgColor: '#f25648',
-            color: '#ffffff',
-            lowerThan: 'flex'
-        });
-    });
-</script>
-
-
-<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
-<script>
-document.addEventListener('DOMContentLoaded', function () {
-    MathJax.Hub.Config({
-        'HTML-CSS': {
-            matchFontHeight: false
-        },
-        SVG: {
-            matchFontHeight: false
-        },
-        CommonHTML: {
-            matchFontHeight: false
-        },
-        tex2jax: {
-            inlineMath: [
-                ['$','$'],
-                ['\\(','\\)']
-            ]
-        }
-    });
-});
-</script>
-
-
-<a id="back-to-top" title="回到顶端" href="javascript:;">
-    <i class="fas fa-chevron-up"></i>
-</a>
-<script src="/js/back-to-top.js" defer></script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<script src="/js/main.js" defer></script>
-
-    
-    <div class="searchbox ins-search">
-    <div class="searchbox-container ins-search-container">
-        <div class="searchbox-input-wrapper">
-            <input type="text" class="searchbox-input ins-search-input" placeholder="想要查找什么..." />
-            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
-        </div>
-        <div class="searchbox-result-wrapper ins-section-wrapper">
-            <div class="ins-section-container"></div>
-        </div>
-    </div>
-</div>
-<script>
-    (function (window) {
-        var INSIGHT_CONFIG = {
-            TRANSLATION: {
-                POSTS: '文章',
-                PAGES: '页面',
-                CATEGORIES: '分类',
-                TAGS: '标签',
-                UNTITLED: '(无标题)',
-            },
-            CONTENT_URL: '/content.json',
+</div><ul class="post-copyright"><li><strong>本文标题：</strong><a href="http://blog.czcc.me/p/bdc060a9/">搭建 Hexo 其三: icarus 主题</a></li><li><strong>本文作者：</strong><a href="/">Cheng</a></li><li><strong>本文链接：</strong><a href="http://blog.czcc.me/p/bdc060a9/">http://blog.czcc.me/p/bdc060a9/</a></li><li><strong>发布时间：</strong>2019-06-04</li><li><strong>版权声明：</strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！</li></ul><br><div class="article-tags size-small is-uppercase mb-4"><span class="mr-2">#</span><a class="link-muted mr-2" rel="tag" href="/tags/Blog/">Blog</a><a class="link-muted mr-2" rel="tag" href="/tags/Hexo/">Hexo</a></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/css/share.min.css"><div class="social-share"></div><script src="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/js/social-share.min.js"></script></article></div><div class="card"><div class="card-content"><h3 class="menu-label has-text-centered">喜欢这篇文章？打赏一下作者吧</h3><div class="buttons is-centered"><a class="button is-info donate"><span class="icon is-small"><i class="fab fa-alipay"></i></span><span>支付宝</span><span class="qrcode"><img src="/img/Alipay.jpg" alt="支付宝"></span></a><a class="button donate" href="/" style="background-color:rgba(255,128,62,.87);border-color:transparent;color:white;" target="_blank" rel="noopener"><span class="icon is-small"><i class="fas fa-coffee"></i></span><span>送我杯咖啡</span></a><a class="button is-danger donate" href="/" target="_blank" rel="noopener"><span class="icon is-small"><i class="fab fa-patreon"></i></span><span>Patreon</span></a><div class="notification is-danger">You forgot to set the <code>business</code> or <code>currency_code</code> for Paypal. Please set it in <code>_config.yml</code>.</div><a class="button is-success donate"><span class="icon is-small"><i class="fab fa-weixin"></i></span><span>微信</span><span class="qrcode"><img src="/img/WeChat_pay.png" alt="微信"></span></a></div></div></div><nav class="post-navigation mt-4 level is-mobile"><div class="level-start"><a class="article-nav-prev level level-item link-muted" href="/p/9b5105cd/"><i class="level-item fas fa-chevron-left"></i><span class="level-item">Windows 下使用 WSL 安装 Ubuntu</span></a></div><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/p/623c3d8b/"><span class="level-item">搭建 Hexo 其二: 配置 Hexo</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><div class="card"><div class="card-content"><h3 class="title is-5">评论</h3><div id="disqus_thread"><noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></div><script>var disqus_config = function () {
+            this.page.url = 'http://blog.czcc.me/p/bdc060a9/';
+            this.page.identifier = 'p/bdc060a9/';
         };
-        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
-    })(window);
-</script>
-<script src="/js/insight.js" defer></script>
-<link rel="stylesheet" href="/css/search.css">
-<link rel="stylesheet" href="/css/insight.css">
-    
-</body>
-
-</html>
+        (function() {
+            var d = document, s = d.createElement('script');  
+            s.src = '//' + 'czcc' + '.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();</script></div></div></div><div class="column column-left is-4-tablet is-3-desktop is-3-widescreen  order-1"><div class="card widget"><div class="card-content"><nav class="level"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-128x128 mx-auto mb-2"><img class="" src="/img/avatar.jpg" alt="Cheng"></figure><p class="title is-size-4 is-block line-height-inherit">Cheng</p><p class="is-size-6 is-block">A Student</p><p class="is-size-6 is-flex justify-content-center"><i class="fas fa-map-marker-alt mr-1"></i><span>Nanjing</span></p></div></div></nav><nav class="level is-mobile"><div class="level-item has-text-centered is-marginless"><div><p class="heading">文章</p><a href="/archives"><p class="title">36</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">分类</p><a href="/categories"><p class="title">14</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">标签</p><a href="/tags"><p class="title">38</p></a></div></div></nav><div class="level"><a class="level-item button is-primary is-rounded" href="https://github.com/czccc" target="_blank" rel="noopener">关注我</a></div><div class="level is-mobile"><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Github" href="https://github.com/czccc"><i class="fab fa-github"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Facebook" href="https://facebook.com"><i class="fab fa-facebook"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Twitter" href="https://twitter.com"><i class="fab fa-twitter"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Dribbble" href="https://dribbble.com"><i class="fab fa-dribbble"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="RSS" href="/atom.xml"><i class="fas fa-rss"></i></a></div></div></div><div class="card widget column-left is-sticky" id="toc"><div class="card-content"><div class="menu" style="max-height: calc(100vh - 5rem); overflow-y: auto;"><h3 class="menu-label">目录</h3><ul class="menu-list"><li><a class="is-flex" href="#安装 -icarus"><span class="mr-2">1</span><span>安装 icarus</span></a></li><li><a class="is-flex" href="#重新合并官方分支"><span class="mr-2">2</span><span>重新合并官方分支 </span></a><ul class="menu-list"><li><a class="is-flex" href="#fetch-gt-merge"><span class="mr-2">2.1</span><span>fetch -&gt; merge</span></a></li><li><a class="is-flex" href="#参考"><span class="mr-2">2.2</span><span>参考 </span></a></li></ul></li><li><a class="is-flex" href="#修改主题配置"><span class="mr-2">3</span><span>修改主题配置 </span></a><ul class="menu-list"><li><a class="is-flex" href="#网站基本设置"><span class="mr-2">3.1</span><span> 网站基本设置</span></a></li><li><a class="is-flex" href="#设置侧边栏滚动类型"><span class="mr-2">3.2</span><span>设置侧边栏滚动类型</span></a></li><li><a class="is-flex" href="#改为两栏布局"><span class="mr-2">3.3</span><span>改为两栏布局 </span></a></li><li><a class="is-flex" href="#修改双栏布局宽带"><span class="mr-2">3.4</span><span>修改双栏布局宽带 </span></a></li><li><a class="is-flex" href="#固定目录卡片"><span class="mr-2">3.5</span><span>固定目录卡片 </span></a></li><li><a class="is-flex" href="#标题自动编号"><span class="mr-2">3.6</span><span>标题自动编号 </span></a></li><li><a class="is-flex" href="#添加鼠标悬浮阴影"><span class="mr-2">3.7</span><span>添加鼠标悬浮阴影 </span></a></li><li><a class="is-flex" href="#加入末尾版权说明"><span class="mr-2">3.8</span><span>加入末尾版权说明 </span></a></li><li><a class="is-flex" href="#在元数据前命加入图标"><span class="mr-2">3.9</span><span>在元数据前命加入图标 </span></a></li><li><a class="is-flex" href="#启用静态搜索"><span class="mr-2">3.10</span><span>启用静态搜索</span></a></li><li><a class="is-flex" href="#使用 -valine- 评论"><span class="mr-2">3.11</span><span>使用 valine 评论</span></a><ul class="menu-list"><li><a class="is-flex" href="#特性"><span class="mr-2">3.11.1</span><span>特性:</span></a></li><li><a class="is-flex" href="#获取 APP-ID- 和 -APP-Key"><span class="mr-2">3.11.2</span><span>获取 APP ID 和 APP Key</span></a></li></ul></li><li><a class="is-flex" href="#启用分享插件"><span class="mr-2">3.12</span><span>启用分享插件 </span></a></li></ul></li></ul></div></div></div></div><!--!--></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img src="/img/logo.ico" alt="CZCC" height="28"></a><p class="size-small"><span>&copy; 2020 Cheng</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a><br><span id="busuanzi_container_site_uv">共<span id="busuanzi_value_site_uv">0</span>个访客</span></p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons-by"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus"><i class="fab fa-github"></i></a></p></div></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script>moment.locale("zh-CN");</script><script>var IcarusThemeSettings = {
+            site: {
+                url: 'http://blog.czcc.me',
+                external_link: {"enable":true,"exclude":[]}
+            },
+            article: {
+                highlight: {
+                    clipboard: true,
+                    fold: 'unfolded'
+                }
+            }
+        };</script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script><script src="/js/animation.js"></script><a id="back-to-top" title="回到顶端" href="javascript:;"><i class="fas fa-chevron-up"></i></a><script src="/js/back_to_top.js" defer></script><!--!--><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script><script>window.addEventListener("load", () => {
+            if (typeof $.fn.lightGallery === 'function') {
+                $('.article').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof $.fn.justifiedGallery === 'function') {
+                if ($('.justified-gallery > p > .gallery-item').length) {
+                    $('.justified-gallery > p > .gallery-item').unwrap();
+                }
+                $('.justified-gallery').justifiedGallery();
+            }
+        });</script><!--!--><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css"><script src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js" defer></script><script>window.addEventListener("load", function() {
+            document.querySelectorAll('[role="article"] > .content').forEach(function(element) {
+                renderMathInElement(element);
+            });
+        });</script><script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script><script>window.addEventListener("load", function () {
+            MathJax.Hub.Config({
+                'HTML-CSS': {
+                    matchFontHeight: false
+                },
+                SVG: {
+                    matchFontHeight: false
+                },
+                CommonHTML: {
+                    matchFontHeight: false
+                },
+                tex2jax: {
+                    inlineMath: [
+                        ['$','$'],
+                        ['\\(','\\)']
+                    ]
+                }
+            });
+        });</script><!--!--><script src="/js/main.js" defer></script><div class="searchbox"><div class="searchbox-container"><div class="searchbox-header"><div class="searchbox-input-container"><input class="searchbox-input" type="text" placeholder="想要查找什么..."></div><a class="searchbox-close" href="javascript:;">×</a></div><div class="searchbox-body"></div></div></div><script src="/js/insight.js" defer></script><script>document.addEventListener('DOMContentLoaded', function () {
+            loadInsight({"contentUrl":"/content.json"}, {"hint":"想要查找什么...","untitled":"(无标题)","posts":"文章","pages":"页面","categories":"分类","tags":"标签"});
+        });</script></body></html>
