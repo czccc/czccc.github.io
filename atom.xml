@@ -95,8 +95,6 @@
     </summary>
     
     
-      <category term="LeetCode" scheme="http://blog.czcc.me/categories/LeetCode/"/>
-    
     
   </entry>
   
@@ -389,13 +387,13 @@
       <category term="Linux" scheme="http://blog.czcc.me/categories/Linux/"/>
     
     
-      <category term="Linux" scheme="http://blog.czcc.me/tags/Linux/"/>
-    
-      <category term="系统配置" scheme="http://blog.czcc.me/tags/%E7%B3%BB%E7%BB%9F%E9%85%8D%E7%BD%AE/"/>
-    
       <category term="Manjaro" scheme="http://blog.czcc.me/tags/Manjaro/"/>
     
       <category term="Arch" scheme="http://blog.czcc.me/tags/Arch/"/>
+    
+      <category term="Linux" scheme="http://blog.czcc.me/tags/Linux/"/>
+    
+      <category term="系统配置" scheme="http://blog.czcc.me/tags/%E7%B3%BB%E7%BB%9F%E9%85%8D%E7%BD%AE/"/>
     
   </entry>
   
@@ -576,11 +574,11 @@
       <category term="Linux" scheme="http://blog.czcc.me/categories/Linux/"/>
     
     
-      <category term="Ubuntu" scheme="http://blog.czcc.me/tags/Ubuntu/"/>
-    
       <category term="Linux" scheme="http://blog.czcc.me/tags/Linux/"/>
     
       <category term="系统配置" scheme="http://blog.czcc.me/tags/%E7%B3%BB%E7%BB%9F%E9%85%8D%E7%BD%AE/"/>
+    
+      <category term="Ubuntu" scheme="http://blog.czcc.me/tags/Ubuntu/"/>
     
   </entry>
   
