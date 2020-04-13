@@ -153,16 +153,16 @@ function loadInsight(config, translation) { // eslint-disable-line no-unused-var
 
     function filterFactory(keywords) {
         return {
-            post: function(obj) {
+            post: function (obj) {
                 return filter(keywords, obj, ['title', 'text']);
             },
-            page: function(obj) {
+            page: function (obj) {
                 return filter(keywords, obj, ['title', 'text']);
             },
-            category: function(obj) {
+            category: function (obj) {
                 return filter(keywords, obj, ['name', 'slug']);
             },
-            tag: function(obj) {
+            tag: function (obj) {
                 return filter(keywords, obj, ['name', 'slug']);
             }
         };
@@ -190,16 +190,16 @@ function loadInsight(config, translation) { // eslint-disable-line no-unused-var
 
     function weightFactory(keywords) {
         return {
-            post: function(obj) {
+            post: function (obj) {
                 return weight(keywords, obj, ['title', 'text'], [3, 1]);
             },
-            page: function(obj) {
+            page: function (obj) {
                 return weight(keywords, obj, ['title', 'text'], [3, 1]);
             },
-            category: function(obj) {
+            category: function (obj) {
                 return weight(keywords, obj, ['name', 'slug'], [1, 1]);
             },
-            tag: function(obj) {
+            tag: function (obj) {
                 return weight(keywords, obj, ['name', 'slug'], [1, 1]);
             }
         };
@@ -266,7 +266,7 @@ function loadInsight(config, translation) { // eslint-disable-line no-unused-var
         if (location.hash.trim() === '#insight-search') {
             $main.addClass('show');
         }
-        $input.on('input', function() {
+        $input.on('input', function () {
             const keywords = $(this).val();
             searchResultToDOM(keywords, search(json, keywords));
         });
@@ -277,7 +277,7 @@ function loadInsight(config, translation) { // eslint-disable-line no-unused-var
     $(document).on('click focus', '.navbar-main .search', () => {
         $main.addClass('show');
         $main.find('.searchbox-input').focus();
-    }).on('click touchend', '.searchbox-result-item', function(e) {
+    }).on('click touchend', '.searchbox-result-item', function (e) {
         if (e.type !== 'click' && !touch) {
             return;
         }
