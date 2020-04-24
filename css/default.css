@@ -419,7 +419,7 @@ code,
 pre {
   -moz-osx-font-smoothing: auto;
   -webkit-font-smoothing: auto;
-  font-family: "Fira Code Retina", "Fira Code", "Noto Mono", "Source Code Pro", "Noto Sans CJK Regular", "Microsoft YaHei", monospace;
+  font-family: "Fira Code Retina", "Fira Code", "Noto Mono", "Source Code Pro", "Noto Sans CJK SC Regular", "Microsoft YaHei", monospace;
 }
 body {
   color: #4a4a4a;
@@ -1070,7 +1070,7 @@ a.has-text-grey-lightest:focus {
   font-family: monospace !important;
 }
 .is-family-code {
-  font-family: "Fira Code Retina", "Fira Code", "Noto Mono", "Source Code Pro", "Noto Sans CJK Regular", "Microsoft YaHei", monospace !important;
+  font-family: "Fira Code Retina", "Fira Code", "Noto Mono", "Source Code Pro", "Noto Sans CJK SC Regular", "Microsoft YaHei", monospace !important;
 }
 .is-block {
   display: block !important;
@@ -11200,7 +11200,7 @@ figure.highlight figcaption * {
 }
 figure.highlight figcaption span {
   font-weight: 500;
-  font-family: "Fira Code Retina", "Fira Code", "Noto Mono", "Source Code Pro", "Noto Sans CJK Regular", "Microsoft YaHei", monospace;
+  font-family: "Fira Code Retina", "Fira Code", "Noto Mono", "Source Code Pro", "Noto Sans CJK SC Regular", "Microsoft YaHei", monospace;
 }
 figure.highlight figcaption .level-left *:not(:last-child) {
   margin-right: 0.5em;
