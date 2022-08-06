@@ -1,0 +1,328 @@
+<!doctype html>
+<html lang="zh"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>计算机系统基础 - CZCC</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="CZCC"><meta name="msapplication-TileImage" content="/img/favicon.ico"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="CZCC"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="description" content="ICS 中的基本运算和概念"><meta property="og:type" content="blog"><meta property="og:title" content="计算机系统基础"><meta property="og:url" content="http://blog.czccc.cc/p/a153319c/"><meta property="og:site_name" content="CZCC"><meta property="og:description" content="ICS 中的基本运算和概念"><meta property="og:locale" content="zh_CN"><meta property="og:image" content="http://blog.czccc.cc/p/a153319c/ICS/layouts.png"><meta property="og:image" content="http://blog.czccc.cc/p/a153319c/ICS/CwithInteger.png"><meta property="og:image" content="http://blog.czccc.cc/p/a153319c/ICS/DefaultConstType.png"><meta property="og:image" content="http://blog.czccc.cc/p/a153319c/ICS/floatNumber.png"><meta property="og:image" content="http://blog.czccc.cc/p/a153319c/ICS/desForfloat.png"><meta property="og:image" content="http://blog.czccc.cc/p/a153319c/ICS/IA32-basicDS.png"><meta property="og:image" content="http://blog.czccc.cc/p/a153319c/ICS/findAdress.png"><meta property="og:image" content="http://blog.czccc.cc/p/a153319c/ICS/mov.png"><meta property="og:image" content="http://blog.czccc.cc/p/a153319c/ICS/arithmetic.png"><meta property="og:image" content="http://blog.czccc.cc/p/a153319c/ICS/controlJump.png"><meta property="og:image" content="http://blog.czccc.cc/p/a153319c/ICS/%E8%BF%87%E7%A8%8B%E8%B0%83%E7%94%A8%E7%9A%84%E6%A0%88.png"><meta property="og:image" content="http://blog.czccc.cc/p/a153319c/ICS/switch.png"><meta property="article:published_time" content="2018-08-18T09:04:52.000Z"><meta property="article:modified_time" content="2022-08-06T13:07:33.622Z"><meta property="article:author" content="Cheng"><meta property="article:tag" content="Learn"><meta property="article:tag" content="ICS"><meta property="twitter:card" content="summary"><meta property="twitter:image" content="ICS/layouts.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"http://blog.czccc.cc/p/a153319c/"},"headline":"计算机系统基础","image":["http://blog.czccc.cc/p/a153319c/ICS/layouts.png","http://blog.czccc.cc/p/a153319c/ICS/CwithInteger.png","http://blog.czccc.cc/p/a153319c/ICS/DefaultConstType.png","http://blog.czccc.cc/p/a153319c/ICS/floatNumber.png","http://blog.czccc.cc/p/a153319c/ICS/desForfloat.png","http://blog.czccc.cc/p/a153319c/ICS/IA32-basicDS.png","http://blog.czccc.cc/p/a153319c/ICS/findAdress.png","http://blog.czccc.cc/p/a153319c/ICS/mov.png","http://blog.czccc.cc/p/a153319c/ICS/arithmetic.png","http://blog.czccc.cc/p/a153319c/ICS/controlJump.png","http://blog.czccc.cc/p/a153319c/ICS/%E8%BF%87%E7%A8%8B%E8%B0%83%E7%94%A8%E7%9A%84%E6%A0%88.png","http://blog.czccc.cc/p/a153319c/ICS/switch.png"],"datePublished":"2018-08-18T09:04:52.000Z","dateModified":"2022-08-06T13:07:33.622Z","author":{"@type":"Person","name":"Cheng"},"publisher":{"@type":"Organization","name":"CZCC","logo":{"@type":"ImageObject","url":"http://blog.czccc.cc/img/logo.ico"}},"description":"ICS 中的基本运算和概念"}</script><link rel="canonical" href="http://blog.czccc.cc/p/a153319c/"><link rel="alternate" href="/atom.xml" title="CZCC" type="application/atom+xml"><link rel="icon" href="/img/favicon.ico"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link rel="stylesheet" href="/css/default.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><!--!--><script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" defer></script><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css"><!--!--><!--!--><!--!--><!--!--><style>.pace{-webkit-pointer-events:none;pointer-events:none;-webkit-user-select:none;-moz-user-select:none;user-select:none}.pace-inactive{display:none}.pace .pace-progress{background:#3273dc;position:fixed;z-index:2000;top:0;right:100%;width:100%;height:2px}</style><script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script><!-- hexo injector head_end start --><script>
+  (function () {
+      function switchTab() {
+          if (!location.hash) {
+            return;
+          }
+          Array
+              .from(document.querySelectorAll('.tab-content'))
+              .forEach($tab => {
+                  $tab.classList.add('is-hidden');
+              });
+          Array
+              .from(document.querySelectorAll('.tabs li'))
+              .forEach($tab => {
+                  $tab.classList.remove('is-active');
+              });
+          const $activeTab = document.querySelector(location.hash);
+          if ($activeTab) {
+              $activeTab.classList.remove('is-hidden');
+          }
+          const $tabMenu = document.querySelector(`a[href="${location.hash}"]`);
+          if ($tabMenu) {
+              $tabMenu.parentElement.classList.add('is-active');
+          }
+      }
+      switchTab();
+      window.addEventListener('hashchange', switchTab, false);
+  })();
+  </script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.1.0"></head><body class="is-2-column"><nav class="navbar navbar-main"><div class="container navbar-container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img src="/img/logo.ico" alt="CZCC" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">Home</a><a class="navbar-item" href="/archives">Archives</a><a class="navbar-item" href="/categories">Categories</a><a class="navbar-item" href="/tags">Tags</a><a class="navbar-item" href="/categories/LeetCode">LeetCode</a><a class="navbar-item" href="/Software">Software</a><a class="navbar-item" href="/about">About</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/czccc/hexo-theme-icarus"><i class="fab fa-github"></i></a><a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;"><i class="fas fa-list-ul"></i></a><a class="navbar-item search" title="搜索" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-9-desktop is-9-widescreen"><div class="card"><article class="card-content article" role="article"><h1 class="title is-3 is-size-4-mobile"><i class="fas fa-angle-double-right">  </i>计算机系统基础</h1><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><i class="far fa-calendar-alt">  </i><span class="level-item"><time dateTime="2018-08-18T09:04:52.000Z" title="2018/8/18 17:04:52">2018-08-18</time>发表</span><i class="far fa-calendar-check">  </i><span class="level-item"><time dateTime="2022-08-06T13:07:33.622Z" title="2022/8/6 21:07:33">2022-08-06</time>更新</span><i class="far fa-folder">  </i><span class="level-item"><a class="link-muted" href="/categories/NJU/">NJU</a></span><i class="far fa-hourglass">  </i><span class="level-item">14 分钟读完 (大约2153个字)</span><i class="far fa-eye">  </i><span class="level-item" id="busuanzi_container_page_pv"><span id="busuanzi_value_page_pv">0</span>次访问</span></div></div><div class="content"><p>ICS 中的基本运算和概念</p>
+<span id="more"></span>
+<h1>计算机系统概述</h1>
+<h2 id="计算机的发展">计算机的发展</h2>
+<ol>
+<li>1946年，第1台通用电子计算机 ENIAC诞⽣生
+<ul>
+<li>由电子真空管组成</li>
+</ul>
+</li>
+<li>电子管计算机</li>
+<li>晶体管</li>
+<li>SSI, MSI, LSI, VLSI, ULSI</li>
+</ol>
+<h2 id="冯-诺依曼计算机结构">冯.诺依曼计算机结构</h2>
+<ol>
+<li>计算机由运算器, 控制器, 存储器, 输入设备, 输出设备组成</li>
+<li>指令和数据用二进制表示, <strong>形式上没有差别</strong>, 通过<strong>CPU访问阶段</strong>进行区别</li>
+<li>指令和数据存储在存储器中, <strong>按地址访问</strong></li>
+<li>指令由 <strong>操作码和地址码</strong>组成, 操作码指定操作性质, 地址码指定操作数地址</li>
+<li>采用 <strong>“存储程序”</strong> 方式进行工作</li>
+</ol>
+<h2 id="计算机系统抽象层的转换">计算机系统抽象层的转换</h2>
+<p><img src="ICS/layouts.png" alt=""></p>
+<p><strong>高级语言虚拟机 - 汇编语言虚拟机 - 操作系统虚拟机 - 机器语言机器</strong></p>
+<h2 id="程序开发与执行过程">程序开发与执行过程</h2>
+<p>从一个程序的编写到完成程序的执行整个过程简述如下：</p>
+<ol>
+<li>通过本文编辑软件编写源程序文件（如hello.c）</li>
+<li>然后使用语言处理工具，<strong>对源程序文件进行预处理、编译、汇编和链接</strong>，最终生成可执行目标文件。</li>
+<li>通过双击程序图标或在命令行中输入命令等方式，<strong>启动可执行目标文件执行</strong>。</li>
+<li>每一个可执行文件的执行都<strong>采用&quot;存储程序”工作方式</strong>。一旦程序被启动就会装入主存，CPU从主存储器中取出指令，并对指令译码，根据译码结果控制数据的运算、传送或存储，每条指令执行完后，CPU能<strong>自动控制执行下一条指令或跳转到某一条指令处执行</strong>，当可执行文件中包含的所有指令都执行结束，则程序执行结束。</li>
+</ol>
+<h2 id="性能参数">性能参数</h2>
+<ul>
+<li>时钟周期 = 时钟频率的倒数</li>
+<li>CPI</li>
+<li>MIPS  峰值MIPS  平均每秒执行多少百万条整数运算指令</li>
+<li>MFLOPS 百万次浮点运算 GFLOPS TFLOPS</li>
+<li><strong>执行时间</strong></li>
+</ul>
+<h1>数据的机器级表示与处理</h1>
+<h2 id="整数">整数</h2>
+<h3 id="加减运算">加减运算</h3>
+<ol>
+<li>
+<p>原码 -&gt; 变成绝对值的运算</p>
+</li>
+<li>
+<p>补码 -&gt;     <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">[</mo><mi>X</mi><mo stretchy="false">]</mo><mo>=</mo><msup><mn>2</mn><mi>n</mi></msup><mo>+</mo><mi>X</mi></mrow><annotation encoding="application/x-tex">[X] = 2^n + X</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">[</span><span class="mord mathnormal" style="margin-right:0.07847em;">X</span><span class="mclose">]</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7477em;vertical-align:-0.0833em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6644em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">n</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.07847em;">X</span></span></span></span></p>
+</li>
+</ol>
+<p>加法直接相加, 减法中, <strong>被减数取反加 1</strong> 再相加</p>
+<h3 id="C中的整数">C中的整数</h3>
+<p>类型转换:  带符号数 -&gt; 无符号数</p>
+<p>常用数据:</p>
+<ul>
+<li>
+<p><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2147483647</mn><mo>=</mo><msup><mn>2</mn><mn>31</mn></msup><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">2147483647 = 2^{31} - 1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">2147483647</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8974em;vertical-align:-0.0833em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">31</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span></span></span></span></p>
+</li>
+<li>
+<p><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2147483648</mn><mo>=</mo><msup><mn>2</mn><mn>31</mn></msup></mrow><annotation encoding="application/x-tex">2147483648 = 2^{31}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">2147483648</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8141em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">31</span></span></span></span></span></span></span></span></span></span></span></span></p>
+</li>
+</ul>
+<p>在 ISO C90 下, 2147483648 为 **<code>unsigned int</code>**型</p>
+<p><img src="ICS/CwithInteger.png" alt=""></p>
+<p><img src="ICS/DefaultConstType.png" alt=""></p>
+<h3 id="溢出判断">溢出判断</h3>
+<p>对于补码而言, 在进行加法时, 如果两个数的<strong>最高位不同, 不会发生溢出</strong>.<br>
+否则, 如果</p>
+<ol>
+<li>运算结果的最高位与加数的最高位不同</li>
+<li>最高位进位与次高位进位的异或为 1</li>
+</ol>
+<p>则发生了溢出.</p>
+<h3 id="比较判断">比较判断</h3>
+<table>
+<thead>
+<tr>
+<th>关系</th>
+<th>无符号数</th>
+<th>有符号数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>等于</td>
+<td><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>Z</mi><mi>F</mi></mrow><annotation encoding="application/x-tex">ZF</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">ZF</span></span></span></span></td>
+<td><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>Z</mi><mi>F</mi></mrow><annotation encoding="application/x-tex">ZF</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">ZF</span></span></span></span></td>
+</tr>
+<tr>
+<td>大于</td>
+<td><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover accent="true"><mrow><mi>C</mi><mi>F</mi><mo>+</mo><mi>Z</mi><mi>F</mi></mrow><mo stretchy="true">‾</mo></mover></mrow><annotation encoding="application/x-tex">\overline{CF+ZF}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.9667em;vertical-align:-0.0833em;"></span><span class="mord overline"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8833em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">CF</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">ZF</span></span></span><span style="top:-3.8033em;"><span class="pstrut" style="height:3em;"></span><span class="overline-line" style="border-bottom-width:0.04em;"></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.0833em;"><span></span></span></span></span></span></span></span></span></td>
+<td><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover accent="true"><mrow><mi>Z</mi><mi>F</mi></mrow><mo stretchy="true">‾</mo></mover><mo>⋅</mo><mover accent="true"><mrow><mo stretchy="false">(</mo><mi>S</mi><mi>F</mi><mo>⨁</mo><mi>O</mi><mi>F</mi><mo stretchy="false">)</mo></mrow><mo stretchy="true">‾</mo></mover></mrow><annotation encoding="application/x-tex">\overline{ZF}\cdot\overline{(SF \bigoplus OF)}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8833em;"></span><span class="mord overline"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8833em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">ZF</span></span></span><span style="top:-3.8033em;"><span class="pstrut" style="height:3em;"></span><span class="overline-line" style="border-bottom-width:0.04em;"></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1.2em;vertical-align:-0.25em;"></span><span class="mord overline"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.95em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.13889em;">SF</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop op-symbol small-op" style="position:relative;top:0em;">⨁</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">OF</span><span class="mclose">)</span></span></span><span style="top:-3.87em;"><span class="pstrut" style="height:3em;"></span><span class="overline-line" style="border-bottom-width:0.04em;"></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.25em;"><span></span></span></span></span></span></span></span></span></td>
+</tr>
+<tr>
+<td>小于</td>
+<td><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>C</mi><mi>F</mi><mo>⋅</mo><mover accent="true"><mrow><mi>Z</mi><mi>F</mi></mrow><mo stretchy="true">‾</mo></mover></mrow><annotation encoding="application/x-tex">CF\cdot\overline{ZF}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">CF</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.8833em;"></span><span class="mord overline"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8833em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">ZF</span></span></span><span style="top:-3.8033em;"><span class="pstrut" style="height:3em;"></span><span class="overline-line" style="border-bottom-width:0.04em;"></span></span></span></span></span></span></span></span></span></td>
+<td><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover accent="true"><mrow><mi>Z</mi><mi>F</mi></mrow><mo stretchy="true">‾</mo></mover><mo>⋅</mo><mo stretchy="false">(</mo><mi>S</mi><mi>F</mi><mo>⨁</mo><mi>O</mi><mi>F</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\overline{ZF} \cdot(SF \bigoplus OF)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8833em;"></span><span class="mord overline"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8833em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">ZF</span></span></span><span style="top:-3.8033em;"><span class="pstrut" style="height:3em;"></span><span class="overline-line" style="border-bottom-width:0.04em;"></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.13889em;">SF</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop op-symbol small-op" style="position:relative;top:0em;">⨁</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">OF</span><span class="mclose">)</span></span></span></span></td>
+</tr>
+<tr>
+<td>大于等于</td>
+<td><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover accent="true"><mrow><mi>C</mi><mi>F</mi></mrow><mo stretchy="true">‾</mo></mover><mo>+</mo><mi>Z</mi><mi>F</mi></mrow><annotation encoding="application/x-tex">\overline{CF}+ZF</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.9667em;vertical-align:-0.0833em;"></span><span class="mord overline"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8833em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">CF</span></span></span><span style="top:-3.8033em;"><span class="pstrut" style="height:3em;"></span><span class="overline-line" style="border-bottom-width:0.04em;"></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">ZF</span></span></span></span></td>
+<td><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>Z</mi><mi>F</mi><mo>+</mo><mover accent="true"><mrow><mo stretchy="false">(</mo><mi>S</mi><mi>F</mi><mo>⨁</mo><mi>O</mi><mi>F</mi><mo stretchy="false">)</mo></mrow><mo stretchy="true">‾</mo></mover></mrow><annotation encoding="application/x-tex">ZF+\overline{(SF \bigoplus OF)}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">ZF</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1.2em;vertical-align:-0.25em;"></span><span class="mord overline"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.95em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.13889em;">SF</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop op-symbol small-op" style="position:relative;top:0em;">⨁</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">OF</span><span class="mclose">)</span></span></span><span style="top:-3.87em;"><span class="pstrut" style="height:3em;"></span><span class="overline-line" style="border-bottom-width:0.04em;"></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.25em;"><span></span></span></span></span></span></span></span></span></td>
+</tr>
+<tr>
+<td>小于等于</td>
+<td><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>C</mi><mi>F</mi><mo>+</mo><mi>Z</mi><mi>F</mi></mrow><annotation encoding="application/x-tex">CF+ZF</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">CF</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">ZF</span></span></span></span></td>
+<td><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>Z</mi><mi>F</mi><mo>+</mo><mo stretchy="false">(</mo><mi>S</mi><mi>F</mi><mo>⨁</mo><mi>O</mi><mi>F</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">ZF+(SF \bigoplus OF)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">ZF</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.13889em;">SF</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop op-symbol small-op" style="position:relative;top:0em;">⨁</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">OF</span><span class="mclose">)</span></span></span></span></td>
+</tr>
+</tbody>
+</table>
+<ol>
+<li>无符号数情况
+<ol>
+<li>等于: 相减后结果为零</li>
+<li>大于: 没有借位且相减后不为0</li>
+<li>小于: 有借位且相减后不为0</li>
+<li>大于等于: 没有借位或相减后结果为0</li>
+<li>小于等于: 有借位或相减后结果为0</li>
+</ol>
+</li>
+<li>带符号整数情况
+<ol>
+<li>等于: 相减后结果为零</li>
+<li>大于: 相减后结果不为0，并且，不溢出时为正，溢出时为负。</li>
+<li>小于: 相减后结果不为0，并且，不溢出时为负，溢出时为正。</li>
+<li>大于等于: 相减后结果为0，或者，不溢出时为正，溢出时为负。</li>
+<li>小于等于: 相减后结果为0，或者，不溢出时为负，溢出时为正。</li>
+</ol>
+</li>
+</ol>
+<h2 id="浮点数">浮点数</h2>
+<h3 id="IEEE-754-标准">IEEE 754 标准</h3>
+<p><img src="ICS/floatNumber.png" alt=""></p>
+<h4 id="单精度">单精度</h4>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">S EEEE EEEE MMM MMMM MMMM MMMM MMMM MMMM</span><br></pre></td></tr></table></figure>
+<ul>
+<li>1  位符号位</li>
+<li>8  位阶码 (移码)</li>
+<li>23 位尾数 (原码)</li>
+<li>阶码的偏置常数为 127</li>
+<li>尾数最高位默认为 1</li>
+</ul>
+<p><img src="ICS/desForfloat.png" alt=""></p>
+<h1>程序的转换及机器级表示</h1>
+<h2 id="ISA">ISA</h2>
+<p>ISA 定义了<strong>机器语言级虚拟机的属性和功能特性</strong></p>
+<ul>
+<li>可执行的<strong>指令的集合</strong></li>
+<li>指令可以接受的<strong>操作数的类型</strong></li>
+<li>操作数所能存放的<strong>寄存器组的结构</strong></li>
+<li>操作数所能存放的<strong>存储空间的大小和编址方</strong>式</li>
+<li>操作数在存储空间存放时按照<strong>大端方式还是小端方式</strong>存放</li>
+<li>指令获取操作数的方式，即<strong>寻址方式</strong>；</li>
+<li>指令执行过程的<strong>控制方式</strong>，包括程序计数器、条件码定义等。</li>
+</ul>
+<h2 id="生成机器代码">生成机器代码</h2>
+<p>这个转换过程分为以下4个步骤。</p>
+<ol>
+<li>预处理。例如，在C语言源程序中有一些以＃开头的语句，可以在预处理阶段对这些语句进行处理，在源程序中插入所有用 <code>#include</code> 命令指定的文件和用 <code>#define</code> 声明指定的宏。</li>
+<li>编译。将预处理后的源程序文件编译生成相应的汇编语言程序。</li>
+<li>汇编。由汇编程序将汇编语言源程序文件转换为可重定位的机器语言目标代码文件。</li>
+<li>链接。由链接器将多个可重定位的机器语言目标文件以及库例程（如 <code>printf()</code> 库函数）链接起来，生成最终的可执行文件。</li>
+</ol>
+<h3 id="ADD-程序示例">ADD 程序示例</h3>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// test.c</span></span><br><span class="line"><span class="type">int</span> <span class="title function_">add</span><span class="params">(<span class="type">int</span> i, <span class="type">int</span> j)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">int</span> x = i + j;</span><br><span class="line">    <span class="keyword">return</span> x;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">add:</span><br><span class="line">    pushl	%ebp</span><br><span class="line">    movl	%esp, %ebp</span><br><span class="line">    subl	$16, %esp</span><br><span class="line">    movl	8(%ebp), %edx</span><br><span class="line">    movl	12(%ebp), %eax</span><br><span class="line">    # leal	(%edx, %eax), %eax</span><br><span class="line">    addl	%edx, %eax</span><br><span class="line">    movl	%eax, -4(%ebp)</span><br><span class="line">    movl	-4(%ebp), %eax</span><br><span class="line">    leave</span><br><span class="line">    ret</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"># test.o:     file format elf32-i386</span><br><span class="line"></span><br><span class="line">00000000 &lt;add&gt;:</span><br><span class="line">   0:   55                      push   %ebp</span><br><span class="line">   1:   89 e5                   mov    %esp,%ebp</span><br><span class="line">   3:   83 ec 10                sub    $0x10,%esp</span><br><span class="line">   6:   8b 55 08                mov    0x8(%ebp),%edx</span><br><span class="line">   9:   8b 45 0c                mov    0xc(%ebp),%eax</span><br><span class="line">   c:   01 d0                   add    %edx,%eax</span><br><span class="line">   e:   89 45 fc                mov    %eax,-0x4(%ebp)</span><br><span class="line">  11:   8b 45 fc                mov    -0x4(%ebp),%eax</span><br><span class="line">  14:   c9                      leave</span><br><span class="line">  15:   c3                      ret</span><br></pre></td></tr></table></figure>
+<p>对于<code>test.o</code>文件</p>
+<ul>
+<li>目标代码从相对地址<code>0</code>开始</li>
+<li>机器指令的长度不同, 即为变长指令字结构</li>
+</ul>
+<p>可执行文件中:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">08048403 &lt;add&gt;:</span><br><span class="line"> 8048403:       55                      push   %ebp</span><br><span class="line"> 8048404:       89 e5                   mov    %esp,%ebp</span><br><span class="line"> 8048406:       83 ec 10                sub    $0x10,%esp</span><br><span class="line"> 8048409:       8b 55 08                mov    0x8(%ebp),%edx</span><br><span class="line"> 804840c:       8b 45 0c                mov    0xc(%ebp),%eax</span><br><span class="line"> 804840f:       01 d0                   add    %edx,%eax</span><br><span class="line"> 8048411:       89 45 fc                mov    %eax,-0x4(%ebp)</span><br><span class="line"> 8048414:       8b 45 fc                mov    -0x4(%ebp),%eax</span><br><span class="line"> 8048417:       c9                      leave</span><br><span class="line"> 8048418:       c3                      ret</span><br><span class="line"> 8048419:       66 90                   xchg   %ax,%ax</span><br><span class="line"> 804841b:       66 90                   xchg   %ax,%ax</span><br><span class="line"> 804841d:       66 90                   xchg   %ax,%ax</span><br><span class="line"> 804841f:       90                      nop</span><br></pre></td></tr></table></figure>
+<h2 id="IA32-指令">IA32 指令</h2>
+<h3 id="数据类型与寄存器">数据类型与寄存器</h3>
+<p><img src="ICS/IA32-basicDS.png" alt=""><br>
+<img src="ICS/findAdress.png" alt=""></p>
+<p>x87 浮点寄存器中含有<strong>专用的状态寄存器</strong>, <strong>8个浮点寄存器</strong></p>
+<h3 id="mov-传送指令">mov 传送指令</h3>
+<p><img src="ICS/mov.png" alt=""></p>
+<h3 id="算术运算指令">算术运算指令</h3>
+<p><img src="ICS/arithmetic.png" alt=""></p>
+<h4 id="乘法运算">乘法运算</h4>
+<ul>
+<li>1个操作数 SRC : 另一个操作数隐含在 <strong>AL / AX / EAX</strong> 中, 结果存放在 <strong>AX / DX-AX / EDX-EAX</strong></li>
+<li>2个操作数 DST, SRC : <strong>DST * SRC -&gt; DST</strong></li>
+<li>3个操作数 REG, SRC, IMM : <strong>SRC * IMM -&gt; REG</strong></li>
+</ul>
+<h4 id="除法运算">除法运算</h4>
+<ul>
+<li>1个操作数 SRC : 另一个操作数隐含在 <strong>AL / AX / EAX</strong> 中</li>
+<li>被除数的位数为除数的2倍</li>
+<li>16 / 8 :  商: AL 余数: AH</li>
+<li>32 / 16 : 商: AX 余数: DX</li>
+<li>64 / 32 : 商: EAX 余数: EDX</li>
+</ul>
+<h4 id="移位运算">移位运算</h4>
+<ul>
+<li>逻辑: SHL SHR</li>
+<li>算术: SAL SAR</li>
+<li>循环: ROL ROR RCL RCR</li>
+</ul>
+<h3 id="控制转移指令">控制转移指令</h3>
+<p><img src="ICS/controlJump.png" alt=""></p>
+<h2 id="C语言程序的机器级表示">C语言程序的机器级表示</h2>
+<h3 id="过程调用的执行步骤">过程调用的执行步骤</h3>
+<p>假定<strong>过程P</strong>调用<strong>过程Q</strong>, 则P称为<strong>调用者</strong>， Q称为<strong>被调用者</strong>。</p>
+<ol>
+<li>P将入口参数(实参)放到Q能访问到的地方。</li>
+<li>P将返回地址存到特定的地方，然后将控制转移到Q。(CALL)</li>
+<li>Q保存P的现场，并为自己的非静态局部变量分配空间。</li>
+<li>执行Q的过程体(函数体)。</li>
+<li>Q恢复P的现场，并释放局部变量所占空间。</li>
+<li>Q取出返回地址，将控制转移到P。(RET)</li>
+</ol>
+<h3 id="寄存器使用约定">寄存器使用约定</h3>
+<ul>
+<li>寄存器<code>EAX</code> 、<code>ECX</code> 、<code>EDX</code> 是<strong>调用者保存寄存器</strong></li>
+<li>寄存器<code>EBX</code> 、<code>ESI</code> 、<code>EDI</code> 是<strong>被调用者保存寄存器</strong></li>
+</ul>
+<h3 id="栈与栈帧">栈与栈帧</h3>
+<p><img src="ICS/%E8%BF%87%E7%A8%8B%E8%B0%83%E7%94%A8%E7%9A%84%E6%A0%88.png" alt=""></p>
+<h2 id="C语句的汇编形式">C语句的汇编形式</h2>
+<h3 id="if-选择语句">if 选择语句</h3>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// if </span></span><br><span class="line"><span class="keyword">if</span> (cond_expr)</span><br><span class="line">    then_statement</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">    else_statement</span><br></pre></td></tr></table></figure>
+<p>汇编格式</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">    c=cond_expr;</span><br><span class="line">    if(!c)</span><br><span class="line">        goto false_label;</span><br><span class="line">    then_statement</span><br><span class="line">    goto done;</span><br><span class="line">false_label:</span><br><span class="line">    else_statement</span><br><span class="line">done:</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">    c=cond_expr;</span><br><span class="line">    if(c)</span><br><span class="line">        goto true_label;</span><br><span class="line">    else_statement</span><br><span class="line">    goto done;</span><br><span class="line">true_label:</span><br><span class="line">    then_statement</span><br><span class="line">done:</span><br></pre></td></tr></table></figure>
+<h3 id="switch">switch</h3>
+<p><img src="ICS/switch.png" alt=""></p>
+<h3 id="do-while">do - while</h3>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">do</span></span><br><span class="line">&#123;</span><br><span class="line">    loop_body_statement</span><br><span class="line">&#125; <span class="keyword">while</span> (cond_expr) ;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">loop:</span><br><span class="line">    loop_body_statement</span><br><span class="line">    c = cond_expr ;</span><br><span class="line">    if (c) goto loop ;</span><br></pre></td></tr></table></figure>
+<h3 id="while">while</h3>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span> (cond_expr)</span><br><span class="line">    loop_body_statement</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">    c = cond_expr;</span><br><span class="line">    if (!c) goto done;</span><br><span class="line">loop:</span><br><span class="line">    loop_body_statement</span><br><span class="line">    c = conct_expr;</span><br><span class="line">    if (c) goto loop;</span><br><span class="line">done:</span><br></pre></td></tr></table></figure>
+<h3 id="for">for</h3>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (begin_expr; cond_expr; update_expr)</span><br><span class="line">    loop_body_statement</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">    begin_expr ;</span><br><span class="line">    c = conct_expr;</span><br><span class="line">    if (!c) goto done ;</span><br><span class="line">loop:</span><br><span class="line">    loop_body_statement</span><br><span class="line">    update_expr;</span><br><span class="line">    c = cond_expr;</span><br><span class="line">    if (c) goto loop ;</span><br><span class="line">done:</span><br></pre></td></tr></table></figure>
+<h2 id="数据对齐">数据对齐</h2>
+<p>Windows : 按其长度对齐</p>
+<p>IA32 :</p>
+<ul>
+<li>short : 2</li>
+<li>int float double char* : 4</li>
+<li>double : 80位, 分配12字节(96位)</li>
+</ul>
+</div><div class="article-licensing box"><div class="licensing-title"><p>计算机系统基础</p><p><a href="http://blog.czccc.cc/p/a153319c/">http://blog.czccc.cc/p/a153319c/</a></p></div><div class="licensing-meta level is-mobile"><div class="level-left"><div class="level-item is-narrow"><div><h6>作者</h6><p>Cheng</p></div></div><div class="level-item is-narrow"><div><h6>发布于</h6><p>2018-08-18</p></div></div><div class="level-item is-narrow"><div><h6>更新于</h6><p>2022-08-06</p></div></div><div class="level-item is-narrow"><div><h6>许可协议</h6><p><a class="icons" rel="noopener" target="_blank" title="Creative Commons" href="https://creativecommons.org/"><i class="icon fab fa-creative-commons"></i></a><a class="icons" rel="noopener" target="_blank" title="Attribution" href="https://creativecommons.org/licenses/by/4.0/"><i class="icon fab fa-creative-commons-by"></i></a><a class="icons" rel="noopener" target="_blank" title="Noncommercial" href="https://creativecommons.org/licenses/by-nc/4.0/"><i class="icon fab fa-creative-commons-nc"></i></a></p></div></div></div></div></div><div class="article-tags is-size-7 mb-4"><span class="mr-2">#</span><a class="link-muted mr-2" rel="tag" href="/tags/Learn/">Learn</a><a class="link-muted mr-2" rel="tag" href="/tags/ICS/">ICS</a></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/css/share.min.css"><div class="social-share"></div><script src="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/js/social-share.min.js"></script></article></div><div class="card"><div class="card-content"><h3 class="menu-label has-text-centered">喜欢这篇文章？打赏一下作者吧</h3><div class="buttons is-centered"><a class="button donate" data-type="alipay"><span class="icon is-small"><i class="fab fa-alipay"></i></span><span>支付宝</span><span class="qrcode"><img src="/img/Alipay.jpg" alt="支付宝"></span></a><a class="button donate" data-type="wechat"><span class="icon is-small"><i class="fab fa-weixin"></i></span><span>微信</span><span class="qrcode"><img src="/img/WeChat_pay.png" alt="微信"></span></a></div></div></div><nav class="post-navigation mt-4 level is-mobile"><div class="level-start"><a class="article-nav-prev level level-item link-muted" href="/p/857a870e/"><i class="level-item fas fa-chevron-left"></i><span class="level-item">Markdown 中插入 latex 公式</span></a></div><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/p/170cf1e2/"><span class="level-item">Tree</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><div class="card"><div class="card-content"><h3 class="title is-5">评论</h3><div id="disqus_thread"><noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></div><script>var disqus_config = function () {
+            this.page.url = 'http://blog.czccc.cc/p/a153319c/';
+            this.page.identifier = 'p/a153319c/';
+        };
+        (function() {
+            var d = document, s = d.createElement('script');  
+            s.src = '//' + 'czcc' + '.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();</script></div></div></div><div class="column column-left is-4-tablet is-3-desktop is-3-widescreen  order-1"><div class="card widget" data-type="profile"><div class="card-content"><nav class="level"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-128x128 mx-auto mb-2"><img class="avatar" src="/img/avatar.jpg" alt="Cheng"></figure><p class="title is-size-4 is-block" style="line-height:inherit;">Cheng</p><p class="is-size-6 is-block">A Student</p><p class="is-size-6 is-flex justify-content-center"><i class="fas fa-map-marker-alt mr-1"></i><span>Nanjing</span></p></div></div></nav><nav class="level is-mobile"><div class="level-item has-text-centered is-marginless"><div><p class="heading">文章</p><a href="/archives"><p class="title">54</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">分类</p><a href="/categories"><p class="title">26</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">标签</p><a href="/tags"><p class="title">50</p></a></div></div></nav><div class="level"><a class="level-item button is-primary is-rounded" href="https://github.com/czccc" target="_blank" rel="noopener">关注我</a></div><div class="level is-mobile is-multiline"><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Github" href="https://github.com/czccc"><i class="fab fa-github"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="RSS" href="/atom.xml"><i class="fas fa-rss"></i></a></div></div></div><div class="card widget column-left is-sticky" id="toc" data-type="toc"><div class="card-content"><div class="menu" style="max-height: calc(100vh - 5rem); overflow-y: auto;"><h3 class="menu-label">目录</h3><ul class="menu-list"><li><a class="level is-mobile" href="#"><span class="level-left"><span class="level-item">1</span><span class="level-item">计算机系统概述</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#计算机的发展"><span class="level-left"><span class="level-item">1.1</span><span class="level-item">计算机的发展</span></span></a></li><li><a class="level is-mobile" href="#冯-诺依曼计算机结构"><span class="level-left"><span class="level-item">1.2</span><span class="level-item">冯.诺依曼计算机结构</span></span></a></li><li><a class="level is-mobile" href="#计算机系统抽象层的转换"><span class="level-left"><span class="level-item">1.3</span><span class="level-item">计算机系统抽象层的转换</span></span></a></li><li><a class="level is-mobile" href="#程序开发与执行过程"><span class="level-left"><span class="level-item">1.4</span><span class="level-item">程序开发与执行过程</span></span></a></li><li><a class="level is-mobile" href="#性能参数"><span class="level-left"><span class="level-item">1.5</span><span class="level-item">性能参数</span></span></a></li></ul></li><li><a class="level is-mobile" href="#"><span class="level-left"><span class="level-item">2</span><span class="level-item">数据的机器级表示与处理</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#整数"><span class="level-left"><span class="level-item">2.1</span><span class="level-item">整数</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#加减运算"><span class="level-left"><span class="level-item">2.1.1</span><span class="level-item">加减运算</span></span></a></li><li><a class="level is-mobile" href="#C中的整数"><span class="level-left"><span class="level-item">2.1.2</span><span class="level-item">C中的整数</span></span></a></li><li><a class="level is-mobile" href="#溢出判断"><span class="level-left"><span class="level-item">2.1.3</span><span class="level-item">溢出判断</span></span></a></li><li><a class="level is-mobile" href="#比较判断"><span class="level-left"><span class="level-item">2.1.4</span><span class="level-item">比较判断</span></span></a></li></ul></li><li><a class="level is-mobile" href="#浮点数"><span class="level-left"><span class="level-item">2.2</span><span class="level-item">浮点数</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#IEEE-754-标准"><span class="level-left"><span class="level-item">2.2.1</span><span class="level-item">IEEE 754 标准</span></span></a></li></ul></li></ul></li><li><a class="level is-mobile" href="#"><span class="level-left"><span class="level-item">3</span><span class="level-item">程序的转换及机器级表示</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#ISA"><span class="level-left"><span class="level-item">3.1</span><span class="level-item">ISA</span></span></a></li><li><a class="level is-mobile" href="#生成机器代码"><span class="level-left"><span class="level-item">3.2</span><span class="level-item">生成机器代码</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#ADD-程序示例"><span class="level-left"><span class="level-item">3.2.1</span><span class="level-item">ADD 程序示例</span></span></a></li></ul></li><li><a class="level is-mobile" href="#IA32-指令"><span class="level-left"><span class="level-item">3.3</span><span class="level-item">IA32 指令</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#数据类型与寄存器"><span class="level-left"><span class="level-item">3.3.1</span><span class="level-item">数据类型与寄存器</span></span></a></li><li><a class="level is-mobile" href="#mov-传送指令"><span class="level-left"><span class="level-item">3.3.2</span><span class="level-item">mov 传送指令</span></span></a></li><li><a class="level is-mobile" href="#算术运算指令"><span class="level-left"><span class="level-item">3.3.3</span><span class="level-item">算术运算指令</span></span></a></li><li><a class="level is-mobile" href="#控制转移指令"><span class="level-left"><span class="level-item">3.3.4</span><span class="level-item">控制转移指令</span></span></a></li></ul></li><li><a class="level is-mobile" href="#C语言程序的机器级表示"><span class="level-left"><span class="level-item">3.4</span><span class="level-item">C语言程序的机器级表示</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#过程调用的执行步骤"><span class="level-left"><span class="level-item">3.4.1</span><span class="level-item">过程调用的执行步骤</span></span></a></li><li><a class="level is-mobile" href="#寄存器使用约定"><span class="level-left"><span class="level-item">3.4.2</span><span class="level-item">寄存器使用约定</span></span></a></li><li><a class="level is-mobile" href="#栈与栈帧"><span class="level-left"><span class="level-item">3.4.3</span><span class="level-item">栈与栈帧</span></span></a></li></ul></li><li><a class="level is-mobile" href="#C语句的汇编形式"><span class="level-left"><span class="level-item">3.5</span><span class="level-item">C语句的汇编形式</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#if-选择语句"><span class="level-left"><span class="level-item">3.5.1</span><span class="level-item">if 选择语句</span></span></a></li><li><a class="level is-mobile" href="#switch"><span class="level-left"><span class="level-item">3.5.2</span><span class="level-item">switch</span></span></a></li><li><a class="level is-mobile" href="#do-while"><span class="level-left"><span class="level-item">3.5.3</span><span class="level-item">do - while</span></span></a></li><li><a class="level is-mobile" href="#while"><span class="level-left"><span class="level-item">3.5.4</span><span class="level-item">while</span></span></a></li><li><a class="level is-mobile" href="#for"><span class="level-left"><span class="level-item">3.5.5</span><span class="level-item">for</span></span></a></li></ul></li><li><a class="level is-mobile" href="#数据对齐"><span class="level-left"><span class="level-item">3.6</span><span class="level-item">数据对齐</span></span></a></li></ul></li></ul></div></div><script src="/js/toc.js" defer></script></div></div><!--!--></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img src="/img/logo.ico" alt="CZCC" height="28"></a><p class="is-size-7"><span>&copy; 2022 Cheng</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a><br><span id="busuanzi_container_site_uv">共<span id="busuanzi_value_site_uv">0</span>个访客</span></p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons-by"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/czccc/hexo-theme-icarus"><i class="fab fa-github"></i></a></p></div></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script><script>moment.locale("zh-CN");</script><script>var IcarusThemeSettings = {
+            article: {
+                highlight: {
+                    clipboard: true,
+                    fold: 'unfolded'
+                }
+            }
+        };</script><script src="/js/column.js"></script><script src="/js/animation.js"></script><a id="back-to-top" title="回到顶端" href="javascript:;"><i class="fas fa-chevron-up"></i></a><script src="/js/back_to_top.js" defer></script><!--!--><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/js/lightgallery.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/js/jquery.justifiedGallery.min.js" defer></script><script>window.addEventListener("load", () => {
+            if (typeof $.fn.lightGallery === 'function') {
+                $('.article').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof $.fn.justifiedGallery === 'function') {
+                if ($('.justified-gallery > p > .gallery-item').length) {
+                    $('.justified-gallery > p > .gallery-item').unwrap();
+                }
+                $('.justified-gallery').justifiedGallery();
+            }
+        });</script><!--!--><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css"><script src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/auto-render.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/mhchem.min.js" defer></script><script>window.addEventListener("load", function() {
+            document.querySelectorAll('[role="article"] > .content').forEach(function(element) {
+                renderMathInElement(element);
+            });
+        });</script><script type="text/x-mathjax-config">MathJax.Hub.Config({
+            'HTML-CSS': {
+                matchFontHeight: false
+            },
+            SVG: {
+                matchFontHeight: false
+            },
+            CommonHTML: {
+                matchFontHeight: false
+            },
+            tex2jax: {
+                inlineMath: [
+                    ['$','$'],
+                    ['\\(','\\)']
+                ]
+            }
+        });</script><script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.9/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script><!--!--><script src="/js/main.js" defer></script><div class="searchbox"><div class="searchbox-container"><div class="searchbox-header"><div class="searchbox-input-container"><input class="searchbox-input" type="text" placeholder="想要查找什么..."></div><a class="searchbox-close" href="javascript:;">×</a></div><div class="searchbox-body"></div></div></div><script src="/js/insight.js" defer></script><script>document.addEventListener('DOMContentLoaded', function () {
+            loadInsight({"contentUrl":"/content.json"}, {"hint":"想要查找什么...","untitled":"(无标题)","posts":"文章","pages":"页面","categories":"分类","tags":"标签"});
+        });</script></body></html>

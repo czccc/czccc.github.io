@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="zh"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>改装 PowerShell - CZCC</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="CZCC"><meta name="msapplication-TileImage" content="/img/favicon.ico"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="CZCC"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="description" content="作为 Windows 下的终端, PowerShell 一直以来都显得不太好用, 简陋的背景, 不好看的字体, 难用的命令. 而 PowerShell 事实上还算一款较为强大的命令行工具, 今天就来将其改装成为真正的生产力工具. 主要涉及: 字体, 颜色, 终端, oh-my-posh, PSReadLine"><meta property="og:type" content="blog"><meta property="og:title" content="改装 PowerShell"><meta property="og:url" content="http://blog.czccc.cc/p/90941d95/"><meta property="og:site_name" content="CZCC"><meta property="og:description" content="作为 Windows 下的终端, PowerShell 一直以来都显得不太好用, 简陋的背景, 不好看的字体, 难用的命令. 而 PowerShell 事实上还算一款较为强大的命令行工具, 今天就来将其改装成为真正的生产力工具. 主要涉及: 字体, 颜色, 终端, oh-my-posh, PSReadLine"><meta property="og:locale" content="zh_CN"><meta property="og:image" content="https://s1.ax1x.com/2020/04/24/JB3hpn.png"><meta property="article:published_time" content="2020-04-24T04:36:35.000Z"><meta property="article:modified_time" content="2022-08-06T13:07:33.624Z"><meta property="article:author" content="Cheng"><meta property="article:tag" content="Windows"><meta property="article:tag" content="PowerShell"><meta property="twitter:card" content="summary"><meta property="twitter:image" content="https://s1.ax1x.com/2020/04/24/JB3hpn.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"http://blog.czccc.cc/p/90941d95/"},"headline":"改装 PowerShell","image":["https://s1.ax1x.com/2020/04/24/JB3hpn.png"],"datePublished":"2020-04-24T04:36:35.000Z","dateModified":"2022-08-06T13:07:33.624Z","author":{"@type":"Person","name":"Cheng"},"publisher":{"@type":"Organization","name":"CZCC","logo":{"@type":"ImageObject","url":"http://blog.czccc.cc/img/logo.ico"}},"description":"作为 Windows 下的终端, PowerShell 一直以来都显得不太好用, 简陋的背景, 不好看的字体, 难用的命令. 而 PowerShell 事实上还算一款较为强大的命令行工具, 今天就来将其改装成为真正的生产力工具. 主要涉及: 字体, 颜色, 终端, oh-my-posh, PSReadLine"}</script><link rel="canonical" href="http://blog.czccc.cc/p/90941d95/"><link rel="alternate" href="/atom.xml" title="CZCC" type="application/atom+xml"><link rel="icon" href="/img/favicon.ico"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link rel="stylesheet" href="/css/default.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><!--!--><script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" defer></script><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css"><!--!--><!--!--><!--!--><!--!--><style>.pace{-webkit-pointer-events:none;pointer-events:none;-webkit-user-select:none;-moz-user-select:none;user-select:none}.pace-inactive{display:none}.pace .pace-progress{background:#3273dc;position:fixed;z-index:2000;top:0;right:100%;width:100%;height:2px}</style><script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script><!-- hexo injector head_end start --><script>
+  (function () {
+      function switchTab() {
+          if (!location.hash) {
+            return;
+          }
+          Array
+              .from(document.querySelectorAll('.tab-content'))
+              .forEach($tab => {
+                  $tab.classList.add('is-hidden');
+              });
+          Array
+              .from(document.querySelectorAll('.tabs li'))
+              .forEach($tab => {
+                  $tab.classList.remove('is-active');
+              });
+          const $activeTab = document.querySelector(location.hash);
+          if ($activeTab) {
+              $activeTab.classList.remove('is-hidden');
+          }
+          const $tabMenu = document.querySelector(`a[href="${location.hash}"]`);
+          if ($tabMenu) {
+              $tabMenu.parentElement.classList.add('is-active');
+          }
+      }
+      switchTab();
+      window.addEventListener('hashchange', switchTab, false);
+  })();
+  </script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.1.0"></head><body class="is-2-column"><nav class="navbar navbar-main"><div class="container navbar-container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img src="/img/logo.ico" alt="CZCC" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">Home</a><a class="navbar-item" href="/archives">Archives</a><a class="navbar-item" href="/categories">Categories</a><a class="navbar-item" href="/tags">Tags</a><a class="navbar-item" href="/categories/LeetCode">LeetCode</a><a class="navbar-item" href="/Software">Software</a><a class="navbar-item" href="/about">About</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/czccc/hexo-theme-icarus"><i class="fab fa-github"></i></a><a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;"><i class="fas fa-list-ul"></i></a><a class="navbar-item search" title="搜索" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-9-desktop is-9-widescreen"><div class="card"><article class="card-content article" role="article"><h1 class="title is-3 is-size-4-mobile"><i class="fas fa-angle-double-right">  </i>改装 PowerShell</h1><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><i class="far fa-calendar-alt">  </i><span class="level-item"><time dateTime="2020-04-24T04:36:35.000Z" title="2020/4/24 12:36:35">2020-04-24</time>发表</span><i class="far fa-calendar-check">  </i><span class="level-item"><time dateTime="2022-08-06T13:07:33.624Z" title="2022/8/6 21:07:33">2022-08-06</time>更新</span><i class="far fa-folder">  </i><span class="level-item"><a class="link-muted" href="/categories/Windows/">Windows</a></span><i class="far fa-hourglass">  </i><span class="level-item">15 分钟读完 (大约2249个字)</span><i class="far fa-eye">  </i><span class="level-item" id="busuanzi_container_page_pv"><span id="busuanzi_value_page_pv">0</span>次访问</span></div></div><div class="content"><hr>
+<p>作为 Windows 下的终端, PowerShell 一直以来都显得不太好用, 简陋的背景, 不好看的字体, 难用的命令.</p>
+<p>而 PowerShell 事实上还算一款较为强大的命令行工具, 今天就来将其改装成为真正的生产力工具.</p>
+<p>主要涉及: 字体, 颜色, 终端, <code>oh-my-posh</code>, <code>PSReadLine</code></p>
+<span id="more"></span>
+<h1>首先从外表开始</h1>
+<h2 id="更改终端字体">更改终端字体</h2>
+<p>Windows 下的字体总是显得简陋, 当然这是由于历史包袱严重, 难以直接更改, 也因此出现了一系列修改字体的工具, 如 <code>MacType</code>, 但是使用工具修改字体具有一定的风险性.</p>
+<p>更加安全一点的方案是使用特制的字体, 比如这款: <a target="_blank" rel="noopener" href="https://github.com/be5invis/Sarasa-Gothic"><code>Sarasa Gothic/更纱黑体/更紗黑體/更紗ゴシック/사라사 고딕</code></a></p>
+<p>在 <a target="_blank" rel="noopener" href="https://github.com/be5invis/Sarasa-Gothic/releases">Release</a> 中下载最新版, 可以选择只安装简体中文版, 即包含 <code>SC</code> 的字体.</p>
+<blockquote>
+<p>Windows 选择 ttf 文件即可, 本文撰写时最新版为 <a target="_blank" rel="noopener" href="https://github.com/be5invis/Sarasa-Gothic/releases/download/v0.12.5/sarasa-gothic-ttf-0.12.5.7z">sarasa-gothic-ttf-0.12.5.7z</a></p>
+</blockquote>
+<p>Windows 控制台在中文系统下, 默认是新宋体, 显示效果很差, 将其更改为刚安装的更纱黑体, 这里选择的是 <code>Sarasa Term SC</code>, 字号为 20:</p>
+<blockquote>
+<p>如果找不到对应的字体, 或是更改之后没有发生变化, 可能是因为默认代码页为 <code>GBK</code>, 可以尝试更改代码页到 <code>UTF-8</code>:<br>
+<code>chcp 65001</code><br>
+然后再进行尝试.</p>
+</blockquote>
+<p><img src="https://s1.ax1x.com/2020/04/24/JBtNRJ.png" alt=""></p>
+<p>然后就能发现 PowerShell 已经有了明显的变化.</p>
+<h2 id="更改终端配色">更改终端配色</h2>
+<p>PowerShell 的默认蓝底白字配色也有点丑陋.</p>
+<p>微软官方提供了一个更换 PowerShell 配色的小工具：<a target="_blank" rel="noopener" href="https://github.com/Microsoft/console/tree/master/tools/ColorTool">ColorTool.exe</a>，我们可以利用它来更换 PowerShell 的主题颜色。ColorTool 支持 iTerm 主题（以 <code>.itermcolors</code> 结尾的主题文件）。</p>
+<p>我们可以从 <a target="_blank" rel="noopener" href="https://github.com/Microsoft/console/releases">ColorTool 的 GitHub 页面</a> 下载这个小工具。当然，如果你使用 <a target="_blank" rel="noopener" href="https://sspai.com/post/52496">Scoop</a>，也可以这样安装：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scoop install colortool</span><br></pre></td></tr></table></figure>
+<p>值得注意的是，如果你是直接从 GitHub 上面下载了 <code>colortool.zip</code> 并解压，<code>colortool.exe</code> 的路径就并没有自动加入环境变量，所以你没有办法全局调用这个工具。因此我更加推荐利用 Scoop 这个优质的包管理来安装 ColorTool。</p>
+<p><strong>推荐阅读：</strong><a target="_blank" rel="noopener" href="https://sspai.com/post/52496">「一行代码」搞定软件安装卸载，用 Scoop 管理你的 Windows 软件</a></p>
+<p>ColorTool 使用非常简单。工具自带了几种主题，我们可以利用下面这个命令进行查看：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 注：-s 代表 schemes</span><br><span class="line">colortool -s</span><br></pre></td></tr></table></figure>
+<p><img src="https://cdn.sspai.com/2019/02/12/079538cec907de93a90b70a027200297.png?imageView2/2/w/1120/q/90/interlace/1/ignore-error/1" alt="几个自带配色主题"></p>
+<p>其中前面列出的几个 <code>.ini</code> 和 <code>.itermcolors</code> 就是主题配置文件，我们可以直接通过下面这个命令设置主题：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># 临时查看</span><br><span class="line">colortool &lt;主题名称&gt;</span><br><span class="line"># 定义默认值</span><br><span class="line">colortool -d &lt;主题名称&gt;</span><br></pre></td></tr></table></figure>
+<p>比如我们希望将主题配色更换为 <code>OneHalfDark.itermcolors</code>，只需要输入下面这个命令就可以更换并预览更新：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">colortool OneHalfDark</span><br></pre></td></tr></table></figure>
+<p><img src="https://cdn.sspai.com/2019/02/12/a969328f28e108ec6b84056e22a8f410.gif?imageView2/2/w/1120/q/90/interlace/1/ignore-error/1" alt="更换主题"></p>
+<p>由于 ColorTool 直接支持 iTerm 主题配置文件，因此我们可以在 <a target="_blank" rel="noopener" href="https://iterm2colorschemes.com/">iterm2colorschemes</a> 这个网站找到我们想要的主题背景进行配置，方法和上面介绍的一样：在 PowerShell 中定位至你希望更换的主题文件，使用命令 <code>colortool &lt;主题名称&gt;.itermcolors</code> 进行配置即可。同时，如果你对上面的主题都不满意，你也可以直接在这个网站： <a target="_blank" rel="noopener" href="https://terminal.sexy/">terminal.sexy</a> 自行配置自己想要的主题，并通过同样的方式进行应用。</p>
+<p>不过从 <a target="_blank" rel="noopener" href="https://github.com/mbadolato/iTerm2-Color-Schemes">iTerm2 Color Schemes</a> 的配色方案实在是太多了，选起来本身也是个麻烦事，我最后在这几款中选出了下面这几款配色，感觉还不错，推荐给大家：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://raw.githubusercontent.com/mbadolato/iTerm2-Color-Schemes/master/schemes/ayu.itermcolors">ayu</a></li>
+<li><a target="_blank" rel="noopener" href="https://raw.githubusercontent.com/mbadolato/iTerm2-Color-Schemes/master/schemes/Molokai.itermcolors">Molokai</a></li>
+<li><a target="_blank" rel="noopener" href="https://raw.githubusercontent.com/mbadolato/iTerm2-Color-Schemes/master/schemes/Cobalt2.itermcolors">Cobalt2</a></li>
+<li><a target="_blank" rel="noopener" href="https://raw.githubusercontent.com/mbadolato/iTerm2-Color-Schemes/master/schemes/Pandora.itermcolors">Pandora</a></li>
+<li><a target="_blank" rel="noopener" href="https://raw.githubusercontent.com/mbadolato/iTerm2-Color-Schemes/master/schemes/Thayer%20Bright.itermcolors">ThayerBright</a></li>
+<li><a target="_blank" rel="noopener" href="https://raw.githubusercontent.com/mbadolato/iTerm2-Color-Schemes/master/schemes/Symfonic.itermcolors">Symfonic</a></li>
+<li><a target="_blank" rel="noopener" href="https://raw.githubusercontent.com/mbadolato/iTerm2-Color-Schemes/master/schemes/Red%20Sands.itermcolors">RedSands</a></li>
+<li><a target="_blank" rel="noopener" href="https://raw.githubusercontent.com/mbadolato/iTerm2-Color-Schemes/master/schemes/Mathias.itermcolors">Mathias</a></li>
+</ul>
+<h1>添加效率工具</h1>
+<h2 id="配置文件路径">配置文件路径</h2>
+<p>PowerShell 的配置文件一般都在 <code>$HOME\Documents\WindowsPowerShell</code> 目录下, 并且可能会存在多个 <code>.ps1</code> 文件</p>
+<ul>
+<li><code>Microsoft.PowerShell_profile.ps1</code>: 这个是 PowerShell 终端的配置文件, 在这里更改的设置只会在系统自带的 PowerShell 终端中生效, 在其他位置, 比如 VS Code, Cmder 中不会生效.</li>
+<li><code>Microsoft.VSCode_profile.ps1</code>: 和上面同理, 不过是在 <code>VS Code</code> 中生效.</li>
+<li><code>profile.ps1</code>: 这个是 PowerShell 的全局配置文件, 在多个位置都会生效.</li>
+</ul>
+<p>新增（或修改）你的 PowerShell 配置文件 <code>Microsoft.PowerShell_profile.ps1</code>:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># 如果之前没有配置文件，就新建一个 PowerShell 配置文件</span><br><span class="line">if (!(Test-Path -Path $PROFILE )) &#123; New-Item -Type File -Path $PROFILE -Force &#125;</span><br><span class="line"></span><br><span class="line"># 用记事本打开配置文件</span><br><span class="line">notepad $PROFILE</span><br></pre></td></tr></table></figure>
+<h2 id="PSReadLine">PSReadLine</h2>
+<p>PowerShell 无法开箱即用的另一个原因是命令补全和历史搜索功能很差劲. 官方维护的有一个 <a target="_blank" rel="noopener" href="https://github.com/PowerShell/PSReadLine">PSReadLine</a> 项目, 用于实现类似于 Linux 下 Bash 的命令补全功能.</p>
+<p>官方推荐使用 <code>PowerShellGet</code> 安装, 不过首先需要安装这个模块:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Install-Module -Name PowerShellGet -Force</span><br></pre></td></tr></table></figure>
+<p>之后通过 <code>PowerShellGet</code> 安装  <code>PSReadLine</code>:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># 安装最新版</span><br><span class="line">Install-Module PSReadLine -AllowPrerelease -Force</span><br><span class="line"></span><br><span class="line"># 安装稳定版</span><br><span class="line">Install-Module PSReadLine</span><br></pre></td></tr></table></figure>
+<p>之后需要启动并配置 PSReadLine, 在配置文件中加入如下内容, 便可实现一个基本的 Shell 功能:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Import-Module PSReadLine</span><br><span class="line"></span><br><span class="line"># 历史命令搜索</span><br><span class="line">Set-PSReadLineOption -HistorySearchCursorMovesToEnd</span><br><span class="line">Set-PSReadLineKeyHandler -Key UpArrow -Function HistorySearchBackward</span><br><span class="line">Set-PSReadLineKeyHandler -Key DownArrow -Function HistorySearchForward</span><br><span class="line"></span><br><span class="line"># 补全功能</span><br><span class="line">Set-PSReadLineKeyHandler -Key Ctrl+q -Function TabCompleteNext</span><br><span class="line">Set-PSReadLineKeyHandler -Key Ctrl+Q -Function TabCompletePrevious</span><br></pre></td></tr></table></figure>
+<p>也可参考官方的样例 <a target="_blank" rel="noopener" href="https://github.com/PowerShell/PSReadLine/blob/master/PSReadLine/SamplePSReadLineProfile.ps1">SamplePSReadLineProfile.ps1</a> 实现自己想要的功能</p>
+<h2 id="Oh-my-posh">Oh-my-posh</h2>
+<p>和 Linux 下大名鼎鼎的 <code>oh-my-zsh</code> 类似, 针对于 PowerShell 也有对应的 <code>oh-my-posh</code>.</p>
+<p>我们通过在 PowerShell 中执行下面的命令安装配置 <code>oh-my-posh</code>。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Install-Module posh-git -Scope CurrentUser </span><br><span class="line">Install-Module oh-my-posh -Scope CurrentUser</span><br></pre></td></tr></table></figure>
+<p>然后让 PowerShell 配置生效. 需要修改 PowerShell 配置文件, 在其中添加下面的内容:</p>
+<figure class="highlight powershell"><figcaption><span>Microsoft.PowerShell_profile.ps1</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Import-Module</span> posh<span class="literal">-git</span> </span><br><span class="line"><span class="built_in">Import-Module</span> <span class="built_in">oh</span><span class="literal">-my-posh</span> </span><br><span class="line"><span class="variable">$DefaultUser</span> = <span class="string">&#x27;Your User Name&#x27;</span></span><br><span class="line"><span class="built_in">Set-Theme</span> Agnoster</span><br></pre></td></tr></table></figure>
+<p>其中最后一句 <code>Set-Theme &lt;主题名&gt;</code> 就是配置主题的命令。而 <code>$DefaultUser</code> 则可以用来隐藏用户名, 使 PowerShell 看起来更简洁.</p>
+<p>如果一切顺利，你应该看到你的 Prompt 部分变成了类似这个的样子：</p>
+<p><img src="https://s1.ax1x.com/2020/04/24/JBTI0I.png" alt=""></p>
+<blockquote>
+<p><strong>注意</strong>：如果你发现后面的日期显示出现了凌乱的现象（比如本该在同一行显示的字符却跑到了下一行），多半是因为显示了中文。目前很多终端都不能正常的显示中文或 CJK 字符（即：Double-width character），所以你可以通过下面这个命令将 PowerShell 的环境设置为 en-US 的英文环境：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Set-Culture en-US</span><br></pre></td></tr></table></figure>
+</blockquote>
+<h1>Bug Fix</h1>
+<h2 id="部分符号字体无法显示">部分符号字体无法显示</h2>
+<p>如果你使用 <code>oh-my-posh</code>，并且在 <code>oh-my-posh</code> 里面配置了 PowerLine 命令提示符的话，你会发现，在进入 Git 目录时会看到命令提示符中有个“□”：</p>
+<p><img src="https://coolcode.org/2018/03/16/how-to-make-your-powershell-beautiful/WSL1.png" alt="字体中的乱码"></p>
+<p>这个是个表情符“✎”，但是因为 Sarasa 系列字体中不包含表情符，因此就只能显示乱码了。不过也有解决办法，打开注册表编辑器，找到路径：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">计算机\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\FontLink\SystemLink</span><br></pre></td></tr></table></figure>
+<p>在其中新建多字符串值，名称为：<code>Sarasa Term SC</code>，内容为：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">MICROSS.TTF,Microsoft Sans Serif,108,122</span><br><span class="line">MICROSS.TTF,Microsoft Sans Serif</span><br><span class="line">MINGLIU.TTC,PMingLiU</span><br><span class="line">MSMINCHO.TTC,MS PMincho</span><br><span class="line">BATANG.TTC,Batang</span><br><span class="line">MSYH.TTC,Microsoft YaHei UI</span><br><span class="line">MSJH.TTC,Microsoft JhengHei UI</span><br><span class="line">YUGOTHM.TTC,Yu Gothic UI</span><br><span class="line">MALGUN.TTF,Malgun Gothic</span><br><span class="line">SEGUISYM.TTF,Segoe UI Symbol</span><br></pre></td></tr></table></figure>
+<p>这段内容是复制的宋体 SimSun 的，如果你愿意的话，可以用同样的方法把 <code>Sarasa</code> 系列的都注册一下，也可以只修改要使用的这个，然后重启计算机就可以了。</p>
+<h1>参考链接</h1>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://sspai.com/post/52868">告别 Windows 终端的难看难用，从改造 PowerShell 的外观开始</a></li>
+<li><a target="_blank" rel="noopener" href="https://sspai.com/post/52907">5 个 PowerShell 主题，让你的 Windows 终端更好看</a></li>
+<li><a target="_blank" rel="noopener" href="https://coolcode.org/2018/03/16/how-to-make-your-powershell-beautiful">PowerShell 美化指南</a></li>
+</ul>
+</div><div class="article-licensing box"><div class="licensing-title"><p>改装 PowerShell</p><p><a href="http://blog.czccc.cc/p/90941d95/">http://blog.czccc.cc/p/90941d95/</a></p></div><div class="licensing-meta level is-mobile"><div class="level-left"><div class="level-item is-narrow"><div><h6>作者</h6><p>Cheng</p></div></div><div class="level-item is-narrow"><div><h6>发布于</h6><p>2020-04-24</p></div></div><div class="level-item is-narrow"><div><h6>更新于</h6><p>2022-08-06</p></div></div><div class="level-item is-narrow"><div><h6>许可协议</h6><p><a class="icons" rel="noopener" target="_blank" title="Creative Commons" href="https://creativecommons.org/"><i class="icon fab fa-creative-commons"></i></a><a class="icons" rel="noopener" target="_blank" title="Attribution" href="https://creativecommons.org/licenses/by/4.0/"><i class="icon fab fa-creative-commons-by"></i></a><a class="icons" rel="noopener" target="_blank" title="Noncommercial" href="https://creativecommons.org/licenses/by-nc/4.0/"><i class="icon fab fa-creative-commons-nc"></i></a></p></div></div></div></div></div><div class="article-tags is-size-7 mb-4"><span class="mr-2">#</span><a class="link-muted mr-2" rel="tag" href="/tags/Windows/">Windows</a><a class="link-muted mr-2" rel="tag" href="/tags/PowerShell/">PowerShell</a></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/css/share.min.css"><div class="social-share"></div><script src="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/js/social-share.min.js"></script></article></div><div class="card"><div class="card-content"><h3 class="menu-label has-text-centered">喜欢这篇文章？打赏一下作者吧</h3><div class="buttons is-centered"><a class="button donate" data-type="alipay"><span class="icon is-small"><i class="fab fa-alipay"></i></span><span>支付宝</span><span class="qrcode"><img src="/img/Alipay.jpg" alt="支付宝"></span></a><a class="button donate" data-type="wechat"><span class="icon is-small"><i class="fab fa-weixin"></i></span><span>微信</span><span class="qrcode"><img src="/img/WeChat_pay.png" alt="微信"></span></a></div></div></div><nav class="post-navigation mt-4 level is-mobile"><div class="level-start"><a class="article-nav-prev level level-item link-muted" href="/p/57d19b2c/"><i class="level-item fas fa-chevron-left"></i><span class="level-item">SQL 必知必会 - 单表查询/过滤/汇总</span></a></div><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/p/e2b505f0/"><span class="level-item">Vim 基本配置</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><div class="card"><div class="card-content"><h3 class="title is-5">评论</h3><div id="disqus_thread"><noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></div><script>var disqus_config = function () {
+            this.page.url = 'http://blog.czccc.cc/p/90941d95/';
+            this.page.identifier = 'p/90941d95/';
+        };
+        (function() {
+            var d = document, s = d.createElement('script');  
+            s.src = '//' + 'czcc' + '.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();</script></div></div></div><div class="column column-left is-4-tablet is-3-desktop is-3-widescreen  order-1"><div class="card widget" data-type="profile"><div class="card-content"><nav class="level"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-128x128 mx-auto mb-2"><img class="avatar" src="/img/avatar.jpg" alt="Cheng"></figure><p class="title is-size-4 is-block" style="line-height:inherit;">Cheng</p><p class="is-size-6 is-block">A Student</p><p class="is-size-6 is-flex justify-content-center"><i class="fas fa-map-marker-alt mr-1"></i><span>Nanjing</span></p></div></div></nav><nav class="level is-mobile"><div class="level-item has-text-centered is-marginless"><div><p class="heading">文章</p><a href="/archives"><p class="title">54</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">分类</p><a href="/categories"><p class="title">26</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">标签</p><a href="/tags"><p class="title">50</p></a></div></div></nav><div class="level"><a class="level-item button is-primary is-rounded" href="https://github.com/czccc" target="_blank" rel="noopener">关注我</a></div><div class="level is-mobile is-multiline"><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Github" href="https://github.com/czccc"><i class="fab fa-github"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="RSS" href="/atom.xml"><i class="fas fa-rss"></i></a></div></div></div><div class="card widget column-left is-sticky" id="toc" data-type="toc"><div class="card-content"><div class="menu" style="max-height: calc(100vh - 5rem); overflow-y: auto;"><h3 class="menu-label">目录</h3><ul class="menu-list"><li><a class="level is-mobile" href="#"><span class="level-left"><span class="level-item">1</span><span class="level-item">首先从外表开始</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#更改终端字体"><span class="level-left"><span class="level-item">1.1</span><span class="level-item">更改终端字体</span></span></a></li><li><a class="level is-mobile" href="#更改终端配色"><span class="level-left"><span class="level-item">1.2</span><span class="level-item">更改终端配色</span></span></a></li></ul></li><li><a class="level is-mobile" href="#"><span class="level-left"><span class="level-item">2</span><span class="level-item">添加效率工具</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#配置文件路径"><span class="level-left"><span class="level-item">2.1</span><span class="level-item">配置文件路径</span></span></a></li><li><a class="level is-mobile" href="#PSReadLine"><span class="level-left"><span class="level-item">2.2</span><span class="level-item">PSReadLine</span></span></a></li><li><a class="level is-mobile" href="#Oh-my-posh"><span class="level-left"><span class="level-item">2.3</span><span class="level-item">Oh-my-posh</span></span></a></li></ul></li><li><a class="level is-mobile" href="#"><span class="level-left"><span class="level-item">3</span><span class="level-item">Bug Fix</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#部分符号字体无法显示"><span class="level-left"><span class="level-item">3.1</span><span class="level-item">部分符号字体无法显示</span></span></a></li></ul></li><li><a class="level is-mobile" href="#"><span class="level-left"><span class="level-item">4</span><span class="level-item">参考链接</span></span></a></li></ul></div></div><script src="/js/toc.js" defer></script></div></div><!--!--></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img src="/img/logo.ico" alt="CZCC" height="28"></a><p class="is-size-7"><span>&copy; 2022 Cheng</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a><br><span id="busuanzi_container_site_uv">共<span id="busuanzi_value_site_uv">0</span>个访客</span></p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons-by"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/czccc/hexo-theme-icarus"><i class="fab fa-github"></i></a></p></div></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script><script>moment.locale("zh-CN");</script><script>var IcarusThemeSettings = {
+            article: {
+                highlight: {
+                    clipboard: true,
+                    fold: 'unfolded'
+                }
+            }
+        };</script><script src="/js/column.js"></script><script src="/js/animation.js"></script><a id="back-to-top" title="回到顶端" href="javascript:;"><i class="fas fa-chevron-up"></i></a><script src="/js/back_to_top.js" defer></script><!--!--><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/js/lightgallery.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/js/jquery.justifiedGallery.min.js" defer></script><script>window.addEventListener("load", () => {
+            if (typeof $.fn.lightGallery === 'function') {
+                $('.article').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof $.fn.justifiedGallery === 'function') {
+                if ($('.justified-gallery > p > .gallery-item').length) {
+                    $('.justified-gallery > p > .gallery-item').unwrap();
+                }
+                $('.justified-gallery').justifiedGallery();
+            }
+        });</script><!--!--><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css"><script src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/auto-render.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/mhchem.min.js" defer></script><script>window.addEventListener("load", function() {
+            document.querySelectorAll('[role="article"] > .content').forEach(function(element) {
+                renderMathInElement(element);
+            });
+        });</script><script type="text/x-mathjax-config">MathJax.Hub.Config({
+            'HTML-CSS': {
+                matchFontHeight: false
+            },
+            SVG: {
+                matchFontHeight: false
+            },
+            CommonHTML: {
+                matchFontHeight: false
+            },
+            tex2jax: {
+                inlineMath: [
+                    ['$','$'],
+                    ['\\(','\\)']
+                ]
+            }
+        });</script><script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.9/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script><!--!--><script src="/js/main.js" defer></script><div class="searchbox"><div class="searchbox-container"><div class="searchbox-header"><div class="searchbox-input-container"><input class="searchbox-input" type="text" placeholder="想要查找什么..."></div><a class="searchbox-close" href="javascript:;">×</a></div><div class="searchbox-body"></div></div></div><script src="/js/insight.js" defer></script><script>document.addEventListener('DOMContentLoaded', function () {
+            loadInsight({"contentUrl":"/content.json"}, {"hint":"想要查找什么...","untitled":"(无标题)","posts":"文章","pages":"页面","categories":"分类","tags":"标签"});
+        });</script></body></html>

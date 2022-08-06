@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="zh"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>Zeek 简介 - CZCC</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="CZCC"><meta name="msapplication-TileImage" content="/img/favicon.ico"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="CZCC"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="description" content="zeek 是一个被动的开源网络流量分析器，可深入检查网络连接上的所有流量以查找可疑活动的迹象。因其可扩展性强、可开箱即用等特点，被称为 “流量分析里的瑞士军刀”。 不同于 Snort 等基于流量签名检测的入侵检测系统（IDS），zeek 是基于网络连接来分析可疑行为的。具体地说，Zeek 会对每个网络中传输的数据包，从中提取出发送端的 IP 和端口以及接收端的 IP 和端口，从而通过四元组定义一"><meta property="og:type" content="blog"><meta property="og:title" content="Zeek 简介"><meta property="og:url" content="http://blog.czccc.cc/p/682f53b3/"><meta property="og:site_name" content="CZCC"><meta property="og:description" content="zeek 是一个被动的开源网络流量分析器，可深入检查网络连接上的所有流量以查找可疑活动的迹象。因其可扩展性强、可开箱即用等特点，被称为 “流量分析里的瑞士军刀”。 不同于 Snort 等基于流量签名检测的入侵检测系统（IDS），zeek 是基于网络连接来分析可疑行为的。具体地说，Zeek 会对每个网络中传输的数据包，从中提取出发送端的 IP 和端口以及接收端的 IP 和端口，从而通过四元组定义一"><meta property="og:locale" content="zh_CN"><meta property="og:image" content="https://s3.ax1x.com/2020/11/11/Bv8XFJ.png"><meta property="og:image" content="https://docs.zeek.org/en/current/_images/deployment.png"><meta property="article:published_time" content="2020-11-10T11:05:48.000Z"><meta property="article:modified_time" content="2022-08-06T13:07:33.625Z"><meta property="article:author" content="Cheng"><meta property="article:tag" content="Zeek"><meta property="twitter:card" content="summary"><meta property="twitter:image" content="https://s3.ax1x.com/2020/11/11/Bv8XFJ.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"http://blog.czccc.cc/p/682f53b3/"},"headline":"Zeek 简介","image":["https://s3.ax1x.com/2020/11/11/Bv8XFJ.png","https://docs.zeek.org/en/current/_images/deployment.png"],"datePublished":"2020-11-10T11:05:48.000Z","dateModified":"2022-08-06T13:07:33.625Z","author":{"@type":"Person","name":"Cheng"},"publisher":{"@type":"Organization","name":"CZCC","logo":{"@type":"ImageObject","url":"http://blog.czccc.cc/img/logo.ico"}},"description":"zeek 是一个被动的开源网络流量分析器，可深入检查网络连接上的所有流量以查找可疑活动的迹象。因其可扩展性强、可开箱即用等特点，被称为 “流量分析里的瑞士军刀”。 不同于 Snort 等基于流量签名检测的入侵检测系统（IDS），zeek 是基于网络连接来分析可疑行为的。具体地说，Zeek 会对每个网络中传输的数据包，从中提取出发送端的 IP 和端口以及接收端的 IP 和端口，从而通过四元组定义一"}</script><link rel="canonical" href="http://blog.czccc.cc/p/682f53b3/"><link rel="alternate" href="/atom.xml" title="CZCC" type="application/atom+xml"><link rel="icon" href="/img/favicon.ico"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link rel="stylesheet" href="/css/default.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><!--!--><script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" defer></script><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css"><!--!--><!--!--><!--!--><!--!--><style>.pace{-webkit-pointer-events:none;pointer-events:none;-webkit-user-select:none;-moz-user-select:none;user-select:none}.pace-inactive{display:none}.pace .pace-progress{background:#3273dc;position:fixed;z-index:2000;top:0;right:100%;width:100%;height:2px}</style><script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script><!-- hexo injector head_end start --><script>
+  (function () {
+      function switchTab() {
+          if (!location.hash) {
+            return;
+          }
+          Array
+              .from(document.querySelectorAll('.tab-content'))
+              .forEach($tab => {
+                  $tab.classList.add('is-hidden');
+              });
+          Array
+              .from(document.querySelectorAll('.tabs li'))
+              .forEach($tab => {
+                  $tab.classList.remove('is-active');
+              });
+          const $activeTab = document.querySelector(location.hash);
+          if ($activeTab) {
+              $activeTab.classList.remove('is-hidden');
+          }
+          const $tabMenu = document.querySelector(`a[href="${location.hash}"]`);
+          if ($tabMenu) {
+              $tabMenu.parentElement.classList.add('is-active');
+          }
+      }
+      switchTab();
+      window.addEventListener('hashchange', switchTab, false);
+  })();
+  </script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.1.0"></head><body class="is-2-column"><nav class="navbar navbar-main"><div class="container navbar-container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img src="/img/logo.ico" alt="CZCC" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">Home</a><a class="navbar-item" href="/archives">Archives</a><a class="navbar-item" href="/categories">Categories</a><a class="navbar-item" href="/tags">Tags</a><a class="navbar-item" href="/categories/LeetCode">LeetCode</a><a class="navbar-item" href="/Software">Software</a><a class="navbar-item" href="/about">About</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/czccc/hexo-theme-icarus"><i class="fab fa-github"></i></a><a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;"><i class="fas fa-list-ul"></i></a><a class="navbar-item search" title="搜索" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-9-desktop is-9-widescreen"><div class="card"><article class="card-content article" role="article"><h1 class="title is-3 is-size-4-mobile"><i class="fas fa-angle-double-right">  </i>Zeek 简介</h1><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><i class="far fa-calendar-alt">  </i><span class="level-item"><time dateTime="2020-11-10T11:05:48.000Z" title="2020/11/10 19:05:48">2020-11-10</time>发表</span><i class="far fa-calendar-check">  </i><span class="level-item"><time dateTime="2022-08-06T13:07:33.625Z" title="2022/8/6 21:07:33">2022-08-06</time>更新</span><i class="far fa-folder">  </i><span class="level-item"><a class="link-muted" href="/categories/Zeek/">Zeek</a></span><i class="far fa-hourglass">  </i><span class="level-item">12 分钟读完 (大约1748个字)</span><i class="far fa-eye">  </i><span class="level-item" id="busuanzi_container_page_pv"><span id="busuanzi_value_page_pv">0</span>次访问</span></div></div><div class="content"><hr>
+<p>zeek 是一个被动的开源网络流量分析器，可深入检查网络连接上的所有流量以查找可疑活动的迹象。因其可扩展性强、可开箱即用等特点，被称为 “流量分析里的瑞士军刀”。</p>
+<p>不同于 Snort 等基于流量签名检测的入侵检测系统（IDS），zeek 是基于网络连接来分析可疑行为的。具体地说，Zeek 会对每个网络中传输的数据包，从中提取出发送端的 IP 和端口以及接收端的 IP 和端口，从而通过四元组定义一个网络连接，并且将具有相同四元组的数据包收集在一起，再通过对应的 TCP、UDP 协议解析，对数据包进行排序重组，最后将其中携带的应用层数据交由应用层协议解析器，从而提取出数据包中所包含的所有内容，包括但不限于：应用层协议字段、传输的文件内容、协议记录等。</p>
+<p>但是，了解Zeek的关键在于认识到，即使该系统具有开箱即用的强大功能，但从根本上来说，它还是一个可完全自定义和扩展的流量分析平台：Zeek为用户提供了特定于域的 Turing-完整的脚本语言用于表达任意分析任务。从概念上讲，您可以将Zeek视为 “特定于网络流量的 Python”：就像Python一样，该系统具有大量的预构建功能（“标准库”），但您不仅限于系统附带的功能，但可以通过编写自己的代码使Zeek以新颖的方式使用。实际上，Zeek的所有默认分析（包括所有日志记录）都是此类脚本的结果。没有硬编码到系统核心中的特定分析。</p>
+<span id="more"></span>
+<h2 id="特征">特征</h2>
+<p>Zeek通过其脚本语言支持广泛的分析。即使没有进一步的自定义，它也具有强大的功能集。</p>
+<ul>
+<li>
+<p>部署方式</p>
+<blockquote>
+<ul>
+<li>在标准UNIX风格的系统（包括Linux，FreeBSD和MacOS）上的商用硬件上运行。</li>
+<li>通过网络分接头或监视端口进行完全被动的流量分析。</li>
+<li>用于捕获数据包的标准libpcap接口。</li>
+<li>实时和离线分析。</li>
+<li>集群支持大规模部署。</li>
+<li>统一管理框架，可用于独立和群集设置。</li>
+<li>在BSD许可下开源。</li>
+</ul>
+</blockquote>
+</li>
+<li>
+<p>分析</p>
+<blockquote>
+<ul>
+<li>全面记录活动，以进行离线分析和取证。</li>
+<li>与应用程序层协议无关的端口分析。</li>
+<li>支持许多应用程序层协议（包括DNS，FTP，HTTP，IRC，SMTP，SSH，SSL）。</li>
+<li>分析通过应用层协议交换的文件内容，包括用于指纹识别的MD5 / SHA1计算。</li>
+<li>全面的IPv6支持。</li>
+<li>隧道检测和分析（包括Ayiya，Teredo，GTPv1）。Zeek将隧道解封装，然后继续分析其内容，就好像没有适当的隧道一样。</li>
+<li>在协议分析过程中进行全面的健全性检查。</li>
+<li>支持IDS样式的模式匹配。</li>
+</ul>
+</blockquote>
+</li>
+<li>
+<p>脚本语言</p>
+<blockquote>
+<ul>
+<li>图灵完备的语言，用于表达任意分析任务。</li>
+<li>基于事件的编程模型。</li>
+<li>特定于域的数据类型，例如IP地址（透明地处理IPv4和IPv6），端口号和计时器。</li>
+<li>广泛支持随着时间的推移跟踪和管理网络状态。</li>
+</ul>
+</blockquote>
+</li>
+<li>
+<p>界面</p>
+<blockquote>
+<ul>
+<li>默认输出为结构良好的ASCII日志。</li>
+<li>ElasticSearch和DataSeries的备用后端。正在准备其他数据库接口。</li>
+<li>外部输入实时集成到分析中。正在准备实时数据库输入。</li>
+<li>外部C库，用于与外部程序交换Zeek事件。带有Perl，Python和Ruby绑定。</li>
+<li>能够从脚本语言内部触发任意外部进程。</li>
+</ul>
+</blockquote>
+</li>
+</ul>
+<h2 id="历史">历史</h2>
+<p><img src="https://s3.ax1x.com/2020/11/11/Bv8XFJ.png" alt="Bv8XFJ.png"></p>
+<h2 id="Architecture">Architecture</h2>
+<p>下图说明了Zeek群集的主要组件。</p>
+<p><img src="https://docs.zeek.org/en/current/_images/deployment.png" alt=""></p>
+<p>有关Zeek流程的连接方式，它们如何运行以及如何相互通信的更多特定信息，请参阅 <a target="_blank" rel="noopener" href="https://docs.zeek.org/en/current/frameworks/broker.html#brokercomm-framework">Broker Framework文档</a>。</p>
+<h3 id="Tap">Tap</h3>
+<p>Tap 是一种机制，用于拆分数据包流，以使副本可用于流量检查。示例包括交换机上的监视端口和光纤网络上的光分路器。</p>
+<h3 id="Frontend">Frontend</h3>
+<p>Frontend 是一种离散的硬件设备或主机技术，可将流量分成许多流或流。Zeek二进制文件不执行此工作。有多种方法可以完成此任务。</p>
+<h3 id="Manager">Manager</h3>
+<p>Manager 是一个Zeek流程，它使用 Zeek 通信协议从群集中其余节点接收日志消息和通知（请注意，如果使用单独的 Logger  节点，那么 Logger 将接收所有日志，而不是 Manager）。</p>
+<h3 id="Logger">Logger</h3>
+<p>Logger 是一个可选的Zeek进程，它使用Zeek通信协议从群集中其余节点接收日志消息。让 Logger 代替 Manager 接收日志的目的是为了减轻管理员的负担。如果不需要 Logger，则 Manager 将改为接收日志。</p>
+<h3 id="Proxy">Proxy</h3>
+<p>代理是Zeek进程，可用于卸载数据存储或任何任意工作负载。一个群集可能包含多个代理节点。Zeek随附的默认脚本使用的代理最少，因此仅使用一个代理就足够了，但是自定义使用它们来分区数据或工作负载提供了更大的群集可扩展性，而不仅仅是在单个集中式Manager节点上执行类似任务。</p>
+<p>充当代理的Zeek进程在CPU或内存上的使用并不十分困难，并且用户经常在与管理器相同的物理主机上运行代理进程。</p>
+<h3 id="Worker">Worker</h3>
+<p>工作进程是Zeek进程，用于嗅探网络流量并对重组后的流量进行协议分析。活动集群的大部分工作都在工作程序上进行，因此，工作程序通常代表集群中正在运行的大部分Zeek进程。由于所有协议解析和大多数分析都将在此处进行，因此建议您使用负担得起的最快内存和CPU核心速度。对工作器中的磁盘没有特殊要求，因为几乎所有日志记录都是在远程对管理器进行的，并且通常很少写入磁盘。</p>
+</div><div class="article-licensing box"><div class="licensing-title"><p>Zeek 简介</p><p><a href="http://blog.czccc.cc/p/682f53b3/">http://blog.czccc.cc/p/682f53b3/</a></p></div><div class="licensing-meta level is-mobile"><div class="level-left"><div class="level-item is-narrow"><div><h6>作者</h6><p>Cheng</p></div></div><div class="level-item is-narrow"><div><h6>发布于</h6><p>2020-11-10</p></div></div><div class="level-item is-narrow"><div><h6>更新于</h6><p>2022-08-06</p></div></div><div class="level-item is-narrow"><div><h6>许可协议</h6><p><a class="icons" rel="noopener" target="_blank" title="Creative Commons" href="https://creativecommons.org/"><i class="icon fab fa-creative-commons"></i></a><a class="icons" rel="noopener" target="_blank" title="Attribution" href="https://creativecommons.org/licenses/by/4.0/"><i class="icon fab fa-creative-commons-by"></i></a><a class="icons" rel="noopener" target="_blank" title="Noncommercial" href="https://creativecommons.org/licenses/by-nc/4.0/"><i class="icon fab fa-creative-commons-nc"></i></a></p></div></div></div></div></div><div class="article-tags is-size-7 mb-4"><span class="mr-2">#</span><a class="link-muted mr-2" rel="tag" href="/tags/Zeek/">Zeek</a></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/css/share.min.css"><div class="social-share"></div><script src="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/js/social-share.min.js"></script></article></div><div class="card"><div class="card-content"><h3 class="menu-label has-text-centered">喜欢这篇文章？打赏一下作者吧</h3><div class="buttons is-centered"><a class="button donate" data-type="alipay"><span class="icon is-small"><i class="fab fa-alipay"></i></span><span>支付宝</span><span class="qrcode"><img src="/img/Alipay.jpg" alt="支付宝"></span></a><a class="button donate" data-type="wechat"><span class="icon is-small"><i class="fab fa-weixin"></i></span><span>微信</span><span class="qrcode"><img src="/img/WeChat_pay.png" alt="微信"></span></a></div></div></div><nav class="post-navigation mt-4 level is-mobile"><div class="level-start"><a class="article-nav-prev level level-item link-muted" href="/p/b8bdff8e/"><i class="level-item fas fa-chevron-left"></i><span class="level-item">Zeek 的安装与使用</span></a></div><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/p/cdd10903/"><span class="level-item">位运算算法合集</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><div class="card"><div class="card-content"><h3 class="title is-5">评论</h3><div id="disqus_thread"><noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></div><script>var disqus_config = function () {
+            this.page.url = 'http://blog.czccc.cc/p/682f53b3/';
+            this.page.identifier = 'p/682f53b3/';
+        };
+        (function() {
+            var d = document, s = d.createElement('script');  
+            s.src = '//' + 'czcc' + '.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();</script></div></div></div><div class="column column-left is-4-tablet is-3-desktop is-3-widescreen  order-1"><div class="card widget" data-type="profile"><div class="card-content"><nav class="level"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-128x128 mx-auto mb-2"><img class="avatar" src="/img/avatar.jpg" alt="Cheng"></figure><p class="title is-size-4 is-block" style="line-height:inherit;">Cheng</p><p class="is-size-6 is-block">A Student</p><p class="is-size-6 is-flex justify-content-center"><i class="fas fa-map-marker-alt mr-1"></i><span>Nanjing</span></p></div></div></nav><nav class="level is-mobile"><div class="level-item has-text-centered is-marginless"><div><p class="heading">文章</p><a href="/archives"><p class="title">54</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">分类</p><a href="/categories"><p class="title">26</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">标签</p><a href="/tags"><p class="title">50</p></a></div></div></nav><div class="level"><a class="level-item button is-primary is-rounded" href="https://github.com/czccc" target="_blank" rel="noopener">关注我</a></div><div class="level is-mobile is-multiline"><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Github" href="https://github.com/czccc"><i class="fab fa-github"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="RSS" href="/atom.xml"><i class="fas fa-rss"></i></a></div></div></div><div class="card widget column-left is-sticky" id="toc" data-type="toc"><div class="card-content"><div class="menu" style="max-height: calc(100vh - 5rem); overflow-y: auto;"><h3 class="menu-label">目录</h3><ul class="menu-list"><li><a class="level is-mobile" href="#特征"><span class="level-left"><span class="level-item">1</span><span class="level-item">特征</span></span></a></li><li><a class="level is-mobile" href="#历史"><span class="level-left"><span class="level-item">2</span><span class="level-item">历史</span></span></a></li><li><a class="level is-mobile" href="#Architecture"><span class="level-left"><span class="level-item">3</span><span class="level-item">Architecture</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#Tap"><span class="level-left"><span class="level-item">3.1</span><span class="level-item">Tap</span></span></a></li><li><a class="level is-mobile" href="#Frontend"><span class="level-left"><span class="level-item">3.2</span><span class="level-item">Frontend</span></span></a></li><li><a class="level is-mobile" href="#Manager"><span class="level-left"><span class="level-item">3.3</span><span class="level-item">Manager</span></span></a></li><li><a class="level is-mobile" href="#Logger"><span class="level-left"><span class="level-item">3.4</span><span class="level-item">Logger</span></span></a></li><li><a class="level is-mobile" href="#Proxy"><span class="level-left"><span class="level-item">3.5</span><span class="level-item">Proxy</span></span></a></li><li><a class="level is-mobile" href="#Worker"><span class="level-left"><span class="level-item">3.6</span><span class="level-item">Worker</span></span></a></li></ul></li></ul></div></div><script src="/js/toc.js" defer></script></div></div><!--!--></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img src="/img/logo.ico" alt="CZCC" height="28"></a><p class="is-size-7"><span>&copy; 2022 Cheng</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a><br><span id="busuanzi_container_site_uv">共<span id="busuanzi_value_site_uv">0</span>个访客</span></p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons-by"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/czccc/hexo-theme-icarus"><i class="fab fa-github"></i></a></p></div></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script><script>moment.locale("zh-CN");</script><script>var IcarusThemeSettings = {
+            article: {
+                highlight: {
+                    clipboard: true,
+                    fold: 'unfolded'
+                }
+            }
+        };</script><script src="/js/column.js"></script><script src="/js/animation.js"></script><a id="back-to-top" title="回到顶端" href="javascript:;"><i class="fas fa-chevron-up"></i></a><script src="/js/back_to_top.js" defer></script><!--!--><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/js/lightgallery.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/js/jquery.justifiedGallery.min.js" defer></script><script>window.addEventListener("load", () => {
+            if (typeof $.fn.lightGallery === 'function') {
+                $('.article').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof $.fn.justifiedGallery === 'function') {
+                if ($('.justified-gallery > p > .gallery-item').length) {
+                    $('.justified-gallery > p > .gallery-item').unwrap();
+                }
+                $('.justified-gallery').justifiedGallery();
+            }
+        });</script><!--!--><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css"><script src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/auto-render.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/mhchem.min.js" defer></script><script>window.addEventListener("load", function() {
+            document.querySelectorAll('[role="article"] > .content').forEach(function(element) {
+                renderMathInElement(element);
+            });
+        });</script><script type="text/x-mathjax-config">MathJax.Hub.Config({
+            'HTML-CSS': {
+                matchFontHeight: false
+            },
+            SVG: {
+                matchFontHeight: false
+            },
+            CommonHTML: {
+                matchFontHeight: false
+            },
+            tex2jax: {
+                inlineMath: [
+                    ['$','$'],
+                    ['\\(','\\)']
+                ]
+            }
+        });</script><script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.9/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script><!--!--><script src="/js/main.js" defer></script><div class="searchbox"><div class="searchbox-container"><div class="searchbox-header"><div class="searchbox-input-container"><input class="searchbox-input" type="text" placeholder="想要查找什么..."></div><a class="searchbox-close" href="javascript:;">×</a></div><div class="searchbox-body"></div></div></div><script src="/js/insight.js" defer></script><script>document.addEventListener('DOMContentLoaded', function () {
+            loadInsight({"contentUrl":"/content.json"}, {"hint":"想要查找什么...","untitled":"(无标题)","posts":"文章","pages":"页面","categories":"分类","tags":"标签"});
+        });</script></body></html>

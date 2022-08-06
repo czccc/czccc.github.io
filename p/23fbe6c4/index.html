@@ -1,0 +1,273 @@
+<!doctype html>
+<html lang="zh"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>分布式 raft 算法总结 - CZCC</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="CZCC"><meta name="msapplication-TileImage" content="/img/favicon.ico"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="CZCC"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="description" content="Raft 是一个分布式共识算法，相较于之前普遍使用的 Paxos 算法，Raft 更侧重于算法的简洁和易于理解，并具备支持工业级应用所需的性能。 Raft 有几个区别于其他算法的特性：  Strong Leader：日志只能从 Leader 发送给 Follower，并覆盖掉 Follower 处与 Leader 不一致的日志。 Leader Election：Raft 使用随机的延时进行 Le"><meta property="og:type" content="blog"><meta property="og:title" content="分布式 raft 算法总结"><meta property="og:url" content="http://blog.czccc.cc/p/23fbe6c4/"><meta property="og:site_name" content="CZCC"><meta property="og:description" content="Raft 是一个分布式共识算法，相较于之前普遍使用的 Paxos 算法，Raft 更侧重于算法的简洁和易于理解，并具备支持工业级应用所需的性能。 Raft 有几个区别于其他算法的特性：  Strong Leader：日志只能从 Leader 发送给 Follower，并覆盖掉 Follower 处与 Leader 不一致的日志。 Leader Election：Raft 使用随机的延时进行 Le"><meta property="og:locale" content="zh_CN"><meta property="og:image" content="https://i.loli.net/2021/02/05/l7twf4Kuck63RCB.png"><meta property="og:image" content="https://i.loli.net/2021/02/05/ns8AFmJ9SQvwMby.png"><meta property="og:image" content="https://i.loli.net/2021/02/05/ns8AFmJ9SQvwMby.png"><meta property="og:image" content="https://i.loli.net/2021/02/05/QhKEmDJW45sNxka.png"><meta property="og:image" content="https://i.loli.net/2021/02/06/72VZH14OdU6rWyB.png"><meta property="article:published_time" content="2021-02-05T12:31:01.000Z"><meta property="article:modified_time" content="2022-08-06T13:07:33.625Z"><meta property="article:author" content="Cheng"><meta property="article:tag" content="Raft"><meta property="article:tag" content="分布式系统"><meta property="twitter:card" content="summary"><meta property="twitter:image" content="https://i.loli.net/2021/02/05/l7twf4Kuck63RCB.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"http://blog.czccc.cc/p/23fbe6c4/"},"headline":"分布式 raft 算法总结","image":["https://i.loli.net/2021/02/05/l7twf4Kuck63RCB.png","https://i.loli.net/2021/02/05/ns8AFmJ9SQvwMby.png","https://i.loli.net/2021/02/05/ns8AFmJ9SQvwMby.png","https://i.loli.net/2021/02/05/QhKEmDJW45sNxka.png","https://i.loli.net/2021/02/06/72VZH14OdU6rWyB.png"],"datePublished":"2021-02-05T12:31:01.000Z","dateModified":"2022-08-06T13:07:33.625Z","author":{"@type":"Person","name":"Cheng"},"publisher":{"@type":"Organization","name":"CZCC","logo":{"@type":"ImageObject","url":"http://blog.czccc.cc/img/logo.ico"}},"description":"Raft 是一个分布式共识算法，相较于之前普遍使用的 Paxos 算法，Raft 更侧重于算法的简洁和易于理解，并具备支持工业级应用所需的性能。 Raft 有几个区别于其他算法的特性：  Strong Leader：日志只能从 Leader 发送给 Follower，并覆盖掉 Follower 处与 Leader 不一致的日志。 Leader Election：Raft 使用随机的延时进行 Le"}</script><link rel="canonical" href="http://blog.czccc.cc/p/23fbe6c4/"><link rel="alternate" href="/atom.xml" title="CZCC" type="application/atom+xml"><link rel="icon" href="/img/favicon.ico"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link rel="stylesheet" href="/css/default.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><!--!--><script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" defer></script><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css"><!--!--><!--!--><!--!--><!--!--><style>.pace{-webkit-pointer-events:none;pointer-events:none;-webkit-user-select:none;-moz-user-select:none;user-select:none}.pace-inactive{display:none}.pace .pace-progress{background:#3273dc;position:fixed;z-index:2000;top:0;right:100%;width:100%;height:2px}</style><script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script><!-- hexo injector head_end start --><script>
+  (function () {
+      function switchTab() {
+          if (!location.hash) {
+            return;
+          }
+          Array
+              .from(document.querySelectorAll('.tab-content'))
+              .forEach($tab => {
+                  $tab.classList.add('is-hidden');
+              });
+          Array
+              .from(document.querySelectorAll('.tabs li'))
+              .forEach($tab => {
+                  $tab.classList.remove('is-active');
+              });
+          const $activeTab = document.querySelector(location.hash);
+          if ($activeTab) {
+              $activeTab.classList.remove('is-hidden');
+          }
+          const $tabMenu = document.querySelector(`a[href="${location.hash}"]`);
+          if ($tabMenu) {
+              $tabMenu.parentElement.classList.add('is-active');
+          }
+      }
+      switchTab();
+      window.addEventListener('hashchange', switchTab, false);
+  })();
+  </script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.1.0"></head><body class="is-2-column"><nav class="navbar navbar-main"><div class="container navbar-container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img src="/img/logo.ico" alt="CZCC" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">Home</a><a class="navbar-item" href="/archives">Archives</a><a class="navbar-item" href="/categories">Categories</a><a class="navbar-item" href="/tags">Tags</a><a class="navbar-item" href="/categories/LeetCode">LeetCode</a><a class="navbar-item" href="/Software">Software</a><a class="navbar-item" href="/about">About</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/czccc/hexo-theme-icarus"><i class="fab fa-github"></i></a><a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;"><i class="fas fa-list-ul"></i></a><a class="navbar-item search" title="搜索" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-9-desktop is-9-widescreen"><div class="card"><article class="card-content article" role="article"><h1 class="title is-3 is-size-4-mobile"><i class="fas fa-angle-double-right">  </i>分布式 raft 算法总结</h1><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><i class="far fa-calendar-alt">  </i><span class="level-item"><time dateTime="2021-02-05T12:31:01.000Z" title="2021/2/5 20:31:01">2021-02-05</time>发表</span><i class="far fa-calendar-check">  </i><span class="level-item"><time dateTime="2022-08-06T13:07:33.625Z" title="2022/8/6 21:07:33">2022-08-06</time>更新</span><i class="far fa-folder">  </i><span class="level-item"><a class="link-muted" href="/categories/Raft/">Raft</a></span><i class="far fa-hourglass">  </i><span class="level-item">37 分钟读完 (大约5500个字)</span><i class="far fa-eye">  </i><span class="level-item" id="busuanzi_container_page_pv"><span id="busuanzi_value_page_pv">0</span>次访问</span></div></div><div class="content"><hr>
+<p>Raft 是一个分布式共识算法，相较于之前普遍使用的 Paxos 算法，Raft 更侧重于算法的简洁和易于理解，并具备支持工业级应用所需的性能。</p>
+<p>Raft 有几个区别于其他算法的特性：</p>
+<ul>
+<li>Strong Leader：日志只能从 Leader 发送给 Follower，并覆盖掉 Follower 处与 Leader 不一致的日志。</li>
+<li>Leader Election：Raft 使用随机的延时进行 Leader 的选举，这避免了一些冲突，并使得算法变得更简单。</li>
+<li>Membership changes：Raft 使用 <em>joint consensus</em> 进行在前后两组节点之间进行无缝转变，节点变化的过程对用户而言是透明的。</li>
+</ul>
+<span id="more"></span>
+<h1>状态机模型</h1>
+<p>Raft 的状态机模型如下所示：</p>
+<p><img src="https://i.loli.net/2021/02/05/l7twf4Kuck63RCB.png" alt=""></p>
+<p>简单的说，一个 Client 的请求过程分为如下四步：</p>
+<ol>
+<li>Client 向 Server Leader 发送一个请求</li>
+<li>Leader 按共识协议将此请求作为一个 Log 存储在一个序列中，并开始在多个节点中进行复制</li>
+<li>如果对此请求达成共识，便将其应用到状态机中</li>
+<li>从状态机中返回相应的结果给 Client</li>
+</ol>
+<blockquote>
+<p>Client 的请求可能并不会被按时处理 (Leader 离线、网络延时、一直未达成共识等)，对 Client 而言，一个比较合理的操作是超时重试。<br>
+但是，Raft 协议本身并不负责处理由于 Client 超时重试而带来的重复日志，这一部分逻辑需要交由上层实体来控制。</p>
+</blockquote>
+<h1>Raft 算法综述</h1>
+<p>Raft 算法需要实现的，就是上述步骤中的第 2 步，也即，Raft 算法需要对传入的 Log 日志在不同的节点间尝试达成共识，如果能达成共识，则将此 Log 应用到状态机中，如果无法达成共识，则废弃此 Log。</p>
+<p>Raft 算法主要可以分为如下几个部分：</p>
+<ul>
+<li>Leader election：也即实现中所使用的 Request vote，主要用于发送选举请求，处理选举结果。这一步往往出现在节点刚初始化时或者长时间未接收到来自于 Leader 的消息。</li>
+<li>Log replication：也即实现中所使用的 Append entries，主要用于 Leader 向 Follower 发送日志项，维护 Follower 的心跳时间以免超时重新进行选举等。</li>
+<li>Log compaction：也即实现中所使用的 Install snapshot，主要用于压缩日志项，从而减少开销，如果 Follower 的日志落后太多，为了减少网络开销以及快速进行同步，Leader 会向 Follower 直接发送状态机的快照副本，未在快照中的数据项再通过 Log replication 进行同步。</li>
+</ul>
+<h2 id="基本概念">基本概念</h2>
+<ol>
+<li>任期 <code>term</code>：</li>
+</ol>
+<h2 id="数据状态">数据状态</h2>
+<p>对于一个 Raft 节点而言，需要维护自身的一些状态，这些状态在论文的 Figure 2 中，主要分了三类：</p>
+<p><img src="https://i.loli.net/2021/02/05/ns8AFmJ9SQvwMby.png" alt="image-20210205212929749"></p>
+<ol>
+<li>在所有节点上都需要使用的可持久化状态，此类状态每次在更改之后就需要保存到持久化存储中，并在节点重启后载入对应的状态：
+<ul>
+<li><code>currentTerm</code>：节点当前的 <code>term</code>，初始时为 0，只增不减，每次收到 RPC 请求时，如果 RPC 中的 <code>term</code> 比 <code>currentTerm</code> 大，便更新 <code>currentTerm = term</code></li>
+<li><code>voteFor</code>：节点在 Leader 选举中所投的 Candidate ID，如果未投票则为 <code>null</code></li>
+<li><code>log[]</code>：节点的日志序列，每个日志都包含一个 <code>command</code>，以及 <code>command</code> 对应的 <code>term</code></li>
+</ul>
+</li>
+<li>在所有节点上都需要使用的临时状态，此类状态不必持久化，在每次节点重启后重新初始化即可：
+<ul>
+<li><code>commitIndex</code>：已知的日志序列中可提交的日志 Index 的最大值。初始值为 0， 只增不减</li>
+<li><code>lastApplied</code>：已应用到状态机的日志 Index。初始值为 0，随 <code>commitIndex</code> 递增</li>
+</ul>
+</li>
+<li>只在 Leader 节点上使用的临时状态，此类状态不必持久化，并只有选举成为 Leader 后进行初始化即可：
+<ul>
+<li><code>nextIndex[]</code>：对于每个节点，存储需要向其发送的日志项的下一个日志的 Index。初始时为 Leader 的最大的 Log Index + 1</li>
+<li><code>matchIndex[]</code>：对于每个节点，保存已知的复制成功的 Log Index 的最大值。初始时为 0，随着日志复制过程递增</li>
+</ul>
+</li>
+<li>（Figure 13 增加了快照功能之后）增加两个在所有节点上都需要使用的可持久化状态，状态同第一类一样需要持久化保存和载入：
+<ul>
+<li><code>lastIncludedIndex</code>：节点所保存的快照中最后一个日志项的 Index，同时说明 所有 <code>index &lt;= lastIncludedIndex</code> 的日志项已经被废弃</li>
+<li><code>lastIncludedTerm</code>：节点所保存的快照中最后一个日志项的 Term</li>
+</ul>
+</li>
+</ol>
+<h2 id="Leader-Election">Leader Election</h2>
+<p>Raft 使用 Strong Leader 作为共识协议的发起点，因此需要进行选举过程。选举过程的发起需要条件，也就是如果一个 Follower 在设定的时间间隔内一直无法收到 Leader 的消息（心跳），则可以认为之前的 Leader 已经下线或者出现故障， Follower 便会将自身的 <code>currentTerm += 1</code> ，并转变为 Candidate，向所有的节点发送 <code>RequestVote</code> 的 RPC 请求。</p>
+<p><img src="https://i.loli.net/2021/02/05/ns8AFmJ9SQvwMby.png" alt="image-20210205212951453"></p>
+<p>RPC 请求中所包含的参数为：</p>
+<ul>
+<li><code>term</code>：Candidate 的 <code>currentTerm</code></li>
+<li><code>candidateId</code>：Candidate 的身份</li>
+<li><code>lastLogIndex</code>： Candidate 最后一条日志的 Index</li>
+<li><code>lastLogTerm</code>：Candidate 最后一条日志的 term</li>
+</ul>
+<p>同样的，作为此 RPC的接收方，需要对其进行处理并回复，处理的结果如下：</p>
+<ul>
+<li><code>term</code>：最新的 <code>term</code>，也即为 Candidate 发送的 RPC 中的 <code>term</code> 与节点自身 <code>currentTerm</code> 中的最大值。</li>
+<li><code>voteGranted</code>：是否给此 RPC 请求投票，投票时为 <code>true</code></li>
+</ul>
+<p>具体的处理逻辑如下：</p>
+<ol>
+<li>如果 RPC 中的 <code>term</code> 大于节点的 <code>currentTerm</code>，可知当前的 <code>currentTerm</code> 任期已经结束，因此节点首先更新自身的 <code>currentTerm = term</code>，将身份改为 <code>Follower</code>，并清除 <code>voteFor</code></li>
+<li>如果 RPC 中的 <code>term</code> 小于节点的 <code>currentTerm</code>，不投票，并返回更新的 <code>currentTerm</code></li>
+<li>此时，节点的 <code>currentTerm</code> 一定等于 RPC 中的 <code>term</code>，是否投票从以下两方面考虑：
+<ol>
+<li>RPC中的最新日志信息：只有当RPC中的日志信息比节点的日志信息<strong>更新</strong>时，才会投票。这个“更新”的意思为：RPC中的 <code>lastLogTerm</code> 大于节点最新日志的 <code>term</code>，或者RPC中的 <code>lastLogTerm</code> 等于节点最新日志的 <code>term</code>，但RPC中的 <code>lastLogIndex</code> 大于节点最新日志的 <code>index</code>。这一点保证了 Follower 只会给知道的信息比它多的节点投票，从而保证了日志记录的完整性</li>
+<li>是否在当前任期已经投票：只有在当前任期内此节点未投票或已经给此RPC的id投票时才会确定投票。也即为先到先得。</li>
+</ol>
+</li>
+</ol>
+<p>Candidate 需要收集所有的 RPC 回复，并累计所得票数，只有所得的票数超过总数的一半（majority）时，节点才可以成为新一任的 Leader。</p>
+<p>安全性保证：对比 <code>commitIndex</code> 的算法逻辑，Leader 只有在超过一半的节点都确认了一个Log的时候，才会将其提交，也就是说：所有提交的日志一定会出现的超过一半以上的节点中。而在选举过程中，如果一个节点不包含这条已经提交的日志，那么它无论无何都无法获得超过一半的选票，也即无法成为 Leader。这保证了所有提交过的日志不会被覆盖，保证了所有节点中应用到状态机的日志序列的一致性。相反地，未提交的日志都有一定的可能会被丢弃。</p>
+<h2 id="Log-Replication">Log Replication</h2>
+<p>Raft 算法需要实现日志在不同节点间的同步，以及保证所有提交的日志都是一致的，不存在乱序和差错。因此，Raft 节点需要定期与其他节点进行交互，这个交互是通过 RPC 请求完成的，也就是下面将要说的 AppendEntries。在实际使用中，Leader 需要定期发送此 RPC，目的有两个，一是将新增的 Log 数据复制到 Follower 中，另一个是为了保证 Leader 的存活，毕竟如果 Follower 长时间收不到 Leader 的消息，就会主动发起选举。</p>
+<p><img src="https://i.loli.net/2021/02/05/QhKEmDJW45sNxka.png" alt="image-20210205213035071"></p>
+<p>AppendEntries RPC所使用的参数如下：</p>
+<ul>
+<li><code>term</code>：Leader 当前的任期</li>
+<li><code>leaderId</code>：Leader 的身份</li>
+<li><code>prevLogIndex</code>：在 <code>entries[]</code> 中所包含日志项的前一个日志的 index</li>
+<li><code>prevLogTerm</code>：在 <code>entries[]</code> 中所包含日志项的前一个日志的 term</li>
+<li><code>entries[]</code>：当前 RPC 中所包含的日志项（可以一次发送多个日志以提高效率）。可以为空，表示没有最新的日志项需要发送，只更新 Follower 的心跳。</li>
+<li><code>leaderCommit</code>：Leader 当前所提交的日志的 Index，Follower 收到此数据之后便可更新自身的 <code>comitIndex</code>，并向自己的状态机应用相关的日志</li>
+</ul>
+<p>RPC 的结果所包含的字段如下：</p>
+<ul>
+<li><code>term</code>：最新的 <code>term</code>，也即为 Candidate 发送的 RPC 中的 <code>term</code> 与节点自身 <code>currentTerm</code> 中的最大值。</li>
+<li><code>success</code>：此次日志复制是否成功，在有冲突时返回 <code>false</code></li>
+</ul>
+<p>作为 RPC 请求的接收方，处理的逻辑如下：</p>
+<ol>
+<li>如果 RPC 中的 <code>term</code> 大于节点的 <code>currentTerm</code>，可知当前的 <code>currentTerm</code> 任期已经结束，因此节点首先更新自身的 <code>currentTerm = term</code>，将身份改为 <code>Follower</code></li>
+<li>如果 RPC 中的 <code>term</code> 小于节点的 <code>currentTerm</code>，说明此 RPC 来自旧的 Leader，不复制日志，返回更新的 <code>currentTerm</code></li>
+<li>此时，节点的 <code>currentTerm</code> 一定等于 RPC 中的 <code>term</code>，节点先更新自身的心跳计时，之后考虑日志复制（如果不包含日志则直接返回成功）：
+<ol>
+<li>**由 Raft 的日志性质，一条日志可以由 index 和 term 唯一确定。**这是由于在每一个 term 内，最多只会产生一个 Leader，因此在相同任期内，日志总是由 Leader 首先接收并复制到 Follower 中，那么 Leader 中日志序列的顺序便是当前 term 中所有日志的顺序。因此，如果两个日志的 term 不同，那么这两条日志一定不是同一个日志；如果两个日志 term 相同，但 index 不同，同样也不是同一条日志。只有 index 和 term 都相同的日志，才能说明此条日志是从相同的 Leader 处复制得到，也就是同一条日志。</li>
+<li>由于日志复制顺序总是从前向后，只有前面的日志都复制成功后，才会复制下一条日志，因此如果在某条日志处确认了其 index 和 term 都和 RPC 中的一致，那么只需要考虑此条日志之后的日志进行复制，再次之前的日志可以确定都已经与 Leader 处的一致。</li>
+<li>Leader 在 RPC 中会附上 <code>prevLogIndex</code> 和 <code>prevLogTerm</code>，作为一个日志的锚点，如果 Follower 处存在相同 index 和 term 的日志，便可以进行之后的日志复制，Follower 便可以将 RPC 中的 <code>entries[]</code> 批量添加到此锚点日志的后面，并在 RPC 中确认复制成功（<code>success = true</code>）。最后，Follower 根据 Leader 的<code>leaderCommit</code>，更新自己本地的 <code>commitIndex</code>，并提交相关的日志项。</li>
+<li>如果 <code>prevLogIndex</code> 和 <code>prevLogTerm</code> 无法对应到 Follower 的日志，说明尚未找到同步点，返回失败（<code>success = false</code>）</li>
+</ol>
+</li>
+</ol>
+<p>在 Leader 处，当接收到了 Follower 的 RPC 的回复后，在此，我们假设此 Follower 的 ID 为 <code>i</code>：</p>
+<ol>
+<li>如果 reply 中的 term 更大，则变为 Follower</li>
+<li>如果 <code>success == true</code>：说明复制成功，Leader 需要维护 Follower 的状态，也就是 <code>nextIndex</code> 和 <code>matchIndex</code>：
+<ol>
+<li>在这里令发送的日志项的最后一个日志的 index 为 <code>upper_log_index</code></li>
+<li>更新 <code>nextIndex[i]</code> 为已经发送的日志中的最大的 index + 1。即 <code>nextIndex[i] = upper_log_index + 1</code>。</li>
+<li>更新 <code>matchIndex[i]</code> 为已经发送的日志中的最大的 index，即 <code>matchIndex[i] = upper_log_index</code>。</li>
+<li>根据 <code>matchIndex</code> 进行判断，如果存在超过一半的节点的 <code>matchIndx[i] &gt; N</code>，则可以更新 Leader 的 <code>commitIndex</code>，并应用相关日志到状态机。</li>
+</ol>
+</li>
+<li>如果 <code>success == false</code>：说明复制失败，也就是没有找到同步点：
+<ol>
+<li>递减 <code>nextIndex[i]</code>，后退一条日志继续尝试同步 。即 <code>nextIndex[i] -= 1</code>。</li>
+</ol>
+</li>
+</ol>
+<p>一些讨论：</p>
+<ol>
+<li>初始时，<code>nextIndex</code> 均初始化为 最大的 Log 的 <code>index + 1</code>，因此在第一次发送 <code>AppendEntries</code> RPC 时，<code>prevLogIndex</code> 等于 <code>nextIndex[i] - 1</code>，也即为最大的 Log index，因此此时 <code>entries</code> 为空，即不包含日志数据。</li>
+<li>日志的复制过程是从后向前，逐渐尝试进行同步的。对于不同的节点，每次的 RPC 参数会不一样（根据 <code>nextIndex</code> 确定）。</li>
+<li>如何快速找到日志中不一致的地方？这是 Raft 中所使用的一种优化。如果按照原协议，每次日志复制不成功就仅仅将 <code>nextIndex</code> 减一，如果日志项比较多，可能会需要很长时间才能完成同步。在这里介绍一个比较常用的回滚算法，加快同步的速度：
+<ol>
+<li>在 <code>AppendEntries</code> RPC 的回复中新增两个字段：<code>conflictIndex</code> 和 <code>conflictTerm</code>，其中，<code>conflictTerm</code> 为 Follower 处与 Leader 发送的 <code>prevLogIndex</code> 所冲突的日志项的 <code>term</code>，<code>conflictIndex</code> 为 Follower 处日志的 <code>term</code> 等于 <code>conflictTerm</code> 的第一条日志的 <code>index</code></li>
+<li>Leader 接收到这个回复后，检查自己是否包含 <code>conflictIndex</code> 和 <code>conflictTerm</code> 的此条日志，如果包含此条日志，则可以确定冲突的日志在此之后，因此将 <code>nextIndex[i]</code> 更新为 Leader 处的 <code>conflictTerm</code> 的最后一条日志的 index；如果不包含，则冲突的日志在此之前，则将 <code>nextIndex[i]</code> 更新为 Leader 处的 <code>conflictTerm</code> 的第一条日志的 index。</li>
+<li>再次补充：为什么将 <code>nextIndex[i]</code> 更新为 Leader 处的 <code>conflictTerm</code> 的最后一条日志的 index？首先，如果 Leader 包含 <code>conflictIndex</code> 和 <code>conflictTerm</code> 的此条日志，同时说明 Follower 也有此条日志，因此日志复制失败的原因一定是因为这个 term 下，Follower 处的日志条目不全，否则冲突的位置不会发生在此 term 内。因此将 <code>nextIndex</code> 更新到这个 term 的最后一条日志的 index，之后再次尝试进行同步。</li>
+<li>这样的方式可以保证一次跳过一个任期，而不仅仅是一条日志，因此大大加快了同步的速度。</li>
+</ol>
+</li>
+</ol>
+<h2 id="Log-Compaction">Log Compaction</h2>
+<p>随着 Raft 节点日志的不断增加，过多的日志会影响节点的性能开销，因此对日志数据进行压缩是很有必要的。在实现了 Leader Election 和 Log replicate 之后，节点已经实现了基本的 Raft 算法所需的内容，而日志压缩功能则是更进一步，补充之前的协议中缺失的部分内容。</p>
+<p>首先，需要明确的是，为什么可以进行日志压缩？回想一下之前所提到的内容，Raft 协议主要关心的并不是全部日志，由于日志顺序的一致性，Raft 协议只需要关注于最新的日志（或最新一部分的日志），而对于陈旧的日志是不会再使用的。比如说，我们选取一个日志作为锚点，那么只要能将此锚点日志对应起来，便可以保证日志的一致性，因此可以丢弃此锚点日志之前的数据，取而代之保存相应的状态机的快照副本。从而，在进行日志复制时，如果需要复制的日志位于此锚点日志之后，那么继续像之前一样传递日志数据；如果位于锚点日志之前，那么首先向其发送快照副本，再发送快照副本之后的日志数据，同样能保证日志的一致性。</p>
+<p>其次，什么时候需要创建快照副本？由于创建快照的目的是为了压缩日志，因此可以设置一些阈值，比如已提交但未压缩的日志文件超过一定的大小，或者简单的通过日志数目来衡量是否应该压缩日志。快照的创建是一个本地命令，也就是说不同的节点处可能会存在不同的快照（但均为相同的日志序列，只不过快照所压缩的日志长度有所不同）。</p>
+<p>如何确定快照所包含的日志序列？由日志的一致性，可以通过保存快照中最后一条日志的 index 和 term 实现。因此需要向节点添加两个额外的状态，<code>lastIncludedIndex</code> 和 <code>lastIncludedTerm</code>，并且同样需要持久化。</p>
+<p>创建快照后，由于之前的日志被丢弃，因此日志的索引范围也将发生变化。简单地说，创建快照之前，index 为 <code>i</code> 的日志在 log 中的 <code>i - 1</code> 处（index 从 1 开始，而 log 从 0 开始索引），创建快照后，index 为 <code>i</code> 的日志在 log 中的 <code>i - 1 - lastIncludedIndex</code> 处，而对于 <code>index &lt;= lastIncludedIndex</code> 的日志不再存在，只能通过复制完整的快照文件。</p>
+<p>在进行日志同步时，如果需要 <code>index &lt;= lastIncludedIndex</code> 的日志，将不再通过 <code>AppendEntries</code> RPC 发送日志数据，取而代之我们使用第三种 RPC 命令 <code>InstallSnapshot</code> ，用于发送快照副本文件。</p>
+<p><img src="https://i.loli.net/2021/02/06/72VZH14OdU6rWyB.png" alt="image-20210206174215087"></p>
+<p><code>InstallSnapshot</code> RPC 所需的参数如下：</p>
+<ol>
+<li><code>term</code>：Leader 的当前任期</li>
+<li><code>leaderId</code>： Leader 的身份</li>
+<li><code>lastIncludedIndex</code>：快照所包含的最后一条日志的 index</li>
+<li><code>lastIncludedTerm</code>：快照所包含的最后一条日志的 term</li>
+<li><code>offset</code>：快照文件可能会比较大，需要分片发送，<code>offset</code> 标识当前的偏移位置</li>
+<li><code>data[]</code>：此次发送的快照数据</li>
+<li><code>done</code>：是否已经发送完毕，如果后面不再有数据，则发送 <code>true</code></li>
+</ol>
+<p>RPC 的回复只包含 <code>term</code> 一项，用于表示是否成功收到此 RPC。</p>
+<p>对于 RPC 请求的处理过程如下：</p>
+<ol>
+<li>如果 RPC 中的 <code>term</code> 大于节点的 <code>currentTerm</code>，可知当前的 <code>currentTerm</code> 任期已经结束，因此节点首先更新自身的 <code>currentTerm = term</code>，将身份改为 <code>Follower</code></li>
+<li>如果 RPC 中的 <code>term</code> 小于节点的 <code>currentTerm</code>，说明此 RPC 来自旧的 Leader，不复制快照，返回更新的 <code>currentTerm</code></li>
+<li>如果当前没有快照文件，则首先新建一个空文件</li>
+<li>将此 RPC 中的快照数据 <code>data</code> 复制到指定的 <code>offset</code> 处，并逐渐等待更新的快照数据，直至 <code>done</code> 为 <code>true</code></li>
+<li>丢弃快照文件中所包含的全部日志</li>
+<li>如果节点当前的日志中存在与 <code>lastIncludedIndex</code> 和 <code>lastIncludedTerm</code> 相同的日志，则保留此日志之后的日志；如果不存在，则丢弃全部日志</li>
+<li>通过快照文件重置节点的状态机</li>
+</ol>
+<p>一些讨论：</p>
+<ol>
+<li>快照中能否包含未提交的日志？不能，因为快照是通过状态机创建的，而应用到状态机中的所有日志都必须是已经提交的日志。</li>
+<li>节点在收到快照后，如何将其应用到状态机？可以设置一个单独的命令，在提交日志时标识当前提交的是日志还是快照，如果是日志，则应用到状态机；如果是快照，则重置状态机</li>
+</ol>
+<h1>Membership Changes</h1>
+<p>在实际的使用中，Raft 节点的成员配置可能会发生改变，比如增加或减少节点数等。尽管这个步骤可以使用离线更新来实现，但是在离线过程中，会形成一个无法提供服务的窗口。并且离线手动更新难以保证安全性，因此 Raft 协议提供了可以在线更新成员配置的内容。</p>
+<p>为了确保安全性，直接在两个配置中进行转变是不行的，因为这有可能导致在同一个 term 下选举出了两个 Leader。因此我们必须将这个步骤拆分为两个阶段。比如第一步中先停止先前的配置文件并暂停服务，第二步载入更新的配置并恢复。</p>
+<p>在 Raft 中，集群首先进入一个临时的配置状态，称之为 joint<br>
+consensus；一旦 joint<br>
+consensus 被提交到日志，整个系统便过渡到最终的阶段，并可以使用更新的配置。</p>
+<h1>参考资料</h1>
+<p><a target="_blank" rel="noopener" href="http://nil.csail.mit.edu/6.824/2018/notes/l-raft2.txt">http://nil.csail.mit.edu/6.824/2018/notes/l-raft2.txt</a></p>
+</div><div class="article-licensing box"><div class="licensing-title"><p>分布式 raft 算法总结</p><p><a href="http://blog.czccc.cc/p/23fbe6c4/">http://blog.czccc.cc/p/23fbe6c4/</a></p></div><div class="licensing-meta level is-mobile"><div class="level-left"><div class="level-item is-narrow"><div><h6>作者</h6><p>Cheng</p></div></div><div class="level-item is-narrow"><div><h6>发布于</h6><p>2021-02-05</p></div></div><div class="level-item is-narrow"><div><h6>更新于</h6><p>2022-08-06</p></div></div><div class="level-item is-narrow"><div><h6>许可协议</h6><p><a class="icons" rel="noopener" target="_blank" title="Creative Commons" href="https://creativecommons.org/"><i class="icon fab fa-creative-commons"></i></a><a class="icons" rel="noopener" target="_blank" title="Attribution" href="https://creativecommons.org/licenses/by/4.0/"><i class="icon fab fa-creative-commons-by"></i></a><a class="icons" rel="noopener" target="_blank" title="Noncommercial" href="https://creativecommons.org/licenses/by-nc/4.0/"><i class="icon fab fa-creative-commons-nc"></i></a></p></div></div></div></div></div><div class="article-tags is-size-7 mb-4"><span class="mr-2">#</span><a class="link-muted mr-2" rel="tag" href="/tags/Raft/">Raft</a><a class="link-muted mr-2" rel="tag" href="/tags/%E5%88%86%E5%B8%83%E5%BC%8F%E7%B3%BB%E7%BB%9F/">分布式系统</a></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/css/share.min.css"><div class="social-share"></div><script src="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/js/social-share.min.js"></script></article></div><div class="card"><div class="card-content"><h3 class="menu-label has-text-centered">喜欢这篇文章？打赏一下作者吧</h3><div class="buttons is-centered"><a class="button donate" data-type="alipay"><span class="icon is-small"><i class="fab fa-alipay"></i></span><span>支付宝</span><span class="qrcode"><img src="/img/Alipay.jpg" alt="支付宝"></span></a><a class="button donate" data-type="wechat"><span class="icon is-small"><i class="fab fa-weixin"></i></span><span>微信</span><span class="qrcode"><img src="/img/WeChat_pay.png" alt="微信"></span></a></div></div></div><nav class="post-navigation mt-4 level is-mobile"><div class="level-start"><a class="article-nav-prev level level-item link-muted" href="/p/ae54ec2/"><i class="level-item fas fa-chevron-left"></i><span class="level-item">tinykv</span></a></div><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/p/2633d759/"><span class="level-item">C++ 中的智能指针</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><div class="card"><div class="card-content"><h3 class="title is-5">评论</h3><div id="disqus_thread"><noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></div><script>var disqus_config = function () {
+            this.page.url = 'http://blog.czccc.cc/p/23fbe6c4/';
+            this.page.identifier = 'p/23fbe6c4/';
+        };
+        (function() {
+            var d = document, s = d.createElement('script');  
+            s.src = '//' + 'czcc' + '.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();</script></div></div></div><div class="column column-left is-4-tablet is-3-desktop is-3-widescreen  order-1"><div class="card widget" data-type="profile"><div class="card-content"><nav class="level"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-128x128 mx-auto mb-2"><img class="avatar" src="/img/avatar.jpg" alt="Cheng"></figure><p class="title is-size-4 is-block" style="line-height:inherit;">Cheng</p><p class="is-size-6 is-block">A Student</p><p class="is-size-6 is-flex justify-content-center"><i class="fas fa-map-marker-alt mr-1"></i><span>Nanjing</span></p></div></div></nav><nav class="level is-mobile"><div class="level-item has-text-centered is-marginless"><div><p class="heading">文章</p><a href="/archives"><p class="title">54</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">分类</p><a href="/categories"><p class="title">26</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">标签</p><a href="/tags"><p class="title">50</p></a></div></div></nav><div class="level"><a class="level-item button is-primary is-rounded" href="https://github.com/czccc" target="_blank" rel="noopener">关注我</a></div><div class="level is-mobile is-multiline"><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Github" href="https://github.com/czccc"><i class="fab fa-github"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="RSS" href="/atom.xml"><i class="fas fa-rss"></i></a></div></div></div><div class="card widget column-left is-sticky" id="toc" data-type="toc"><div class="card-content"><div class="menu" style="max-height: calc(100vh - 5rem); overflow-y: auto;"><h3 class="menu-label">目录</h3><ul class="menu-list"><li><a class="level is-mobile" href="#"><span class="level-left"><span class="level-item">1</span><span class="level-item">状态机模型</span></span></a></li><li><a class="level is-mobile" href="#"><span class="level-left"><span class="level-item">2</span><span class="level-item">Raft 算法综述</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#基本概念"><span class="level-left"><span class="level-item">2.1</span><span class="level-item">基本概念</span></span></a></li><li><a class="level is-mobile" href="#数据状态"><span class="level-left"><span class="level-item">2.2</span><span class="level-item">数据状态</span></span></a></li><li><a class="level is-mobile" href="#Leader-Election"><span class="level-left"><span class="level-item">2.3</span><span class="level-item">Leader Election</span></span></a></li><li><a class="level is-mobile" href="#Log-Replication"><span class="level-left"><span class="level-item">2.4</span><span class="level-item">Log Replication</span></span></a></li><li><a class="level is-mobile" href="#Log-Compaction"><span class="level-left"><span class="level-item">2.5</span><span class="level-item">Log Compaction</span></span></a></li></ul></li><li><a class="level is-mobile" href="#"><span class="level-left"><span class="level-item">3</span><span class="level-item">Membership Changes</span></span></a></li><li><a class="level is-mobile" href="#"><span class="level-left"><span class="level-item">4</span><span class="level-item">参考资料</span></span></a></li></ul></div></div><script src="/js/toc.js" defer></script></div></div><!--!--></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img src="/img/logo.ico" alt="CZCC" height="28"></a><p class="is-size-7"><span>&copy; 2022 Cheng</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a><br><span id="busuanzi_container_site_uv">共<span id="busuanzi_value_site_uv">0</span>个访客</span></p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons-by"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/czccc/hexo-theme-icarus"><i class="fab fa-github"></i></a></p></div></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script><script>moment.locale("zh-CN");</script><script>var IcarusThemeSettings = {
+            article: {
+                highlight: {
+                    clipboard: true,
+                    fold: 'unfolded'
+                }
+            }
+        };</script><script src="/js/column.js"></script><script src="/js/animation.js"></script><a id="back-to-top" title="回到顶端" href="javascript:;"><i class="fas fa-chevron-up"></i></a><script src="/js/back_to_top.js" defer></script><!--!--><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/js/lightgallery.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/js/jquery.justifiedGallery.min.js" defer></script><script>window.addEventListener("load", () => {
+            if (typeof $.fn.lightGallery === 'function') {
+                $('.article').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof $.fn.justifiedGallery === 'function') {
+                if ($('.justified-gallery > p > .gallery-item').length) {
+                    $('.justified-gallery > p > .gallery-item').unwrap();
+                }
+                $('.justified-gallery').justifiedGallery();
+            }
+        });</script><!--!--><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css"><script src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/auto-render.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/mhchem.min.js" defer></script><script>window.addEventListener("load", function() {
+            document.querySelectorAll('[role="article"] > .content').forEach(function(element) {
+                renderMathInElement(element);
+            });
+        });</script><script type="text/x-mathjax-config">MathJax.Hub.Config({
+            'HTML-CSS': {
+                matchFontHeight: false
+            },
+            SVG: {
+                matchFontHeight: false
+            },
+            CommonHTML: {
+                matchFontHeight: false
+            },
+            tex2jax: {
+                inlineMath: [
+                    ['$','$'],
+                    ['\\(','\\)']
+                ]
+            }
+        });</script><script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.9/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script><!--!--><script src="/js/main.js" defer></script><div class="searchbox"><div class="searchbox-container"><div class="searchbox-header"><div class="searchbox-input-container"><input class="searchbox-input" type="text" placeholder="想要查找什么..."></div><a class="searchbox-close" href="javascript:;">×</a></div><div class="searchbox-body"></div></div></div><script src="/js/insight.js" defer></script><script>document.addEventListener('DOMContentLoaded', function () {
+            loadInsight({"contentUrl":"/content.json"}, {"hint":"想要查找什么...","untitled":"(无标题)","posts":"文章","pages":"页面","categories":"分类","tags":"标签"});
+        });</script></body></html>

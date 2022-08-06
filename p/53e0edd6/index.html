@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="zh"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>Python-100-Day ③ 常用/内置模块 - CZCC</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="CZCC"><meta name="msapplication-TileImage" content="/img/favicon.ico"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="CZCC"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="description" content=""><meta property="og:type" content="blog"><meta property="og:title" content="Python-100-Day ③ 常用/内置模块"><meta property="og:url" content="http://blog.czccc.cc/p/53e0edd6/"><meta property="og:site_name" content="CZCC"><meta property="og:locale" content="zh_CN"><meta property="og:image" content="https://i.loli.net/2019/06/19/5d09d28a18f6055267.png"><meta property="article:published_time" content="2019-06-11T13:26:28.000Z"><meta property="article:modified_time" content="2022-08-06T13:07:33.620Z"><meta property="article:author" content="Cheng"><meta property="article:tag" content="Python"><meta property="article:tag" content="Python-100-Days"><meta property="twitter:card" content="summary"><meta property="twitter:image" content="https://i.loli.net/2019/06/19/5d09d28a18f6055267.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"http://blog.czccc.cc/p/53e0edd6/"},"headline":"Python-100-Day ③ 常用/内置模块","image":["https://i.loli.net/2019/06/19/5d09d28a18f6055267.png"],"datePublished":"2019-06-11T13:26:28.000Z","dateModified":"2022-08-06T13:07:33.620Z","author":{"@type":"Person","name":"Cheng"},"publisher":{"@type":"Organization","name":"CZCC","logo":{"@type":"ImageObject","url":"http://blog.czccc.cc/img/logo.ico"}},"description":""}</script><link rel="canonical" href="http://blog.czccc.cc/p/53e0edd6/"><link rel="alternate" href="/atom.xml" title="CZCC" type="application/atom+xml"><link rel="icon" href="/img/favicon.ico"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link rel="stylesheet" href="/css/default.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><!--!--><script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" defer></script><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css"><!--!--><!--!--><!--!--><!--!--><style>.pace{-webkit-pointer-events:none;pointer-events:none;-webkit-user-select:none;-moz-user-select:none;user-select:none}.pace-inactive{display:none}.pace .pace-progress{background:#3273dc;position:fixed;z-index:2000;top:0;right:100%;width:100%;height:2px}</style><script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script><!-- hexo injector head_end start --><script>
+  (function () {
+      function switchTab() {
+          if (!location.hash) {
+            return;
+          }
+          Array
+              .from(document.querySelectorAll('.tab-content'))
+              .forEach($tab => {
+                  $tab.classList.add('is-hidden');
+              });
+          Array
+              .from(document.querySelectorAll('.tabs li'))
+              .forEach($tab => {
+                  $tab.classList.remove('is-active');
+              });
+          const $activeTab = document.querySelector(location.hash);
+          if ($activeTab) {
+              $activeTab.classList.remove('is-hidden');
+          }
+          const $tabMenu = document.querySelector(`a[href="${location.hash}"]`);
+          if ($tabMenu) {
+              $tabMenu.parentElement.classList.add('is-active');
+          }
+      }
+      switchTab();
+      window.addEventListener('hashchange', switchTab, false);
+  })();
+  </script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.1.0"></head><body class="is-2-column"><nav class="navbar navbar-main"><div class="container navbar-container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img src="/img/logo.ico" alt="CZCC" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">Home</a><a class="navbar-item" href="/archives">Archives</a><a class="navbar-item" href="/categories">Categories</a><a class="navbar-item" href="/tags">Tags</a><a class="navbar-item" href="/categories/LeetCode">LeetCode</a><a class="navbar-item" href="/Software">Software</a><a class="navbar-item" href="/about">About</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/czccc/hexo-theme-icarus"><i class="fab fa-github"></i></a><a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;"><i class="fas fa-list-ul"></i></a><a class="navbar-item search" title="搜索" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-9-desktop is-9-widescreen"><div class="card"><article class="card-content article" role="article"><h1 class="title is-3 is-size-4-mobile"><i class="fas fa-angle-double-right">  </i>Python-100-Day ③ 常用/内置模块</h1><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><i class="far fa-calendar-alt">  </i><span class="level-item"><time dateTime="2019-06-11T13:26:28.000Z" title="2019/6/11 21:26:28">2019-06-11</time>发表</span><i class="far fa-calendar-check">  </i><span class="level-item"><time dateTime="2022-08-06T13:07:33.620Z" title="2022/8/6 21:07:33">2022-08-06</time>更新</span><i class="far fa-folder">  </i><span class="level-item"><a class="link-muted" href="/categories/Python/">Python</a><span> / </span><a class="link-muted" href="/categories/Python/Python-100-Day/">Python-100-Day</a></span><i class="far fa-hourglass">  </i><span class="level-item">8 分钟读完 (大约1244个字)</span><i class="far fa-eye">  </i><span class="level-item" id="busuanzi_container_page_pv"><span id="busuanzi_value_page_pv">0</span>次访问</span></div></div><div class="content"><hr>
+<span id="more"></span>
+<h1>图形用户界面和游戏开发</h1>
+<h2 id="tkinter">tkinter</h2>
+<blockquote>
+<p>待补充</p>
+</blockquote>
+<p>基本上使用tkinter来开发GUI应用需要以下5个步骤：</p>
+<ol>
+<li>导入tkinter模块中我们需要的东西。 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> tkinter</span><br><span class="line"><span class="keyword">import</span> tkinter.messagebox</span><br></pre></td></tr></table></figure>
+</li>
+<li>创建一个顶层窗口对象并用它来承载整个GUI应用。 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 创建顶层窗口</span></span><br><span class="line">top = tkinter.Tk()</span><br></pre></td></tr></table></figure>
+</li>
+<li>在顶层窗口对象上添加GUI组件。 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 设置窗口大小</span></span><br><span class="line">top.geometry(<span class="string">&#x27;240x160&#x27;</span>)</span><br><span class="line"><span class="comment"># 设置窗口标题</span></span><br><span class="line">top.title(<span class="string">&#x27;小游戏&#x27;</span>)</span><br><span class="line"><span class="comment"># 创建标签对象并添加到顶层窗口</span></span><br><span class="line">label = tkinter.Label(top, text=<span class="string">&#x27;Hello, world!&#x27;</span>, font=<span class="string">&#x27;Arial -32&#x27;</span>, fg=<span class="string">&#x27;red&#x27;</span>)</span><br><span class="line">label.pack(expand=<span class="number">1</span>)</span><br><span class="line"><span class="comment"># 创建一个装按钮的容器</span></span><br><span class="line">panel = tkinter.Frame(top)</span><br></pre></td></tr></table></figure>
+</li>
+<li>通过代码将这些GUI组件的功能组织起来。 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 创建按钮对象 指定添加到哪个容器中 通过command参数绑定事件回调函数</span></span><br><span class="line">button1 = tkinter.Button(panel, text=<span class="string">&#x27;修改&#x27;</span>, command=change_label_text)</span><br><span class="line">button1.pack(side=<span class="string">&#x27;left&#x27;</span>)</span><br><span class="line">button2 = tkinter.Button(panel, text=<span class="string">&#x27;退出&#x27;</span>, command=confirm_to_quit)</span><br><span class="line">button2.pack(side=<span class="string">&#x27;right&#x27;</span>)</span><br><span class="line">panel.pack(side=<span class="string">&#x27;bottom&#x27;</span>)</span><br></pre></td></tr></table></figure>
+</li>
+<li>进入主事件循环(main loop)。 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 开启主事件循环</span></span><br><span class="line">tkinter.mainloop()</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="pygame">pygame</h2>
+<blockquote>
+<p>TODO</p>
+</blockquote>
+<h1>文件和异常</h1>
+<h2 id="打开文件">打开文件</h2>
+<p>通过Python内置的<code>open</code>函数，可以指定文件名、操作模式、编码信息等来获得操作文件的对象，接下来就可以对文件进行读写操作了</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">open</span>(</span><br><span class="line">    file,           <span class="comment"># 文件名</span></span><br><span class="line">    mode=<span class="string">&#x27;r&#x27;</span>,       <span class="comment"># 操作模式, 默认为 &#x27;rt&#x27;</span></span><br><span class="line">    buffering=-<span class="number">1</span>,   <span class="comment"># 缓存, 0为不缓存, 1为缓存一行</span></span><br><span class="line">    encoding=<span class="literal">None</span>,  <span class="comment"># 编码, 一般使用 utf8</span></span><br><span class="line">    errors=<span class="literal">None</span>,    <span class="comment"># 报错级别</span></span><br><span class="line">    newline=<span class="literal">None</span>,   <span class="comment"># 区分换行符</span></span><br><span class="line">    closefd=<span class="literal">True</span>,   <span class="comment"># 传入的file参数类型</span></span><br><span class="line">    opener=<span class="literal">None</span>,</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<p>对于操作模式, 可以参考:</p>
+<table>
+<thead>
+<tr>
+<th>字符</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>‘r’</td>
+<td>读文件 (默认)</td>
+</tr>
+<tr>
+<td>‘w’</td>
+<td>写文件, 首先会将文件截断</td>
+</tr>
+<tr>
+<td>‘x’</td>
+<td>新建文件, 然后以写模式打开</td>
+</tr>
+<tr>
+<td>‘a’</td>
+<td>写文件, 如果文件已存在, 则追加到文件末尾</td>
+</tr>
+<tr>
+<td>‘b’</td>
+<td>二进制模式</td>
+</tr>
+<tr>
+<td>‘t’</td>
+<td>文本模式 (默认)</td>
+</tr>
+<tr>
+<td>‘+’</td>
+<td>更新文件 (可读可写)</td>
+</tr>
+<tr>
+<td>‘U’</td>
+<td>universal newline mode (deprecated)</td>
+</tr>
+</tbody>
+</table>
+<p>使用一些模式的组合, 可以实现简单的功能:</p>
+<ol>
+<li>默认模式为 <code>'rt'</code>, 即以只读文本形式打开</li>
+<li>使用 <code>'w+b'</code>, 可以截断二进制文件</li>
+<li>使用 <code>'r+b'</code>, 不截断二进制文件</li>
+<li>模式 <code>'x'</code> 包含 <code>'w'</code>, 但会当文件已经存在时, 抛出 <code>FileExistsError</code> 异常</li>
+</ol>
+<p><img src="https://i.loli.net/2019/06/19/5d09d28a18f6055267.png" alt="20190619141328.png"></p>
+<p>对于文本文件, 常用的打开模式如下:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    <span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;test.txt&#x27;</span>, <span class="string">&#x27;r&#x27;</span>, encoding=<span class="string">&#x27;utf-8&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">        <span class="built_in">print</span>(f.read())</span><br><span class="line"><span class="keyword">except</span> FileNotFoundError:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;无法打开指定的文件!&#x27;</span>)</span><br><span class="line"><span class="keyword">except</span> LookupError:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;指定了未知的编码!&#x27;</span>)</span><br><span class="line"><span class="keyword">except</span> UnicodeDecodeError:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;读取文件时解码错误!&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<p>在读取文件时, 可能会出现的异常有:</p>
+<table>
+<thead>
+<tr>
+<th>异常</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>FileNotFoundError</code></td>
+<td>文件不存在</td>
+</tr>
+<tr>
+<td><code>FileExistsError</code></td>
+<td>文件已经存在 (<code>'x'</code>模式)</td>
+</tr>
+<tr>
+<td><code>LookupError</code></td>
+<td>制定了未知编码</td>
+</tr>
+<tr>
+<td><code>UnicodeDecodeError</code></td>
+<td>读取文件时解码错误</td>
+</tr>
+</tbody>
+</table>
+<h2 id="读取文本文件">读取文本文件</h2>
+<p>打开一个文本文件后, 可以通过 <code>read()</code> 函数读取文件的内容</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 参数变量</span></span><br><span class="line">name            <span class="comment"># 文件名</span></span><br><span class="line">mode            <span class="comment"># 模式</span></span><br><span class="line">buffer          <span class="comment"># 缓存</span></span><br><span class="line">encoding        <span class="comment"># 文件编码格式</span></span><br><span class="line">errors          <span class="comment"># 报错级别</span></span><br><span class="line">newlines        <span class="comment"># 区分换行符</span></span><br><span class="line"></span><br><span class="line">line_buffering  <span class="comment"># 行缓存</span></span><br><span class="line">closed          <span class="comment"># 文件是否关闭</span></span><br><span class="line">write_through   <span class="comment">#</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 函数</span></span><br><span class="line">close()         <span class="comment"># 关闭文件对象</span></span><br><span class="line">flush()         <span class="comment"># 清理写入缓存</span></span><br><span class="line">fileno()        <span class="comment"># 返回一个整型的文件描述符</span></span><br><span class="line">isatty()        <span class="comment"># 判断是否连接到一个终端设备</span></span><br><span class="line">truncate([size])</span><br><span class="line"><span class="comment"># 无 size 时, 从当前位置截断, 删除后面内容</span></span><br><span class="line"><span class="comment"># 有 size 时, 从开头偏移 size 处截断</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 读取</span></span><br><span class="line">readable()      <span class="comment"># 判断文件是否为可读模式</span></span><br><span class="line">read([size])    <span class="comment"># 读取文件内容, size未指定或为负则全部读取</span></span><br><span class="line">readline()      <span class="comment"># 读取一行</span></span><br><span class="line">readlines()     <span class="comment"># 以列表形式返回所有行</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 文件指针</span></span><br><span class="line">tell()          <span class="comment"># 返回当前文件指针位置</span></span><br><span class="line">seekable()      <span class="comment"># 判断文件是否可以随机访问</span></span><br><span class="line">seek(offset, whence=<span class="number">0</span>)  <span class="comment"># 设置文件指针位置</span></span><br><span class="line"><span class="comment"># whence 可以接收相对位置的起点</span></span><br><span class="line"><span class="comment"># 0 -- 开始处 (默认值); 此时 offset &gt;= 0</span></span><br><span class="line"><span class="comment"># 1 -- 当前文件位置;    此时 offset 可正可负</span></span><br><span class="line"><span class="comment"># 2 -- 结尾处;         此时 offset &lt; 0</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 写入</span></span><br><span class="line">writable()      <span class="comment"># 文件是否可写</span></span><br><span class="line">write(<span class="built_in">str</span>)      <span class="comment"># 将 str 写入文件, 返回写入的长度</span></span><br><span class="line">writelines(seq) <span class="comment"># 将序列按序写入文件, 如需换行须在序列中自行加入</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 重新配置文件模式</span></span><br><span class="line">reconfigure(</span><br><span class="line">    *,</span><br><span class="line">    encoding=<span class="literal">None</span>,</span><br><span class="line">    errors=<span class="literal">None</span>,</span><br><span class="line">    newline=<span class="literal">None</span>,</span><br><span class="line">    line_buffering=<span class="literal">None</span>,</span><br><span class="line">    write_through=<span class="literal">None</span>,</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<p>通过以上这些函数, 可以实现对文本的多种读取方式:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 一次性读取整个文件内容</span></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;致橡树.txt&#x27;</span>, <span class="string">&#x27;r&#x27;</span>, encoding=<span class="string">&#x27;utf-8&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">    <span class="built_in">print</span>(f.read())</span><br><span class="line"></span><br><span class="line"><span class="comment"># 通过for-in循环逐行读取</span></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;致橡树.txt&#x27;</span>, mode=<span class="string">&#x27;r&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">    <span class="keyword">for</span> line <span class="keyword">in</span> f:</span><br><span class="line">        <span class="built_in">print</span>(line, end=<span class="string">&#x27;&#x27;</span>)</span><br><span class="line">        time.sleep(<span class="number">0.5</span>)</span><br><span class="line"><span class="built_in">print</span>()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 读取文件按行读取到列表中</span></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;致橡树.txt&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">    lines = f.readlines()</span><br><span class="line"><span class="built_in">print</span>(lines)</span><br></pre></td></tr></table></figure>
+<p>文本的写入也很简单, 使用 <code>write()</code> 函数即可, 不再赘述.</p>
+<h2 id="JSON-处理">JSON 处理</h2>
+<p>使用 <code>json</code> 模块, 可以实现JSON格式数据的处理.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># JSON 文件  &lt;- -&gt;  Python 对象 (常为 dict)</span></span><br><span class="line">dump(obj, fp)       Python 对象        -&gt;   JSON格式文件 fp</span><br><span class="line">load(fp)            JSON格式文件 fp     -&gt;   Python 对象</span><br><span class="line"></span><br><span class="line"><span class="comment"># JSON str  &lt;- -&gt;  Python 对象</span></span><br><span class="line">dumps(obj)          Python 对象        -&gt;   JSON格式字符串 <span class="built_in">str</span></span><br><span class="line">loads(<span class="built_in">str</span>)          JSON格式字符串 <span class="built_in">str</span>  -&gt;   Python 对象</span><br></pre></td></tr></table></figure></div><div class="article-licensing box"><div class="licensing-title"><p>Python-100-Day ③ 常用/内置模块</p><p><a href="http://blog.czccc.cc/p/53e0edd6/">http://blog.czccc.cc/p/53e0edd6/</a></p></div><div class="licensing-meta level is-mobile"><div class="level-left"><div class="level-item is-narrow"><div><h6>作者</h6><p>Cheng</p></div></div><div class="level-item is-narrow"><div><h6>发布于</h6><p>2019-06-11</p></div></div><div class="level-item is-narrow"><div><h6>更新于</h6><p>2022-08-06</p></div></div><div class="level-item is-narrow"><div><h6>许可协议</h6><p><a class="icons" rel="noopener" target="_blank" title="Creative Commons" href="https://creativecommons.org/"><i class="icon fab fa-creative-commons"></i></a><a class="icons" rel="noopener" target="_blank" title="Attribution" href="https://creativecommons.org/licenses/by/4.0/"><i class="icon fab fa-creative-commons-by"></i></a><a class="icons" rel="noopener" target="_blank" title="Noncommercial" href="https://creativecommons.org/licenses/by-nc/4.0/"><i class="icon fab fa-creative-commons-nc"></i></a></p></div></div></div></div></div><div class="article-tags is-size-7 mb-4"><span class="mr-2">#</span><a class="link-muted mr-2" rel="tag" href="/tags/Python/">Python</a><a class="link-muted mr-2" rel="tag" href="/tags/Python-100-Days/">Python-100-Days</a></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/css/share.min.css"><div class="social-share"></div><script src="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/js/social-share.min.js"></script></article></div><div class="card"><div class="card-content"><h3 class="menu-label has-text-centered">喜欢这篇文章？打赏一下作者吧</h3><div class="buttons is-centered"><a class="button donate" data-type="alipay"><span class="icon is-small"><i class="fab fa-alipay"></i></span><span>支付宝</span><span class="qrcode"><img src="/img/Alipay.jpg" alt="支付宝"></span></a><a class="button donate" data-type="wechat"><span class="icon is-small"><i class="fab fa-weixin"></i></span><span>微信</span><span class="qrcode"><img src="/img/WeChat_pay.png" alt="微信"></span></a></div></div></div><nav class="post-navigation mt-4 level is-mobile"><div class="level-start"><a class="article-nav-prev level level-item link-muted" href="/p/a51c6c95/"><i class="level-item fas fa-chevron-left"></i><span class="level-item">Manjaro 安装与配置</span></a></div><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/p/24e7dd40/"><span class="level-item">Python-100-Day ② Python 面向对象</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><div class="card"><div class="card-content"><h3 class="title is-5">评论</h3><div id="disqus_thread"><noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></div><script>var disqus_config = function () {
+            this.page.url = 'http://blog.czccc.cc/p/53e0edd6/';
+            this.page.identifier = 'p/53e0edd6/';
+        };
+        (function() {
+            var d = document, s = d.createElement('script');  
+            s.src = '//' + 'czcc' + '.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();</script></div></div></div><div class="column column-left is-4-tablet is-3-desktop is-3-widescreen  order-1"><div class="card widget" data-type="profile"><div class="card-content"><nav class="level"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-128x128 mx-auto mb-2"><img class="avatar" src="/img/avatar.jpg" alt="Cheng"></figure><p class="title is-size-4 is-block" style="line-height:inherit;">Cheng</p><p class="is-size-6 is-block">A Student</p><p class="is-size-6 is-flex justify-content-center"><i class="fas fa-map-marker-alt mr-1"></i><span>Nanjing</span></p></div></div></nav><nav class="level is-mobile"><div class="level-item has-text-centered is-marginless"><div><p class="heading">文章</p><a href="/archives"><p class="title">54</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">分类</p><a href="/categories"><p class="title">26</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">标签</p><a href="/tags"><p class="title">50</p></a></div></div></nav><div class="level"><a class="level-item button is-primary is-rounded" href="https://github.com/czccc" target="_blank" rel="noopener">关注我</a></div><div class="level is-mobile is-multiline"><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Github" href="https://github.com/czccc"><i class="fab fa-github"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="RSS" href="/atom.xml"><i class="fas fa-rss"></i></a></div></div></div><div class="card widget column-left is-sticky" id="toc" data-type="toc"><div class="card-content"><div class="menu" style="max-height: calc(100vh - 5rem); overflow-y: auto;"><h3 class="menu-label">目录</h3><ul class="menu-list"><li><a class="level is-mobile" href="#"><span class="level-left"><span class="level-item">1</span><span class="level-item">图形用户界面和游戏开发</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#tkinter"><span class="level-left"><span class="level-item">1.1</span><span class="level-item">tkinter</span></span></a></li><li><a class="level is-mobile" href="#pygame"><span class="level-left"><span class="level-item">1.2</span><span class="level-item">pygame</span></span></a></li></ul></li><li><a class="level is-mobile" href="#"><span class="level-left"><span class="level-item">2</span><span class="level-item">文件和异常</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#打开文件"><span class="level-left"><span class="level-item">2.1</span><span class="level-item">打开文件</span></span></a></li><li><a class="level is-mobile" href="#读取文本文件"><span class="level-left"><span class="level-item">2.2</span><span class="level-item">读取文本文件</span></span></a></li><li><a class="level is-mobile" href="#JSON-处理"><span class="level-left"><span class="level-item">2.3</span><span class="level-item">JSON 处理</span></span></a></li></ul></li></ul></div></div><script src="/js/toc.js" defer></script></div></div><!--!--></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img src="/img/logo.ico" alt="CZCC" height="28"></a><p class="is-size-7"><span>&copy; 2022 Cheng</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a><br><span id="busuanzi_container_site_uv">共<span id="busuanzi_value_site_uv">0</span>个访客</span></p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons-by"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/czccc/hexo-theme-icarus"><i class="fab fa-github"></i></a></p></div></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script><script>moment.locale("zh-CN");</script><script>var IcarusThemeSettings = {
+            article: {
+                highlight: {
+                    clipboard: true,
+                    fold: 'unfolded'
+                }
+            }
+        };</script><script src="/js/column.js"></script><script src="/js/animation.js"></script><a id="back-to-top" title="回到顶端" href="javascript:;"><i class="fas fa-chevron-up"></i></a><script src="/js/back_to_top.js" defer></script><!--!--><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/js/lightgallery.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/js/jquery.justifiedGallery.min.js" defer></script><script>window.addEventListener("load", () => {
+            if (typeof $.fn.lightGallery === 'function') {
+                $('.article').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof $.fn.justifiedGallery === 'function') {
+                if ($('.justified-gallery > p > .gallery-item').length) {
+                    $('.justified-gallery > p > .gallery-item').unwrap();
+                }
+                $('.justified-gallery').justifiedGallery();
+            }
+        });</script><!--!--><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css"><script src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/auto-render.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/mhchem.min.js" defer></script><script>window.addEventListener("load", function() {
+            document.querySelectorAll('[role="article"] > .content').forEach(function(element) {
+                renderMathInElement(element);
+            });
+        });</script><script type="text/x-mathjax-config">MathJax.Hub.Config({
+            'HTML-CSS': {
+                matchFontHeight: false
+            },
+            SVG: {
+                matchFontHeight: false
+            },
+            CommonHTML: {
+                matchFontHeight: false
+            },
+            tex2jax: {
+                inlineMath: [
+                    ['$','$'],
+                    ['\\(','\\)']
+                ]
+            }
+        });</script><script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.9/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script><!--!--><script src="/js/main.js" defer></script><div class="searchbox"><div class="searchbox-container"><div class="searchbox-header"><div class="searchbox-input-container"><input class="searchbox-input" type="text" placeholder="想要查找什么..."></div><a class="searchbox-close" href="javascript:;">×</a></div><div class="searchbox-body"></div></div></div><script src="/js/insight.js" defer></script><script>document.addEventListener('DOMContentLoaded', function () {
+            loadInsight({"contentUrl":"/content.json"}, {"hint":"想要查找什么...","untitled":"(无标题)","posts":"文章","pages":"页面","categories":"分类","tags":"标签"});
+        });</script></body></html>

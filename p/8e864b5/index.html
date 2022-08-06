@@ -1,0 +1,345 @@
+<!doctype html>
+<html lang="zh"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>pytorch-tutorials - CZCC</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="CZCC"><meta name="msapplication-TileImage" content="/img/favicon.ico"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="CZCC"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="description" content=""><meta property="og:type" content="blog"><meta property="og:title" content="pytorch-tutorials"><meta property="og:url" content="http://blog.czccc.cc/p/8e864b5/"><meta property="og:site_name" content="CZCC"><meta property="og:locale" content="zh_CN"><meta property="og:image" content="http://blog.czccc.cc/img/og_image.png"><meta property="article:published_time" content="2019-11-26T06:36:45.000Z"><meta property="article:modified_time" content="2022-08-06T13:07:33.620Z"><meta property="article:author" content="Cheng"><meta property="article:tag" content="PyTorch"><meta property="article:tag" content="Python"><meta property="article:tag" content="机器学习"><meta property="twitter:card" content="summary"><meta property="twitter:image" content="/img/og_image.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"http://blog.czccc.cc/p/8e864b5/"},"headline":"pytorch-tutorials","image":["http://blog.czccc.cc/img/og_image.png"],"datePublished":"2019-11-26T06:36:45.000Z","dateModified":"2022-08-06T13:07:33.620Z","author":{"@type":"Person","name":"Cheng"},"publisher":{"@type":"Organization","name":"CZCC","logo":{"@type":"ImageObject","url":"http://blog.czccc.cc/img/logo.ico"}},"description":""}</script><link rel="canonical" href="http://blog.czccc.cc/p/8e864b5/"><link rel="alternate" href="/atom.xml" title="CZCC" type="application/atom+xml"><link rel="icon" href="/img/favicon.ico"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link rel="stylesheet" href="/css/default.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><!--!--><script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" defer></script><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css"><!--!--><!--!--><!--!--><!--!--><style>.pace{-webkit-pointer-events:none;pointer-events:none;-webkit-user-select:none;-moz-user-select:none;user-select:none}.pace-inactive{display:none}.pace .pace-progress{background:#3273dc;position:fixed;z-index:2000;top:0;right:100%;width:100%;height:2px}</style><script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script><!-- hexo injector head_end start --><script>
+  (function () {
+      function switchTab() {
+          if (!location.hash) {
+            return;
+          }
+          Array
+              .from(document.querySelectorAll('.tab-content'))
+              .forEach($tab => {
+                  $tab.classList.add('is-hidden');
+              });
+          Array
+              .from(document.querySelectorAll('.tabs li'))
+              .forEach($tab => {
+                  $tab.classList.remove('is-active');
+              });
+          const $activeTab = document.querySelector(location.hash);
+          if ($activeTab) {
+              $activeTab.classList.remove('is-hidden');
+          }
+          const $tabMenu = document.querySelector(`a[href="${location.hash}"]`);
+          if ($tabMenu) {
+              $tabMenu.parentElement.classList.add('is-active');
+          }
+      }
+      switchTab();
+      window.addEventListener('hashchange', switchTab, false);
+  })();
+  </script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.1.0"></head><body class="is-2-column"><nav class="navbar navbar-main"><div class="container navbar-container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img src="/img/logo.ico" alt="CZCC" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">Home</a><a class="navbar-item" href="/archives">Archives</a><a class="navbar-item" href="/categories">Categories</a><a class="navbar-item" href="/tags">Tags</a><a class="navbar-item" href="/categories/LeetCode">LeetCode</a><a class="navbar-item" href="/Software">Software</a><a class="navbar-item" href="/about">About</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/czccc/hexo-theme-icarus"><i class="fab fa-github"></i></a><a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;"><i class="fas fa-list-ul"></i></a><a class="navbar-item search" title="搜索" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-9-desktop is-9-widescreen"><div class="card"><article class="card-content article" role="article"><h1 class="title is-3 is-size-4-mobile"><i class="fas fa-angle-double-right">  </i>pytorch-tutorials</h1><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><i class="far fa-calendar-alt">  </i><span class="level-item"><time dateTime="2019-11-26T06:36:45.000Z" title="2019/11/26 14:36:45">2019-11-26</time>发表</span><i class="far fa-calendar-check">  </i><span class="level-item"><time dateTime="2022-08-06T13:07:33.620Z" title="2022/8/6 21:07:33">2022-08-06</time>更新</span><i class="far fa-folder">  </i><span class="level-item"><a class="link-muted" href="/categories/PyTorch/">PyTorch</a></span><i class="far fa-hourglass">  </i><span class="level-item">20 分钟读完 (大约3046个字)</span><i class="far fa-eye">  </i><span class="level-item" id="busuanzi_container_page_pv"><span id="busuanzi_value_page_pv">0</span>次访问</span></div></div><div class="content"><hr>
+<span id="more"></span>
+<h1>数据操作</h1>
+<h2 id="基本操作">基本操作</h2>
+<h3 id="创建">创建:</h3>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 从数组创建</span></span><br><span class="line">x = torch.tensor([<span class="number">5.5</span>, <span class="number">3</span>])</span><br><span class="line"><span class="comment"># 返回的 tensor 默认具有相同的 dtype 和 device</span></span><br><span class="line">x = x.new_ones(<span class="number">5</span>, <span class="number">3</span>, dtype=torch.float64)</span><br><span class="line"><span class="comment"># 指定新的数据类型, 继承了 x 的维度</span></span><br><span class="line">x = torch.randn_like(x, dtype=torch.<span class="built_in">float</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 从函数创建, 可以指定维度, dtype, device</span></span><br><span class="line">x = torch.empty(<span class="number">5</span>, <span class="number">3</span>)  <span class="comment"># 未初始化</span></span><br><span class="line">x = torch.rand(<span class="number">5</span>, <span class="number">3</span>)   <span class="comment"># [0, 1)</span></span><br><span class="line">x = torch.randn(<span class="number">5</span>, <span class="number">3</span>)  <span class="comment"># 正态分布</span></span><br><span class="line">x = torch.zeros(<span class="number">5</span>, <span class="number">3</span>, dtype=torch.long)</span><br><span class="line"></span><br><span class="line">x.size()  ==  x.shape</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th>函数</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Tensor(*sizes)</td>
+<td>基础构造函数</td>
+</tr>
+<tr>
+<td>tensor(data,)</td>
+<td>类似np.array的构造函数</td>
+</tr>
+<tr>
+<td>ones(*sizes)</td>
+<td>全1Tensor</td>
+</tr>
+<tr>
+<td>zeros(*sizes)</td>
+<td>全0Tensor</td>
+</tr>
+<tr>
+<td>eye(*sizes)</td>
+<td>对角线为1，其他为0</td>
+</tr>
+<tr>
+<td>arange(s,e,step)</td>
+<td>从s到e，步长为step</td>
+</tr>
+<tr>
+<td>linspace(s,e,steps)</td>
+<td>从s到e，均匀切分成steps份</td>
+</tr>
+<tr>
+<td>rand/randn(*sizes)</td>
+<td>均匀/标准分布</td>
+</tr>
+<tr>
+<td>normal(mean,std)/uniform(from,to)</td>
+<td>正态分布/均匀分布</td>
+</tr>
+<tr>
+<td>randperm(m)</td>
+<td>随机排列</td>
+</tr>
+</tbody>
+</table>
+<h3 id="加法">加法:</h3>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">x + y</span><br><span class="line">torch.add(x, y)</span><br><span class="line">torch.add(x, y, out=result)     <span class="comment"># 指定输出</span></span><br><span class="line">y.add_(x)                       <span class="comment"># inplace</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>注：PyTorch操作inplace版本都有后缀_, 例如 <code>x.copy_(y)</code>,  <code>x.t_()</code></p>
+</blockquote>
+<h3 id="索引">索引</h3>
+<p>使用类似NumPy的索引操作来访问Tensor的一部分</p>
+<p>索引出来的结果与原数据共享内存，也即修改一个，另一个会跟着修改。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">y = x[<span class="number">0</span>, :]</span><br><span class="line">y += <span class="number">1</span></span><br><span class="line"><span class="built_in">print</span>(y)</span><br><span class="line"><span class="built_in">print</span>(x[<span class="number">0</span>, :]) <span class="comment"># 源tensor也被改了</span></span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th>函数</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>index_select(input, dim, index)</td>
+<td>在指定维度dim上选取，比如选取某些行、某些列</td>
+</tr>
+<tr>
+<td>masked_select(input, mask)</td>
+<td>例子如上，a[a&gt;0]，使用ByteTensor进行选取</td>
+</tr>
+<tr>
+<td>nonzero(input)</td>
+<td>非0元素的下标</td>
+</tr>
+<tr>
+<td>gather(input, dim, index)</td>
+<td>根据index，在dim维度上选取数据，输出的size与index一样</td>
+</tr>
+</tbody>
+</table>
+<h3 id="view"><code>view()</code></h3>
+<p>用于改变Tensor的形状</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">y = x.view(<span class="number">15</span>)</span><br><span class="line">z = x.view(-<span class="number">1</span>, <span class="number">5</span>)  <span class="comment"># -1所指的维度可以根据其他维度的值推出来</span></span><br><span class="line"><span class="built_in">print</span>(x.size(), y.size(), z.size())</span><br><span class="line"><span class="comment"># torch.Size([5, 3]) torch.Size([15]) torch.Size([3, 5])</span></span><br></pre></td></tr></table></figure>
+<p>注意<code>view()</code>返回的新 tensor 与源 tensor 共享内存，也即更改其中的一个，另外一个也会跟着改变。</p>
+<p>Pytorch 还提供了一个<code>reshape()</code>可以改变形状，但是此函数并不能保证返回的是其拷贝，所以不推荐使用。</p>
+<p>如果不想共享内存，推荐先用**<code>clone()</code>**创造一个副本然后再使用view。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">x_cp = x.clone().view(<span class="number">15</span>)</span><br><span class="line">x -= <span class="number">1</span></span><br><span class="line"><span class="built_in">print</span>(x)</span><br><span class="line"><span class="built_in">print</span>(x_cp)</span><br><span class="line"></span><br><span class="line">tensor([[ <span class="number">1.6035</span>,  <span class="number">1.8110</span>,  <span class="number">0.9549</span>],</span><br><span class="line">        [ <span class="number">0.8797</span>,  <span class="number">1.0482</span>, -<span class="number">0.0445</span>],</span><br><span class="line">        [-<span class="number">0.7229</span>,  <span class="number">2.8663</span>, -<span class="number">0.5655</span>],</span><br><span class="line">        [ <span class="number">0.1604</span>, -<span class="number">0.0254</span>,  <span class="number">1.0739</span>],</span><br><span class="line">        [ <span class="number">2.2628</span>, -<span class="number">0.9175</span>, -<span class="number">0.2251</span>]])</span><br><span class="line">tensor([<span class="number">2.6035</span>, <span class="number">2.8110</span>, <span class="number">1.9549</span>, <span class="number">1.8797</span>, <span class="number">2.0482</span>, <span class="number">0.9555</span>, <span class="number">0.2771</span>, <span class="number">3.8663</span>, <span class="number">0.4345</span>,</span><br><span class="line">        <span class="number">1.1604</span>, <span class="number">0.9746</span>, <span class="number">2.0739</span>, <span class="number">3.2628</span>, <span class="number">0.0825</span>, <span class="number">0.7749</span>])</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>使用<code>clone</code>还有一个好处是会被记录在计算图中，即梯度回传到副本时也会传到源<code>Tensor</code>。</p>
+</blockquote>
+<h3 id="item"><code>item()</code></h3>
+<p>将一个标量Tensor转换成一个Python number：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">x = torch.randn(<span class="number">1</span>)</span><br><span class="line"><span class="built_in">print</span>(x)            <span class="comment"># tensor([2.3466])</span></span><br><span class="line"><span class="built_in">print</span>(x.item())     <span class="comment"># 2.3466382026672363</span></span><br></pre></td></tr></table></figure>
+<h3 id="线性代数">线性代数</h3>
+<table>
+<thead>
+<tr>
+<th>函数</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>trace</td>
+<td>对角线元素之和(矩阵的迹)</td>
+</tr>
+<tr>
+<td>diag</td>
+<td>对角线元素</td>
+</tr>
+<tr>
+<td>triu/tril</td>
+<td>矩阵的上三角/下三角，可指定偏移量</td>
+</tr>
+<tr>
+<td>mm/bmm</td>
+<td>矩阵乘法，batch的矩阵乘法</td>
+</tr>
+<tr>
+<td>addmm/addbmm/addmv/addr/baddbmm…</td>
+<td>矩阵运算</td>
+</tr>
+<tr>
+<td>t</td>
+<td>转置</td>
+</tr>
+<tr>
+<td>dot/cross</td>
+<td>内积/外积</td>
+</tr>
+<tr>
+<td>inverse</td>
+<td>求逆矩阵</td>
+</tr>
+<tr>
+<td>svd</td>
+<td>奇异值分解</td>
+</tr>
+</tbody>
+</table>
+<h2 id="广播">广播</h2>
+<p>当对两个形状不同的<code>Tensor</code>按元素运算时，可能会触发广播（broadcasting）机制：先适当复制元素使这两个<code>Tensor</code>形状相同后再按元素运算。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">x = torch.arange(<span class="number">1</span>, <span class="number">3</span>).view(<span class="number">1</span>, <span class="number">2</span>)</span><br><span class="line"><span class="built_in">print</span>(x)</span><br><span class="line">y = torch.arange(<span class="number">1</span>, <span class="number">4</span>).view(<span class="number">3</span>, <span class="number">1</span>)</span><br><span class="line"><span class="built_in">print</span>(y)</span><br><span class="line"><span class="built_in">print</span>(x + y)</span><br><span class="line"></span><br><span class="line">tensor([[<span class="number">1</span>, <span class="number">2</span>]])</span><br><span class="line">tensor([[<span class="number">1</span>],</span><br><span class="line">        [<span class="number">2</span>],</span><br><span class="line">        [<span class="number">3</span>]])</span><br><span class="line">tensor([[<span class="number">2</span>, <span class="number">3</span>],</span><br><span class="line">        [<span class="number">3</span>, <span class="number">4</span>],</span><br><span class="line">        [<span class="number">4</span>, <span class="number">5</span>]])</span><br></pre></td></tr></table></figure>
+<h2 id="运算的内存开销">运算的内存开销</h2>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">y = x + y  		<span class="comment"># 新内存地址</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 原内存地址</span></span><br><span class="line">y[:] = y + x</span><br><span class="line">torch.add(x, y, out=y)</span><br><span class="line">y += x</span><br><span class="line">y.add_(x)</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>注：虽然<code>view</code>返回的<code>Tensor</code>与源<code>Tensor</code>是共享<code>data</code>的，但是依然是一个新的<code>Tensor</code>（因为<code>Tensor</code>除了包含<code>data</code>外还有一些其他属性），二者id（内存地址）并不一致。</p>
+</blockquote>
+<h2 id="Tensor-和-NumPy-转换">Tensor 和 NumPy 转换</h2>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># tensor &lt;-&gt; numpy  共享内存</span></span><br><span class="line">a = torch.ones(<span class="number">5</span>)			<span class="comment"># tensor</span></span><br><span class="line">b = a.numpy()				<span class="comment"># numpy</span></span><br><span class="line">c = torch.from_numpy(b)		<span class="comment"># tensor</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># numpy -&gt; tensor  不共享内存</span></span><br><span class="line">d = torch.tensor(b)			<span class="comment"># tensor</span></span><br></pre></td></tr></table></figure>
+<h2 id="GPU-Tensor">GPU Tensor</h2>
+<p>用方法<code>to()</code>可以将<code>Tensor</code>在CPU和GPU（需要硬件支持）之间相互移动。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 以下代码只有在PyTorch GPU版本上才会执行</span></span><br><span class="line"><span class="keyword">if</span> torch.cuda.is_available():</span><br><span class="line">    device = torch.device(<span class="string">&quot;cuda&quot;</span>)          <span class="comment"># GPU</span></span><br><span class="line">    y = torch.ones_like(x, device=device)  <span class="comment"># 直接创建一个在GPU上的Tensor</span></span><br><span class="line">    x = x.to(device)                       <span class="comment"># 等价于 .to(&quot;cuda&quot;)</span></span><br><span class="line">    z = x + y</span><br><span class="line">    <span class="built_in">print</span>(z)</span><br><span class="line">    <span class="built_in">print</span>(z.to(<span class="string">&quot;cpu&quot;</span>, torch.double))       <span class="comment"># to()还可以同时更改数据类型</span></span><br></pre></td></tr></table></figure>
+<h1>自动求梯度</h1>
+<p>之前介绍的<code>Tensor</code>是PyTorch的核心类，如果将其属性<code>torch.requires_grad</code>设置为<code>True</code>，它将开始追踪(track)在其上的所有操作（这样就可以利用链式法则进行梯度传播了）。完成计算后，可以调用<code>.backward()</code>来完成所有梯度计算。此<code>Tensor</code>的梯度将累积到<code>.grad</code>属性中。</p>
+<blockquote>
+<p>注意在<code>y.backward()</code>时，如果<code>y</code>是标量，则不需要为<code>backward()</code>传入任何参数；否则，需要传入一个与<code>y</code>同形的<code>Tensor</code>。解释见 2.3.2 节。</p>
+</blockquote>
+<p>如果不想要被继续追踪，可以调用<code>.detach()</code>将其从追踪记录中分离出来，这样就可以防止将来的计算被追踪，这样梯度就传不过去了。此外，还可以用<code>with torch.no_grad()</code>将不想被追踪的操作代码块包裹起来，这种方法在评估模型的时候很常用，因为在评估模型时，我们并不需要计算可训练参数（<code>requires_grad=True</code>）的梯度。</p>
+<p><code>Function</code>是另外一个很重要的类。<code>Tensor</code>和<code>Function</code>互相结合就可以构建一个记录有整个计算过程的有向无环图（DAG）。每个<code>Tensor</code>都有一个<code>.grad_fn</code>属性，该属性即创建该<code>Tensor</code>的<code>Function</code>, 就是说该<code>Tensor</code>是不是通过某些运算得到的，若是，则<code>grad_fn</code>返回一个与这些运算相关的对象，否则是None。</p>
+<p>下面通过一些例子来理解这些概念。</p>
+<h2 id="Tensor"><code>Tensor</code></h2>
+<p>创建一个<code>Tensor</code>并设置<code>requires_grad=True</code>:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">x = torch.ones(2, 2, requires_grad=True)</span><br><span class="line">print(x)</span><br><span class="line">print(x.grad_fn)</span><br></pre></td></tr></table></figure>
+<p>输出：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">tensor([[1., 1.],</span><br><span class="line">        [1., 1.]], requires_grad=True)</span><br><span class="line">None</span><br></pre></td></tr></table></figure>
+<p>再做一下运算操作：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">y = x + 2</span><br><span class="line">print(y)</span><br><span class="line">print(y.grad_fn)</span><br></pre></td></tr></table></figure>
+<p>输出：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">tensor([[3., 3.],</span><br><span class="line">        [3., 3.]], grad_fn=&lt;AddBackward&gt;)</span><br><span class="line">&lt;AddBackward object at 0x1100477b8&gt;</span><br></pre></td></tr></table></figure>
+<p>注意x是直接创建的，所以它没有<code>grad_fn</code>, 而y是通过一个加法操作创建的， 所以它有一个为<code>&lt;AddBackward&gt;</code>的<code>grad_fn</code>。</p>
+<p>像x这种直接创建的称为叶子节点，叶子节点对应的<code>grad_fn</code>是<code>None</code>。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(x.is_leaf, y.is_leaf) # True False</span><br></pre></td></tr></table></figure>
+<p>再来点复杂度运算操作：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">z = y * y * 3</span><br><span class="line">out = z.mean()</span><br><span class="line">print(z, out)</span><br></pre></td></tr></table></figure>
+<p>输出：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">tensor([[27., 27.],</span><br><span class="line">        [27., 27.]], grad_fn=&lt;MulBackward&gt;) tensor(27., grad_fn=&lt;MeanBackward1&gt;)</span><br></pre></td></tr></table></figure>
+<p>通过<code>.requires_grad_()</code>来用in-place的方式改变<code>requires_grad</code>属性：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">a = torch.randn(2, 2) # 缺失情况下默认 requires_grad = False</span><br><span class="line">a = ((a * 3) / (a - 1))</span><br><span class="line">print(a.requires_grad) # False</span><br><span class="line">a.requires_grad_(True)</span><br><span class="line">print(a.requires_grad) # True</span><br><span class="line">b = (a * a).sum()</span><br><span class="line">print(b.grad_fn)</span><br></pre></td></tr></table></figure>
+<p>输出：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">False</span><br><span class="line">True</span><br><span class="line">&lt;SumBackward0 object at 0x118f50cc0&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="2-3-2-梯度">2.3.2 梯度</h2>
+<p>因为<code>out</code>是一个标量，所以调用<code>backward()</code>时不需要指定求导变量：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">out.backward() # 等价于 out.backward(torch.tensor(1.))</span><br></pre></td></tr></table></figure>
+<p>我们来看看<code>out</code>关于<code>x</code>的梯度 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mfrac><mrow><mi>d</mi><mo stretchy="false">(</mo><mi>o</mi><mi>u</mi><mi>t</mi><mo stretchy="false">)</mo></mrow><mrow><mi>d</mi><mi>x</mi></mrow></mfrac></mrow><annotation encoding="application/x-tex">\frac{d(out)}{dx}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.355em;vertical-align:-0.345em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.01em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">d</span><span class="mord mathnormal mtight">x</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.485em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">d</span><span class="mopen mtight">(</span><span class="mord mathnormal mtight">o</span><span class="mord mathnormal mtight">u</span><span class="mord mathnormal mtight">t</span><span class="mclose mtight">)</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span>:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(x.grad)</span><br></pre></td></tr></table></figure>
+<p>输出：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">tensor([[4.5000, 4.5000],</span><br><span class="line">        [4.5000, 4.5000]])</span><br></pre></td></tr></table></figure>
+<p>我们令<code>out</code>为 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>o</mi></mrow><annotation encoding="application/x-tex">o</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">o</span></span></span></span> , 因为 $$ o=\frac14\sum_{i=1}<sup>4z_i=\frac14\sum_{i=1}</sup>43(x_i+2)^2 $$ 所以 $$ \frac{\partial{o}}{\partial{x_i}}\bigr\rvert_{x_i=1}=\frac{9}{2}=4.5 $$ 所以上面的输出是正确的。</p>
+<p>数学上，如果有一个函数值和自变量都为向量的函数 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover accent="true"><mi>y</mi><mo>⃗</mo></mover><mo>=</mo><mi>f</mi><mo stretchy="false">(</mo><mover accent="true"><mi>x</mi><mo>⃗</mo></mover><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\vec{y}=f(\vec{x})</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.9084em;vertical-align:-0.1944em;"></span><span class="mord accent"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.714em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.1799em;"><span class="overlay" style="height:0.714em;width:0.471em;"><svg xmlns="http://www.w3.org/2000/svg" width='0.471em' height='0.714em' style='width:0.471em' viewBox='0 0 471 714' preserveAspectRatio='xMinYMin'><path d='M377 20c0-5.333 1.833-10 5.5-14S391 0 397 0c4.667 0 8.667 1.667 12 5
+3.333 2.667 6.667 9 10 19 6.667 24.667 20.333 43.667 41 57 7.333 4.667 11
+10.667 11 18 0 6-1 10-3 12s-6.667 5-14 9c-28.667 14.667-53.667 35.667-75 63
+-1.333 1.333-3.167 3.5-5.5 6.5s-4 4.833-5 5.5c-1 .667-2.5 1.333-4.5 2s-4.333 1
+-7 1c-4.667 0-9.167-1.833-13.5-5.5S337 184 337 178c0-12.667 15.667-32.333 47-59
+H213l-171-1c-8.667-6-13-12.333-13-19 0-4.667 4.333-11.333 13-20h359
+c-16-25.333-24-45-24-59z'/></svg></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.1944em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span class="mord accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.714em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathnormal">x</span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.2077em;"><span class="overlay" style="height:0.714em;width:0.471em;"><svg xmlns="http://www.w3.org/2000/svg" width='0.471em' height='0.714em' style='width:0.471em' viewBox='0 0 471 714' preserveAspectRatio='xMinYMin'><path d='M377 20c0-5.333 1.833-10 5.5-14S391 0 397 0c4.667 0 8.667 1.667 12 5
+3.333 2.667 6.667 9 10 19 6.667 24.667 20.333 43.667 41 57 7.333 4.667 11
+10.667 11 18 0 6-1 10-3 12s-6.667 5-14 9c-28.667 14.667-53.667 35.667-75 63
+-1.333 1.333-3.167 3.5-5.5 6.5s-4 4.833-5 5.5c-1 .667-2.5 1.333-4.5 2s-4.333 1
+-7 1c-4.667 0-9.167-1.833-13.5-5.5S337 184 337 178c0-12.667 15.667-32.333 47-59
+H213l-171-1c-8.667-6-13-12.333-13-19 0-4.667 4.333-11.333 13-20h359
+c-16-25.333-24-45-24-59z'/></svg></span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span>, 那么 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover accent="true"><mi>y</mi><mo>⃗</mo></mover></mrow><annotation encoding="application/x-tex">\vec{y}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.9084em;vertical-align:-0.1944em;"></span><span class="mord accent"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.714em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.1799em;"><span class="overlay" style="height:0.714em;width:0.471em;"><svg xmlns="http://www.w3.org/2000/svg" width='0.471em' height='0.714em' style='width:0.471em' viewBox='0 0 471 714' preserveAspectRatio='xMinYMin'><path d='M377 20c0-5.333 1.833-10 5.5-14S391 0 397 0c4.667 0 8.667 1.667 12 5
+3.333 2.667 6.667 9 10 19 6.667 24.667 20.333 43.667 41 57 7.333 4.667 11
+10.667 11 18 0 6-1 10-3 12s-6.667 5-14 9c-28.667 14.667-53.667 35.667-75 63
+-1.333 1.333-3.167 3.5-5.5 6.5s-4 4.833-5 5.5c-1 .667-2.5 1.333-4.5 2s-4.333 1
+-7 1c-4.667 0-9.167-1.833-13.5-5.5S337 184 337 178c0-12.667 15.667-32.333 47-59
+H213l-171-1c-8.667-6-13-12.333-13-19 0-4.667 4.333-11.333 13-20h359
+c-16-25.333-24-45-24-59z'/></svg></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.1944em;"><span></span></span></span></span></span></span></span></span> 关于 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover accent="true"><mi>x</mi><mo>⃗</mo></mover></mrow><annotation encoding="application/x-tex">\vec{x}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.714em;"></span><span class="mord accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.714em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathnormal">x</span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.2077em;"><span class="overlay" style="height:0.714em;width:0.471em;"><svg xmlns="http://www.w3.org/2000/svg" width='0.471em' height='0.714em' style='width:0.471em' viewBox='0 0 471 714' preserveAspectRatio='xMinYMin'><path d='M377 20c0-5.333 1.833-10 5.5-14S391 0 397 0c4.667 0 8.667 1.667 12 5
+3.333 2.667 6.667 9 10 19 6.667 24.667 20.333 43.667 41 57 7.333 4.667 11
+10.667 11 18 0 6-1 10-3 12s-6.667 5-14 9c-28.667 14.667-53.667 35.667-75 63
+-1.333 1.333-3.167 3.5-5.5 6.5s-4 4.833-5 5.5c-1 .667-2.5 1.333-4.5 2s-4.333 1
+-7 1c-4.667 0-9.167-1.833-13.5-5.5S337 184 337 178c0-12.667 15.667-32.333 47-59
+H213l-171-1c-8.667-6-13-12.333-13-19 0-4.667 4.333-11.333 13-20h359
+c-16-25.333-24-45-24-59z'/></svg></span></span></span></span></span></span></span></span></span></span> 的梯度就是一个雅可比矩阵（Jacobian matrix）: $$ J=\left(\begin{array}{ccc} \frac{\partial y_{1}}{\partial x_{1}} &amp; \cdots &amp; \frac{\partial y_{1}}{\partial x_{n}}\ \vdots &amp; \ddots &amp; \vdots\ \frac{\partial y_{m}}{\partial x_{1}} &amp; \cdots &amp; \frac{\partial y_{m}}{\partial x_{n}} \end{array}\right) $$ 而<code>torch.autograd</code>这个包就是用来计算一些雅克比矩阵的乘积的。例如，如果 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>v</mi></mrow><annotation encoding="application/x-tex">v</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">v</span></span></span></span> 是一个标量函数的 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>l</mi><mo>=</mo><mi>g</mi><mrow><mo fence="true">(</mo><mover accent="true"><mi>y</mi><mo>⃗</mo></mover><mo fence="true">)</mo></mrow></mrow><annotation encoding="application/x-tex">l=g\left(\vec{y}\right)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="minner"><span class="mopen delimcenter" style="top:0em;">(</span><span class="mord accent"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.714em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.1799em;"><span class="overlay" style="height:0.714em;width:0.471em;"><svg xmlns="http://www.w3.org/2000/svg" width='0.471em' height='0.714em' style='width:0.471em' viewBox='0 0 471 714' preserveAspectRatio='xMinYMin'><path d='M377 20c0-5.333 1.833-10 5.5-14S391 0 397 0c4.667 0 8.667 1.667 12 5
+3.333 2.667 6.667 9 10 19 6.667 24.667 20.333 43.667 41 57 7.333 4.667 11
+10.667 11 18 0 6-1 10-3 12s-6.667 5-14 9c-28.667 14.667-53.667 35.667-75 63
+-1.333 1.333-3.167 3.5-5.5 6.5s-4 4.833-5 5.5c-1 .667-2.5 1.333-4.5 2s-4.333 1
+-7 1c-4.667 0-9.167-1.833-13.5-5.5S337 184 337 178c0-12.667 15.667-32.333 47-59
+H213l-171-1c-8.667-6-13-12.333-13-19 0-4.667 4.333-11.333 13-20h359
+c-16-25.333-24-45-24-59z'/></svg></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.1944em;"><span></span></span></span></span></span><span class="mclose delimcenter" style="top:0em;">)</span></span></span></span></span> 的梯度： $$ v=\left(\begin{array}{ccc}\frac{\partial l}{\partial y_{1}} &amp; \cdots &amp; \frac{\partial l}{\partial y_{m}}\end{array}\right) $$ 那么根据链式法则我们有 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>l</mi></mrow><annotation encoding="application/x-tex">l</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span></span></span></span> 关于 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover accent="true"><mi>x</mi><mo>⃗</mo></mover></mrow><annotation encoding="application/x-tex">\vec{x}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.714em;"></span><span class="mord accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.714em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathnormal">x</span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.2077em;"><span class="overlay" style="height:0.714em;width:0.471em;"><svg xmlns="http://www.w3.org/2000/svg" width='0.471em' height='0.714em' style='width:0.471em' viewBox='0 0 471 714' preserveAspectRatio='xMinYMin'><path d='M377 20c0-5.333 1.833-10 5.5-14S391 0 397 0c4.667 0 8.667 1.667 12 5
+3.333 2.667 6.667 9 10 19 6.667 24.667 20.333 43.667 41 57 7.333 4.667 11
+10.667 11 18 0 6-1 10-3 12s-6.667 5-14 9c-28.667 14.667-53.667 35.667-75 63
+-1.333 1.333-3.167 3.5-5.5 6.5s-4 4.833-5 5.5c-1 .667-2.5 1.333-4.5 2s-4.333 1
+-7 1c-4.667 0-9.167-1.833-13.5-5.5S337 184 337 178c0-12.667 15.667-32.333 47-59
+H213l-171-1c-8.667-6-13-12.333-13-19 0-4.667 4.333-11.333 13-20h359
+c-16-25.333-24-45-24-59z'/></svg></span></span></span></span></span></span></span></span></span></span> 的雅克比矩阵就为: $$ v J=\left(\begin{array}{ccc}\frac{\partial l}{\partial y_{1}} &amp; \cdots &amp; \frac{\partial l}{\partial y_{m}}\end{array}\right) \left(\begin{array}{ccc} \frac{\partial y_{1}}{\partial x_{1}} &amp; \cdots &amp; \frac{\partial y_{1}}{\partial x_{n}}\ \vdots &amp; \ddots &amp; \vdots\ \frac{\partial y_{m}}{\partial x_{1}} &amp; \cdots &amp; \frac{\partial y_{m}}{\partial x_{n}} \end{array}\right)=\left(\begin{array}{ccc}\frac{\partial l}{\partial x_{1}} &amp; \cdots &amp; \frac{\partial l}{\partial x_{n}}\end{array}\right) $$</p>
+<p>注意：grad在反向传播过程中是累加的(accumulated)，这意味着每一次运行反向传播，梯度都会累加之前的梯度，所以一般在反向传播之前需把梯度清零。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"># 再来反向传播一次，注意grad是累加的</span><br><span class="line">out2 = x.sum()</span><br><span class="line">out2.backward()</span><br><span class="line">print(x.grad)</span><br><span class="line"></span><br><span class="line">out3 = x.sum()</span><br><span class="line">x.grad.data.zero_()</span><br><span class="line">out3.backward()</span><br><span class="line">print(x.grad)</span><br></pre></td></tr></table></figure>
+<p>输出：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">tensor([[5.5000, 5.5000],</span><br><span class="line">        [5.5000, 5.5000]])</span><br><span class="line">tensor([[1., 1.],</span><br><span class="line">        [1., 1.]])</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>现在我们解释2.3.1节留下的问题，为什么在<code>y.backward()</code>时，如果<code>y</code>是标量，则不需要为<code>backward()</code>传入任何参数；否则，需要传入一个与<code>y</code>同形的<code>Tensor</code>? 简单来说就是为了避免向量（甚至更高维张量）对张量求导，而转换成标量对张量求导。举个例子，假设形状为 <code>m x n</code> 的矩阵 X 经过运算得到了 <code>p x q</code> 的矩阵 Y，Y 又经过运算得到了 <code>s x t</code> 的矩阵 Z。那么按照前面讲的规则，dZ/dY 应该是一个 <code>s x t x p x q</code> 四维张量，dY/dX 是一个 <code>p x q x m x n</code>的四维张量。问题来了，怎样反向传播？怎样将两个四维张量相乘？？？这要怎么乘？？？就算能解决两个四维张量怎么乘的问题，四维和三维的张量又怎么乘？导数的导数又怎么求，这一连串的问题，感觉要疯掉…… 为了避免这个问题，我们<strong>不允许张量对张量求导，只允许标量对张量求导，求导结果是和自变量同形的张量</strong>。所以必要时我们要把张量通过将所有张量的元素加权求和的方式转换为标量，举个例子，假设<code>y</code>由自变量<code>x</code>计算而来，<code>w</code>是和<code>y</code>同形的张量，则<code>y.backward(w)</code>的含义是：先计算<code>l = torch.sum(y * w)</code>，则<code>l</code>是个标量，然后求<code>l</code>对自变量<code>x</code>的导数。 <a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/29923090">参考</a></p>
+</blockquote>
+<p>来看一些实际例子。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">x = torch.tensor([1.0, 2.0, 3.0, 4.0], requires_grad=True)</span><br><span class="line">y = 2 * x</span><br><span class="line">z = y.view(2, 2)</span><br><span class="line">print(z)</span><br></pre></td></tr></table></figure>
+<p>输出：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">tensor([[2., 4.],</span><br><span class="line">        [6., 8.]], grad_fn=&lt;ViewBackward&gt;)</span><br></pre></td></tr></table></figure>
+<p>现在 <code>y</code> 不是一个标量，所以在调用<code>backward</code>时需要传入一个和<code>y</code>同形的权重向量进行加权求和得到一个标量。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">v = torch.tensor([[1.0, 0.1], [0.01, 0.001]], dtype=torch.float)</span><br><span class="line">z.backward(v)</span><br><span class="line">print(x.grad)</span><br></pre></td></tr></table></figure>
+<p>输出：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tensor([2.0000, 0.2000, 0.0200, 0.0020])</span><br></pre></td></tr></table></figure>
+<p>注意，<code>x.grad</code>是和<code>x</code>同形的张量。</p>
+<p>再来看看中断梯度追踪的例子：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">x = torch.tensor(1.0, requires_grad=True)</span><br><span class="line">y1 = x ** 2 </span><br><span class="line">with torch.no_grad():</span><br><span class="line">    y2 = x ** 3</span><br><span class="line">y3 = y1 + y2</span><br><span class="line">    </span><br><span class="line">print(x.requires_grad)</span><br><span class="line">print(y1, y1.requires_grad) # True</span><br><span class="line">print(y2, y2.requires_grad) # False</span><br><span class="line">print(y3, y3.requires_grad) # True</span><br></pre></td></tr></table></figure>
+<p>输出：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">True</span><br><span class="line">tensor(1., grad_fn=&lt;PowBackward0&gt;) True</span><br><span class="line">tensor(1.) False</span><br><span class="line">tensor(2., grad_fn=&lt;ThAddBackward&gt;) True</span><br></pre></td></tr></table></figure>
+<p>可以看到，上面的<code>y2</code>是没有<code>grad_fn</code>而且<code>y2.requires_grad=False</code>的，而<code>y3</code>是有<code>grad_fn</code>的。如果我们将<code>y3</code>对<code>x</code>求梯度的话会是多少呢？</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">y3.backward()</span><br><span class="line">print(x.grad)</span><br></pre></td></tr></table></figure>
+<p>输出：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tensor(2.)</span><br></pre></td></tr></table></figure>
+<p>为什么是2呢？$ y_3 = y_1 + y_2 = x^2 + x^3$，当 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">x=1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span></span></span></span> 时 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mfrac><mrow><mi>d</mi><msub><mi>y</mi><mn>3</mn></msub></mrow><mrow><mi>d</mi><mi>x</mi></mrow></mfrac></mrow><annotation encoding="application/x-tex">\frac {dy_3} {dx}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.2772em;vertical-align:-0.345em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.9322em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">d</span><span class="mord mathnormal mtight">x</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.4461em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">d</span><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.03588em;">y</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3173em;"><span style="top:-2.357em;margin-left:-0.0359em;margin-right:0.0714em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight">3</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.143em;"><span></span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span> 不应该是5吗？事实上，由于 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>y</mi><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">y_2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> 的定义是被<code>torch.no_grad():</code>包裹的，所以与 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>y</mi><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">y_2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> 有关的梯度是不会回传的，只有与 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>y</mi><mn>1</mn></msub></mrow><annotation encoding="application/x-tex">y_1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> 有关的梯度才会回传，即 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>x</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">x^2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141em;"></span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span></span> 对 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">x</span></span></span></span> 的梯度。</p>
+<p>上面提到，<code>y2.requires_grad=False</code>，所以不能调用 <code>y2.backward()</code>，会报错：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">RuntimeError: element 0 of tensors does not require grad and does not have a grad_fn</span><br></pre></td></tr></table></figure>
+<p>此外，如果我们想要修改<code>tensor</code>的数值，但是又不希望被<code>autograd</code>记录（即不会影响反向传播），那么我么可以对<code>tensor.data</code>进行操作。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">x = torch.ones(1,requires_grad=True)</span><br><span class="line"></span><br><span class="line">print(x.data) # 还是一个tensor</span><br><span class="line">print(x.data.requires_grad) # 但是已经是独立于计算图之外</span><br><span class="line"></span><br><span class="line">y = 2 * x</span><br><span class="line">x.data *= 100 # 只改变了值，不会记录在计算图，所以不会影响梯度传播</span><br><span class="line"></span><br><span class="line">y.backward()</span><br><span class="line">print(x) # 更改data的值也会影响tensor的值</span><br><span class="line">print(x.grad)</span><br></pre></td></tr></table></figure>
+<p>输出：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">tensor([1.])</span><br><span class="line">False</span><br><span class="line">tensor([100.], requires_grad=True)</span><br><span class="line">tensor([2.])</span><br></pre></td></tr></table></figure></div><div class="article-licensing box"><div class="licensing-title"><p>pytorch-tutorials</p><p><a href="http://blog.czccc.cc/p/8e864b5/">http://blog.czccc.cc/p/8e864b5/</a></p></div><div class="licensing-meta level is-mobile"><div class="level-left"><div class="level-item is-narrow"><div><h6>作者</h6><p>Cheng</p></div></div><div class="level-item is-narrow"><div><h6>发布于</h6><p>2019-11-26</p></div></div><div class="level-item is-narrow"><div><h6>更新于</h6><p>2022-08-06</p></div></div><div class="level-item is-narrow"><div><h6>许可协议</h6><p><a class="icons" rel="noopener" target="_blank" title="Creative Commons" href="https://creativecommons.org/"><i class="icon fab fa-creative-commons"></i></a><a class="icons" rel="noopener" target="_blank" title="Attribution" href="https://creativecommons.org/licenses/by/4.0/"><i class="icon fab fa-creative-commons-by"></i></a><a class="icons" rel="noopener" target="_blank" title="Noncommercial" href="https://creativecommons.org/licenses/by-nc/4.0/"><i class="icon fab fa-creative-commons-nc"></i></a></p></div></div></div></div></div><div class="article-tags is-size-7 mb-4"><span class="mr-2">#</span><a class="link-muted mr-2" rel="tag" href="/tags/PyTorch/">PyTorch</a><a class="link-muted mr-2" rel="tag" href="/tags/Python/">Python</a><a class="link-muted mr-2" rel="tag" href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</a></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/css/share.min.css"><div class="social-share"></div><script src="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/js/social-share.min.js"></script></article></div><div class="card"><div class="card-content"><h3 class="menu-label has-text-centered">喜欢这篇文章？打赏一下作者吧</h3><div class="buttons is-centered"><a class="button donate" data-type="alipay"><span class="icon is-small"><i class="fab fa-alipay"></i></span><span>支付宝</span><span class="qrcode"><img src="/img/Alipay.jpg" alt="支付宝"></span></a><a class="button donate" data-type="wechat"><span class="icon is-small"><i class="fab fa-weixin"></i></span><span>微信</span><span class="qrcode"><img src="/img/WeChat_pay.png" alt="微信"></span></a></div></div></div><nav class="post-navigation mt-4 level is-mobile"><div class="level-start"><a class="article-nav-prev level level-item link-muted" href="/p/c27cf766/"><i class="level-item fas fa-chevron-left"></i><span class="level-item">MapReduce 课程总结</span></a></div><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/p/5c7cc0d4/"><span class="level-item">西瓜书第一章</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><div class="card"><div class="card-content"><h3 class="title is-5">评论</h3><div id="disqus_thread"><noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></div><script>var disqus_config = function () {
+            this.page.url = 'http://blog.czccc.cc/p/8e864b5/';
+            this.page.identifier = 'p/8e864b5/';
+        };
+        (function() {
+            var d = document, s = d.createElement('script');  
+            s.src = '//' + 'czcc' + '.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();</script></div></div></div><div class="column column-left is-4-tablet is-3-desktop is-3-widescreen  order-1"><div class="card widget" data-type="profile"><div class="card-content"><nav class="level"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-128x128 mx-auto mb-2"><img class="avatar" src="/img/avatar.jpg" alt="Cheng"></figure><p class="title is-size-4 is-block" style="line-height:inherit;">Cheng</p><p class="is-size-6 is-block">A Student</p><p class="is-size-6 is-flex justify-content-center"><i class="fas fa-map-marker-alt mr-1"></i><span>Nanjing</span></p></div></div></nav><nav class="level is-mobile"><div class="level-item has-text-centered is-marginless"><div><p class="heading">文章</p><a href="/archives"><p class="title">54</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">分类</p><a href="/categories"><p class="title">26</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">标签</p><a href="/tags"><p class="title">50</p></a></div></div></nav><div class="level"><a class="level-item button is-primary is-rounded" href="https://github.com/czccc" target="_blank" rel="noopener">关注我</a></div><div class="level is-mobile is-multiline"><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Github" href="https://github.com/czccc"><i class="fab fa-github"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="RSS" href="/atom.xml"><i class="fas fa-rss"></i></a></div></div></div><div class="card widget column-left is-sticky" id="toc" data-type="toc"><div class="card-content"><div class="menu" style="max-height: calc(100vh - 5rem); overflow-y: auto;"><h3 class="menu-label">目录</h3><ul class="menu-list"><li><a class="level is-mobile" href="#"><span class="level-left"><span class="level-item">1</span><span class="level-item">数据操作</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#基本操作"><span class="level-left"><span class="level-item">1.1</span><span class="level-item">基本操作</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#创建"><span class="level-left"><span class="level-item">1.1.1</span><span class="level-item">创建:</span></span></a></li><li><a class="level is-mobile" href="#加法"><span class="level-left"><span class="level-item">1.1.2</span><span class="level-item">加法:</span></span></a></li><li><a class="level is-mobile" href="#索引"><span class="level-left"><span class="level-item">1.1.3</span><span class="level-item">索引</span></span></a></li><li><a class="level is-mobile" href="#view"><span class="level-left"><span class="level-item">1.1.4</span><span class="level-item">view()</span></span></a></li><li><a class="level is-mobile" href="#item"><span class="level-left"><span class="level-item">1.1.5</span><span class="level-item">item()</span></span></a></li><li><a class="level is-mobile" href="#线性代数"><span class="level-left"><span class="level-item">1.1.6</span><span class="level-item">线性代数</span></span></a></li></ul></li><li><a class="level is-mobile" href="#广播"><span class="level-left"><span class="level-item">1.2</span><span class="level-item">广播</span></span></a></li><li><a class="level is-mobile" href="#运算的内存开销"><span class="level-left"><span class="level-item">1.3</span><span class="level-item">运算的内存开销</span></span></a></li><li><a class="level is-mobile" href="#Tensor-和-NumPy-转换"><span class="level-left"><span class="level-item">1.4</span><span class="level-item">Tensor 和 NumPy 转换</span></span></a></li><li><a class="level is-mobile" href="#GPU-Tensor"><span class="level-left"><span class="level-item">1.5</span><span class="level-item">GPU Tensor</span></span></a></li></ul></li><li><a class="level is-mobile" href="#"><span class="level-left"><span class="level-item">2</span><span class="level-item">自动求梯度</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#Tensor"><span class="level-left"><span class="level-item">2.1</span><span class="level-item">Tensor</span></span></a></li><li><a class="level is-mobile" href="#2-3-2-梯度"><span class="level-left"><span class="level-item">2.2</span><span class="level-item">2.3.2 梯度</span></span></a></li></ul></li></ul></div></div><script src="/js/toc.js" defer></script></div></div><!--!--></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img src="/img/logo.ico" alt="CZCC" height="28"></a><p class="is-size-7"><span>&copy; 2022 Cheng</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a><br><span id="busuanzi_container_site_uv">共<span id="busuanzi_value_site_uv">0</span>个访客</span></p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons-by"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/czccc/hexo-theme-icarus"><i class="fab fa-github"></i></a></p></div></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script><script>moment.locale("zh-CN");</script><script>var IcarusThemeSettings = {
+            article: {
+                highlight: {
+                    clipboard: true,
+                    fold: 'unfolded'
+                }
+            }
+        };</script><script src="/js/column.js"></script><script src="/js/animation.js"></script><a id="back-to-top" title="回到顶端" href="javascript:;"><i class="fas fa-chevron-up"></i></a><script src="/js/back_to_top.js" defer></script><!--!--><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/js/lightgallery.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/js/jquery.justifiedGallery.min.js" defer></script><script>window.addEventListener("load", () => {
+            if (typeof $.fn.lightGallery === 'function') {
+                $('.article').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof $.fn.justifiedGallery === 'function') {
+                if ($('.justified-gallery > p > .gallery-item').length) {
+                    $('.justified-gallery > p > .gallery-item').unwrap();
+                }
+                $('.justified-gallery').justifiedGallery();
+            }
+        });</script><!--!--><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css"><script src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/auto-render.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/mhchem.min.js" defer></script><script>window.addEventListener("load", function() {
+            document.querySelectorAll('[role="article"] > .content').forEach(function(element) {
+                renderMathInElement(element);
+            });
+        });</script><script type="text/x-mathjax-config">MathJax.Hub.Config({
+            'HTML-CSS': {
+                matchFontHeight: false
+            },
+            SVG: {
+                matchFontHeight: false
+            },
+            CommonHTML: {
+                matchFontHeight: false
+            },
+            tex2jax: {
+                inlineMath: [
+                    ['$','$'],
+                    ['\\(','\\)']
+                ]
+            }
+        });</script><script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.9/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script><!--!--><script src="/js/main.js" defer></script><div class="searchbox"><div class="searchbox-container"><div class="searchbox-header"><div class="searchbox-input-container"><input class="searchbox-input" type="text" placeholder="想要查找什么..."></div><a class="searchbox-close" href="javascript:;">×</a></div><div class="searchbox-body"></div></div></div><script src="/js/insight.js" defer></script><script>document.addEventListener('DOMContentLoaded', function () {
+            loadInsight({"contentUrl":"/content.json"}, {"hint":"想要查找什么...","untitled":"(无标题)","posts":"文章","pages":"页面","categories":"分类","tags":"标签"});
+        });</script></body></html>

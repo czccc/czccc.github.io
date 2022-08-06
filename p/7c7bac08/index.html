@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="zh"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>在 LeetCode 上做脑筋急转弯 - CZCC</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="CZCC"><meta name="msapplication-TileImage" content="/img/favicon.ico"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="CZCC"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="description" content="这篇文章主要包含以下内容：  #292 - Nim 游戏 #319 - 灯泡开关 #521 - 最长特殊序列 Ⅰ #777 - 在LR字符串中交换相邻字符 #1033 - 移动石子直到连续 #1227 - 飞机座位分配概率 #1503 - 所有蚂蚁掉下来前的最后一刻"><meta property="og:type" content="blog"><meta property="og:title" content="在 LeetCode 上做脑筋急转弯"><meta property="og:url" content="http://blog.czccc.cc/p/7c7bac08/"><meta property="og:site_name" content="CZCC"><meta property="og:description" content="这篇文章主要包含以下内容：  #292 - Nim 游戏 #319 - 灯泡开关 #521 - 最长特殊序列 Ⅰ #777 - 在LR字符串中交换相邻字符 #1033 - 移动石子直到连续 #1227 - 飞机座位分配概率 #1503 - 所有蚂蚁掉下来前的最后一刻"><meta property="og:locale" content="zh_CN"><meta property="og:image" content="http://blog.czccc.cc/img/og_image.png"><meta property="article:published_time" content="2020-11-14T08:20:56.000Z"><meta property="article:modified_time" content="2022-08-06T13:07:33.619Z"><meta property="article:author" content="Cheng"><meta property="article:tag" content="Algorithm"><meta property="article:tag" content="LeetCode"><meta property="twitter:card" content="summary"><meta property="twitter:image" content="/img/og_image.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"http://blog.czccc.cc/p/7c7bac08/"},"headline":"在 LeetCode 上做脑筋急转弯","image":["http://blog.czccc.cc/img/og_image.png"],"datePublished":"2020-11-14T08:20:56.000Z","dateModified":"2022-08-06T13:07:33.619Z","author":{"@type":"Person","name":"Cheng"},"publisher":{"@type":"Organization","name":"CZCC","logo":{"@type":"ImageObject","url":"http://blog.czccc.cc/img/logo.ico"}},"description":"这篇文章主要包含以下内容：  #292 - Nim 游戏 #319 - 灯泡开关 #521 - 最长特殊序列 Ⅰ #777 - 在LR字符串中交换相邻字符 #1033 - 移动石子直到连续 #1227 - 飞机座位分配概率 #1503 - 所有蚂蚁掉下来前的最后一刻"}</script><link rel="canonical" href="http://blog.czccc.cc/p/7c7bac08/"><link rel="alternate" href="/atom.xml" title="CZCC" type="application/atom+xml"><link rel="icon" href="/img/favicon.ico"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link rel="stylesheet" href="/css/default.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><!--!--><script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" defer></script><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css"><!--!--><!--!--><!--!--><!--!--><style>.pace{-webkit-pointer-events:none;pointer-events:none;-webkit-user-select:none;-moz-user-select:none;user-select:none}.pace-inactive{display:none}.pace .pace-progress{background:#3273dc;position:fixed;z-index:2000;top:0;right:100%;width:100%;height:2px}</style><script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script><!-- hexo injector head_end start --><script>
+  (function () {
+      function switchTab() {
+          if (!location.hash) {
+            return;
+          }
+          Array
+              .from(document.querySelectorAll('.tab-content'))
+              .forEach($tab => {
+                  $tab.classList.add('is-hidden');
+              });
+          Array
+              .from(document.querySelectorAll('.tabs li'))
+              .forEach($tab => {
+                  $tab.classList.remove('is-active');
+              });
+          const $activeTab = document.querySelector(location.hash);
+          if ($activeTab) {
+              $activeTab.classList.remove('is-hidden');
+          }
+          const $tabMenu = document.querySelector(`a[href="${location.hash}"]`);
+          if ($tabMenu) {
+              $tabMenu.parentElement.classList.add('is-active');
+          }
+      }
+      switchTab();
+      window.addEventListener('hashchange', switchTab, false);
+  })();
+  </script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.1.0"></head><body class="is-2-column"><nav class="navbar navbar-main"><div class="container navbar-container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img src="/img/logo.ico" alt="CZCC" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">Home</a><a class="navbar-item" href="/archives">Archives</a><a class="navbar-item" href="/categories">Categories</a><a class="navbar-item" href="/tags">Tags</a><a class="navbar-item" href="/categories/LeetCode">LeetCode</a><a class="navbar-item" href="/Software">Software</a><a class="navbar-item" href="/about">About</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/czccc/hexo-theme-icarus"><i class="fab fa-github"></i></a><a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;"><i class="fas fa-list-ul"></i></a><a class="navbar-item search" title="搜索" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-9-desktop is-9-widescreen"><div class="card"><article class="card-content article" role="article"><h1 class="title is-3 is-size-4-mobile"><i class="fas fa-angle-double-right">  </i>在 LeetCode 上做脑筋急转弯</h1><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><i class="far fa-calendar-alt">  </i><span class="level-item"><time dateTime="2020-11-14T08:20:56.000Z" title="2020/11/14 16:20:56">2020-11-14</time>发表</span><i class="far fa-calendar-check">  </i><span class="level-item"><time dateTime="2022-08-06T13:07:33.619Z" title="2022/8/6 21:07:33">2022-08-06</time>更新</span><i class="far fa-folder">  </i><span class="level-item"><a class="link-muted" href="/categories/Algorithm/">Algorithm</a></span><i class="far fa-hourglass">  </i><span class="level-item">14 分钟读完 (大约2099个字)</span><i class="far fa-eye">  </i><span class="level-item" id="busuanzi_container_page_pv"><span id="busuanzi_value_page_pv">0</span>次访问</span></div></div><div class="content"><hr>
+<p>这篇文章主要包含以下内容：</p>
+<ul>
+<li><a href="#292-nim-%E6%B8%B8%E6%88%8F">#292 - Nim 游戏</a></li>
+<li><a href="#319-%E7%81%AF%E6%B3%A1%E5%BC%80%E5%85%B3">#319 - 灯泡开关</a></li>
+<li><a href="#521-%E6%9C%80%E9%95%BF%E7%89%B9%E6%AE%8A%E5%BA%8F%E5%88%97-%E2%85%B0">#521 - 最长特殊序列 Ⅰ</a></li>
+<li><a href="#777-%E5%9C%A8lr%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%B8%AD%E4%BA%A4%E6%8D%A2%E7%9B%B8%E9%82%BB%E5%AD%97%E7%AC%A6">#777 - 在LR字符串中交换相邻字符</a></li>
+<li><a href="#1033-%E7%A7%BB%E5%8A%A8%E7%9F%B3%E5%AD%90%E7%9B%B4%E5%88%B0%E8%BF%9E%E7%BB%AD">#1033 - 移动石子直到连续</a></li>
+<li><a href="#1227-%E9%A3%9E%E6%9C%BA%E5%BA%A7%E4%BD%8D%E5%88%86%E9%85%8D%E6%A6%82%E7%8E%87">#1227 - 飞机座位分配概率</a></li>
+<li><a href="#1503-%E6%89%80%E6%9C%89%E8%9A%82%E8%9A%81%E6%8E%89%E4%B8%8B%E6%9D%A5%E5%89%8D%E7%9A%84%E6%9C%80%E5%90%8E%E4%B8%80%E5%88%BB">#1503 - 所有蚂蚁掉下来前的最后一刻</a></li>
+</ul>
+<span id="more"></span>
+<h1>#292 - <a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/nim-game/">Nim 游戏</a></h1>
+<blockquote>
+<p>你和你的朋友，两个人一起玩 Nim 游戏：</p>
+<ul>
+<li>桌子上有一堆石头。</li>
+<li>你们轮流进行自己的回合，你作为先手。</li>
+<li>每一回合，轮到的人拿掉 1 - 3 块石头。</li>
+<li>拿掉最后一块石头的人就是获胜者。</li>
+</ul>
+<p>假设你们每一步都是最优解。请编写一个函数，来判断你是否可以在给定石头数量为 <code>n</code> 的情况下赢得游戏。如果可以赢，返回 <code>true</code>；否则，返回 <code>false</code> 。</p>
+</blockquote>
+<p>由于每个人最多只能拿 <code>3</code> 块石头，那么如果桌上还剩 <code>4</code> 块的话，一个人是一定不能一次拿完的。那么只要在一个人拿 <code>x</code> 块石头之后，另一个人继续拿 <code>4 - x</code> 块，就能保证一开始拿的那个人一定不可能赢。</p>
+<p>因此，因为你作为先手，如果桌上的石头一开始就是 <code>4</code> 的倍数，那么你就是一开始拿的人，也就是说你会输；如果不是 <code>4</code> 的倍数，你就可以拿 <code>n % 4</code> 块，那么你的对手就不可能赢，因此你会获得胜利。</p>
+<p>所以胜利与否只取决于桌上原始的石头数。解法如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">canWinNim</span>(<span class="params">self, n: <span class="built_in">int</span></span>) -&gt; <span class="built_in">bool</span>:</span><br><span class="line">        <span class="keyword">return</span> n % <span class="number">4</span> != <span class="number">0</span></span><br></pre></td></tr></table></figure>
+<h1>#319 - <a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/bulb-switcher/">灯泡开关</a></h1>
+<blockquote>
+<p>初始时有 n 个灯泡关闭。</p>
+<p>第 1 轮，你打开所有的灯泡。 第 2 轮，每两个灯泡你关闭一次。 第 3 轮，每三个灯泡切换一次开关（如果关闭则开启，如果开启则关闭）。</p>
+<p>第 i 轮，每 i 个灯泡切换一次开关。 对于第 n 轮，你只切换最后一个灯泡的开关。</p>
+<p>找出 n 轮后有多少个亮着的灯泡。</p>
+</blockquote>
+<p>首先，初始时每个灯泡都是灭的。</p>
+<p>那么，什么时候灯泡会转变一次状态呢？由题意，对于第 <code>i</code> 轮，如果 <code>k % i == 0</code>，也就是 <code>k</code> 是 <code>i</code> 的倍数，此时灯泡 <code>k</code> 会转变一次状态。另一方面，在第 <code>k / i</code> 轮，灯泡 <code>k</code> 同样会转变一次状态。因此，如果 <code>i != k / i</code>，那么灯泡会转变两次，最终还是灭的；而只有 <code>i == k / i</code>，也就是 <code>k == i * i</code>，即 <code>k</code> 是个平方数，此时灯泡 <code>k</code> 只会转变一次，因此最后的状态是亮的。</p>
+<p>举个例子，比如 <code>12</code>，由于 <code>12 = 1 * 12 = 2 * 6 = 3 * 4</code>，因此会分别在第 <code>1, 2, 3, 4, 6, 12</code> 轮转换六次状态，最终还是灭的；而对于 <code>16</code>，由于 <code>16 = 1 * 16 = 2 * 8 = 4 * 4</code>，由于在 <code>4</code> 处只变了一次，最终在第 <code>1, 2, 4, 8, 16</code> 轮转换五次，最终是亮的。</p>
+<p>因此，亮着的灯泡的个数就等同于 <code>[1, n]</code> 内的平方数的个数。解法如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">bulbSwitch</span>(<span class="params">self, n: <span class="built_in">int</span></span>) -&gt; <span class="built_in">int</span>:</span><br><span class="line">        <span class="keyword">return</span> floor(sqrt(n))</span><br></pre></td></tr></table></figure>
+<h1>#521 - <a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/longest-uncommon-subsequence-i/">最长特殊序列 Ⅰ</a></h1>
+<blockquote>
+<p>给你两个字符串，请你从这两个字符串中找出最长的特殊序列。</p>
+<p>「最长特殊序列」定义如下：该序列为某字符串独有的最长子序列（即不能是其他字符串的子序列）。</p>
+<p>子序列 可以通过删去字符串中的某些字符实现，但不能改变剩余字符的相对顺序。空序列为所有字符串的子序列，任何字符串为其自身的子序列。</p>
+<p>输入为两个字符串，输出最长特殊序列的长度。如果不存在，则返回 -1。</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">findLUSlength</span>(<span class="params">self, a: <span class="built_in">str</span>, b: <span class="built_in">str</span></span>) -&gt; <span class="built_in">int</span>:</span><br><span class="line">        <span class="keyword">if</span> a == b:</span><br><span class="line">            <span class="keyword">return</span> -<span class="number">1</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="built_in">max</span>(<span class="built_in">len</span>(a), <span class="built_in">len</span>(b))</span><br></pre></td></tr></table></figure>
+<h1>#777 - <a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/swap-adjacent-in-lr-string/">在LR字符串中交换相邻字符</a></h1>
+<blockquote>
+<p>在一个由 ‘L’ , ‘R’ 和 ‘X’ 三个字符组成的字符串（例如&quot;RXXLRXRXL&quot;）中进行移动操作。一次移动操作指用一个&quot;LX&quot;替换一个&quot;XL&quot;，或者用一个&quot;XR&quot;替换一个&quot;RX&quot;。现给定起始字符串start和结束字符串end，请编写代码，当且仅当存在一系列移动操作使得start可以转换成end时， 返回True。</p>
+</blockquote>
+<h1>#1033 - <a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/moving-stones-until-consecutive/">移动石子直到连续</a></h1>
+<blockquote>
+<p>三枚石子放置在数轴上，位置分别为 a，b，c。</p>
+<p>每一回合，我们假设这三枚石子当前分别位于位置 x, y, z 且 x &lt; y &lt; z。从位置 x 或者是位置 z 拿起一枚石子，并将该石子移动到某一整数位置 k 处，其中 x &lt; k &lt; z 且 k != y。</p>
+<p>当你无法进行任何移动时，即，这些石子的位置连续时，游戏结束。</p>
+<p>要使游戏结束，你可以执行的最小和最大移动次数分别是多少？ 以长度为 2 的数组形式返回答案：answer = [minimum_moves, maximum_moves]</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">numMovesStones</span>(<span class="params">self, a: <span class="built_in">int</span>, b: <span class="built_in">int</span>, c: <span class="built_in">int</span></span>) -&gt; <span class="type">List</span>[<span class="built_in">int</span>]:</span><br><span class="line">        a, b, c = <span class="built_in">sorted</span>([a, b, c])</span><br><span class="line">        <span class="keyword">if</span> a + <span class="number">1</span> == b <span class="keyword">and</span> b + <span class="number">1</span> == c:</span><br><span class="line">            <span class="keyword">return</span> [<span class="number">0</span>, <span class="number">0</span>]</span><br><span class="line">        <span class="keyword">elif</span> b - a  &lt;= <span class="number">2</span> <span class="keyword">or</span> c - b &lt;= <span class="number">2</span>:</span><br><span class="line">            <span class="keyword">return</span> [<span class="number">1</span>, c - a - <span class="number">2</span>]</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">return</span> [<span class="number">2</span>, c - a - <span class="number">2</span>]</span><br></pre></td></tr></table></figure>
+<h1>#1227 - <a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/airplane-seat-assignment-probability/">飞机座位分配概率</a></h1>
+<blockquote>
+<p>有 n 位乘客即将登机，飞机正好有 n 个座位。第一位乘客的票丢了，他随便选了一个座位坐下。</p>
+<p>剩下的乘客将会：</p>
+<p>如果他们自己的座位还空着，就坐到自己的座位上，</p>
+<p>当他们自己的座位被占用时，随机选择其他座位<br>
+第 n 位乘客坐在自己的座位上的概率是多少？</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">nthPersonGetsNthSeat</span>(<span class="params">self, n: <span class="built_in">int</span></span>) -&gt; <span class="built_in">float</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span> <span class="keyword">if</span> n == <span class="number">1</span> <span class="keyword">else</span> <span class="number">0.5</span></span><br></pre></td></tr></table></figure>
+<h1>#1503 - <a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/last-moment-before-all-ants-fall-out-of-a-plank/">所有蚂蚁掉下来前的最后一刻</a></h1>
+<blockquote>
+<p>有一块木板，长度为 <code>n</code> 个 <strong>单位</strong> 。一些蚂蚁在木板上移动，每只蚂蚁都以 <strong>每秒一个单位</strong> 的速度移动。其中，一部分蚂蚁向 <strong>左</strong> 移动，其他蚂蚁向 <strong>右</strong> 移动。</p>
+<p>当两只向 <strong>不同</strong> 方向移动的蚂蚁在某个点相遇时，它们会同时改变移动方向并继续移动。假设更改方向不会花费任何额外时间。</p>
+<p>而当蚂蚁在某一时刻 <code>t</code> 到达木板的一端时，它立即从木板上掉下来。</p>
+<p>给你一个整数 <code>n</code> 和两个整数数组 <code>left</code> 以及 <code>right</code> 。两个数组分别标识向左或者向右移动的蚂蚁在 <code>t = 0</code> 时的位置。请你返回最后一只蚂蚁从木板上掉下来的时刻。</p>
+</blockquote>
+<p>题目写的花里胡哨的，但是想想看，两只蚂蚁碰面的时候，究竟发生了什么？</p>
+<p><strong>改变移动方向并继续移动</strong>，这是不是等同于他们<strong>穿过了彼此，然后继续移动</strong>？</p>
+<p>所以就不用考虑碰不碰面的问题，就当每只蚂蚁都是独立的，而现在要求的就是行走最远的蚂蚁走了多久。</p>
+<p>因此答案就是：</p>
+<ol>
+<li>向左走的蚂蚁要走到 <code>0</code> 的位置，走的最远的路程就是他们所在的位置的最大值，也就是 <code>max(left)</code></li>
+<li>向右走的蚂蚁要走到 <code>n</code> 的位置，走的最远的路程就是 <code>n</code> 减去他们所在的位置的最小值，也就是 <code>n - max(right)</code></li>
+<li>最终的结果就是上面两个的最大值。</li>
+</ol>
+<p>解答如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">getLastMoment</span>(<span class="params">self, n: <span class="built_in">int</span>, left: <span class="type">List</span>[<span class="built_in">int</span>], right: <span class="type">List</span>[<span class="built_in">int</span>]</span>) -&gt; <span class="built_in">int</span>:</span><br><span class="line">        ans = <span class="number">0</span></span><br><span class="line">        <span class="keyword">if</span> left:</span><br><span class="line">            ans = <span class="built_in">max</span>(ans, <span class="built_in">max</span>(left))</span><br><span class="line">        <span class="keyword">if</span> right:</span><br><span class="line">            ans = <span class="built_in">max</span>(ans, n - <span class="built_in">min</span>(right))</span><br><span class="line">        <span class="keyword">return</span> ans</span><br></pre></td></tr></table></figure>
+</div><div class="article-licensing box"><div class="licensing-title"><p>在 LeetCode 上做脑筋急转弯</p><p><a href="http://blog.czccc.cc/p/7c7bac08/">http://blog.czccc.cc/p/7c7bac08/</a></p></div><div class="licensing-meta level is-mobile"><div class="level-left"><div class="level-item is-narrow"><div><h6>作者</h6><p>Cheng</p></div></div><div class="level-item is-narrow"><div><h6>发布于</h6><p>2020-11-14</p></div></div><div class="level-item is-narrow"><div><h6>更新于</h6><p>2022-08-06</p></div></div><div class="level-item is-narrow"><div><h6>许可协议</h6><p><a class="icons" rel="noopener" target="_blank" title="Creative Commons" href="https://creativecommons.org/"><i class="icon fab fa-creative-commons"></i></a><a class="icons" rel="noopener" target="_blank" title="Attribution" href="https://creativecommons.org/licenses/by/4.0/"><i class="icon fab fa-creative-commons-by"></i></a><a class="icons" rel="noopener" target="_blank" title="Noncommercial" href="https://creativecommons.org/licenses/by-nc/4.0/"><i class="icon fab fa-creative-commons-nc"></i></a></p></div></div></div></div></div><div class="article-tags is-size-7 mb-4"><span class="mr-2">#</span><a class="link-muted mr-2" rel="tag" href="/tags/Algorithm/">Algorithm</a><a class="link-muted mr-2" rel="tag" href="/tags/LeetCode/">LeetCode</a></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/css/share.min.css"><div class="social-share"></div><script src="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/js/social-share.min.js"></script></article></div><div class="card"><div class="card-content"><h3 class="menu-label has-text-centered">喜欢这篇文章？打赏一下作者吧</h3><div class="buttons is-centered"><a class="button donate" data-type="alipay"><span class="icon is-small"><i class="fab fa-alipay"></i></span><span>支付宝</span><span class="qrcode"><img src="/img/Alipay.jpg" alt="支付宝"></span></a><a class="button donate" data-type="wechat"><span class="icon is-small"><i class="fab fa-weixin"></i></span><span>微信</span><span class="qrcode"><img src="/img/WeChat_pay.png" alt="微信"></span></a></div></div></div><nav class="post-navigation mt-4 level is-mobile"><div class="level-start"><a class="article-nav-prev level level-item link-muted" href="/p/2633d759/"><i class="level-item fas fa-chevron-left"></i><span class="level-item">C++ 中的智能指针</span></a></div><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/p/b8bdff8e/"><span class="level-item">Zeek 的安装与使用</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><div class="card"><div class="card-content"><h3 class="title is-5">评论</h3><div id="disqus_thread"><noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></div><script>var disqus_config = function () {
+            this.page.url = 'http://blog.czccc.cc/p/7c7bac08/';
+            this.page.identifier = 'p/7c7bac08/';
+        };
+        (function() {
+            var d = document, s = d.createElement('script');  
+            s.src = '//' + 'czcc' + '.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();</script></div></div></div><div class="column column-left is-4-tablet is-3-desktop is-3-widescreen  order-1"><div class="card widget" data-type="profile"><div class="card-content"><nav class="level"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-128x128 mx-auto mb-2"><img class="avatar" src="/img/avatar.jpg" alt="Cheng"></figure><p class="title is-size-4 is-block" style="line-height:inherit;">Cheng</p><p class="is-size-6 is-block">A Student</p><p class="is-size-6 is-flex justify-content-center"><i class="fas fa-map-marker-alt mr-1"></i><span>Nanjing</span></p></div></div></nav><nav class="level is-mobile"><div class="level-item has-text-centered is-marginless"><div><p class="heading">文章</p><a href="/archives"><p class="title">54</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">分类</p><a href="/categories"><p class="title">26</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">标签</p><a href="/tags"><p class="title">50</p></a></div></div></nav><div class="level"><a class="level-item button is-primary is-rounded" href="https://github.com/czccc" target="_blank" rel="noopener">关注我</a></div><div class="level is-mobile is-multiline"><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Github" href="https://github.com/czccc"><i class="fab fa-github"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="RSS" href="/atom.xml"><i class="fas fa-rss"></i></a></div></div></div><div class="card widget column-left is-sticky" id="toc" data-type="toc"><div class="card-content"><div class="menu" style="max-height: calc(100vh - 5rem); overflow-y: auto;"><h3 class="menu-label">目录</h3><ul class="menu-list"><li><a class="level is-mobile" href="#"><span class="level-left"><span class="level-item">1</span><span class="level-item">#292 - Nim 游戏</span></span></a></li><li><a class="level is-mobile" href="#"><span class="level-left"><span class="level-item">2</span><span class="level-item">#319 - 灯泡开关</span></span></a></li><li><a class="level is-mobile" href="#"><span class="level-left"><span class="level-item">3</span><span class="level-item">#521 - 最长特殊序列 Ⅰ</span></span></a></li><li><a class="level is-mobile" href="#"><span class="level-left"><span class="level-item">4</span><span class="level-item">#777 - 在LR字符串中交换相邻字符</span></span></a></li><li><a class="level is-mobile" href="#"><span class="level-left"><span class="level-item">5</span><span class="level-item">#1033 - 移动石子直到连续</span></span></a></li><li><a class="level is-mobile" href="#"><span class="level-left"><span class="level-item">6</span><span class="level-item">#1227 - 飞机座位分配概率</span></span></a></li><li><a class="level is-mobile" href="#"><span class="level-left"><span class="level-item">7</span><span class="level-item">#1503 - 所有蚂蚁掉下来前的最后一刻</span></span></a></li></ul></div></div><script src="/js/toc.js" defer></script></div></div><!--!--></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img src="/img/logo.ico" alt="CZCC" height="28"></a><p class="is-size-7"><span>&copy; 2022 Cheng</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a><br><span id="busuanzi_container_site_uv">共<span id="busuanzi_value_site_uv">0</span>个访客</span></p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons-by"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/czccc/hexo-theme-icarus"><i class="fab fa-github"></i></a></p></div></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script><script>moment.locale("zh-CN");</script><script>var IcarusThemeSettings = {
+            article: {
+                highlight: {
+                    clipboard: true,
+                    fold: 'unfolded'
+                }
+            }
+        };</script><script src="/js/column.js"></script><script src="/js/animation.js"></script><a id="back-to-top" title="回到顶端" href="javascript:;"><i class="fas fa-chevron-up"></i></a><script src="/js/back_to_top.js" defer></script><!--!--><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/js/lightgallery.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/js/jquery.justifiedGallery.min.js" defer></script><script>window.addEventListener("load", () => {
+            if (typeof $.fn.lightGallery === 'function') {
+                $('.article').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof $.fn.justifiedGallery === 'function') {
+                if ($('.justified-gallery > p > .gallery-item').length) {
+                    $('.justified-gallery > p > .gallery-item').unwrap();
+                }
+                $('.justified-gallery').justifiedGallery();
+            }
+        });</script><!--!--><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css"><script src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/auto-render.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/mhchem.min.js" defer></script><script>window.addEventListener("load", function() {
+            document.querySelectorAll('[role="article"] > .content').forEach(function(element) {
+                renderMathInElement(element);
+            });
+        });</script><script type="text/x-mathjax-config">MathJax.Hub.Config({
+            'HTML-CSS': {
+                matchFontHeight: false
+            },
+            SVG: {
+                matchFontHeight: false
+            },
+            CommonHTML: {
+                matchFontHeight: false
+            },
+            tex2jax: {
+                inlineMath: [
+                    ['$','$'],
+                    ['\\(','\\)']
+                ]
+            }
+        });</script><script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.9/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script><!--!--><script src="/js/main.js" defer></script><div class="searchbox"><div class="searchbox-container"><div class="searchbox-header"><div class="searchbox-input-container"><input class="searchbox-input" type="text" placeholder="想要查找什么..."></div><a class="searchbox-close" href="javascript:;">×</a></div><div class="searchbox-body"></div></div></div><script src="/js/insight.js" defer></script><script>document.addEventListener('DOMContentLoaded', function () {
+            loadInsight({"contentUrl":"/content.json"}, {"hint":"想要查找什么...","untitled":"(无标题)","posts":"文章","pages":"页面","categories":"分类","tags":"标签"});
+        });</script></body></html>

@@ -1,0 +1,921 @@
+<!doctype html>
+<html lang="zh"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>MapReduce 课程总结 - CZCC</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="CZCC"><meta name="msapplication-TileImage" content="/img/favicon.ico"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="CZCC"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="description" content="MapReduce 大数据分析课程总结"><meta property="og:type" content="blog"><meta property="og:title" content="MapReduce 课程总结"><meta property="og:url" content="http://blog.czccc.cc/p/c27cf766/"><meta property="og:site_name" content="CZCC"><meta property="og:description" content="MapReduce 大数据分析课程总结"><meta property="og:locale" content="zh_CN"><meta property="og:image" content="https://s2.ax1x.com/2019/12/18/Q7KLlR.png"><meta property="og:image" content="https://s2.ax1x.com/2019/12/18/Q7K7Y4.png"><meta property="og:image" content="https://s2.ax1x.com/2019/12/18/Q78x0I.png"><meta property="og:image" content="https://s2.ax1x.com/2019/12/18/Q7YfXQ.png"><meta property="og:image" content="https://s2.ax1x.com/2019/12/18/Q7YHhV.png"><meta property="og:image" content="https://s2.ax1x.com/2019/12/18/Q7YvnJ.png"><meta property="article:published_time" content="2019-12-18T05:44:01.000Z"><meta property="article:modified_time" content="2022-08-06T13:07:33.623Z"><meta property="article:author" content="Cheng"><meta property="article:tag" content="NJU"><meta property="article:tag" content="课程总结"><meta property="article:tag" content="MapReduce"><meta property="article:tag" content="大数据"><meta property="twitter:card" content="summary"><meta property="twitter:image" content="https://s2.ax1x.com/2019/12/18/Q7KLlR.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"http://blog.czccc.cc/p/c27cf766/"},"headline":"MapReduce 课程总结","image":["https://s2.ax1x.com/2019/12/18/Q7KLlR.png","https://s2.ax1x.com/2019/12/18/Q7K7Y4.png","https://s2.ax1x.com/2019/12/18/Q78x0I.png","https://s2.ax1x.com/2019/12/18/Q7YfXQ.png","https://s2.ax1x.com/2019/12/18/Q7YHhV.png","https://s2.ax1x.com/2019/12/18/Q7YvnJ.png"],"datePublished":"2019-12-18T05:44:01.000Z","dateModified":"2022-08-06T13:07:33.623Z","author":{"@type":"Person","name":"Cheng"},"publisher":{"@type":"Organization","name":"CZCC","logo":{"@type":"ImageObject","url":"http://blog.czccc.cc/img/logo.ico"}},"description":"MapReduce 大数据分析课程总结"}</script><link rel="canonical" href="http://blog.czccc.cc/p/c27cf766/"><link rel="alternate" href="/atom.xml" title="CZCC" type="application/atom+xml"><link rel="icon" href="/img/favicon.ico"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link rel="stylesheet" href="/css/default.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><!--!--><script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" defer></script><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css"><!--!--><!--!--><!--!--><!--!--><style>.pace{-webkit-pointer-events:none;pointer-events:none;-webkit-user-select:none;-moz-user-select:none;user-select:none}.pace-inactive{display:none}.pace .pace-progress{background:#3273dc;position:fixed;z-index:2000;top:0;right:100%;width:100%;height:2px}</style><script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script><!-- hexo injector head_end start --><script>
+  (function () {
+      function switchTab() {
+          if (!location.hash) {
+            return;
+          }
+          Array
+              .from(document.querySelectorAll('.tab-content'))
+              .forEach($tab => {
+                  $tab.classList.add('is-hidden');
+              });
+          Array
+              .from(document.querySelectorAll('.tabs li'))
+              .forEach($tab => {
+                  $tab.classList.remove('is-active');
+              });
+          const $activeTab = document.querySelector(location.hash);
+          if ($activeTab) {
+              $activeTab.classList.remove('is-hidden');
+          }
+          const $tabMenu = document.querySelector(`a[href="${location.hash}"]`);
+          if ($tabMenu) {
+              $tabMenu.parentElement.classList.add('is-active');
+          }
+      }
+      switchTab();
+      window.addEventListener('hashchange', switchTab, false);
+  })();
+  </script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.1.0"></head><body class="is-2-column"><nav class="navbar navbar-main"><div class="container navbar-container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img src="/img/logo.ico" alt="CZCC" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">Home</a><a class="navbar-item" href="/archives">Archives</a><a class="navbar-item" href="/categories">Categories</a><a class="navbar-item" href="/tags">Tags</a><a class="navbar-item" href="/categories/LeetCode">LeetCode</a><a class="navbar-item" href="/Software">Software</a><a class="navbar-item" href="/about">About</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/czccc/hexo-theme-icarus"><i class="fab fa-github"></i></a><a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;"><i class="fas fa-list-ul"></i></a><a class="navbar-item search" title="搜索" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-9-desktop is-9-widescreen"><div class="card"><article class="card-content article" role="article"><h1 class="title is-3 is-size-4-mobile"><i class="fas fa-angle-double-right">  </i>MapReduce 课程总结</h1><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><i class="far fa-calendar-alt">  </i><span class="level-item"><time dateTime="2019-12-18T05:44:01.000Z" title="2019/12/18 13:44:01">2019-12-18</time>发表</span><i class="far fa-calendar-check">  </i><span class="level-item"><time dateTime="2022-08-06T13:07:33.623Z" title="2022/8/6 21:07:33">2022-08-06</time>更新</span><i class="far fa-folder">  </i><span class="level-item"><a class="link-muted" href="/categories/NJU/">NJU</a></span><i class="far fa-hourglass">  </i><span class="level-item">1 小时读完 (大约7601个字)</span><i class="far fa-eye">  </i><span class="level-item" id="busuanzi_container_page_pv"><span id="busuanzi_value_page_pv">0</span>次访问</span></div></div><div class="content"><p>MapReduce 大数据分析课程总结</p>
+<hr>
+<span id="more"></span>
+<h1>大数据技术简介</h1>
+<h2 id="大数据的类型分类">大数据的类型分类</h2>
+<ul>
+<li>结构特征
+<ul>
+<li>结构化数据</li>
+<li>非结构化/半结构化数据</li>
+</ul>
+</li>
+<li>获取和处理方式
+<ul>
+<li>静态(线下数据)/非实时数据</li>
+<li>动态(流式/增量式/线上)/实时数据</li>
+</ul>
+</li>
+<li>关联特征
+<ul>
+<li>无关联/简单关联数据(键值记录型数据)</li>
+<li>复杂关联数据(图数据)</li>
+</ul>
+</li>
+</ul>
+<h2 id="大数据处理的主要技术问题">大数据处理的主要技术问题</h2>
+<ol>
+<li>存储：巨量数据如何存得下？数据存储问题
+<ol>
+<li>数据规模导致难以应对的存储量，传统数据库技术失效</li>
+<li><strong>需要研究开发有效的分布式大数据存储技术与系统</strong></li>
+</ol>
+</li>
+<li>计算：巨量数据如何快速完成计算？计算性能问题
+<ol>
+<li>数据规模导致传统算法失效</li>
+<li>复杂的数据关联性导致高复杂度的计算</li>
+<li><strong>需要研究开发高效的大数据并行计算技术与系统</strong></li>
+</ol>
+</li>
+<li>分析：如何发现大数据的深度价值？数据分析问题
+<ol>
+<li>大数据隐含很多小数据时难以发现的深度价值</li>
+<li><strong>需要研究开发有效的大数据分析挖掘技术与工具</strong></li>
+</ol>
+</li>
+</ol>
+<h2 id="大数据研究的基本途径">大数据研究的基本途径</h2>
+<ol>
+<li>新算法：寻找新算法降低计算复杂度</li>
+<li>降低尺度：寻找数据尺度无关近似算法</li>
+<li>并行化：分而治之，并行化处理</li>
+</ol>
+<p><img src="https://s2.ax1x.com/2019/12/18/Q7KLlR.png" alt="image-20191218135449489"></p>
+<h2 id="？什么是大数据">？什么是大数据</h2>
+<p><strong>Wiki百科</strong>：大数据意指一个超大的、难以用现有常规的数据库管理技术和工具处理的数据集</p>
+<p><strong>IDC报告</strong>：大数据技术描述了一种新一代技术和构架，用于以很经济的方式、以高速的捕获、发现和分析技术，从各种超大规模的数据中提取价值</p>
+<p>“大数据”的真实含义：</p>
+<p>大数据是以下内容的一个总称：</p>
+<ul>
+<li>大数据带来了新的技术时代转型</li>
+<li>大数据所带来的问题和技术挑战</li>
+<li>大数据处理所需的新的技术和方法</li>
+<li>大数据时代需要的大数据思维</li>
+<li>大数据分析和应用所带来的新发明、新服务和新的发展机遇</li>
+</ul>
+<p><code>GB -&gt; Tb -&gt; PB -&gt; EB -&gt; ZB</code></p>
+<h2 id="？大数据特点-5V">？大数据特点: 5V</h2>
+<ul>
+<li>Volume: 大容量：PB级规模</li>
+<li>Variety: 多样性：结构化/非结构化</li>
+<li>Velocity: 时效性：实时处理</li>
+<li>Veracity: 准确性：结果准确</li>
+<li>Value: 大价值：深度价值</li>
+</ul>
+<h2 id="？三个层面的挑战">？三个层面的挑战</h2>
+<ul>
+<li>大数据的技术挑战
+<ul>
+<li>数据存储能力大幅落后于数据增长速度</li>
+<li>数据处理能力大幅落后于数据增长速度</li>
+</ul>
+</li>
+<li>企业应用的挑战
+<ul>
+<li>大企业内竖井式应用，大量系统相互隔离，形成信息孤岛</li>
+</ul>
+</li>
+<li>政府数据开放政策的挑战
+<ul>
+<li>政府机构掌握的大量数据不能开放使用</li>
+</ul>
+</li>
+</ul>
+<h1>MapReduce 简介</h1>
+<h2 id="为什么需要大规模数据并行处理">为什么需要大规模数据并行处理</h2>
+<ul>
+<li>处理数据的能力大幅落后于数据增长</li>
+<li>海量数据隐含着更准确的事实</li>
+</ul>
+<h2 id="什么是MapReduce？">什么是MapReduce？</h2>
+<p>MapReduce是Google公司发明的一种面向大规模大数据处理的高性能并行计算平台和软件编程框架，是目前最为成功和最易于使用的大规模大数据并行处理技术，广泛应用于搜索引擎（文档倒排索引，网页链接图分析与页面排序等）、Web日志分析、文档分析处理、机器学习、机器翻译等各种大规模数据并行计算应用领域</p>
+<ul>
+<li><strong>基于集群的高性能并行计算平台</strong>(Cluster Infrastructure)
+<ul>
+<li>允许用市场上现成的普通PC或性能较高的刀架或机架式服务器，构成一个包含数千个节点的分布式并行计算集群</li>
+</ul>
+</li>
+<li><strong>并行程序开发与运行框架</strong>(Software Framework)
+<ul>
+<li>提供了一个庞大但设计精良的并行计算软件构架，能自动完成计算任务的并行化处理，自动划分计算数据和计算任务，在集群节点上自动分配和执行子任务以及收集计算结果，将数据分布存储、数据通信、容错处理等并行计算中的很多复杂细节交由系统负责处理，大大减少了软件开发人员的负担</li>
+</ul>
+</li>
+<li><strong>并行程序设计模型与方法</strong>(Programming Model &amp; Methodology)
+<ul>
+<li>借助于函数式语言中的设计思想，提供了一种简便的并行程序设计方法，用Map和Reduce两个函数编程实现基本的并行计算任务，提供了完整的并行编程接口，完成大规模数据处理</li>
+</ul>
+</li>
+</ul>
+<h2 id="为什么MapReduce如此重要？">为什么MapReduce如此重要？</h2>
+<ul>
+<li>高效的大规模数据处理方法</li>
+<li>改变了大规模尺度上组织计算的方式</li>
+<li>第一个不同于冯诺依曼结构的、基于集群而非单机的计算方式的重大突破</li>
+<li>目前为止最为成功的基于大规模计算资源的并行计算抽象方法</li>
+</ul>
+<h2 id="MapReduce在三个层面上的基本构思">MapReduce在三个层面上的基本构思</h2>
+<h3 id="如何对付大数据处理：分而治之">如何对付大数据处理：分而治之</h3>
+<p>对相互间不具有计算依赖关系的大数据，实现并行最自然的办法就是采取<strong>分而治之</strong>的策略</p>
+<p>什么样的计算任务可进行并行化计算？</p>
+<blockquote>
+<p>不可分拆的计算任务或相互间有依赖关系的数据无法进行并行计算</p>
+<p>一个大数据若可以分为具有同样计算过程的数据块，并且这些数据块之间不存在数据依赖关系，则提高处理速度的最好办法就是并行计算</p>
+</blockquote>
+<h3 id="上升到抽象模型：Mapper与Reducer">上升到抽象模型：Mapper与Reducer</h3>
+<p>主要设计思想：为大数据处理过程中的两个主要处理操作：Map和Reduce提供了高层的并行编程抽象模型</p>
+<p>典型的流式大数据问题的特征：</p>
+<ul>
+<li>大量数据记录/元素进行重复处理</li>
+<li>对每个数据记录/元素作感兴趣的处理、获取感兴趣的中间结果信息</li>
+<li>排序和整理中间结果以利后续处理</li>
+<li>收集整理中间结果</li>
+<li>产生最终结果输出</li>
+</ul>
+<p>Map Reduce：提供一种抽象机制，把做什么和怎么做分开，程序员仅需要描述做什么，不需要关心怎么做</p>
+<ul>
+<li>Map: 对一组数据元素进行某种重复式的处理：<code>(k1; v1) -&gt; [(k2; v2)]</code>
+<ul>
+<li>输入：键值对<code>(k1; v1)</code>表示的数据</li>
+<li>处理：文档数据记录(如文本文件中的行，或数据表格中的行)将以“键值对”形式传入map函数；map函数将处理这些键值对，并以另一种键值对形式输出处理的一组键值对中间结果<code>[(k2; v2)]</code></li>
+<li>输出：键值对<code>[(k2; v2)]</code>表示的一组中间数据</li>
+</ul>
+</li>
+<li>Reduce: 对Map的中间结果进行某种进一步的结果整理：<code>(k2; [v2]) -&gt; [(k3; v3)]</code>
+<ul>
+<li>输入： 由map输出的一组键值对<code>[(k2; v2)]</code> 将被进行合并处理将同样主键下的不同数值合并到一个列表<code>[v2]</code>中，故reduce的输入为<code>(k2; [v2]) </code></li>
+<li>处理：对传入的中间结果列表数据进行某种整理或进一步的处理,并产生最终的某种形式的结果输出<code>[(k3; v3)]</code> 。</li>
+<li>输出：最终输出结果<code>[(k3; v3)] </code></li>
+</ul>
+</li>
+</ul>
+<p><img src="https://s2.ax1x.com/2019/12/18/Q7K7Y4.png" alt="Q7K7Y4.png"></p>
+<h3 id="上升到构架：统一构架，为程序员隐藏系统层细节">上升到构架：统一构架，为程序员隐藏系统层细节</h3>
+<ul>
+<li>主要需求、目标和设计思想
+<ul>
+<li>实现自动并行化计算</li>
+<li>为程序员隐藏系统层细节</li>
+</ul>
+</li>
+<li>MapReduce提供统一的构架并完成以下的主要功能
+<ul>
+<li><strong>任务调度</strong>：提交的一个计算作业(job)将被划分为很多个计算任务(tasks), 任务调度功能主要负责为这些划分后的计算任务分配和调度计算节点(map节点或reducer节点); 同时负责监控这些节点的执行状态, 并负责map节点执行的同步控制(barrier); 也负责进行一些计算性能优化处理, 如对最慢的计算任务采用多备份执行、选最快完成者作为结果</li>
+<li><strong>数据/代码互定位</strong>：为了减少数据通信，一个基本原则是本地化数据处理(locality)，即一个计算节点尽可能处理其本地磁盘上所分布存储的数据，这实现了代码向数据的迁移；当无法进行这种本地化数据处理时，再寻找其它可用节点并将数据从网络上传送给该节点(数据向代码迁移)，但将尽可能从数据所在的本地机架上寻找可用节点以减少通信延迟</li>
+<li><strong>出错处理</strong>：以低端商用服务器构成的大规模MapReduce计算集群中,节点硬件(主机、磁盘、内存等)出错和软件有bug是常态，因此,MapReducer需要能检测并隔离出错节点，并调度分配新的节点接管出错节点的计算任务</li>
+<li><strong>分布式数据存储与文件管理</strong>：海量数据处理需要一个良好的分布数据存储和文件管理系统支撑,该文件系统能够把海量数据分布存储在各个节点的本地磁盘上,但保持整个数据在逻辑上成为一个完整的数据文件；为了提供数据存储容错机制,该文件系统还要提供数据块的多备份存储管理能力</li>
+<li><strong>Combiner和Partitioner</strong>:为了减少数据通信开销,中间结果数据进入reduce节点前需要进行合并(combine)处理,把具有同样主键的数据合并到一起避免重复传送; 一个reducer节点所处理的数据可能会来自多个map节点, 因此, map节点输出的中间结果需使用一定的策略进行适当的划分(partitioner)处理，保证相关数据发送到同一个reducer节点</li>
+</ul>
+</li>
+</ul>
+<h2 id="主要设计思想与特点">主要设计思想与特点</h2>
+<ul>
+<li>
+<p><strong>向“外”横向扩展，而非向“上”纵向扩展</strong></p>
+</li>
+<li>
+<p><strong>失效被认为是常态</strong></p>
+</li>
+<li>
+<p><strong>把处理向数据迁移</strong></p>
+</li>
+<li>
+<p><strong>顺序处理数据、避免随机访问数据</strong></p>
+</li>
+<li>
+<p><strong>为应用开发者隐藏系统层细节</strong></p>
+</li>
+<li>
+<p><strong>平滑无缝的可扩展性</strong></p>
+</li>
+</ul>
+<h1>Google/Hadoop MapReduce基本构架</h1>
+<p>借鉴函数式程序设计语言Lisp中的思想，定义了Map和Reduce两个抽象的操作函数：</p>
+<ul>
+<li>map: <code>(k1; v1) -&gt; [(k2; v2)]</code></li>
+<li>reduce: <code>(k2; [v2]) -&gt; [(k3; v3)]</code></li>
+</ul>
+<p>特点：</p>
+<ul>
+<li>描述了对一组数据处理的两个阶段的抽象操作</li>
+<li>仅仅描述了需要做什么，不需要关注怎么做</li>
+</ul>
+<h2 id="Google-MapReduce的基本工作原理">Google MapReduce的基本工作原理</h2>
+<p><img src="https://s2.ax1x.com/2019/12/18/Q78x0I.png" alt="MapReduce 计算过程"></p>
+<h3 id="失效处理">失效处理</h3>
+<ul>
+<li>
+<p>主节点失效</p>
+<p>主节点中会周期性地设置<strong>检查点</strong>(checkpoint)，检查整个计算作业的执行情况，一旦某个任务失效，可以从最近有效的检查点开始重新执行，避免从头开始计算的时间浪费。</p>
+</li>
+<li>
+<p>工作节点失效</p>
+<p>工作节点失效是很普遍发生的，主节点会周期性地给工作节点<strong>发送心跳检测</strong>，如果工作节点没有回应，这认为该工作节点失效，主节点将终止该工作节点的任务并把失效的任务<strong>重新调度</strong>到其它工作节点上重新执行</p>
+</li>
+</ul>
+<h3 id="带宽优化">带宽优化</h3>
+<ul>
+<li>
+<p>问题</p>
+<p>大量的键值对数据在传送给Reduce节点时会引起较大的通信带宽开销。</p>
+</li>
+<li>
+<p>解决方案</p>
+<p>每个Map节点处理完成的中间键值队将由<strong>combiner</strong>做一个合并压缩，即把那些键名相同的键值对归并为一个键名下的一组数值。</p>
+</li>
+</ul>
+<h3 id="计算优化">计算优化</h3>
+<ul>
+<li>
+<p>问题</p>
+<p>Reduce节点必须要等到所有Map节点计算结束才能开始执行，因此，如果有一个计算量大、或者由于某个问题导致很慢结束的Map节点，则会成为严重的“拖后腿者”。</p>
+</li>
+<li>
+<p>解决方案</p>
+<p>把一个Map计算任务让<strong>多个Map节点同时做</strong>，取最快完成者的计算结果。</p>
+</li>
+</ul>
+<h3 id="用数据分区解决数据相关性问题">用数据分区解决数据相关性问题</h3>
+<ul>
+<li>
+<p>问题</p>
+<p>一个Reduce节点上的计算数据可能会来自多个Map节点，因此，为了在进入Reduce节点计算之前，需要把属于一个Reduce节点的数据归并到一起。</p>
+</li>
+<li>
+<p>解决方案</p>
+<p>在Map阶段进行了Combining以后，可以根据一定的策略对Map输出的中间结果进行<strong>分区(partitioning)</strong>，这样即可解决以上数据相关性问题避免Reduce计算过程中的数据通信。</p>
+</li>
+<li>
+<p>例如：有一个巨大的数组,其最终结果需要排序,每个Map节点数据处理好后,为了避免在每个Reduce节点本地排序完成后还需要进行全局排序,我们可以使用一个分区策略如:(d%R),d为数据大小，R为Reduce节点的个数，则可根据数据的大小将其划分到指定数据范围的Reduce节点上,每个Reduce将本地数据拍好序后即为最终结果</p>
+</li>
+</ul>
+<h2 id="Hadoop-MapReduce的基本工作原理">Hadoop MapReduce的基本工作原理</h2>
+<p><img src="https://s2.ax1x.com/2019/12/18/Q7YfXQ.png" alt="Q7YfXQ.png"></p>
+<p><img src="https://s2.ax1x.com/2019/12/18/Q7YHhV.png" alt="Q7YHhV.png"></p>
+<p><img src="https://s2.ax1x.com/2019/12/18/Q7YvnJ.png" alt="Q7YvnJ.png"></p>
+<p>程序执行时的容错处理与计算性能优化</p>
+<ul>
+<li>由Hadoop系统自己解决</li>
+<li>主要方法是将失败的任务进行再次执行</li>
+<li>TaskTracker会把状态信息汇报给JobTracker，最终由JobTracker决定重新执行哪一个任务</li>
+<li>为了加快执行的速度，Hadoop也会自动重复执行同一个任务，以最先执行成功的为准（投机执行）</li>
+<li>mapred.map.tasks.speculative.execution</li>
+<li>mapred.reduce.tasks.speculative.execution</li>
+</ul>
+<h2 id="Hadoop-MapReduce主要组件">Hadoop MapReduce主要组件</h2>
+<h3 id="文件输入格式InputFormat">文件输入格式InputFormat</h3>
+<ul>
+<li>定义了数据文件如何分割和读取</li>
+<li>InputFormat提供了以下一些功能
+<ul>
+<li>选择文件或者其它对象，用来作为输入</li>
+<li>定义InputSplits, 将一个文件分为不同任务</li>
+<li>为RecordReader提供一个工厂，用来读取这个文件</li>
+</ul>
+</li>
+<li>有一个抽象的类FileInputFormat，所有的输入格式类都从这个类继承其功能以及特性。当启动一个Hadoop任务的时候，一个输入文件所在的目录被输入到FileInputFormat对象中。</li>
+<li>FileInputFormat从这个目录中读取所有文件。然后FileInputFormat将这些文件分割为多个InputSplits。</li>
+<li>通过在JobConf对象上设置JobConf.setInputFormat设置文件输入<br>
+的格式</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>InputFormat:</th>
+<th>Description:</th>
+<th>Key:</th>
+<th>Value:</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>TextInputFormat</td>
+<td>Default format; reads lines of text files</td>
+<td>The byte offset of the line</td>
+<td>The line contents</td>
+</tr>
+<tr>
+<td>KeyValueTextInputFormat</td>
+<td>Parses lines into key-val pairs</td>
+<td>Everything up to the first tab character</td>
+<td>The remainder of the line</td>
+</tr>
+<tr>
+<td>SequenceFileInputFormat</td>
+<td>A Hadoop-specific high performance binary format</td>
+<td>user-defined</td>
+<td>user-defined</td>
+</tr>
+</tbody>
+</table>
+<h3 id="输入数据分块InputSplits">输入数据分块InputSplits</h3>
+<ul>
+<li>InputSplit定义了输入到单个Map任务的输入数据</li>
+<li>一个MapReduce程序被统称为一个Job，可能有上百个任务构成</li>
+<li>InputSplit将文件分为64MB的大小</li>
+<li>配置文件hadoop-site.xml中的mapred.min.split.size参数控制这个大小</li>
+<li>mapred.tasktracker.map.taks.maximum用来控制某一个节点上所有map任务的最大数目</li>
+</ul>
+<h3 id="数据记录读入RecordReader">数据记录读入RecordReader</h3>
+<ul>
+<li>InputSplit定义了一个数据分块，但是没有定义如何读取数据记录</li>
+<li>RecordReader实际上定义了如何将数据记录转化为一个(key,value)对的详细方法，并将数据记录传给Mapper类</li>
+<li>TextInputFormat提供了LineRecordReader，读入一个文本行数据记录</li>
+</ul>
+<h3 id="Mapper">Mapper</h3>
+<ul>
+<li>每一个Mapper类的实例生成了一个Java进程，负责处理某一个InputSplit上的数据</li>
+<li>用Mapper.Context提供给每一个Mapper函数，用来提供上面两个对象的功能</li>
+</ul>
+<h3 id="Combiner">Combiner</h3>
+<ul>
+<li>合并相同key的键值对，减少partitioning时候的数据通信开销</li>
+<li>conf.setCombinerClass(Reduce.class);</li>
+<li>是在本地执行的一个Reducer，满足一定的条件才能够执行。</li>
+</ul>
+<h3 id="Partitioner-Shuffle">Partitioner &amp; Shuffle</h3>
+<ul>
+<li>在Map工作完成之后，每一个 Map函数会将结果传到对应的Reducer所在的节点，此时，用户可以提供一个Partitioner类，用来决定一个给定的(key,value)对传给哪个Reduce节点</li>
+</ul>
+<h3 id="Sort">Sort</h3>
+<ul>
+<li>传输到每一个Reducer节点上的、将被所有的Reduce函数接收到的Key,value对会被Hadoop自动排序（即Map生成的结果传送到某一个节点的时候，会被自动排序）</li>
+</ul>
+<h3 id="Reducer">Reducer</h3>
+<ul>
+<li>做用户定义的Reduce操作</li>
+<li>输出环境编程接口是Reducer.Context</li>
+</ul>
+<h3 id="文件输出格式OutputFormat">文件输出格式OutputFormat</h3>
+<ul>
+<li>写入到HDFS的所有OutputFormat都继承自FileOutputFormat</li>
+<li>每一个Reducer都写一个文件到一个共同的输出目录，文件名是part-nnnnn，其中nnnnn是与每一个reducer相关的一个号（partition id）</li>
+<li>FileOutputFormat.setOutputPath()</li>
+<li>JobConf.setOutputFormat()</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>OutputFormat:</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>TextOutputFormat</td>
+<td>Default; writes lines in “key \t value” form</td>
+</tr>
+<tr>
+<td>SequenceFileOutputFormat</td>
+<td>Writes binary files suitable for reading into subsequent MapReduce jobs</td>
+</tr>
+<tr>
+<td>NullOutputFormat</td>
+<td>Disregards its inputs</td>
+</tr>
+</tbody>
+</table>
+<h3 id="RecordWriter">RecordWriter</h3>
+<p>TextOutputFormat实现了缺省的LineRecordWriter，以“key\t value”形式输出一行结果</p>
+<h2 id="Hadoop-分布式文件系统HDFS">Hadoop 分布式文件系统HDFS</h2>
+<h3 id="HDFS的基本特征">HDFS的基本特征</h3>
+<ul>
+<li>模仿Google GFS设计实现</li>
+<li>存储极大数目的信息（terabytes or petabytes），将数据保存到大量的节点当中；支持很大的单个文件。</li>
+<li>提供数据的高可靠性和容错能力，单个或者多个节点不工作，对系统不会造成任何影响，数据仍然可用。通过一定数量的数据复制保证数据存储的可靠性和出错恢复能力。</li>
+<li>提供对数据的快速访问；并提供良好的可扩展性，通过简单加入更多服务器快速扩充系统容量，服务更多的客户端。</li>
+<li>与GFS类似，HDFS是MapReduce的底层数据存储支撑，并使得数据尽可能根据其本地局部性进行访问与计算。</li>
+<li>HDFS对顺序读进行了优化，支持大量数据的快速顺序读出，代价是对于随机的访问负载较高。</li>
+<li>数据支持一次写入，多次读取；不支持已写入数据的更新操作，但允许在文件尾部添加新的数据</li>
+<li>数据不进行本地缓存（文件很大，且顺序读没有局部性）</li>
+<li>基于块的文件存储，默认的块的大小是64MB
+<ul>
+<li>减少元数据的量</li>
+<li>有利于顺序读写（在磁盘上数据顺序存放）</li>
+</ul>
+</li>
+<li>多副本数据块形式存储，按照块的方式随机选择存储节点，默认副本数目是3</li>
+</ul>
+<h3 id="HDFS可靠性与出错恢复">HDFS可靠性与出错恢复</h3>
+<ul>
+<li>DataNode节点的检测
+<ul>
+<li>心跳：NameNode 不断检测DataNode是否有效</li>
+<li>若失效，则寻找新的节点替代，将失效节点数据重新分布</li>
+</ul>
+</li>
+<li>集群负载均衡</li>
+<li>数据一致性: 校验和checksum</li>
+<li>主节点元数据失效
+<ul>
+<li>Multiple FsImage and EditLog</li>
+<li>Checkpoint</li>
+</ul>
+</li>
+</ul>
+<h3 id="HDFS文件系统操作命令">HDFS文件系统操作命令</h3>
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>-ls path</code></td>
+<td>显示所有目录与文件，包含拥有者、权限、修改时间等</td>
+</tr>
+<tr>
+<td><code>-lsr path</code></td>
+<td>同上，递归显示</td>
+</tr>
+<tr>
+<td><code>-put localSrc dest</code></td>
+<td>从Local传输文件、目录到HDFS</td>
+</tr>
+<tr>
+<td><code>-copyFromLocal localSrc dest</code></td>
+<td>同上</td>
+</tr>
+<tr>
+<td><code>-moveFromLocal localSrc dest</code></td>
+<td>同上，但会删除Local源文件、目录</td>
+</tr>
+<tr>
+<td><code>-get [-crc] src localDest</code></td>
+<td>从HDFS传输文件、目录到Local</td>
+</tr>
+<tr>
+<td><code>-copyToLocal [-crc] src localDest</code></td>
+<td>同上</td>
+</tr>
+<tr>
+<td><code>-moveToLocal [-crc] src localDest</code></td>
+<td>同上，但会删除HDFS源文件、目录</td>
+</tr>
+<tr>
+<td><code>-mv src dest</code></td>
+<td>在HDFS内移动文件、目录</td>
+</tr>
+<tr>
+<td><code>-cp src dest</code></td>
+<td>在HDFS内复制文件、目录</td>
+</tr>
+<tr>
+<td><code>-rm path</code></td>
+<td>删除文件、空目录</td>
+</tr>
+<tr>
+<td><code>-rmr path</code></td>
+<td>递归删除文件、空目录</td>
+</tr>
+<tr>
+<td><code>-mkdir path</code></td>
+<td>递归创建目录</td>
+</tr>
+<tr>
+<td><code>-touchz path</code></td>
+<td>以当前时间戳创建新文件，当已存在且大小不为0时返回0</td>
+</tr>
+<tr>
+<td><code>-cat filename</code></td>
+<td>显示文件内容</td>
+</tr>
+<tr>
+<td><code>-tail [-f] file</code></td>
+<td>显示文件最后1KB内容</td>
+</tr>
+<tr>
+<td><code>-test -[ezd] path</code></td>
+<td>当路径存在、大小不为0、为目录时返回1</td>
+</tr>
+<tr>
+<td><code>-chmod [-R] mode,mode,... path...</code></td>
+<td>更改文件权限</td>
+</tr>
+<tr>
+<td><code>-chown [-R] [owner][:[group]] path...</code></td>
+<td>更改文件拥有者</td>
+</tr>
+<tr>
+<td><code>-chgrp [-R] group path...</code></td>
+<td>更改文件拥有者的组</td>
+</tr>
+<tr>
+<td><code>-du path</code></td>
+<td>以Byte形式显示所有匹配文件的磁盘使用量</td>
+</tr>
+<tr>
+<td><code>-dus path</code></td>
+<td>显示总的磁盘使用量</td>
+</tr>
+<tr>
+<td><code>-getmerge src localDest [addnl]</code></td>
+<td>将所有匹配文件复制到LocalDest中</td>
+</tr>
+<tr>
+<td><code>-setrep [-R] [-w] rep path</code></td>
+<td>更改目标副本数目</td>
+</tr>
+<tr>
+<td><code>-stat [format] path</code></td>
+<td>显示文件、目录信息.</td>
+</tr>
+<tr>
+<td><code>-help cmd</code></td>
+<td>显示关于cmd的帮助信息。<code>-</code>可省略</td>
+</tr>
+</tbody>
+</table>
+<h3 id="在MapReduce程序中使用HDFS">在MapReduce程序中使用HDFS</h3>
+<ul>
+<li>通过fs.default.name的配置选项，Hadoop MapReduce程序可以自动从NameNode中获得文件的情况</li>
+<li>HDFS接口包括：
+<ul>
+<li>命令行接口</li>
+<li>Hadoop MapReduce Job隐含的输入</li>
+<li>Java程序直接操作</li>
+<li>libhdfs从c/c++程序中操作</li>
+</ul>
+</li>
+</ul>
+<h3 id="HDFS权限控制与安全特性">HDFS权限控制与安全特性</h3>
+<ul>
+<li>类似于POSIX的安全特性，不完全，主要预防操作失误</li>
+<li>不是一个强的安全模型，不能保证操作的完全安全性</li>
+<li>用户:当前登录的用户名, 即使用Linux自身设定的用户与组的概念</li>
+<li>超级用户: 用于启动 <code>bin/start-all.sh</code> 或者 <code>bin/start-dfs.sh</code> 的用户名</li>
+<li>超级用户组：配置参数：dfs.permissions.supergroup</li>
+</ul>
+<h2 id="Hadoop-HDFS的编程">Hadoop HDFS的编程</h2>
+<p>// TODO：暂时省略，有时间再加</p>
+<h3 id="编程示例">编程示例</h3>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Scanner;</span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"><span class="keyword">import</span> java.io.File;</span><br><span class="line"><span class="keyword">import</span> org.apache.hadoop.conf.Configuration;</span><br><span class="line"><span class="keyword">import</span> org.apache.hadoop.fs.FSDataInputStream;</span><br><span class="line"><span class="keyword">import</span> org.apache.hadoop.fs.FSDataOutputStream;</span><br><span class="line"><span class="keyword">import</span> org.apache.hadoop.fs.FileStatus;</span><br><span class="line"><span class="keyword">import</span> org.apache.hadoop.fs.FileSystem;</span><br><span class="line"><span class="keyword">import</span> org.apache.hadoop.fs.Path;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">resultFilter</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> IOException</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="type">Configuration</span> <span class="variable">conf</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Configuration</span>(); <span class="comment">// 以下两句中，hdfs和local分别对应HDFS实例和本地文件系统实例</span></span><br><span class="line">        <span class="type">FileSystem</span> <span class="variable">hdfs</span> <span class="operator">=</span> FileSystem.get(conf);</span><br><span class="line">        <span class="type">FileSystem</span> <span class="variable">local</span> <span class="operator">=</span> FileSystem.getLocal(conf);</span><br><span class="line">        Path inputDir, localFile;</span><br><span class="line">        FileStatus[] inputFiles;</span><br><span class="line">        <span class="type">FSDataOutputStream</span> <span class="variable">out</span> <span class="operator">=</span> <span class="literal">null</span>;</span><br><span class="line">        <span class="type">FSDataInputStream</span> <span class="variable">in</span> <span class="operator">=</span> <span class="literal">null</span>;</span><br><span class="line">        Scanner scan; String str; <span class="type">byte</span>[] buf; <span class="type">int</span> singleFileLines; <span class="type">int</span> numLines, numFiles, i;</span><br><span class="line">        inputDir = <span class="keyword">new</span> <span class="title class_">Path</span>(args[<span class="number">0</span>]);</span><br><span class="line">        singleFileLines = Integer.parseInt(args[<span class="number">3</span>]);</span><br><span class="line">        <span class="keyword">try</span> &#123; </span><br><span class="line">            inputFiles = hdfs.listStatus(inputDir); <span class="comment">//获得目录信息</span></span><br><span class="line">            numLines = <span class="number">0</span>; </span><br><span class="line">            numFiles = <span class="number">1</span>; <span class="comment">//输出文件从1开始编号</span></span><br><span class="line">            localFile = <span class="keyword">new</span> <span class="title class_">Path</span>(args[<span class="number">1</span>]);</span><br><span class="line">            <span class="keyword">if</span>(local.exists(localFile)) </span><br><span class="line">                local.delete(localFile, <span class="literal">true</span>); <span class="comment">//若目标路径存在，则删除之</span></span><br><span class="line">            <span class="keyword">for</span> (i = <span class="number">0</span>; i&lt;inputFiles.length; i++) &#123;</span><br><span class="line">            	<span class="keyword">if</span>(inputFiles[i].isDir() == <span class="literal">true</span>) <span class="comment">//忽略子目录</span></span><br><span class="line">            		<span class="keyword">continue</span>;</span><br><span class="line">                System.out.println(inputFiles[i].getPath().getName());</span><br><span class="line">            	in = hdfs.open(inputFiles[i].getPath());scan = <span class="keyword">new</span> <span class="title class_">Scanner</span>(in);</span><br><span class="line">            	<span class="keyword">while</span> (scan.hasNext()) &#123;</span><br><span class="line">            		str = scan.nextLine();</span><br><span class="line">            		<span class="keyword">if</span>(str.indexOf(args[<span class="number">2</span>])==-<span class="number">1</span>) </span><br><span class="line">                        <span class="keyword">continue</span>; <span class="comment">//如果该行没有match字符串，则忽略</span></span><br><span class="line">            		numLines++;</span><br><span class="line">            		<span class="keyword">if</span>(numLines == <span class="number">1</span>) <span class="comment">//如果是1，说明需要新建文件了</span></span><br><span class="line">            		&#123;</span><br><span class="line">                        localFile = <span class="keyword">new</span> <span class="title class_">Path</span>(args[<span class="number">1</span>] + File.separator + numFiles);</span><br><span class="line">                        out = local.create(localFile); <span class="comment">//创建文件</span></span><br><span class="line">            			numFiles++;</span><br><span class="line">            		&#125;</span><br><span class="line">            		buf = (str+<span class="string">&quot;\n&quot;</span>).getBytes();</span><br><span class="line">            		out.write(buf, <span class="number">0</span>, buf.length); <span class="comment">//将字符串写入输出流</span></span><br><span class="line">            		<span class="keyword">if</span>(numLines == singleFileLines) <span class="comment">//如果已满足相应行数，关闭文件</span></span><br><span class="line">                    &#123; </span><br><span class="line">                        out.close(); </span><br><span class="line">                        numLines = <span class="number">0</span>; <span class="comment">//行数变为0，重新统计 </span></span><br><span class="line">                    &#125;</span><br><span class="line">            	&#125;<span class="comment">//end of while</span></span><br><span class="line">            	scan.close();</span><br><span class="line">                in.close();</span><br><span class="line">            &#125;<span class="comment">//end of for</span></span><br><span class="line">            <span class="keyword">if</span>(out != <span class="literal">null</span>) </span><br><span class="line">                out.close();</span><br><span class="line">        &#125; <span class="comment">//end of try</span></span><br><span class="line">        <span class="keyword">catch</span> (IOException e) &#123; e.printStackTrace();&#125;</span><br><span class="line">    &#125; <span class="comment">//end of main</span></span><br><span class="line">&#125; <span class="comment">//end of resultFilter</span></span><br></pre></td></tr></table></figure>
+<h1>Hadoop系统安装运行与程序开发</h1>
+<p>// TODO: 暂时省略</p>
+<h1>MapReduce算法设计</h1>
+<h2 id="MapReduce可解决哪些算法问题？">MapReduce可解决哪些算法问题？</h2>
+<p>MapReduce 可广泛应用于搜索引擎（文档倒排索引，网页链接图分析与页面排序等）、Web日志分析、文档分析处理、机器学习、机器翻译等各种大规模数据并行计算应用领域各类大规模数据并行处理算法。</p>
+<h3 id="基本算法">基本算法</h3>
+<p>各种全局数据相关性小、能适当划分数据的计算任务，如：</p>
+<ul>
+<li>
+<p><strong>分布式排序</strong></p>
+</li>
+<li>
+<p><strong>分布式GREP(文本匹配查找)</strong></p>
+</li>
+<li>
+<p><strong>关系代数操作</strong>：如：选择，投影，求交集、并集，连接，成组，聚合…</p>
+</li>
+<li>
+<p><strong>矩阵向量相乘、矩阵相乘</strong></p>
+</li>
+<li>
+<p><strong>词频统计</strong>(word count)，<strong>词频重要性分析</strong>(TF-IDF)</p>
+</li>
+<li>
+<p><strong>单词同现关系分析</strong>：典型的应用如从生物医学文献中自动挖掘基因交互作用关系</p>
+</li>
+<li>
+<p><strong>文档倒排索引</strong></p>
+</li>
+<li>
+<p>…</p>
+</li>
+</ul>
+<h3 id="复杂算法或应用">复杂算法或应用</h3>
+<ul>
+<li>
+<p><strong>Web搜索</strong>:：网页爬取、倒排索引、网页排序、搜索算法</p>
+</li>
+<li>
+<p><strong>Web访问日志分析</strong>：分析和挖掘用户在Web上的访问、购物行为特征、以定制个性化用户界面或投放用户感兴趣的产品广告</p>
+</li>
+<li>
+<p><strong>数据/文本统计分析</strong>：如科技文献引用关系分析和统计、专利文献引用分析和统计</p>
+</li>
+<li>
+<p><strong>图算法</strong>：并行化宽度优先搜索(最短路径问题，可克服Dijkstra串行算法的不足)，最小生成树，子树搜索、比对Web链接图分析算法PageRank，垃圾邮件连接分析</p>
+</li>
+<li>
+<p><strong>聚类</strong>(clustring)：文档聚类、图聚类、其它数据集聚类</p>
+</li>
+<li>
+<p><strong>相似性比较分析算法</strong>：字符序列、文档、图、数据集相似性比较分析</p>
+</li>
+<li>
+<p><strong>基于统计的文本处理</strong>：最大期望(EM)统计模型，隐马可夫模型(HMM)，……</p>
+</li>
+<li>
+<p><strong>机器学习</strong>：监督学习、无监督学习、分类算法（决策树、SVM…)</p>
+</li>
+<li>
+<p><strong>数据挖掘</strong>：</p>
+</li>
+<li>
+<p><strong>统计机器翻译</strong></p>
+</li>
+<li>
+<p><strong>生物信息处理</strong>：DNA序列分析比对算法Blast：双序列比对、多序列比对生物网络功能模块(Motif)查找和比对</p>
+</li>
+<li>
+<p><strong>广告推送与推荐系统</strong></p>
+</li>
+<li>
+<p>…</p>
+</li>
+</ul>
+<blockquote>
+<p>大数据集上的简单算法能比小数据集上的复杂算法产生更好的结果！</p>
+</blockquote>
+<h2 id="MapReduce中可编程控制的阶段">MapReduce中可编程控制的阶段</h2>
+<h3 id="Mapper-Reducer">Mapper / Reducer</h3>
+<ul>
+<li>Initialize: <code>setup()</code></li>
+<li><code>map()</code> / <code>reduce()</code></li>
+<li>Close: <code>cleanup()</code></li>
+</ul>
+<h3 id="Shuffle">Shuffle</h3>
+<ul>
+<li><code>Partitioner() </code></li>
+<li>默认：<code>HashPartitioner()</code>  (hadoop v0.21.0)</li>
+</ul>
+<h3 id="Sort-2">Sort</h3>
+<ul>
+<li>通过自定义的比较函数实现排序</li>
+</ul>
+<h2 id="MapReduce排序算法">MapReduce排序算法</h2>
+<ul>
+<li>Sort Algorithm in MapReduce
+<ul>
+<li><code>map(k1, *) -&gt; (k1, *)</code> // Identity function</li>
+<li>shuffle and sort
+<ul>
+<li>(1) total-order partitioning</li>
+<li>(2) local sorting</li>
+</ul>
+</li>
+<li><code>reduce(k1, *) -&gt; (k1, *)</code> // Identity function</li>
+</ul>
+</li>
+<li>A customized total-order Partitioner
+<ul>
+<li>recall that shuffle phase needs a Partitioner to partition the key space</li>
+</ul>
+</li>
+</ul>
+<h3 id="Partitioner">Partitioner</h3>
+<ul>
+<li>(1) 如何避免在某些Reducer上聚集过多的数据而拖慢了整个程序</li>
+<li>(2) 当有大量的key要分配到多个partition（也就是Reducer）时，如何高效地找到每个Key所属的partition</li>
+<li>对Partitioner的要求
+<ul>
+<li>划分均匀</li>
+<li>查找快速</li>
+</ul>
+</li>
+<li><code>TotalOrderPartitioner</code> for TeraSort
+<ul>
+<li>一个提供全序划分的Partitioner</li>
+<li>从Hadoop v0.19.0开始正式发布在库类中</li>
+</ul>
+</li>
+<li>为满足两个要求所采用的策略
+<ul>
+<li>通过<strong>采样获取数据的分布</strong>：预读一小部分数据<strong>采样</strong>(sample)，对采样数据排序后均分，假设有N个reducer，则取得N-1个<strong>分割点</strong>，以这些分割点划分区间</li>
+<li>构建<strong>高效的划分模型</strong>：若Key 的数据类型是BinaryComparable的，即可以直接按字节比较大小（如Text），则以key<strong>构造TrieTree</strong>；否则以<strong>二分查找</strong>来确定key的所属区间</li>
+<li>Trie Tree, 一种高效的适于查找的数据结构，两级的trie可以最多对应大约256*256个reducer, 通常是足够的</li>
+</ul>
+</li>
+</ul>
+<h2 id="MapReduce单词同现分析算法">MapReduce单词同现分析算法</h2>
+<ul>
+<li>单词同现矩阵
+<ul>
+<li>语料库的单词同现矩阵是一个二维 N×N矩阵</li>
+<li>N是语料库的词汇量（即，不同单词的数目）</li>
+<li>矩阵元素M[i, j] 代表单词W[i] 与单词W [j]在一定范围内同现的次数（一个语句中，一个段落中，一篇文档中，或文本串中一个宽度为M个单词的窗口中，这些都依具体问题而定）</li>
+</ul>
+</li>
+<li>构建单词同现矩阵
+<ul>
+<li>同现矩阵的空间开销为 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><msup><mi>n</mi><mn>2</mn></msup><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n^2)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0641em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span>，因此难以直接放入内存中计算</li>
+<li>简单地在单机上的实现，内存与磁盘之间的换页会使任务的执行十分缓慢</li>
+</ul>
+</li>
+<li>M.R. Algorithm (“pairs” approach) 伪代码:</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">class Mapper</span><br><span class="line">	method Map(docid a, doc d)</span><br><span class="line">		for all term w ∈ doc d do</span><br><span class="line">			for all term u ∈ Neighbors(w) do</span><br><span class="line">				//Emit count for each co-occurrence</span><br><span class="line">				Emit(pair (w, u), count 1) </span><br><span class="line">class Reducer</span><br><span class="line">    method Reduce(pair p; counts [c1, c2,…])</span><br><span class="line">		s ← 0</span><br><span class="line">		for all count c in counts [c1, c2,…] do</span><br><span class="line">			s ← s + c //Sum co-occurrence counts</span><br><span class="line">		Emit(pair p, count s)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>算法的扩展
+<ul>
+<li>同现定义 Neighbors(w)为其他形式时该怎么实现？
+<ul>
+<li>根据同现关系的不同，可能需要实现和定制不同的FileInputFormat和RecordReader</li>
+</ul>
+</li>
+<li>同现关系可扩展为从大量观察数据中进行任意离散关联事件的分析和数据挖掘</li>
+<li>类似应用问题
+<ul>
+<li>零售商通过分析大量的交易记录，识别出关联的商品购买行为（如：“啤酒和纸尿裤”的故事）</li>
+<li>从生物医学文献中自动挖掘基因交互作用关系</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="MapReduce文档倒排索引算法">MapReduce文档倒排索引算法</h2>
+<ul>
+<li>Inverted Index(倒排索引)是目前几乎所有支持全文检索的搜索引擎都要依赖的一个数据结构。基于索引结构，给出一个词(term)，能取得含有这个term的文档列表(the list of documents)</li>
+<li>Web Search中的问题主要分为三部分：
+<ul>
+<li>crawling(gathering web content)</li>
+<li>indexing(construction of the inverted index)</li>
+<li>retrieval(ranking documents given a query)</li>
+</ul>
+</li>
+<li>crawling和indexing都是离线的，retrieval是在线、实时的</li>
+</ul>
+<h2 id="专利文献数据分析">专利文献数据分析</h2>
+<h1>HBase与Hive程序设计</h1>
+<h2 id="HBase基本工作原理">HBase基本工作原理</h2>
+<ul>
+<li>HBase的设计目标和功能特点
+<ul>
+<li>针对 HDFS 缺少结构化半结构化数据存储访问能力的缺陷，提供一个分布式数据管理系统，解决大规模的结构化和半结构化数据存储访问问题</li>
+<li>提供基于列存储模式的大数据表管理能力</li>
+<li>可存储管理数十亿以上的数据记录，每个记录可包含百万以上的数据列</li>
+<li>试图提供随机和实时的数据读写访问能力</li>
+<li>具有高可扩展性、高可用性、容错处理能力、负载平衡能力、以及实时数据查询能力</li>
+</ul>
+</li>
+<li>HBase数据模型
+<ul>
+<li>逻辑数据模型</li>
+<li>数据存储逻辑模型与 BigTable 类似 但实现上有一些不同之处。</li>
+<li>是一个分布式多维表，表中的数据通过：
+<ul>
+<li>一个行关键字：row key</li>
+<li>一个列关键字：column key</li>
+<li>一个时间戳：time stamp</li>
+</ul>
+</li>
+<li>进行索引和查询定位的。</li>
+<li>按照列存储的稀疏行 列矩阵。物理存储格式上按逻辑模型中的行进行分割，并按照列族存储。</li>
+<li>值为空的列不予存储，以节省存储空间</li>
+</ul>
+</li>
+<li>HBase的基本构架
+<ul>
+<li>由一个 MasterServer 和由一组子表数据区服务器 RegionServer 构成，分别存储逻辑大表中的部分数据</li>
+<li>大表中的底层数据存于 HDFS 中</li>
+</ul>
+</li>
+<li>HBase的数据存储和管理
+<ul>
+<li>与 BigTable 类似，大表被分为很多个子表（ Region ），每个子表存储在一个子表服务器 RegionServer上</li>
+<li>每个子表中的数据区 Region 由很多个数据存储块 Store 构成</li>
+<li>而每个 Store 数据块又由存放在内存中的 memStore 和存放在文件中的 StoreFile 构成</li>
+</ul>
+</li>
+</ul>
+<h2 id="HBase基本操作与编程方法示例">HBase基本操作与编程方法示例</h2>
+<ul>
+<li>HBase shell 操作</li>
+<li>创建表格与列举表格：<code>create 'table', 'column', ...</code></li>
+<li>插入数据：<code>put 'table', 'column', ...</code></li>
+<li>描述表信息：<code>describe ''table</code></li>
+<li>扫描数据：<code>scan 'table'</code></li>
+<li>限制列进行扫描：<code>scan 'table', &#123;COLUMN=&gt;'cloumn:'&#125;</code></li>
+<li>HBase中的disable和enable</li>
+</ul>
+<h2 id="Hive基本工作原理">Hive基本工作原理</h2>
+<ul>
+<li>在Hadoop上用SQL进行数据分析
+<ul>
+<li>Hive 包括一个高层语言的执行引擎，类似于 SQL 的执行引擎</li>
+<li>Hive 建立在 Hadoop 的其它组成部分之上，包括 Hive 依赖于HDFS 进行数据保存，依赖于 MapReduce 完成查询操作</li>
+</ul>
+</li>
+<li>Hive的组成模块</li>
+<li>Hive的系统结构</li>
+<li>Hive的数据模型</li>
+<li>元数据存储：Metastore</li>
+<li>数据的物理分布情况</li>
+<li>Hive系统的配置</li>
+</ul>
+<h1>高级MapReduce编程技术</h1>
+<h2 id="复合键值对的使用">复合键值对的使用</h2>
+<ol>
+<li>用复合键让系统完成排序
+<ol>
+<li>将value中需要排序的部分加入到key中形成复合键，这样将能利用MapRecue系统的排序功能完成排序。</li>
+<li>但需要实现一个新的Partitioner，保证原来同一key值的键值对最后分区到同一个Reduce节点上。</li>
+</ol>
+</li>
+<li>把小的键值对合并成大的键值对
+<ol>
+<li>通常一个计算问题会产生大量的键值对，为了减少键值对传输和排序的开销，一些问题中的大量小的键值对可以被合并成一些大的键值对</li>
+</ol>
+</li>
+</ol>
+<h2 id="用户自定义数据类型">用户自定义数据类型</h2>
+<ol>
+<li>Hadoop内置的数据类型</li>
+<li>用户自定义数据类型
+<ol>
+<li>需要实现Writable接口</li>
+<li>作为key或者需要比较大小时则需要实现WritableComparable接口</li>
+</ol>
+</li>
+</ol>
+</div><div class="article-licensing box"><div class="licensing-title"><p>MapReduce 课程总结</p><p><a href="http://blog.czccc.cc/p/c27cf766/">http://blog.czccc.cc/p/c27cf766/</a></p></div><div class="licensing-meta level is-mobile"><div class="level-left"><div class="level-item is-narrow"><div><h6>作者</h6><p>Cheng</p></div></div><div class="level-item is-narrow"><div><h6>发布于</h6><p>2019-12-18</p></div></div><div class="level-item is-narrow"><div><h6>更新于</h6><p>2022-08-06</p></div></div><div class="level-item is-narrow"><div><h6>许可协议</h6><p><a class="icons" rel="noopener" target="_blank" title="Creative Commons" href="https://creativecommons.org/"><i class="icon fab fa-creative-commons"></i></a><a class="icons" rel="noopener" target="_blank" title="Attribution" href="https://creativecommons.org/licenses/by/4.0/"><i class="icon fab fa-creative-commons-by"></i></a><a class="icons" rel="noopener" target="_blank" title="Noncommercial" href="https://creativecommons.org/licenses/by-nc/4.0/"><i class="icon fab fa-creative-commons-nc"></i></a></p></div></div></div></div></div><div class="article-tags is-size-7 mb-4"><span class="mr-2">#</span><a class="link-muted mr-2" rel="tag" href="/tags/NJU/">NJU</a><a class="link-muted mr-2" rel="tag" href="/tags/%E8%AF%BE%E7%A8%8B%E6%80%BB%E7%BB%93/">课程总结</a><a class="link-muted mr-2" rel="tag" href="/tags/MapReduce/">MapReduce</a><a class="link-muted mr-2" rel="tag" href="/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/">大数据</a></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/css/share.min.css"><div class="social-share"></div><script src="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/js/social-share.min.js"></script></article></div><div class="card"><div class="card-content"><h3 class="menu-label has-text-centered">喜欢这篇文章？打赏一下作者吧</h3><div class="buttons is-centered"><a class="button donate" data-type="alipay"><span class="icon is-small"><i class="fab fa-alipay"></i></span><span>支付宝</span><span class="qrcode"><img src="/img/Alipay.jpg" alt="支付宝"></span></a><a class="button donate" data-type="wechat"><span class="icon is-small"><i class="fab fa-weixin"></i></span><span>微信</span><span class="qrcode"><img src="/img/WeChat_pay.png" alt="微信"></span></a></div></div></div><nav class="post-navigation mt-4 level is-mobile"><div class="level-start"><a class="article-nav-prev level level-item link-muted" href="/p/7af16b6e/"><i class="level-item fas fa-chevron-left"></i><span class="level-item">Distributed System</span></a></div><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/p/8e864b5/"><span class="level-item">pytorch-tutorials</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><div class="card"><div class="card-content"><h3 class="title is-5">评论</h3><div id="disqus_thread"><noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></div><script>var disqus_config = function () {
+            this.page.url = 'http://blog.czccc.cc/p/c27cf766/';
+            this.page.identifier = 'p/c27cf766/';
+        };
+        (function() {
+            var d = document, s = d.createElement('script');  
+            s.src = '//' + 'czcc' + '.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();</script></div></div></div><div class="column column-left is-4-tablet is-3-desktop is-3-widescreen  order-1"><div class="card widget" data-type="profile"><div class="card-content"><nav class="level"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-128x128 mx-auto mb-2"><img class="avatar" src="/img/avatar.jpg" alt="Cheng"></figure><p class="title is-size-4 is-block" style="line-height:inherit;">Cheng</p><p class="is-size-6 is-block">A Student</p><p class="is-size-6 is-flex justify-content-center"><i class="fas fa-map-marker-alt mr-1"></i><span>Nanjing</span></p></div></div></nav><nav class="level is-mobile"><div class="level-item has-text-centered is-marginless"><div><p class="heading">文章</p><a href="/archives"><p class="title">54</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">分类</p><a href="/categories"><p class="title">26</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">标签</p><a href="/tags"><p class="title">50</p></a></div></div></nav><div class="level"><a class="level-item button is-primary is-rounded" href="https://github.com/czccc" target="_blank" rel="noopener">关注我</a></div><div class="level is-mobile is-multiline"><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Github" href="https://github.com/czccc"><i class="fab fa-github"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="RSS" href="/atom.xml"><i class="fas fa-rss"></i></a></div></div></div><div class="card widget column-left is-sticky" id="toc" data-type="toc"><div class="card-content"><div class="menu" style="max-height: calc(100vh - 5rem); overflow-y: auto;"><h3 class="menu-label">目录</h3><ul class="menu-list"><li><a class="level is-mobile" href="#"><span class="level-left"><span class="level-item">1</span><span class="level-item">大数据技术简介</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#大数据的类型分类"><span class="level-left"><span class="level-item">1.1</span><span class="level-item">大数据的类型分类</span></span></a></li><li><a class="level is-mobile" href="#大数据处理的主要技术问题"><span class="level-left"><span class="level-item">1.2</span><span class="level-item">大数据处理的主要技术问题</span></span></a></li><li><a class="level is-mobile" href="#大数据研究的基本途径"><span class="level-left"><span class="level-item">1.3</span><span class="level-item">大数据研究的基本途径</span></span></a></li><li><a class="level is-mobile" href="#？什么是大数据"><span class="level-left"><span class="level-item">1.4</span><span class="level-item">？什么是大数据</span></span></a></li><li><a class="level is-mobile" href="#？大数据特点-5V"><span class="level-left"><span class="level-item">1.5</span><span class="level-item">？大数据特点: 5V</span></span></a></li><li><a class="level is-mobile" href="#？三个层面的挑战"><span class="level-left"><span class="level-item">1.6</span><span class="level-item">？三个层面的挑战</span></span></a></li></ul></li><li><a class="level is-mobile" href="#"><span class="level-left"><span class="level-item">2</span><span class="level-item">MapReduce 简介</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#为什么需要大规模数据并行处理"><span class="level-left"><span class="level-item">2.1</span><span class="level-item">为什么需要大规模数据并行处理</span></span></a></li><li><a class="level is-mobile" href="#什么是MapReduce？"><span class="level-left"><span class="level-item">2.2</span><span class="level-item">什么是MapReduce？</span></span></a></li><li><a class="level is-mobile" href="#为什么MapReduce如此重要？"><span class="level-left"><span class="level-item">2.3</span><span class="level-item">为什么MapReduce如此重要？</span></span></a></li><li><a class="level is-mobile" href="#MapReduce在三个层面上的基本构思"><span class="level-left"><span class="level-item">2.4</span><span class="level-item">MapReduce在三个层面上的基本构思</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#如何对付大数据处理：分而治之"><span class="level-left"><span class="level-item">2.4.1</span><span class="level-item">如何对付大数据处理：分而治之</span></span></a></li><li><a class="level is-mobile" href="#上升到抽象模型：Mapper与Reducer"><span class="level-left"><span class="level-item">2.4.2</span><span class="level-item">上升到抽象模型：Mapper与Reducer</span></span></a></li><li><a class="level is-mobile" href="#上升到构架：统一构架，为程序员隐藏系统层细节"><span class="level-left"><span class="level-item">2.4.3</span><span class="level-item">上升到构架：统一构架，为程序员隐藏系统层细节</span></span></a></li></ul></li><li><a class="level is-mobile" href="#主要设计思想与特点"><span class="level-left"><span class="level-item">2.5</span><span class="level-item">主要设计思想与特点</span></span></a></li></ul></li><li><a class="level is-mobile" href="#"><span class="level-left"><span class="level-item">3</span><span class="level-item">Google/Hadoop MapReduce基本构架</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#Google-MapReduce的基本工作原理"><span class="level-left"><span class="level-item">3.1</span><span class="level-item">Google MapReduce的基本工作原理</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#失效处理"><span class="level-left"><span class="level-item">3.1.1</span><span class="level-item">失效处理</span></span></a></li><li><a class="level is-mobile" href="#带宽优化"><span class="level-left"><span class="level-item">3.1.2</span><span class="level-item">带宽优化</span></span></a></li><li><a class="level is-mobile" href="#计算优化"><span class="level-left"><span class="level-item">3.1.3</span><span class="level-item">计算优化</span></span></a></li><li><a class="level is-mobile" href="#用数据分区解决数据相关性问题"><span class="level-left"><span class="level-item">3.1.4</span><span class="level-item">用数据分区解决数据相关性问题</span></span></a></li></ul></li><li><a class="level is-mobile" href="#Hadoop-MapReduce的基本工作原理"><span class="level-left"><span class="level-item">3.2</span><span class="level-item">Hadoop MapReduce的基本工作原理</span></span></a></li><li><a class="level is-mobile" href="#Hadoop-MapReduce主要组件"><span class="level-left"><span class="level-item">3.3</span><span class="level-item">Hadoop MapReduce主要组件</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#文件输入格式InputFormat"><span class="level-left"><span class="level-item">3.3.1</span><span class="level-item">文件输入格式InputFormat</span></span></a></li><li><a class="level is-mobile" href="#输入数据分块InputSplits"><span class="level-left"><span class="level-item">3.3.2</span><span class="level-item">输入数据分块InputSplits</span></span></a></li><li><a class="level is-mobile" href="#数据记录读入RecordReader"><span class="level-left"><span class="level-item">3.3.3</span><span class="level-item">数据记录读入RecordReader</span></span></a></li><li><a class="level is-mobile" href="#Mapper"><span class="level-left"><span class="level-item">3.3.4</span><span class="level-item">Mapper</span></span></a></li><li><a class="level is-mobile" href="#Combiner"><span class="level-left"><span class="level-item">3.3.5</span><span class="level-item">Combiner</span></span></a></li><li><a class="level is-mobile" href="#Partitioner-Shuffle"><span class="level-left"><span class="level-item">3.3.6</span><span class="level-item">Partitioner &amp; Shuffle</span></span></a></li><li><a class="level is-mobile" href="#Sort"><span class="level-left"><span class="level-item">3.3.7</span><span class="level-item">Sort</span></span></a></li><li><a class="level is-mobile" href="#Reducer"><span class="level-left"><span class="level-item">3.3.8</span><span class="level-item">Reducer</span></span></a></li><li><a class="level is-mobile" href="#文件输出格式OutputFormat"><span class="level-left"><span class="level-item">3.3.9</span><span class="level-item">文件输出格式OutputFormat</span></span></a></li><li><a class="level is-mobile" href="#RecordWriter"><span class="level-left"><span class="level-item">3.3.10</span><span class="level-item">RecordWriter</span></span></a></li></ul></li><li><a class="level is-mobile" href="#Hadoop-分布式文件系统HDFS"><span class="level-left"><span class="level-item">3.4</span><span class="level-item">Hadoop 分布式文件系统HDFS</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#HDFS的基本特征"><span class="level-left"><span class="level-item">3.4.1</span><span class="level-item">HDFS的基本特征</span></span></a></li><li><a class="level is-mobile" href="#HDFS可靠性与出错恢复"><span class="level-left"><span class="level-item">3.4.2</span><span class="level-item">HDFS可靠性与出错恢复</span></span></a></li><li><a class="level is-mobile" href="#HDFS文件系统操作命令"><span class="level-left"><span class="level-item">3.4.3</span><span class="level-item">HDFS文件系统操作命令</span></span></a></li><li><a class="level is-mobile" href="#在MapReduce程序中使用HDFS"><span class="level-left"><span class="level-item">3.4.4</span><span class="level-item">在MapReduce程序中使用HDFS</span></span></a></li><li><a class="level is-mobile" href="#HDFS权限控制与安全特性"><span class="level-left"><span class="level-item">3.4.5</span><span class="level-item">HDFS权限控制与安全特性</span></span></a></li></ul></li><li><a class="level is-mobile" href="#Hadoop-HDFS的编程"><span class="level-left"><span class="level-item">3.5</span><span class="level-item">Hadoop HDFS的编程</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#编程示例"><span class="level-left"><span class="level-item">3.5.1</span><span class="level-item">编程示例</span></span></a></li></ul></li></ul></li><li><a class="level is-mobile" href="#"><span class="level-left"><span class="level-item">4</span><span class="level-item">Hadoop系统安装运行与程序开发</span></span></a></li><li><a class="level is-mobile" href="#"><span class="level-left"><span class="level-item">5</span><span class="level-item">MapReduce算法设计</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#MapReduce可解决哪些算法问题？"><span class="level-left"><span class="level-item">5.1</span><span class="level-item">MapReduce可解决哪些算法问题？</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#基本算法"><span class="level-left"><span class="level-item">5.1.1</span><span class="level-item">基本算法</span></span></a></li><li><a class="level is-mobile" href="#复杂算法或应用"><span class="level-left"><span class="level-item">5.1.2</span><span class="level-item">复杂算法或应用</span></span></a></li></ul></li><li><a class="level is-mobile" href="#MapReduce中可编程控制的阶段"><span class="level-left"><span class="level-item">5.2</span><span class="level-item">MapReduce中可编程控制的阶段</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#Mapper-Reducer"><span class="level-left"><span class="level-item">5.2.1</span><span class="level-item">Mapper / Reducer</span></span></a></li><li><a class="level is-mobile" href="#Shuffle"><span class="level-left"><span class="level-item">5.2.2</span><span class="level-item">Shuffle</span></span></a></li><li><a class="level is-mobile" href="#Sort-2"><span class="level-left"><span class="level-item">5.2.3</span><span class="level-item">Sort</span></span></a></li></ul></li><li><a class="level is-mobile" href="#MapReduce排序算法"><span class="level-left"><span class="level-item">5.3</span><span class="level-item">MapReduce排序算法</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#Partitioner"><span class="level-left"><span class="level-item">5.3.1</span><span class="level-item">Partitioner</span></span></a></li></ul></li><li><a class="level is-mobile" href="#MapReduce单词同现分析算法"><span class="level-left"><span class="level-item">5.4</span><span class="level-item">MapReduce单词同现分析算法</span></span></a></li><li><a class="level is-mobile" href="#MapReduce文档倒排索引算法"><span class="level-left"><span class="level-item">5.5</span><span class="level-item">MapReduce文档倒排索引算法</span></span></a></li><li><a class="level is-mobile" href="#专利文献数据分析"><span class="level-left"><span class="level-item">5.6</span><span class="level-item">专利文献数据分析</span></span></a></li></ul></li><li><a class="level is-mobile" href="#"><span class="level-left"><span class="level-item">6</span><span class="level-item">HBase与Hive程序设计</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#HBase基本工作原理"><span class="level-left"><span class="level-item">6.1</span><span class="level-item">HBase基本工作原理</span></span></a></li><li><a class="level is-mobile" href="#HBase基本操作与编程方法示例"><span class="level-left"><span class="level-item">6.2</span><span class="level-item">HBase基本操作与编程方法示例</span></span></a></li><li><a class="level is-mobile" href="#Hive基本工作原理"><span class="level-left"><span class="level-item">6.3</span><span class="level-item">Hive基本工作原理</span></span></a></li></ul></li><li><a class="level is-mobile" href="#"><span class="level-left"><span class="level-item">7</span><span class="level-item">高级MapReduce编程技术</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#复合键值对的使用"><span class="level-left"><span class="level-item">7.1</span><span class="level-item">复合键值对的使用</span></span></a></li><li><a class="level is-mobile" href="#用户自定义数据类型"><span class="level-left"><span class="level-item">7.2</span><span class="level-item">用户自定义数据类型</span></span></a></li></ul></li></ul></div></div><script src="/js/toc.js" defer></script></div></div><!--!--></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img src="/img/logo.ico" alt="CZCC" height="28"></a><p class="is-size-7"><span>&copy; 2022 Cheng</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a><br><span id="busuanzi_container_site_uv">共<span id="busuanzi_value_site_uv">0</span>个访客</span></p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons-by"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/czccc/hexo-theme-icarus"><i class="fab fa-github"></i></a></p></div></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script><script>moment.locale("zh-CN");</script><script>var IcarusThemeSettings = {
+            article: {
+                highlight: {
+                    clipboard: true,
+                    fold: 'unfolded'
+                }
+            }
+        };</script><script src="/js/column.js"></script><script src="/js/animation.js"></script><a id="back-to-top" title="回到顶端" href="javascript:;"><i class="fas fa-chevron-up"></i></a><script src="/js/back_to_top.js" defer></script><!--!--><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/js/lightgallery.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/js/jquery.justifiedGallery.min.js" defer></script><script>window.addEventListener("load", () => {
+            if (typeof $.fn.lightGallery === 'function') {
+                $('.article').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof $.fn.justifiedGallery === 'function') {
+                if ($('.justified-gallery > p > .gallery-item').length) {
+                    $('.justified-gallery > p > .gallery-item').unwrap();
+                }
+                $('.justified-gallery').justifiedGallery();
+            }
+        });</script><!--!--><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css"><script src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/auto-render.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/mhchem.min.js" defer></script><script>window.addEventListener("load", function() {
+            document.querySelectorAll('[role="article"] > .content').forEach(function(element) {
+                renderMathInElement(element);
+            });
+        });</script><script type="text/x-mathjax-config">MathJax.Hub.Config({
+            'HTML-CSS': {
+                matchFontHeight: false
+            },
+            SVG: {
+                matchFontHeight: false
+            },
+            CommonHTML: {
+                matchFontHeight: false
+            },
+            tex2jax: {
+                inlineMath: [
+                    ['$','$'],
+                    ['\\(','\\)']
+                ]
+            }
+        });</script><script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.9/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script><!--!--><script src="/js/main.js" defer></script><div class="searchbox"><div class="searchbox-container"><div class="searchbox-header"><div class="searchbox-input-container"><input class="searchbox-input" type="text" placeholder="想要查找什么..."></div><a class="searchbox-close" href="javascript:;">×</a></div><div class="searchbox-body"></div></div></div><script src="/js/insight.js" defer></script><script>document.addEventListener('DOMContentLoaded', function () {
+            loadInsight({"contentUrl":"/content.json"}, {"hint":"想要查找什么...","untitled":"(无标题)","posts":"文章","pages":"页面","categories":"分类","tags":"标签"});
+        });</script></body></html>

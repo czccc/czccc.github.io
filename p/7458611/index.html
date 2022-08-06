@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="zh"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>字符串匹配算法 - CZCC</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="CZCC"><meta name="msapplication-TileImage" content="/img/favicon.ico"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="CZCC"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="description" content="字符串匹配算法是一个经常使用的算法。具体地说，字符串匹配的任务是：给定一个待搜索的字符串（往往较长，通常称为 haystack），以及一个想要搜索的字符串（往往较短，通常称为 needle），查找 needle 在 haystack 中出现的第一个位置（从 0 开始）。如果不存在，则返回 -1。 特别的，当 needle 为空字符串时，应该返回什么值呢？在 C 语言的 strstr() 以及 J"><meta property="og:type" content="blog"><meta property="og:title" content="字符串匹配算法"><meta property="og:url" content="http://blog.czccc.cc/p/7458611/"><meta property="og:site_name" content="CZCC"><meta property="og:description" content="字符串匹配算法是一个经常使用的算法。具体地说，字符串匹配的任务是：给定一个待搜索的字符串（往往较长，通常称为 haystack），以及一个想要搜索的字符串（往往较短，通常称为 needle），查找 needle 在 haystack 中出现的第一个位置（从 0 开始）。如果不存在，则返回 -1。 特别的，当 needle 为空字符串时，应该返回什么值呢？在 C 语言的 strstr() 以及 J"><meta property="og:locale" content="zh_CN"><meta property="og:image" content="http://blog.czccc.cc/img/og_image.png"><meta property="article:published_time" content="2020-08-28T05:32:00.000Z"><meta property="article:modified_time" content="2022-08-06T13:07:33.619Z"><meta property="article:author" content="Cheng"><meta property="article:tag" content="Algorithm"><meta property="article:tag" content="LeetCode"><meta property="article:tag" content="String"><meta property="twitter:card" content="summary"><meta property="twitter:image" content="/img/og_image.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"http://blog.czccc.cc/p/7458611/"},"headline":"字符串匹配算法","image":["http://blog.czccc.cc/img/og_image.png"],"datePublished":"2020-08-28T05:32:00.000Z","dateModified":"2022-08-06T13:07:33.619Z","author":{"@type":"Person","name":"Cheng"},"publisher":{"@type":"Organization","name":"CZCC","logo":{"@type":"ImageObject","url":"http://blog.czccc.cc/img/logo.ico"}},"description":"字符串匹配算法是一个经常使用的算法。具体地说，字符串匹配的任务是：给定一个待搜索的字符串（往往较长，通常称为 haystack），以及一个想要搜索的字符串（往往较短，通常称为 needle），查找 needle 在 haystack 中出现的第一个位置（从 0 开始）。如果不存在，则返回 -1。 特别的，当 needle 为空字符串时，应该返回什么值呢？在 C 语言的 strstr() 以及 J"}</script><link rel="canonical" href="http://blog.czccc.cc/p/7458611/"><link rel="alternate" href="/atom.xml" title="CZCC" type="application/atom+xml"><link rel="icon" href="/img/favicon.ico"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link rel="stylesheet" href="/css/default.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><!--!--><script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" defer></script><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css"><!--!--><!--!--><!--!--><!--!--><style>.pace{-webkit-pointer-events:none;pointer-events:none;-webkit-user-select:none;-moz-user-select:none;user-select:none}.pace-inactive{display:none}.pace .pace-progress{background:#3273dc;position:fixed;z-index:2000;top:0;right:100%;width:100%;height:2px}</style><script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script><!-- hexo injector head_end start --><script>
+  (function () {
+      function switchTab() {
+          if (!location.hash) {
+            return;
+          }
+          Array
+              .from(document.querySelectorAll('.tab-content'))
+              .forEach($tab => {
+                  $tab.classList.add('is-hidden');
+              });
+          Array
+              .from(document.querySelectorAll('.tabs li'))
+              .forEach($tab => {
+                  $tab.classList.remove('is-active');
+              });
+          const $activeTab = document.querySelector(location.hash);
+          if ($activeTab) {
+              $activeTab.classList.remove('is-hidden');
+          }
+          const $tabMenu = document.querySelector(`a[href="${location.hash}"]`);
+          if ($tabMenu) {
+              $tabMenu.parentElement.classList.add('is-active');
+          }
+      }
+      switchTab();
+      window.addEventListener('hashchange', switchTab, false);
+  })();
+  </script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.1.0"></head><body class="is-2-column"><nav class="navbar navbar-main"><div class="container navbar-container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img src="/img/logo.ico" alt="CZCC" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">Home</a><a class="navbar-item" href="/archives">Archives</a><a class="navbar-item" href="/categories">Categories</a><a class="navbar-item" href="/tags">Tags</a><a class="navbar-item" href="/categories/LeetCode">LeetCode</a><a class="navbar-item" href="/Software">Software</a><a class="navbar-item" href="/about">About</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/czccc/hexo-theme-icarus"><i class="fab fa-github"></i></a><a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;"><i class="fas fa-list-ul"></i></a><a class="navbar-item search" title="搜索" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-9-desktop is-9-widescreen"><div class="card"><article class="card-content article" role="article"><h1 class="title is-3 is-size-4-mobile"><i class="fas fa-angle-double-right">  </i>字符串匹配算法</h1><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><i class="far fa-calendar-alt">  </i><span class="level-item"><time dateTime="2020-08-28T05:32:00.000Z" title="2020/8/28 13:32:00">2020-08-28</time>发表</span><i class="far fa-calendar-check">  </i><span class="level-item"><time dateTime="2022-08-06T13:07:33.619Z" title="2022/8/6 21:07:33">2022-08-06</time>更新</span><i class="far fa-folder">  </i><span class="level-item"><a class="link-muted" href="/categories/Algorithm/">Algorithm</a></span><i class="far fa-hourglass">  </i><span class="level-item">11 分钟读完 (大约1641个字)</span><i class="far fa-eye">  </i><span class="level-item" id="busuanzi_container_page_pv"><span id="busuanzi_value_page_pv">0</span>次访问</span></div></div><div class="content"><hr>
+<p>字符串匹配算法是一个经常使用的算法。具体地说，字符串匹配的任务是：给定一个待搜索的字符串（往往较长，通常称为 <code>haystack</code>），以及一个想要搜索的字符串（往往较短，通常称为 <code>needle</code>），查找 <code>needle</code> 在 <code>haystack</code> 中出现的第一个位置（从 <strong>0</strong> 开始）。如果不存在，则返回 <strong>-1</strong>。</p>
+<p>特别的，当 <code>needle</code> 为空字符串时，应该返回什么值呢？在 C 语言的 <a target="_blank" rel="noopener" href="https://baike.baidu.com/item/strstr/811469">strstr()</a> 以及 Java 的 <a target="_blank" rel="noopener" href="https://docs.oracle.com/javase/7/docs/api/java/lang/String.html#indexOf(java.lang.String)">indexOf()</a> 定义中，此情况下的返回值为<strong>0</strong>。</p>
+<span id="more"></span>
+<h1>问题定义</h1>
+<p>实现 <code>strStr()</code> 函数。</p>
+<p>给定一个 <code>haystack</code> 字符串和一个 <code>needle</code> 字符串，在 <code>haystack</code> 字符串中找出 <code>needle</code> 字符串出现的第一个位置 (从 0 开始)。如果不存在，则返回  -1。</p>
+<p>记：<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi></mrow><annotation encoding="application/x-tex">N</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span></span></span></span> 为 <code>haystack</code> 字符串的长度，<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>L</mi></mrow><annotation encoding="application/x-tex">L</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal">L</span></span></span></span> 为 <code>needle</code> 字符串的长度。</p>
+<h1>Brute force - 暴力法</h1>
+<h2 id="子串逐一比较">子串逐一比较</h2>
+<p>Brute force 方法，也成为暴力法，思路是直接对 <code>haystack</code> 中每个长度等于 <code>needle</code> 的子字符串进行比较，若其内容与 <code>needle</code> 相同，则搜索成功，返回首个字符的索引。如果遍历到字符串结尾仍然未找到结果，则搜索失败，返回 -1。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">strStr</span>(<span class="params">self, haystack: <span class="built_in">str</span>, needle: <span class="built_in">str</span></span>) -&gt; <span class="built_in">int</span>:</span><br><span class="line">    L, n = <span class="built_in">len</span>(needle), <span class="built_in">len</span>(haystack)</span><br><span class="line">    <span class="comment"># 当 L == 0 时，会使 haystack[start: start + L] 也为空</span></span><br><span class="line">    <span class="comment"># 因此不必对 L == 0 额外进行判断</span></span><br><span class="line">    <span class="keyword">for</span> start <span class="keyword">in</span> <span class="built_in">range</span>(n - L + <span class="number">1</span>):</span><br><span class="line">        <span class="keyword">if</span> haystack[start: start + L] == needle:</span><br><span class="line">            <span class="keyword">return</span> start</span><br><span class="line">    <span class="keyword">return</span> -<span class="number">1</span></span><br></pre></td></tr></table></figure>
+<p><strong>复杂度分析</strong></p>
+<ul>
+<li>
+<p>时间复杂度：<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mo stretchy="false">(</mo><mi>N</mi><mo>−</mo><mi>L</mi><mo stretchy="false">)</mo><mi>L</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O((N - L)L)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">((</span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">L</span><span class="mclose">)</span><span class="mord mathnormal">L</span><span class="mclose">)</span></span></span></span>。内循环中比较字符串的复杂度为 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>L</mi></mrow><annotation encoding="application/x-tex">L</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal">L</span></span></span></span>，总共需要比较 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">(</mo><mi>N</mi><mo>−</mo><mi>L</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(N - L)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">L</span><span class="mclose">)</span></span></span></span> 次。</p>
+</li>
+<li>
+<p>空间复杂度：<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(1)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord">1</span><span class="mclose">)</span></span></span></span>。</p>
+</li>
+</ul>
+<h2 id="双指针">双指针</h2>
+<p>在初始的 Brute force 方法中，由于会将 <code>haystack</code> 所有长度为 L 的子串都与 <code>needle</code> 字符串比较，实际上是不需要这么做的。</p>
+<p>首先，只有子串的第一个字符跟 needle 字符串第一个字符相同的时候才需要比较。</p>
+<p>其次，可以一个字符一个字符比较，一旦不匹配了就立刻终止。</p>
+<p>因此，可以对其进行改进，使用两个指针，算法流程为：</p>
+<ul>
+<li>
+<p>移动 <code>pn</code> 指针，直到 <code>pn</code> 所指向位置的字符与 <code>needle</code> 字符串第一个字符相等。</p>
+</li>
+<li>
+<p>通过 <code>pn</code>，<code>pL</code>，<code>curr_len</code> 计算匹配长度。</p>
+</li>
+<li>
+<p>如果完全匹配（即 <code>curr_len == L</code>），返回匹配子串的起始坐标（即 <code>pn - L</code>）。</p>
+</li>
+<li>
+<p>如果不完全匹配，回溯。使 <code>pn = pn - curr_len + 1</code>， <code>pL = 0</code>， <code>curr_len = 0</code>。</p>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">strStr</span>(<span class="params">self, haystack: <span class="built_in">str</span>, needle: <span class="built_in">str</span></span>) -&gt; <span class="built_in">int</span>:</span><br><span class="line">    L, n = <span class="built_in">len</span>(needle), <span class="built_in">len</span>(haystack)</span><br><span class="line">    <span class="keyword">if</span> L == <span class="number">0</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line"></span><br><span class="line">    pn = <span class="number">0</span>	<span class="comment"># 子串头指针</span></span><br><span class="line">    <span class="keyword">while</span> pn &lt; n - L + <span class="number">1</span>:</span><br><span class="line">        <span class="comment"># 待匹配指针</span></span><br><span class="line">        pL = <span class="number">0</span></span><br><span class="line">        <span class="comment"># 计算最长的匹配长度</span></span><br><span class="line">        <span class="keyword">while</span> pL &lt; L <span class="keyword">and</span> haystack[pn + pL] == needle[pL]:</span><br><span class="line">            pL += <span class="number">1</span></span><br><span class="line">        </span><br><span class="line">        <span class="comment"># 如果匹配了 needle 的全部字符，则返回当前子串头指针位置</span></span><br><span class="line">        <span class="keyword">if</span> pL == L:</span><br><span class="line">            <span class="keyword">return</span> pn</span><br><span class="line">        <span class="comment"># 否则，头指针后移，继续查找</span></span><br><span class="line">        pn += <span class="number">1</span></span><br><span class="line">        </span><br><span class="line">    <span class="keyword">return</span> -<span class="number">1</span></span><br></pre></td></tr></table></figure>
+<p><strong>复杂度分析</strong></p>
+<ul>
+<li>时间复杂度：最坏时间复杂度为 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mo stretchy="false">(</mo><mi>N</mi><mo>−</mo><mi>L</mi><mo stretchy="false">)</mo><mi>L</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O((N - L)L)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">((</span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">L</span><span class="mclose">)</span><span class="mord mathnormal">L</span><span class="mclose">)</span></span></span></span>，最优时间复杂度为 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>N</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(N)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mclose">)</span></span></span></span>。</li>
+<li>空间复杂度：<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(1)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord">1</span><span class="mclose">)</span></span></span></span>。</li>
+</ul>
+<h1>Knuth–Morris–Pratt</h1>
+<p><a target="_blank" rel="noopener" href="http://www.ruanyifeng.com/blog/2013/05/Knuth%E2%80%93Morris%E2%80%93Pratt_algorithm.html">http://www.ruanyifeng.com/blog/2013/05/Knuth%E2%80%93Morris%E2%80%93Pratt_algorithm.html</a></p>
+<p>KMP 算法，是在字符串匹配算法中比较经典的一个算法，它以三个发明者 <a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/Knuth%E2%80%93Morris%E2%80%93Pratt_algorithm">Knuth-Morris-Pratt</a> 的名称命名，起头的那个 K 就是著名科学家 Donald Knuth。</p>
+<p>首先，让我们回顾一下上面的暴力法，暴力法的效率问题主要体现在，当出现位置不匹配时，它会同时回退 <code>haystack</code> 和 <code>needle</code> 的位置，具体地说，<code>haystack</code> 的搜索位置从 <code>pn + pL</code> 回退到 <code>pn</code>，<code>needle</code> 的搜索位置从 <code>pL</code> 回退到 <code>0</code>，这种回退机制导致了算法往往会进行很多不必要的操作。</p>
+<p>比如，如果 <code>haystack</code> 为 <code>aaacaaadaaa</code>，而 <code>needle</code> 为 <code>aaaa</code>，算法在第一次会对 <code>aaac</code> 和 <code>aaaa</code> 进行比较，然后第二次对 <code>aaca</code> 和 <code>aaaa</code> 进行比较…这就导致了一个问题，由于 <code>needle</code> 中根本就没有 <code>c</code> 这个字符，所有这几次比较注定是失败的。这也就是暴力法效率差的主要原因。</p>
+<p>那么，在 KMP 中，如何利用已知的比较信息，从而不要把“<code>haystack</code> 中的搜索位置”移回已经比较过的位置，继续把它向后移，这样就提高了效率。</p>
+<p>想要做到这一点，需要针对于 <code>needle</code>，产生一个<strong>部分匹配表</strong>，例如，当 <code>needle</code> 为 <code>ABCDABD</code> 时，部分匹配表如下：</p>
+<table>
+<thead>
+<tr>
+<th>搜索词</th>
+<th>A</th>
+<th>B</th>
+<th>C</th>
+<th>D</th>
+<th>A</th>
+<th>B</th>
+<th>D</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>部分匹配值</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>2</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>对于这张表的介绍，以及如何使用，<a target="_blank" rel="noopener" href="http://www.ruanyifeng.com/blog/2013/05/Knuth%E2%80%93Morris%E2%80%93Pratt_algorithm.html"><strong>这篇文章</strong></a>已经写的非常清楚，本文中不再赘述</p>
+</blockquote>
+<h2 id="计算部分匹配表">计算部分匹配表</h2>
+<p>首先，要了解两个概念：“前缀” 和 “后缀”。 “前缀” 指除了最后一个字符以外，一个字符串的全部头部组合；“后缀” 指除了第一个字符以外，一个字符串的全部尾部组合。</p>
+<p>“部分匹配值” 就是 “前缀” 和 “后缀” 的最长的共有元素的长度。以 “ABCDABD” 为例：</p>
+<table>
+<thead>
+<tr>
+<th>子串</th>
+<th>前缀集</th>
+<th style="text-align:left">后缀集</th>
+<th>共有元素</th>
+<th>部分匹配值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A</td>
+<td><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ϕ</mi></mrow><annotation encoding="application/x-tex">\phi</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">ϕ</span></span></span></span></td>
+<td style="text-align:left"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ϕ</mi></mrow><annotation encoding="application/x-tex">\phi</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">ϕ</span></span></span></span></td>
+<td><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ϕ</mi></mrow><annotation encoding="application/x-tex">\phi</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">ϕ</span></span></span></span></td>
+<td>0</td>
+</tr>
+<tr>
+<td>AB</td>
+<td>A</td>
+<td style="text-align:left">B</td>
+<td><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ϕ</mi></mrow><annotation encoding="application/x-tex">\phi</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">ϕ</span></span></span></span></td>
+<td>0</td>
+</tr>
+<tr>
+<td>ABC</td>
+<td>A, AB</td>
+<td style="text-align:left">BC, C</td>
+<td><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ϕ</mi></mrow><annotation encoding="application/x-tex">\phi</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">ϕ</span></span></span></span></td>
+<td>0</td>
+</tr>
+<tr>
+<td>ABCD</td>
+<td>A, AB, ABC</td>
+<td style="text-align:left">BCD, CD, D</td>
+<td><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ϕ</mi></mrow><annotation encoding="application/x-tex">\phi</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">ϕ</span></span></span></span></td>
+<td>0</td>
+</tr>
+<tr>
+<td>ABCDA</td>
+<td>A, AB, ABC, ABCD</td>
+<td style="text-align:left">BCDA, CDA, DA, A</td>
+<td>A</td>
+<td>1</td>
+</tr>
+<tr>
+<td>ABCDAB</td>
+<td>A, AB, ABC, ABCD, ABCDA</td>
+<td style="text-align:left">BCDAB, CDAB, DAB, AB, B</td>
+<td>AB</td>
+<td>2</td>
+</tr>
+<tr>
+<td>ABCDABD</td>
+<td>A, AB, ABC, ABCD, ABCDA, ABCDAB</td>
+<td style="text-align:left">BCDABD, CDABD, DABD, ABD, BD, D</td>
+<td><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ϕ</mi></mrow><annotation encoding="application/x-tex">\phi</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">ϕ</span></span></span></span></td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<p>“部分匹配” 的实质是，有时候，字符串头部和尾部会有重复。比如，“ABCDAB” 之中有两个 “AB”，那么它的 “部分匹配值” 就是 2（“AB” 的长度）。搜索词移动的时候，第一个 “AB” 向后移动 4 位（字符串长度 - 部分匹配值），就可以来到第二个 “AB” 的位置。</p>
+<h1>Sunday</h1>
+<p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/implement-strstr/solution/python3-sundayjie-fa-9996-by-tes/">https://leetcode-cn.com/problems/implement-strstr/solution/python3-sundayjie-fa-9996-by-tes/</a></p>
+<h1>Horspool</h1>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/cobbliu/archive/2012/05/29/2524244.html">https://www.cnblogs.com/cobbliu/archive/2012/05/29/2524244.html</a></p>
+<h1>Boyer-Moore</h1>
+<p><a target="_blank" rel="noopener" href="https://www.ruanyifeng.com/blog/2013/05/boyer-moore_string_search_algorithm.html">https://www.ruanyifeng.com/blog/2013/05/boyer-moore_string_search_algorithm.html</a></p>
+<h1>Rabin Karp</h1>
+<p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/implement-strstr/solution/shi-xian-strstr-by-leetcode/">https://leetcode-cn.com/problems/implement-strstr/solution/shi-xian-strstr-by-leetcode/</a></p>
+</div><div class="article-licensing box"><div class="licensing-title"><p>字符串匹配算法</p><p><a href="http://blog.czccc.cc/p/7458611/">http://blog.czccc.cc/p/7458611/</a></p></div><div class="licensing-meta level is-mobile"><div class="level-left"><div class="level-item is-narrow"><div><h6>作者</h6><p>Cheng</p></div></div><div class="level-item is-narrow"><div><h6>发布于</h6><p>2020-08-28</p></div></div><div class="level-item is-narrow"><div><h6>更新于</h6><p>2022-08-06</p></div></div><div class="level-item is-narrow"><div><h6>许可协议</h6><p><a class="icons" rel="noopener" target="_blank" title="Creative Commons" href="https://creativecommons.org/"><i class="icon fab fa-creative-commons"></i></a><a class="icons" rel="noopener" target="_blank" title="Attribution" href="https://creativecommons.org/licenses/by/4.0/"><i class="icon fab fa-creative-commons-by"></i></a><a class="icons" rel="noopener" target="_blank" title="Noncommercial" href="https://creativecommons.org/licenses/by-nc/4.0/"><i class="icon fab fa-creative-commons-nc"></i></a></p></div></div></div></div></div><div class="article-tags is-size-7 mb-4"><span class="mr-2">#</span><a class="link-muted mr-2" rel="tag" href="/tags/Algorithm/">Algorithm</a><a class="link-muted mr-2" rel="tag" href="/tags/LeetCode/">LeetCode</a><a class="link-muted mr-2" rel="tag" href="/tags/String/">String</a></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/css/share.min.css"><div class="social-share"></div><script src="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/js/social-share.min.js"></script></article></div><div class="card"><div class="card-content"><h3 class="menu-label has-text-centered">喜欢这篇文章？打赏一下作者吧</h3><div class="buttons is-centered"><a class="button donate" data-type="alipay"><span class="icon is-small"><i class="fab fa-alipay"></i></span><span>支付宝</span><span class="qrcode"><img src="/img/Alipay.jpg" alt="支付宝"></span></a><a class="button donate" data-type="wechat"><span class="icon is-small"><i class="fab fa-weixin"></i></span><span>微信</span><span class="qrcode"><img src="/img/WeChat_pay.png" alt="微信"></span></a></div></div></div><nav class="post-navigation mt-4 level is-mobile"><div class="level-start"><a class="article-nav-prev level level-item link-muted" href="/p/e402bc62/"><i class="level-item fas fa-chevron-left"></i><span class="level-item">Typora 快捷键</span></a></div><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/p/ffac41da/"><span class="level-item">LeetCode 中的数学算法</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><div class="card"><div class="card-content"><h3 class="title is-5">评论</h3><div id="disqus_thread"><noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></div><script>var disqus_config = function () {
+            this.page.url = 'http://blog.czccc.cc/p/7458611/';
+            this.page.identifier = 'p/7458611/';
+        };
+        (function() {
+            var d = document, s = d.createElement('script');  
+            s.src = '//' + 'czcc' + '.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();</script></div></div></div><div class="column column-left is-4-tablet is-3-desktop is-3-widescreen  order-1"><div class="card widget" data-type="profile"><div class="card-content"><nav class="level"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-128x128 mx-auto mb-2"><img class="avatar" src="/img/avatar.jpg" alt="Cheng"></figure><p class="title is-size-4 is-block" style="line-height:inherit;">Cheng</p><p class="is-size-6 is-block">A Student</p><p class="is-size-6 is-flex justify-content-center"><i class="fas fa-map-marker-alt mr-1"></i><span>Nanjing</span></p></div></div></nav><nav class="level is-mobile"><div class="level-item has-text-centered is-marginless"><div><p class="heading">文章</p><a href="/archives"><p class="title">54</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">分类</p><a href="/categories"><p class="title">26</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">标签</p><a href="/tags"><p class="title">50</p></a></div></div></nav><div class="level"><a class="level-item button is-primary is-rounded" href="https://github.com/czccc" target="_blank" rel="noopener">关注我</a></div><div class="level is-mobile is-multiline"><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Github" href="https://github.com/czccc"><i class="fab fa-github"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="RSS" href="/atom.xml"><i class="fas fa-rss"></i></a></div></div></div><div class="card widget column-left is-sticky" id="toc" data-type="toc"><div class="card-content"><div class="menu" style="max-height: calc(100vh - 5rem); overflow-y: auto;"><h3 class="menu-label">目录</h3><ul class="menu-list"><li><a class="level is-mobile" href="#"><span class="level-left"><span class="level-item">1</span><span class="level-item">问题定义</span></span></a></li><li><a class="level is-mobile" href="#"><span class="level-left"><span class="level-item">2</span><span class="level-item">Brute force - 暴力法</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#子串逐一比较"><span class="level-left"><span class="level-item">2.1</span><span class="level-item">子串逐一比较</span></span></a></li><li><a class="level is-mobile" href="#双指针"><span class="level-left"><span class="level-item">2.2</span><span class="level-item">双指针</span></span></a></li></ul></li><li><a class="level is-mobile" href="#"><span class="level-left"><span class="level-item">3</span><span class="level-item">Knuth–Morris–Pratt</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#计算部分匹配表"><span class="level-left"><span class="level-item">3.1</span><span class="level-item">计算部分匹配表</span></span></a></li></ul></li><li><a class="level is-mobile" href="#"><span class="level-left"><span class="level-item">4</span><span class="level-item">Sunday</span></span></a></li><li><a class="level is-mobile" href="#"><span class="level-left"><span class="level-item">5</span><span class="level-item">Horspool</span></span></a></li><li><a class="level is-mobile" href="#"><span class="level-left"><span class="level-item">6</span><span class="level-item">Boyer-Moore</span></span></a></li><li><a class="level is-mobile" href="#"><span class="level-left"><span class="level-item">7</span><span class="level-item">Rabin Karp</span></span></a></li></ul></div></div><script src="/js/toc.js" defer></script></div></div><!--!--></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img src="/img/logo.ico" alt="CZCC" height="28"></a><p class="is-size-7"><span>&copy; 2022 Cheng</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a><br><span id="busuanzi_container_site_uv">共<span id="busuanzi_value_site_uv">0</span>个访客</span></p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons-by"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/czccc/hexo-theme-icarus"><i class="fab fa-github"></i></a></p></div></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script><script>moment.locale("zh-CN");</script><script>var IcarusThemeSettings = {
+            article: {
+                highlight: {
+                    clipboard: true,
+                    fold: 'unfolded'
+                }
+            }
+        };</script><script src="/js/column.js"></script><script src="/js/animation.js"></script><a id="back-to-top" title="回到顶端" href="javascript:;"><i class="fas fa-chevron-up"></i></a><script src="/js/back_to_top.js" defer></script><!--!--><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/js/lightgallery.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/js/jquery.justifiedGallery.min.js" defer></script><script>window.addEventListener("load", () => {
+            if (typeof $.fn.lightGallery === 'function') {
+                $('.article').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof $.fn.justifiedGallery === 'function') {
+                if ($('.justified-gallery > p > .gallery-item').length) {
+                    $('.justified-gallery > p > .gallery-item').unwrap();
+                }
+                $('.justified-gallery').justifiedGallery();
+            }
+        });</script><!--!--><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css"><script src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/auto-render.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/mhchem.min.js" defer></script><script>window.addEventListener("load", function() {
+            document.querySelectorAll('[role="article"] > .content').forEach(function(element) {
+                renderMathInElement(element);
+            });
+        });</script><script type="text/x-mathjax-config">MathJax.Hub.Config({
+            'HTML-CSS': {
+                matchFontHeight: false
+            },
+            SVG: {
+                matchFontHeight: false
+            },
+            CommonHTML: {
+                matchFontHeight: false
+            },
+            tex2jax: {
+                inlineMath: [
+                    ['$','$'],
+                    ['\\(','\\)']
+                ]
+            }
+        });</script><script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.9/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script><!--!--><script src="/js/main.js" defer></script><div class="searchbox"><div class="searchbox-container"><div class="searchbox-header"><div class="searchbox-input-container"><input class="searchbox-input" type="text" placeholder="想要查找什么..."></div><a class="searchbox-close" href="javascript:;">×</a></div><div class="searchbox-body"></div></div></div><script src="/js/insight.js" defer></script><script>document.addEventListener('DOMContentLoaded', function () {
+            loadInsight({"contentUrl":"/content.json"}, {"hint":"想要查找什么...","untitled":"(无标题)","posts":"文章","pages":"页面","categories":"分类","tags":"标签"});
+        });</script></body></html>

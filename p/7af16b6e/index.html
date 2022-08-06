@@ -1,0 +1,834 @@
+<!doctype html>
+<html lang="zh"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>Distributed System - CZCC</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="CZCC"><meta name="msapplication-TileImage" content="/img/favicon.ico"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="CZCC"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="description" content="分布式系统期末总结"><meta property="og:type" content="blog"><meta property="og:title" content="Distributed System"><meta property="og:url" content="http://blog.czccc.cc/p/7af16b6e/"><meta property="og:site_name" content="CZCC"><meta property="og:description" content="分布式系统期末总结"><meta property="og:locale" content="zh_CN"><meta property="og:image" content="https://s2.ax1x.com/2019/12/31/l1ordS.png"><meta property="og:image" content="https://s2.ax1x.com/2019/12/31/l1o5ZT.png"><meta property="og:image" content="https://s2.ax1x.com/2019/12/31/l1OB1e.png"><meta property="og:image" content="https://s2.ax1x.com/2019/12/31/l1xbMF.png"><meta property="og:image" content="https://s2.ax1x.com/2020/01/01/lJ0TFx.png"><meta property="og:image" content="https://s2.ax1x.com/2019/12/31/l1zoTA.png"><meta property="og:image" content="https://s2.ax1x.com/2020/01/02/lYHE9K.png"><meta property="og:image" content="https://s2.ax1x.com/2019/12/31/l3SDc8.png"><meta property="article:published_time" content="2019-12-31T05:56:23.000Z"><meta property="article:modified_time" content="2022-08-06T13:07:33.622Z"><meta property="article:author" content="Cheng"><meta property="article:tag" content="分布式系统"><meta property="article:tag" content="NJU"><meta property="article:tag" content="课程总结"><meta property="twitter:card" content="summary"><meta property="twitter:image" content="https://s2.ax1x.com/2019/12/31/l1ordS.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"http://blog.czccc.cc/p/7af16b6e/"},"headline":"Distributed System","image":["https://s2.ax1x.com/2019/12/31/l1ordS.png","https://s2.ax1x.com/2019/12/31/l1o5ZT.png","https://s2.ax1x.com/2019/12/31/l1OB1e.png","https://s2.ax1x.com/2019/12/31/l1xbMF.png","https://s2.ax1x.com/2020/01/01/lJ0TFx.png","https://s2.ax1x.com/2019/12/31/l1zoTA.png","https://s2.ax1x.com/2020/01/02/lYHE9K.png","https://s2.ax1x.com/2019/12/31/l3SDc8.png"],"datePublished":"2019-12-31T05:56:23.000Z","dateModified":"2022-08-06T13:07:33.622Z","author":{"@type":"Person","name":"Cheng"},"publisher":{"@type":"Organization","name":"CZCC","logo":{"@type":"ImageObject","url":"http://blog.czccc.cc/img/logo.ico"}},"description":"分布式系统期末总结"}</script><link rel="canonical" href="http://blog.czccc.cc/p/7af16b6e/"><link rel="alternate" href="/atom.xml" title="CZCC" type="application/atom+xml"><link rel="icon" href="/img/favicon.ico"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link rel="stylesheet" href="/css/default.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><!--!--><script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" defer></script><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css"><!--!--><!--!--><!--!--><!--!--><style>.pace{-webkit-pointer-events:none;pointer-events:none;-webkit-user-select:none;-moz-user-select:none;user-select:none}.pace-inactive{display:none}.pace .pace-progress{background:#3273dc;position:fixed;z-index:2000;top:0;right:100%;width:100%;height:2px}</style><script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script><!-- hexo injector head_end start --><script>
+  (function () {
+      function switchTab() {
+          if (!location.hash) {
+            return;
+          }
+          Array
+              .from(document.querySelectorAll('.tab-content'))
+              .forEach($tab => {
+                  $tab.classList.add('is-hidden');
+              });
+          Array
+              .from(document.querySelectorAll('.tabs li'))
+              .forEach($tab => {
+                  $tab.classList.remove('is-active');
+              });
+          const $activeTab = document.querySelector(location.hash);
+          if ($activeTab) {
+              $activeTab.classList.remove('is-hidden');
+          }
+          const $tabMenu = document.querySelector(`a[href="${location.hash}"]`);
+          if ($tabMenu) {
+              $tabMenu.parentElement.classList.add('is-active');
+          }
+      }
+      switchTab();
+      window.addEventListener('hashchange', switchTab, false);
+  })();
+  </script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.1.0"></head><body class="is-2-column"><nav class="navbar navbar-main"><div class="container navbar-container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img src="/img/logo.ico" alt="CZCC" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">Home</a><a class="navbar-item" href="/archives">Archives</a><a class="navbar-item" href="/categories">Categories</a><a class="navbar-item" href="/tags">Tags</a><a class="navbar-item" href="/categories/LeetCode">LeetCode</a><a class="navbar-item" href="/Software">Software</a><a class="navbar-item" href="/about">About</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/czccc/hexo-theme-icarus"><i class="fab fa-github"></i></a><a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;"><i class="fas fa-list-ul"></i></a><a class="navbar-item search" title="搜索" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-9-desktop is-9-widescreen"><div class="card"><article class="card-content article" role="article"><h1 class="title is-3 is-size-4-mobile"><i class="fas fa-angle-double-right">  </i>Distributed System</h1><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><i class="far fa-calendar-alt">  </i><span class="level-item"><time dateTime="2019-12-31T05:56:23.000Z" title="2019/12/31 13:56:23">2019-12-31</time>发表</span><i class="far fa-calendar-check">  </i><span class="level-item"><time dateTime="2022-08-06T13:07:33.622Z" title="2022/8/6 21:07:33">2022-08-06</time>更新</span><i class="far fa-folder">  </i><span class="level-item"><a class="link-muted" href="/categories/NJU/">NJU</a></span><i class="far fa-hourglass">  </i><span class="level-item">26 分钟读完 (大约3832个字)</span><i class="far fa-eye">  </i><span class="level-item" id="busuanzi_container_page_pv"><span id="busuanzi_value_page_pv">0</span>次访问</span></div></div><div class="content"><p>分布式系统期末总结</p>
+<hr>
+<span id="more"></span>
+<h1>分布式系统模型</h1>
+<h2 id="什么是分布式系统">什么是分布式系统</h2>
+<blockquote>
+<p>A distributed system is a collection of autonomous computing elements that appears to its users as a single coherent system.</p>
+</blockquote>
+<p>分布式系统是一组自主计算的集合,在用户看来是一个单一的一致系统</p>
+<p><img src="https://s2.ax1x.com/2019/12/31/l1ordS.png" alt="l1ordS.png"></p>
+<h2 id="分布式系统的目标">分布式系统的目标</h2>
+<ul>
+<li>Making resources available: 使资源多处可用</li>
+<li>Distribution transparency: 分布式透明性</li>
+<li>Openness: 开放性</li>
+<li>Scalability: 可扩展性</li>
+</ul>
+<h2 id="为什么要分布式？">为什么要分布式？</h2>
+<blockquote>
+<p>Because people are distributed</p>
+</blockquote>
+<p><img src="https://s2.ax1x.com/2019/12/31/l1o5ZT.png" alt="l1o5ZT.png"></p>
+<table>
+<thead>
+<tr>
+<th>方面</th>
+<th>原因</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>经济</td>
+<td>多个微处理器提供了比主机更好的性价比</td>
+</tr>
+<tr>
+<td>速度</td>
+<td>分布式系统可以拥有更多的算力</td>
+</tr>
+<tr>
+<td>继承的分布式</td>
+<td>一些应用本身便涉及到空间上分散的机器</td>
+</tr>
+<tr>
+<td>可信性</td>
+<td>如果单个机器损坏, 整个系统仍可以存活</td>
+</tr>
+<tr>
+<td>可增加的成长</td>
+<td>算力可以一点点地增加</td>
+</tr>
+</tbody>
+</table>
+<h2 id="分布式系统透明性和开放性的含义。">分布式系统透明性和开放性的含义。</h2>
+<h3 id="透明性">透明性</h3>
+<p><img src="https://s2.ax1x.com/2019/12/31/l1OB1e.png" alt="l1OB1e.png"></p>
+<p>隐藏底层的资源获取方式、资源位置、资源移动、重定位、复制、并发性、资源错误与恢复</p>
+<ul>
+<li>想要实现完全的透明可能比较困难:
+<ul>
+<li>用户可能被定位在不同的组件</li>
+<li>完全隐藏网络和节点的错误是（理论与实践上）不可能的
+<ul>
+<li>难以分辨速度较慢与网络错误</li>
+<li>难以确定服务器在崩溃之前是否已经进行了某些操作</li>
+</ul>
+</li>
+<li>完全的透明性将会影响性能，暴露系统的分布式环境
+<ul>
+<li>保存Web缓存与服务器同步</li>
+<li>将写操作立即写入磁盘以免导致错误</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="开放性">开放性</h3>
+<ul>
+<li>能够与其他开放系统的服务进行交互，不管底层的环境如何
+<ul>
+<li>系统应该定义良好的接口</li>
+<li>系统应该支持应用的迁移</li>
+<li>系统应该容易进行操作（interoperate）</li>
+</ul>
+</li>
+<li>至少使分布式系统独立于底层的运行环境</li>
+</ul>
+<h2 id="分布式操作系统、网络操作系统和基于中间件的系统。">分布式操作系统、网络操作系统和基于中间件的系统。</h2>
+<p>// TODO</p>
+<h2 id="分布式系统的类型。">分布式系统的类型。</h2>
+<ul>
+<li>分布式计算系统：Distributed computing systems
+<ul>
+<li>集群计算：Cluster computing
+<ul>
+<li>a group of high-end systems connected through a LAN</li>
+<li>Homogeneous: same OS, near-identical hardware</li>
+</ul>
+</li>
+<li>网格计算：Grid Computing
+<ul>
+<li>lots of nodes from everywhere</li>
+<li>Heterogeneous</li>
+<li>Dispersed across several organizations</li>
+<li>Can easily span a wide-area network</li>
+</ul>
+</li>
+<li>云计算</li>
+</ul>
+</li>
+<li>分布式信息系统：Distributed information systems
+<ul>
+<li>当今使用最广泛的分布式系统是各种各样的传统信息系统</li>
+<li>Example: 交易处理系统.</li>
+<li>交易是在一组对象上进行的一系列操作，满足ACID：
+<ul>
+<li>Atomicity</li>
+<li>Consistency</li>
+<li>Isolation</li>
+<li>Durability</li>
+</ul>
+</li>
+<li>通常，交易涉及的数据会分布在不同的服务器上。TP控制器用于管理交易的执行。</li>
+</ul>
+</li>
+<li>Distributed pervasive systems
+<ul>
+<li>Emerging next-generation of distributed systems in which nodes are small, mobile, and often embedded in a larger system, characterized by the fact that the system naturally         blends into the user’s environment.</li>
+<li>Ubiquitous computing systems</li>
+<li>Mobile computing systems</li>
+<li>Sensor (and actuator) networks</li>
+</ul>
+</li>
+</ul>
+<h1>分布式系统架构</h1>
+<h2 id="分布式系统架构风格">分布式系统架构风格</h2>
+<h3 id="Centralized">Centralized</h3>
+<ul>
+<li>Basic Client–Server Model
+<ul>
+<li>Characteristics:
+<ul>
+<li>There are processes offering services (servers)</li>
+<li>There are processes that use services (clients)</li>
+<li>Clients and servers can be on different machines</li>
+<li>Clients follow request/reply model wrt to using services</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Multiple Clients/Single Server
+<ul>
+<li>Web proxy server</li>
+<li>Web Applets</li>
+<li>Server forms bottleneck</li>
+<li>Server forms single point of failure</li>
+<li>System scaling difficult</li>
+</ul>
+</li>
+<li>Multiple Clients/Multiple Servers
+<ul>
+<li>Web proxy server</li>
+<li>Web Applets</li>
+</ul>
+</li>
+</ul>
+<p>Application Layering</p>
+<ul>
+<li>Traditional three-layered view
+<ul>
+<li>User-interface layer contains units for an application’s user interface</li>
+<li>Processing layer contains the functions of an application, i.e. without specific data</li>
+<li>Data layer contains the data that a client wants to manipulate through the application components</li>
+</ul>
+</li>
+<li>This layering is found in many distributed information systems, using traditional database technology and accompanying applications.</li>
+</ul>
+<p>Multitiered Architectures (1)</p>
+<ul>
+<li>Single-tiered: dumb terminal/mainframe configuration</li>
+<li>Two-tiered: client/single server configuration</li>
+<li>Three-tiered: each layer on separate machine</li>
+</ul>
+<h3 id="Decentralized">Decentralized</h3>
+<ul>
+<li>Structured P2P: 节点按照特定的分布式数据结构进行组织，可以直接按照节点ID进行查找</li>
+<li>Unstructured P2P: 节点随机的选择邻居，使用（有限/概率）洪泛法进行查找</li>
+<li>Hybrid P2P: 某些节点（Superpeer）具有特定的功能</li>
+</ul>
+<h3 id="Hybrid">Hybrid</h3>
+<ul>
+<li>Client-server combined with P2P</li>
+<li>Edge-server architectures, which are often used for Content<br>
+Delivery Networks.</li>
+</ul>
+<h2 id="分布式系统组织形式">分布式系统组织形式</h2>
+<p>Multitiered Architectures (1)</p>
+<ul>
+<li>Single-tiered: dumb terminal/mainframe configuration</li>
+<li>Two-tiered: client/single server configuration</li>
+<li>Three-tiered: each layer on separate machine</li>
+</ul>
+<h2 id="客户-服务器模式和对等模式">客户-服务器模式和对等模式</h2>
+<h2 id="分布式系统组织为中间件">分布式系统组织为中间件</h2>
+<p><img src="https://s2.ax1x.com/2019/12/31/l1xbMF.png" alt="l1xbMF.png"></p>
+<p>Middleware</p>
+<ul>
+<li>In many cases, distributed systems/applications are developed according to a specific architectural style. The chosen style may not be optimal in all cases</li>
+<li>need to (dynamically) adapt the behavior of the middleware.</li>
+<li>Interceptors</li>
+<li>Intercept the usual flow of control when invoking a remote<br>
+object.</li>
+</ul>
+<h1>进程与线程</h1>
+<h2 id="进程和线程">进程和线程</h2>
+<p>Process: An execution stream in the context of a process<br>
+state</p>
+<ul>
+<li>Execution stream<br>
+• Stream of executing instructions<br>
+• Running piece of code<br>
+• Sequential sequence of instructions<br>
+• “thread of control”</li>
+<li>Process state</li>
+<li>Everything that the running code can affect or be affected by</li>
+</ul>
+<p>Processes vs. Threads</p>
+<ul>
+<li>
+<p>A process is different than a thread</p>
+</li>
+<li>
+<p>Thread: “Lightweight process” (LWP)</p>
+<ul>
+<li>An execution stream that shares an address space</li>
+<li>Multiple threads within a single process</li>
+</ul>
+</li>
+<li>
+<p>Example:</p>
+<ul>
+<li>Two processes examining memory address 0xffe84264 see different values (I.e., different contents)</li>
+<li>Two threads examining memory address 0xffe84264 see same value (I.e., same contents)</li>
+</ul>
+</li>
+</ul>
+<h2 id="代码迁移">代码迁移</h2>
+<ul>
+<li>Approaches to code migration</li>
+<li>Migration and local resources
+<ul>
+<li>Resource types
+<ul>
+<li>Fixed: the resource cannot be migrated, such as local hardware</li>
+<li>Fastened: the resource can, in principle, be migrated but only at high cost</li>
+<li>Unattached: the resource can easily be moved along with the object (e.g. a cache)</li>
+</ul>
+</li>
+<li>Object-to-resource binding
+<ul>
+<li>By identifier: the object requires a specific instance of a resource (e.g. a specific database)</li>
+<li>By value: the object requires the value of a resource (e.g. the set of cache entries)</li>
+<li>By type: the object requires that only a type of resource is available (e.g. a color monitor)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Migration in heterogeneous systems
+<ul>
+<li>Main problem
+<ul>
+<li>The target machine may not be suitable to execute the migrated code</li>
+<li>The definition of process/thread/processor context is highly dependent on local hardware, operating system and runtime system</li>
+</ul>
+</li>
+<li>Make use of an abstract machine that is implemented on different platforms
+<ul>
+<li>Interpreted languages, effectively having their own VM</li>
+<li>Virtual VM (as discussed previously)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="强迁移vs-弱迁移">强迁移vs.弱迁移</h2>
+<p>Strong and weak mobility</p>
+<ul>
+<li>
+<p>Code segment: contains the actual code</p>
+</li>
+<li>
+<p>Data segment: contains the state</p>
+</li>
+<li>
+<p>Execution state: contains context of thread executing the object’s code</p>
+</li>
+<li>
+<p>Move only code and data segment (and reboot execution):</p>
+<ul>
+<li>Relatively simple, especially if code is portable</li>
+<li>Distinguish code shipping (push) from code fetching (pull)</li>
+</ul>
+</li>
+<li>
+<p>Move component, including execution state</p>
+<ul>
+<li>Migration: move entire object from one machine to the other</li>
+<li>Cloning: start a clone, and set it in the same execution state</li>
+</ul>
+</li>
+</ul>
+<h1>通信</h1>
+<h2 id="通信的类型">通信的类型</h2>
+<ul>
+<li>Transient vs. persistent communication
+<ul>
+<li>Transient communication: Comm. server discards message when it cannot be delivered at the next server, or at the receiver.</li>
+<li>Persistent communication: A message is stored at a communication server as long as it takes to deliver it.</li>
+</ul>
+</li>
+<li>Asynchrounous vs. synchronous communication
+<ul>
+<li>At request submission</li>
+<li>At request delivery</li>
+<li>After request processing</li>
+</ul>
+</li>
+</ul>
+<p>Client/Server</p>
+<ul>
+<li>Client/Server computing is generally based on a model of<br>
+transient synchronous communication:
+<ul>
+<li>Client and server have to be active at time of communication</li>
+<li>Client issues request and blocks until it receives reply</li>
+<li>Server essentially waits only for incoming requests, and subsequently processes them</li>
+</ul>
+</li>
+<li>Drawbacks of synchronous communication
+<ul>
+<li>Client cannot do any other work while waiting for reply</li>
+<li>Failures have to be handled immediately: the client is waiting</li>
+<li>The model may simply not be appropriate (mail, news)</li>
+</ul>
+</li>
+</ul>
+<p>Messaging</p>
+<ul>
+<li>Aims at high-level persistent asynchronous communication:</li>
+<li>Processes send each other messages, which are queued</li>
+<li>Sender need not wait for immediate reply, but can do other<br>
+things</li>
+<li>Middleware often ensures fault tolerance</li>
+</ul>
+<h2 id="远程过程调用RPC">远程过程调用RPC</h2>
+<h3 id="RPC的工作过程">RPC的工作过程</h3>
+<ul>
+<li>Observations
+<ul>
+<li>Application developers are familiar with simple procedure model</li>
+<li>Well-engineered procedures operate in isolation (black box)</li>
+<li>There is no fundamental reason not to execute procedures on separate machine</li>
+</ul>
+</li>
+<li>Communication between caller &amp; callee can be hidden by using procedurecall mechanism.</li>
+</ul>
+<h3 id="参数传递">参数传递</h3>
+<ul>
+<li>There’s more than just wrapping parameters into a message:
+<ul>
+<li>Client and server machines may have different data representations (think of byte ordering)</li>
+<li>Wrapping a parameter means transforming a value into a sequence of bytes</li>
+<li>Client and server have to agree on the same encoding:
+<ul>
+<li>How are basic data values represented (integers, floats, characters)</li>
+<li>How are complex data values represented (arrays, unions)</li>
+</ul>
+</li>
+<li>Client and server need to properly interpret messages, transforming them into machine-dependent representations.</li>
+</ul>
+</li>
+<li>Some assumptions:
+<ul>
+<li>Copy in/copy out semantics: while procedure is executed, nothing can be assumed about parameter values.</li>
+<li>All data that is to be operated on is passed by parameters. Excludes passing references to (global) data.</li>
+</ul>
+</li>
+<li>Full access transparency cannot be realized.</li>
+<li>A remote reference mechanism enhances access transparency:
+<ul>
+<li>Remote reference offers unified access to remote data</li>
+<li>Remote references can be passed as parameter in RPCs</li>
+</ul>
+</li>
+</ul>
+<h3 id="故障处理">故障处理</h3>
+<p>// TODO</p>
+<ul>
+<li>客户端无法定位到服务器
+<ul>
+<li>服务器下线、服务器与客户端版本不一致</li>
+<li>使用特定的符号作为RPC的返回值</li>
+<li>抛出一个异常或者信号</li>
+</ul>
+</li>
+<li>请求信息丢失
+<ul>
+<li>发送信息时使用计时器</li>
+<li>计时器到期则重传</li>
+<li>多次丢失：认为服务器下线，转到&quot;无法定位到服务器&quot;</li>
+</ul>
+</li>
+<li>响应信息丢失
+<ul>
+<li>发送信息时使用计时器</li>
+<li>使用序列号编码请求信息，以免导致多次运行</li>
+</ul>
+</li>
+<li>服务器崩溃
+<ul>
+<li>等待服务器重启，重新操作，保证RPC至少被运行一次</li>
+<li>立刻放弃并报告错误，保证RPC至多被运行一次</li>
+<li>什么都不做，不保证任何情况</li>
+</ul>
+</li>
+<li>客户端崩溃
+<ul>
+<li>使用日志记录每个RPC</li>
+<li>按时间进行分片</li>
+<li>为每个RPC记录一个过期时间</li>
+</ul>
+</li>
+</ul>
+<h3 id="动态绑定">动态绑定</h3>
+<ul>
+<li>
+<p>To register, the server gives the binder its name, its version number, a unique identifier (32-bits), and a handle used to locate it</p>
+</li>
+<li>
+<p>The handle is system dependent (e.g., Ethernet address, IP address, an X.500 address, …)</p>
+</li>
+<li>
+<p>When the client calls one of the remote procedures for the first time, say, read:</p>
+<ul>
+<li>The client stub sees that it is not yet bound to a server, so it sends a message to the binder asking to import version x of server interface</li>
+<li>The binder checks to see if one or more servers have already exported an interface with this name and version number.
+<ul>
+<li>If no currently running server is willing to support this interface, the read call fails</li>
+<li>If a suitable server exists, the binder gives its handle and unique identifier to the client stub</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>Advantages of Dynamic Binding</p>
+<ul>
+<li>Flexibility</li>
+<li>Can support multiple servers that support the same interface, e.g.:
+<ul>
+<li>Binder can spread the clients randomly over the servers to even load</li>
+<li>Binder can poll the servers periodically, automatically deregistering the servers that fail to respond, to achieve a degree of fault tolerance</li>
+<li>Binder can assist in authentication: For example, a server specifies a list of users that can use it; the binder will refuse to tell users not on the list about the server</li>
+</ul>
+</li>
+<li>The binder can verify that both client and server are using the same version of the interface</li>
+</ul>
+<p>Disadvantages of Dynamic Binding</p>
+<ul>
+<li>The extra overhead of exporting/importing interfaces costs time</li>
+<li>The binder may become a bottleneck in a large distributed system</li>
+</ul>
+<h2 id="基于消息的通信">基于消息的通信</h2>
+<ul>
+<li>Lower-level interface to provide more flexibility</li>
+<li>Two (abstract) primitives are used to implement these</li>
+<li>Send</li>
+<li>Receive</li>
+<li>Issues:</li>
+<li>Are primitives blocking or nonblocking (synchronous or<br>
+asynchronous)?</li>
+<li>Are primitives reliable or unreliable (persistent or transient)?</li>
+</ul>
+<h3 id="持久性-非持久性">持久性/非持久性</h3>
+<ul>
+<li>Transient</li>
+<li>The sender puts the message on the net and if it cannot be<br>
+delivered to the sender or to the next communication host, it is<br>
+lost.</li>
+<li>There can be different types depending on whether it is<br>
+asynchronous or synchronous</li>
+<li>Persistent</li>
+<li>The message is stored in the communication system as long as it<br>
+takes to deliver the message to the receiver</li>
+</ul>
+<h3 id="同步-异步">同步/异步</h3>
+<ul>
+<li>Synchronous</li>
+<li>The sender is blocked until its message is stored in the local<br>
+buffer at the receiving host or delivered to the receiver.</li>
+<li>Asynchronous</li>
+<li>The sender continues immediately after executing a send</li>
+<li>The message is stored in the local buffer at the sending host or<br>
+at the first communication server.</li>
+</ul>
+<h3 id="流数据">流数据</h3>
+<ul>
+<li>A (continuous) data stream is a connection-oriented communication facility that supports isochronous data transmission.</li>
+<li>Some common stream characteristics
+<ul>
+<li>Streams are unidirectional</li>
+<li>There is generally a single source, and one or more sinks</li>
+<li>Often, either the sink and/or source is a wrapper around hardware(e.g., camera, CD device, TV monitor)</li>
+<li>Simple stream: a single flow of data, e.g., audio or video</li>
+<li>Complex stream: multiple data flows, e.g., stereo audio or combination audio/video</li>
+</ul>
+</li>
+</ul>
+<h1>同步与资源管理</h1>
+<h2 id="同步问题">同步问题</h2>
+<ul>
+<li>How processes cooperate and synchronize with one another in a distributed system
+<ul>
+<li>In single CPU systems, critical regions, mutual exclusion, and other synchronization problems are solved using methods such as semaphores.</li>
+<li>These methods will not work in distributed systems because they implicitly rely on the existence of shared memory.
+<ul>
+<li>If two events occur in a distributed system, it is difficult to determine which event occurred first.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>How to decide on relative ordering of events
+<ul>
+<li>Does one event precede another event?</li>
+<li>Difficult to determine if events occur on different machines.</li>
+</ul>
+</li>
+</ul>
+<h2 id="时钟同步机制">时钟同步机制</h2>
+<ul>
+<li>In a centralized system:
+<ul>
+<li>Time is unambiguous: A process gets the time by issuing a system call to the kernel. If process A gets the time and latter process B gets the time. The value B gets is higher than (or possibly equal to) the value A got</li>
+</ul>
+</li>
+</ul>
+<h2 id="逻辑时钟">逻辑时钟</h2>
+<ul>
+<li>How do we maintain a global view on the system’s behavior<br>
+that is consistent with the happened-before relation?</li>
+<li>Attach a timestamp C(e) to each event e, satisfying the<br>
+following properties:</li>
+<li>P1: If a and b are two events in the same process, and a!=b, then<br>
+we demand that C 𝑎𝑎 &lt; 𝐶𝐶(𝑏𝑏).</li>
+<li>P2: If a corresponds to sending a message m, and b to the<br>
+receipt of that message, then also C 𝑎𝑎 &lt; 𝐶𝐶(𝑏𝑏).</li>
+<li>How to attach a timestamp to an event when there’s no<br>
+global clock ⇒ maintain a consistent set of logical clocks,<br>
+one per process.</li>
+</ul>
+<p>Logical vs Physical Clocks</p>
+<ul>
+<li>Clock synchronization need not be absolute! (due to Lamport, 1978):
+<ul>
+<li>If two processes do not interact, their clocks need not be synchronized.</li>
+<li>What matters is not that all processes agree on exactly what time is it, but rather, that they agree on the order in which events occur.</li>
+</ul>
+</li>
+<li>For algorithms where only internal consistency of clocks matters (not whether clocks are close to real time), we speak of logical clocks.</li>
+<li>For algorithms where clocks must not only be the same, but also must not deviate from real-time, we speak of physical clocks.</li>
+</ul>
+<h3 id="Lamport算法">Lamport算法</h3>
+<ul>
+<li>Each process 𝑃𝑃𝑖𝑖 maintains a local counter 𝐶𝐶𝑖𝑖 and adjusts this counter according to the following rules:
+<ol>
+<li>For any two successive events that take place within <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>P</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">P_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:-0.1389em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> , <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>C</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">C_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:-0.0715em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> is incremented by 1.</li>
+<li>Each time a message m is sent by process <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>P</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">P_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:-0.1389em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> , the message receives a timestamp <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi><mi>s</mi><mo stretchy="false">(</mo><mi>m</mi><mo stretchy="false">)</mo><mo>=</mo><msub><mi>C</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">ts(m)=C_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">t</span><span class="mord mathnormal">s</span><span class="mopen">(</span><span class="mord mathnormal">m</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:-0.0715em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> .</li>
+<li>Whenever a message m is received by a process <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>P</mi><mi>j</mi></msub></mrow><annotation encoding="application/x-tex">P_j</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.9694em;vertical-align:-0.2861em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:-0.1389em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.05724em;">j</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span></span></span></span> , <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>P</mi><mi>j</mi></msub></mrow><annotation encoding="application/x-tex">P_j</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.9694em;vertical-align:-0.2861em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:-0.1389em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.05724em;">j</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span></span></span></span> adjusts its local counter <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>C</mi><mi>j</mi></msub></mrow><annotation encoding="application/x-tex">C_j</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.9694em;vertical-align:-0.2861em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:-0.0715em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.05724em;">j</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span></span></span></span> to <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>m</mi><mi>a</mi><mi>x</mi><mrow><msub><mi>C</mi><mi>j</mi></msub><mo separator="true">,</mo><mi>t</mi><mi>s</mi><mo stretchy="false">(</mo><mi>m</mi><mo stretchy="false">)</mo></mrow></mrow><annotation encoding="application/x-tex">max{C_j, ts(m)}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0361em;vertical-align:-0.2861em;"></span><span class="mord mathnormal">ma</span><span class="mord mathnormal">x</span><span class="mord"><span class="mord"><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:-0.0715em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.05724em;">j</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">t</span><span class="mord mathnormal">s</span><span class="mopen">(</span><span class="mord mathnormal">m</span><span class="mclose">)</span></span></span></span></span>; then executes step 1 before passing m to the application.</li>
+</ol>
+</li>
+<li>Property P1 is satisfied by (1); Property P2 by (2) and (3).</li>
+<li>It can still occur that two events happen at the same time. Avoid this by breaking ties through process IDs.</li>
+</ul>
+<h3 id="向量时戳">向量时戳</h3>
+<p><img src="https://s2.ax1x.com/2020/01/01/lJ0TFx.png" alt="lJ0TFx.png"></p>
+<h2 id="分布式系统中的互斥访问">分布式系统中的互斥访问</h2>
+<ul>
+<li>Basic solutions</li>
+<li>Via a centralized server.</li>
+<li>Completely decentralized, using a peer-to-peer system.</li>
+<li>Completely distributed, with no topology imposed.</li>
+<li>Completely distributed along a (logical) ring.</li>
+</ul>
+<h2 id="分布式系统中的选举机制">分布式系统中的选举机制</h2>
+<h1>复制与一致性</h1>
+<h2 id="复制的优势与不足">复制的优势与不足</h2>
+<ul>
+<li>Why replicate?
+<ul>
+<li>Reliability
+<ul>
+<li>Avoid single points of failure</li>
+</ul>
+</li>
+<li>Performance
+<ul>
+<li>Scalability in numbers and geographic area</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Why not replicate?
+<ul>
+<li>Replication transparency</li>
+<li>Consistency issues
+<ul>
+<li>Updates are costly</li>
+<li>Availability may suffer if not careful</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="数据一致性模型">数据一致性模型</h2>
+<p><img src="https://s2.ax1x.com/2019/12/31/l1zoTA.png" alt="l1zoTA.png"></p>
+<p>Client-Centric Consistency</p>
+<ul>
+<li>More relaxed form of consistency</li>
+<li>only concerned with replicas being eventually consistent (eventual consistency).</li>
+<li>In the absence of any further updates, all replicas converge to identical copies of each other -&gt;only requires guarantees that updates will be propagated.</li>
+<li>Easy if a user always accesses the same replica; problematic if the user accesses different replicas.
+<ul>
+<li>Client-centric consistency: guarantees for a single client the consistency of access to a data store.</li>
+</ul>
+</li>
+</ul>
+<h2 id="数据一致性协议实例">数据一致性协议实例</h2>
+<ul>
+<li>Linearizability
+<ul>
+<li>Primary-Backup</li>
+<li>Chain Replication</li>
+</ul>
+</li>
+<li>Sequential consistency
+<ul>
+<li>Primary-based protocols
+<ul>
+<li>Remote-Write protocols</li>
+<li>Local-Write protocols</li>
+</ul>
+</li>
+<li>Replicated Write protocols
+<ul>
+<li>Active replication</li>
+<li>Quorum-based protocols</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="基于法定数量的协议">基于法定数量的协议</h3>
+<p><img src="https://s2.ax1x.com/2020/01/02/lYHE9K.png" alt="lYHE9K.png"></p>
+<h1>容错</h1>
+<h2 id="可信系统-DependableSystem-特征">可信系统(DependableSystem)特征</h2>
+<ul>
+<li>可靠性：Reliability
+<ul>
+<li>系统的表现符合预期设定</li>
+<li>系统在给定时间内不出现任何故障的概率</li>
+<li>Typically used to describe systems that cannot be repaired or where the continuous operation of the system is critical.</li>
+</ul>
+</li>
+<li>可用性：Availability
+<ul>
+<li>The fraction of the time that a system meets its specification.</li>
+<li>The probability that the system is operational at a given time t.</li>
+</ul>
+</li>
+<li>安全性：Safety
+<ul>
+<li>当系统暂时地偏离了预期设定, 也不会造成较大事故</li>
+</ul>
+</li>
+<li>可维护性：Maintainability
+<ul>
+<li>用于衡量系统维护是否困难</li>
+</ul>
+</li>
+</ul>
+<h2 id="提高系统可信性的途径">提高系统可信性的途径</h2>
+<ul>
+<li>通过冗余掩饰系统异常
+<ul>
+<li>冗余信息
+<ul>
+<li>通过附加额外的比特检测和恢复传输错误</li>
+</ul>
+</li>
+<li>冗余时间
+<ul>
+<li>当一个交易中止后, 在不会造成负面影响的情况下重新执行它</li>
+</ul>
+</li>
+<li>Physical redundancy
+<ul>
+<li>硬件冗余
+<ul>
+<li>使用多个服务器降低服务器失效风险</li>
+</ul>
+</li>
+<li>软件冗余
+<ul>
+<li>通过相同的方式多次运行</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>冗余处理
+<ul>
+<li>处理组: 所有的成员可以相互接替工作, 动态调整, 扁平化的结构</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="K容错系统">K容错系统</h2>
+<ul>
+<li>K 容错系统需要的备份数:
+<ul>
+<li>Fail-silent faults : K+1</li>
+<li>Byzantine faults : 2K+1 : majority</li>
+</ul>
+</li>
+<li>组的结构: flat/hierarchical</li>
+<li>Need for managing groups and group membership
+<ul>
+<li>centralized: group server</li>
+<li>distributed: totally-ordered reliable multicast</li>
+</ul>
+</li>
+</ul>
+<h2 id="拜占庭问题（Byzantine-Problem）">拜占庭问题（Byzantine Problem）</h2>
+<p>Algorithm to reach agreement. They perform the following :</p>
+<ol>
+<li>step 1: every general sends a message to every other general telling his strength ( true or lie)</li>
+<li>step 2: each general collects received messages to form a vector</li>
+<li>step 3: every general passes his vector to every other general</li>
+<li>step 4: each general examines the ith element of each of the newly received vectors.</li>
+<li>If any value has a majority, that value is put into the result vector</li>
+</ol>
+<h2 id="系统恢复">系统恢复</h2>
+<p><img src="https://s2.ax1x.com/2019/12/31/l3SDc8.png" alt="l3SDc8.png"></p>
+<ul>
+<li>回退恢复</li>
+<li>前向恢复</li>
+<li>检查点（Check point）</li>
+</ul>
+</div><div class="article-licensing box"><div class="licensing-title"><p>Distributed System</p><p><a href="http://blog.czccc.cc/p/7af16b6e/">http://blog.czccc.cc/p/7af16b6e/</a></p></div><div class="licensing-meta level is-mobile"><div class="level-left"><div class="level-item is-narrow"><div><h6>作者</h6><p>Cheng</p></div></div><div class="level-item is-narrow"><div><h6>发布于</h6><p>2019-12-31</p></div></div><div class="level-item is-narrow"><div><h6>更新于</h6><p>2022-08-06</p></div></div><div class="level-item is-narrow"><div><h6>许可协议</h6><p><a class="icons" rel="noopener" target="_blank" title="Creative Commons" href="https://creativecommons.org/"><i class="icon fab fa-creative-commons"></i></a><a class="icons" rel="noopener" target="_blank" title="Attribution" href="https://creativecommons.org/licenses/by/4.0/"><i class="icon fab fa-creative-commons-by"></i></a><a class="icons" rel="noopener" target="_blank" title="Noncommercial" href="https://creativecommons.org/licenses/by-nc/4.0/"><i class="icon fab fa-creative-commons-nc"></i></a></p></div></div></div></div></div><div class="article-tags is-size-7 mb-4"><span class="mr-2">#</span><a class="link-muted mr-2" rel="tag" href="/tags/%E5%88%86%E5%B8%83%E5%BC%8F%E7%B3%BB%E7%BB%9F/">分布式系统</a><a class="link-muted mr-2" rel="tag" href="/tags/NJU/">NJU</a><a class="link-muted mr-2" rel="tag" href="/tags/%E8%AF%BE%E7%A8%8B%E6%80%BB%E7%BB%93/">课程总结</a></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/css/share.min.css"><div class="social-share"></div><script src="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/js/social-share.min.js"></script></article></div><div class="card"><div class="card-content"><h3 class="menu-label has-text-centered">喜欢这篇文章？打赏一下作者吧</h3><div class="buttons is-centered"><a class="button donate" data-type="alipay"><span class="icon is-small"><i class="fab fa-alipay"></i></span><span>支付宝</span><span class="qrcode"><img src="/img/Alipay.jpg" alt="支付宝"></span></a><a class="button donate" data-type="wechat"><span class="icon is-small"><i class="fab fa-weixin"></i></span><span>微信</span><span class="qrcode"><img src="/img/WeChat_pay.png" alt="微信"></span></a></div></div></div><nav class="post-navigation mt-4 level is-mobile"><div class="level-start"><a class="article-nav-prev level level-item link-muted" href="/p/7e4fc966/"><i class="level-item fas fa-chevron-left"></i><span class="level-item">西瓜书第10章：降维与度量学习</span></a></div><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/p/c27cf766/"><span class="level-item">MapReduce 课程总结</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><div class="card"><div class="card-content"><h3 class="title is-5">评论</h3><div id="disqus_thread"><noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></div><script>var disqus_config = function () {
+            this.page.url = 'http://blog.czccc.cc/p/7af16b6e/';
+            this.page.identifier = 'p/7af16b6e/';
+        };
+        (function() {
+            var d = document, s = d.createElement('script');  
+            s.src = '//' + 'czcc' + '.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();</script></div></div></div><div class="column column-left is-4-tablet is-3-desktop is-3-widescreen  order-1"><div class="card widget" data-type="profile"><div class="card-content"><nav class="level"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-128x128 mx-auto mb-2"><img class="avatar" src="/img/avatar.jpg" alt="Cheng"></figure><p class="title is-size-4 is-block" style="line-height:inherit;">Cheng</p><p class="is-size-6 is-block">A Student</p><p class="is-size-6 is-flex justify-content-center"><i class="fas fa-map-marker-alt mr-1"></i><span>Nanjing</span></p></div></div></nav><nav class="level is-mobile"><div class="level-item has-text-centered is-marginless"><div><p class="heading">文章</p><a href="/archives"><p class="title">54</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">分类</p><a href="/categories"><p class="title">26</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">标签</p><a href="/tags"><p class="title">50</p></a></div></div></nav><div class="level"><a class="level-item button is-primary is-rounded" href="https://github.com/czccc" target="_blank" rel="noopener">关注我</a></div><div class="level is-mobile is-multiline"><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Github" href="https://github.com/czccc"><i class="fab fa-github"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="RSS" href="/atom.xml"><i class="fas fa-rss"></i></a></div></div></div><div class="card widget column-left is-sticky" id="toc" data-type="toc"><div class="card-content"><div class="menu" style="max-height: calc(100vh - 5rem); overflow-y: auto;"><h3 class="menu-label">目录</h3><ul class="menu-list"><li><a class="level is-mobile" href="#"><span class="level-left"><span class="level-item">1</span><span class="level-item">分布式系统模型</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#什么是分布式系统"><span class="level-left"><span class="level-item">1.1</span><span class="level-item">什么是分布式系统</span></span></a></li><li><a class="level is-mobile" href="#分布式系统的目标"><span class="level-left"><span class="level-item">1.2</span><span class="level-item">分布式系统的目标</span></span></a></li><li><a class="level is-mobile" href="#为什么要分布式？"><span class="level-left"><span class="level-item">1.3</span><span class="level-item">为什么要分布式？</span></span></a></li><li><a class="level is-mobile" href="#分布式系统透明性和开放性的含义。"><span class="level-left"><span class="level-item">1.4</span><span class="level-item">分布式系统透明性和开放性的含义。</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#透明性"><span class="level-left"><span class="level-item">1.4.1</span><span class="level-item">透明性</span></span></a></li><li><a class="level is-mobile" href="#开放性"><span class="level-left"><span class="level-item">1.4.2</span><span class="level-item">开放性</span></span></a></li></ul></li><li><a class="level is-mobile" href="#分布式操作系统、网络操作系统和基于中间件的系统。"><span class="level-left"><span class="level-item">1.5</span><span class="level-item">分布式操作系统、网络操作系统和基于中间件的系统。</span></span></a></li><li><a class="level is-mobile" href="#分布式系统的类型。"><span class="level-left"><span class="level-item">1.6</span><span class="level-item">分布式系统的类型。</span></span></a></li></ul></li><li><a class="level is-mobile" href="#"><span class="level-left"><span class="level-item">2</span><span class="level-item">分布式系统架构</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#分布式系统架构风格"><span class="level-left"><span class="level-item">2.1</span><span class="level-item">分布式系统架构风格</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#Centralized"><span class="level-left"><span class="level-item">2.1.1</span><span class="level-item">Centralized</span></span></a></li><li><a class="level is-mobile" href="#Decentralized"><span class="level-left"><span class="level-item">2.1.2</span><span class="level-item">Decentralized</span></span></a></li><li><a class="level is-mobile" href="#Hybrid"><span class="level-left"><span class="level-item">2.1.3</span><span class="level-item">Hybrid</span></span></a></li></ul></li><li><a class="level is-mobile" href="#分布式系统组织形式"><span class="level-left"><span class="level-item">2.2</span><span class="level-item">分布式系统组织形式</span></span></a></li><li><a class="level is-mobile" href="#客户-服务器模式和对等模式"><span class="level-left"><span class="level-item">2.3</span><span class="level-item">客户-服务器模式和对等模式</span></span></a></li><li><a class="level is-mobile" href="#分布式系统组织为中间件"><span class="level-left"><span class="level-item">2.4</span><span class="level-item">分布式系统组织为中间件</span></span></a></li></ul></li><li><a class="level is-mobile" href="#"><span class="level-left"><span class="level-item">3</span><span class="level-item">进程与线程</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#进程和线程"><span class="level-left"><span class="level-item">3.1</span><span class="level-item">进程和线程</span></span></a></li><li><a class="level is-mobile" href="#代码迁移"><span class="level-left"><span class="level-item">3.2</span><span class="level-item">代码迁移</span></span></a></li><li><a class="level is-mobile" href="#强迁移vs-弱迁移"><span class="level-left"><span class="level-item">3.3</span><span class="level-item">强迁移vs.弱迁移</span></span></a></li></ul></li><li><a class="level is-mobile" href="#"><span class="level-left"><span class="level-item">4</span><span class="level-item">通信</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#通信的类型"><span class="level-left"><span class="level-item">4.1</span><span class="level-item">通信的类型</span></span></a></li><li><a class="level is-mobile" href="#远程过程调用RPC"><span class="level-left"><span class="level-item">4.2</span><span class="level-item">远程过程调用RPC</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#RPC的工作过程"><span class="level-left"><span class="level-item">4.2.1</span><span class="level-item">RPC的工作过程</span></span></a></li><li><a class="level is-mobile" href="#参数传递"><span class="level-left"><span class="level-item">4.2.2</span><span class="level-item">参数传递</span></span></a></li><li><a class="level is-mobile" href="#故障处理"><span class="level-left"><span class="level-item">4.2.3</span><span class="level-item">故障处理</span></span></a></li><li><a class="level is-mobile" href="#动态绑定"><span class="level-left"><span class="level-item">4.2.4</span><span class="level-item">动态绑定</span></span></a></li></ul></li><li><a class="level is-mobile" href="#基于消息的通信"><span class="level-left"><span class="level-item">4.3</span><span class="level-item">基于消息的通信</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#持久性-非持久性"><span class="level-left"><span class="level-item">4.3.1</span><span class="level-item">持久性/非持久性</span></span></a></li><li><a class="level is-mobile" href="#同步-异步"><span class="level-left"><span class="level-item">4.3.2</span><span class="level-item">同步/异步</span></span></a></li><li><a class="level is-mobile" href="#流数据"><span class="level-left"><span class="level-item">4.3.3</span><span class="level-item">流数据</span></span></a></li></ul></li></ul></li><li><a class="level is-mobile" href="#"><span class="level-left"><span class="level-item">5</span><span class="level-item">同步与资源管理</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#同步问题"><span class="level-left"><span class="level-item">5.1</span><span class="level-item">同步问题</span></span></a></li><li><a class="level is-mobile" href="#时钟同步机制"><span class="level-left"><span class="level-item">5.2</span><span class="level-item">时钟同步机制</span></span></a></li><li><a class="level is-mobile" href="#逻辑时钟"><span class="level-left"><span class="level-item">5.3</span><span class="level-item">逻辑时钟</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#Lamport算法"><span class="level-left"><span class="level-item">5.3.1</span><span class="level-item">Lamport算法</span></span></a></li><li><a class="level is-mobile" href="#向量时戳"><span class="level-left"><span class="level-item">5.3.2</span><span class="level-item">向量时戳</span></span></a></li></ul></li><li><a class="level is-mobile" href="#分布式系统中的互斥访问"><span class="level-left"><span class="level-item">5.4</span><span class="level-item">分布式系统中的互斥访问</span></span></a></li><li><a class="level is-mobile" href="#分布式系统中的选举机制"><span class="level-left"><span class="level-item">5.5</span><span class="level-item">分布式系统中的选举机制</span></span></a></li></ul></li><li><a class="level is-mobile" href="#"><span class="level-left"><span class="level-item">6</span><span class="level-item">复制与一致性</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#复制的优势与不足"><span class="level-left"><span class="level-item">6.1</span><span class="level-item">复制的优势与不足</span></span></a></li><li><a class="level is-mobile" href="#数据一致性模型"><span class="level-left"><span class="level-item">6.2</span><span class="level-item">数据一致性模型</span></span></a></li><li><a class="level is-mobile" href="#数据一致性协议实例"><span class="level-left"><span class="level-item">6.3</span><span class="level-item">数据一致性协议实例</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#基于法定数量的协议"><span class="level-left"><span class="level-item">6.3.1</span><span class="level-item">基于法定数量的协议</span></span></a></li></ul></li></ul></li><li><a class="level is-mobile" href="#"><span class="level-left"><span class="level-item">7</span><span class="level-item">容错</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#可信系统-DependableSystem-特征"><span class="level-left"><span class="level-item">7.1</span><span class="level-item">可信系统(DependableSystem)特征</span></span></a></li><li><a class="level is-mobile" href="#提高系统可信性的途径"><span class="level-left"><span class="level-item">7.2</span><span class="level-item">提高系统可信性的途径</span></span></a></li><li><a class="level is-mobile" href="#K容错系统"><span class="level-left"><span class="level-item">7.3</span><span class="level-item">K容错系统</span></span></a></li><li><a class="level is-mobile" href="#拜占庭问题（Byzantine-Problem）"><span class="level-left"><span class="level-item">7.4</span><span class="level-item">拜占庭问题（Byzantine Problem）</span></span></a></li><li><a class="level is-mobile" href="#系统恢复"><span class="level-left"><span class="level-item">7.5</span><span class="level-item">系统恢复</span></span></a></li></ul></li></ul></div></div><script src="/js/toc.js" defer></script></div></div><!--!--></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img src="/img/logo.ico" alt="CZCC" height="28"></a><p class="is-size-7"><span>&copy; 2022 Cheng</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a><br><span id="busuanzi_container_site_uv">共<span id="busuanzi_value_site_uv">0</span>个访客</span></p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons-by"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/czccc/hexo-theme-icarus"><i class="fab fa-github"></i></a></p></div></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script><script>moment.locale("zh-CN");</script><script>var IcarusThemeSettings = {
+            article: {
+                highlight: {
+                    clipboard: true,
+                    fold: 'unfolded'
+                }
+            }
+        };</script><script src="/js/column.js"></script><script src="/js/animation.js"></script><a id="back-to-top" title="回到顶端" href="javascript:;"><i class="fas fa-chevron-up"></i></a><script src="/js/back_to_top.js" defer></script><!--!--><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/js/lightgallery.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/js/jquery.justifiedGallery.min.js" defer></script><script>window.addEventListener("load", () => {
+            if (typeof $.fn.lightGallery === 'function') {
+                $('.article').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof $.fn.justifiedGallery === 'function') {
+                if ($('.justified-gallery > p > .gallery-item').length) {
+                    $('.justified-gallery > p > .gallery-item').unwrap();
+                }
+                $('.justified-gallery').justifiedGallery();
+            }
+        });</script><!--!--><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css"><script src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/auto-render.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/mhchem.min.js" defer></script><script>window.addEventListener("load", function() {
+            document.querySelectorAll('[role="article"] > .content').forEach(function(element) {
+                renderMathInElement(element);
+            });
+        });</script><script type="text/x-mathjax-config">MathJax.Hub.Config({
+            'HTML-CSS': {
+                matchFontHeight: false
+            },
+            SVG: {
+                matchFontHeight: false
+            },
+            CommonHTML: {
+                matchFontHeight: false
+            },
+            tex2jax: {
+                inlineMath: [
+                    ['$','$'],
+                    ['\\(','\\)']
+                ]
+            }
+        });</script><script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.9/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script><!--!--><script src="/js/main.js" defer></script><div class="searchbox"><div class="searchbox-container"><div class="searchbox-header"><div class="searchbox-input-container"><input class="searchbox-input" type="text" placeholder="想要查找什么..."></div><a class="searchbox-close" href="javascript:;">×</a></div><div class="searchbox-body"></div></div></div><script src="/js/insight.js" defer></script><script>document.addEventListener('DOMContentLoaded', function () {
+            loadInsight({"contentUrl":"/content.json"}, {"hint":"想要查找什么...","untitled":"(无标题)","posts":"文章","pages":"页面","categories":"分类","tags":"标签"});
+        });</script></body></html>

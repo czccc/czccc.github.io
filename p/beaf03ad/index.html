@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="zh"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>C++基本类型 - CZCC</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="CZCC"><meta name="msapplication-TileImage" content="/img/favicon.ico"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="CZCC"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="description" content="String || vector"><meta property="og:type" content="blog"><meta property="og:title" content="C++基本类型"><meta property="og:url" content="http://blog.czccc.cc/p/beaf03ad/"><meta property="og:site_name" content="CZCC"><meta property="og:description" content="String || vector"><meta property="og:locale" content="zh_CN"><meta property="og:image" content="http://blog.czccc.cc/p/beaf03ad/C++basis/cctype_h.png"><meta property="article:published_time" content="2018-12-29T14:46:55.000Z"><meta property="article:modified_time" content="2022-08-06T13:07:33.622Z"><meta property="article:author" content="Cheng"><meta property="article:tag" content="CPP"><meta property="twitter:card" content="summary"><meta property="twitter:image" content="C++basis/cctype_h.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"http://blog.czccc.cc/p/beaf03ad/"},"headline":"C++基本类型","image":["http://blog.czccc.cc/p/beaf03ad/C++basis/cctype_h.png"],"datePublished":"2018-12-29T14:46:55.000Z","dateModified":"2022-08-06T13:07:33.622Z","author":{"@type":"Person","name":"Cheng"},"publisher":{"@type":"Organization","name":"CZCC","logo":{"@type":"ImageObject","url":"http://blog.czccc.cc/img/logo.ico"}},"description":"String || vector"}</script><link rel="canonical" href="http://blog.czccc.cc/p/beaf03ad/"><link rel="alternate" href="/atom.xml" title="CZCC" type="application/atom+xml"><link rel="icon" href="/img/favicon.ico"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link rel="stylesheet" href="/css/default.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><!--!--><script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" defer></script><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css"><!--!--><!--!--><!--!--><!--!--><style>.pace{-webkit-pointer-events:none;pointer-events:none;-webkit-user-select:none;-moz-user-select:none;user-select:none}.pace-inactive{display:none}.pace .pace-progress{background:#3273dc;position:fixed;z-index:2000;top:0;right:100%;width:100%;height:2px}</style><script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script><!-- hexo injector head_end start --><script>
+  (function () {
+      function switchTab() {
+          if (!location.hash) {
+            return;
+          }
+          Array
+              .from(document.querySelectorAll('.tab-content'))
+              .forEach($tab => {
+                  $tab.classList.add('is-hidden');
+              });
+          Array
+              .from(document.querySelectorAll('.tabs li'))
+              .forEach($tab => {
+                  $tab.classList.remove('is-active');
+              });
+          const $activeTab = document.querySelector(location.hash);
+          if ($activeTab) {
+              $activeTab.classList.remove('is-hidden');
+          }
+          const $tabMenu = document.querySelector(`a[href="${location.hash}"]`);
+          if ($tabMenu) {
+              $tabMenu.parentElement.classList.add('is-active');
+          }
+      }
+      switchTab();
+      window.addEventListener('hashchange', switchTab, false);
+  })();
+  </script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.1.0"></head><body class="is-2-column"><nav class="navbar navbar-main"><div class="container navbar-container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img src="/img/logo.ico" alt="CZCC" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">Home</a><a class="navbar-item" href="/archives">Archives</a><a class="navbar-item" href="/categories">Categories</a><a class="navbar-item" href="/tags">Tags</a><a class="navbar-item" href="/categories/LeetCode">LeetCode</a><a class="navbar-item" href="/Software">Software</a><a class="navbar-item" href="/about">About</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/czccc/hexo-theme-icarus"><i class="fab fa-github"></i></a><a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;"><i class="fas fa-list-ul"></i></a><a class="navbar-item search" title="搜索" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-9-desktop is-9-widescreen"><div class="card"><article class="card-content article" role="article"><h1 class="title is-3 is-size-4-mobile"><i class="fas fa-angle-double-right">  </i>C++基本类型</h1><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><i class="far fa-calendar-alt">  </i><span class="level-item"><time dateTime="2018-12-29T14:46:55.000Z" title="2018/12/29 22:46:55">2018-12-29</time>发表</span><i class="far fa-calendar-check">  </i><span class="level-item"><time dateTime="2022-08-06T13:07:33.622Z" title="2022/8/6 21:07:33">2022-08-06</time>更新</span><i class="far fa-folder">  </i><span class="level-item"><a class="link-muted" href="/categories/CPP/">CPP</a></span><i class="far fa-hourglass">  </i><span class="level-item">4 分钟读完 (大约672个字)</span><i class="far fa-eye">  </i><span class="level-item" id="busuanzi_container_page_pv"><span id="busuanzi_value_page_pv">0</span>次访问</span></div></div><div class="content"><p><code>String</code> || <code>vector</code></p>
+<span id="more"></span>
+<h1>string</h1>
+<h2 id="定义及初始化">定义及初始化</h2>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 默认; 空串</span></span><br><span class="line">string s1;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 拷贝初始化</span></span><br><span class="line">string s2 = s1;</span><br><span class="line">string s3 = <span class="string">&quot;Hello&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 直接初始化</span></span><br><span class="line"><span class="function">string <span class="title">s2</span><span class="params">(s1)</span></span>;</span><br><span class="line"><span class="function">string <span class="title">s3</span><span class="params">(<span class="string">&quot;Hello&quot;</span>)</span></span>;</span><br><span class="line"><span class="function">string <span class="title">s4</span><span class="params">(<span class="number">10</span>, <span class="string">&#x27;c&#x27;</span>)</span></span>;</span><br></pre></td></tr></table></figure>
+<h2 id="对象操作">对象操作</h2>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 读写</span></span><br><span class="line">cin  &gt;&gt; s</span><br><span class="line">cout &lt;&lt; <span class="function">s</span></span><br><span class="line"><span class="function"><span class="title">getline</span><span class="params">(cin, s)</span> <span class="comment">// 包括空格, 到换行结束</span></span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function"><span class="comment">// 空间</span></span></span><br><span class="line"><span class="function">s.<span class="title">empty</span><span class="params">()</span></span></span><br><span class="line"><span class="function">s.<span class="title">size</span><span class="params">()</span>        <span class="comment">// 返回 size_type类型, 无符号类型</span></span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function"><span class="comment">// 索引</span></span></span><br><span class="line"><span class="function">s[n]</span></span><br><span class="line"><span class="function"><span class="title">for</span> <span class="params">(<span class="keyword">auto</span> c : s)</span></span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function"><span class="comment">// 运算符操作</span></span></span><br><span class="line"><span class="function">s1 + s2     <span class="comment">// 拼接</span></span></span><br><span class="line"><span class="function">s1 </span>= s2     <span class="comment">// 赋值</span></span><br><span class="line">s1 == s2    <span class="comment">// 判断相等</span></span><br><span class="line">s1 != s2    <span class="comment">// 判断不相等</span></span><br><span class="line">&lt; &lt;= &gt; &gt;=   <span class="comment">// 大小比较</span></span><br></pre></td></tr></table></figure>
+<p><img src="C++basis/cctype_h.png" alt=""></p>
+<h2 id="范围for语句">范围<code>for</code>语句</h2>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (declaration : expression)</span><br><span class="line">    <span class="function">statement</span></span><br><span class="line"><span class="function"><span class="title">for</span> <span class="params">(<span class="keyword">auto</span> c : str)</span></span></span><br><span class="line"><span class="function">    cout &lt;&lt; c &lt;&lt; endl</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用引用用于改变数据</span></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">auto</span> &amp;c : str)</span><br><span class="line">    c = <span class="built_in">toupper</span>(c);</span><br></pre></td></tr></table></figure>
+<h1>vector</h1>
+<p><code>vector</code>是一个类模板,因此需要在使用时提供额外信息来指定模板到底实例化成什么样的类,提供信息的方式为: <code>vector&lt;class&gt;</code></p>
+<p>如: <code>vector&lt;int&gt;</code>  <code>vector&lt;vector&lt;string&gt;&gt;</code></p>
+<p>在C++的早期版本中, 嵌套的<code>vector</code>需要表示成: <code>vector&lt;vector&lt;string&gt; &gt;</code>, 即在两个右尖括号间需要多加一个空格</p>
+<h2 id="定义及初始化-2">定义及初始化</h2>
+<ol>
+<li>默认初始化: <code>vector&lt;T&gt; v1</code></li>
+<li>拷贝初始化: <code>vector&lt;T&gt; v2(v1)</code> , <code>vector&lt;T&gt; v2 = v1</code></li>
+<li>列表初始化: <code>vector&lt;string&gt; v3 = &#123;&quot;a&quot;, &quot;an&quot;, &quot;the&quot;&#125;</code> , <code>vector&lt;string&gt; v3&#123;&quot;a&quot;, &quot;an&quot;, &quot;the&quot;&#125;</code></li>
+<li>创建指定数量的元素: <code>vector&lt;int&gt; ivec(10, -1)</code></li>
+<li>值初始化: 使用类型的默认初始值</li>
+</ol>
+<h2 id="元素操作">元素操作</h2>
+<ol>
+<li>加到尾端: <code>v.push_back(i)</code></li>
+<li>判断为空: <code>v.empty()</code></li>
+<li>元素个数: <code>v.size()</code></li>
+<li>元素引用: <code>v[i]</code></li>
+<li>拷贝操作: <code>v1 = v2</code> , <code>v1 = &#123;a, b, c, ...&#125;</code></li>
+<li>判断相等: <code>v1 == v2</code> , <code>v1 != v2</code></li>
+<li>比较操作: <code>&lt; &lt;= &gt; &gt;=</code></li>
+<li>在循环内部包含向<code>vector</code>添加元素操作时, 不宜使用范围<code>for</code>循环</li>
+</ol>
+<h1>迭代器</h1>
+<ol>
+<li>标准库容器类型都支持<strong>迭代器</strong>, 如: <code>vector</code></li>
+<li><code>string</code>非容器类型, 但支持迭代器</li>
+<li>有迭代器的类型都拥有<code>begin</code>和<code>end</code>成员</li>
+<li><code>auto b = v.begin(), e = v.end()</code></li>
+<li><code>begin()</code>返回一种引用, 并指向第一个元素, <code>end()</code>指向尾元素的下一位置, 即不存在的一个位置, 称为&quot;尾后迭代器&quot;</li>
+<li>如果容器为空, 则<code>begin()</code>与<code>end()</code>返回同一迭代器, 都是&quot;尾后迭代器&quot;</li>
+<li><code>cbegin()</code> , <code>cend()</code> 返回常量迭代器</li>
+<li>但凡使用了迭代器的循环体, 都不要向迭代器所属的容器添加元素</li>
+</ol>
+<h2 id="运算符">运算符</h2>
+<ol>
+<li><code>*iter</code>      返回迭代器iter所指元素的引用</li>
+<li><code>iter-&gt;a</code>    解引用并返回其指向元素成员</li>
+<li><code>(*it).a</code> = <code>it-&gt;a</code></li>
+<li><code>++iter / --iter</code> 返回下/上一个元素</li>
+<li><code>iter1 == / != iter2</code> 判断两个迭代器是否相等</li>
+<li><code>iter + / - n</code>   向下/上移动n个元素</li>
+<li><code>+= -=</code>      复合赋值语句</li>
+<li><code>iter1 - iter2</code>  返回之间的距离</li>
+<li><code>&gt; &gt;= &lt; &lt;=</code>      关系运算符</li>
+</ol>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 将第一个字母大写</span></span><br><span class="line"><span class="function">string <span class="title">s</span><span class="params">(<span class="string">&quot;some string&quot;</span>)</span></span>;</span><br><span class="line"><span class="keyword">if</span> (s.<span class="built_in">begin</span>() != s.<span class="built_in">end</span>())    <span class="comment">// 判断非空</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">auto</span> it = s.<span class="built_in">begin</span>();</span><br><span class="line">    *it = <span class="built_in">toupper</span>(*it);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">auto</span> it = s.<span class="built_in">begin</span>(); it != s.<span class="built_in">end</span>(); it++)</span><br><span class="line">    *it = <span class="built_in">toupper</span>(*it);</span><br></pre></td></tr></table></figure></div><div class="article-licensing box"><div class="licensing-title"><p>C++基本类型</p><p><a href="http://blog.czccc.cc/p/beaf03ad/">http://blog.czccc.cc/p/beaf03ad/</a></p></div><div class="licensing-meta level is-mobile"><div class="level-left"><div class="level-item is-narrow"><div><h6>作者</h6><p>Cheng</p></div></div><div class="level-item is-narrow"><div><h6>发布于</h6><p>2018-12-29</p></div></div><div class="level-item is-narrow"><div><h6>更新于</h6><p>2022-08-06</p></div></div><div class="level-item is-narrow"><div><h6>许可协议</h6><p><a class="icons" rel="noopener" target="_blank" title="Creative Commons" href="https://creativecommons.org/"><i class="icon fab fa-creative-commons"></i></a><a class="icons" rel="noopener" target="_blank" title="Attribution" href="https://creativecommons.org/licenses/by/4.0/"><i class="icon fab fa-creative-commons-by"></i></a><a class="icons" rel="noopener" target="_blank" title="Noncommercial" href="https://creativecommons.org/licenses/by-nc/4.0/"><i class="icon fab fa-creative-commons-nc"></i></a></p></div></div></div></div></div><div class="article-tags is-size-7 mb-4"><span class="mr-2">#</span><a class="link-muted mr-2" rel="tag" href="/tags/CPP/">CPP</a></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/css/share.min.css"><div class="social-share"></div><script src="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/js/social-share.min.js"></script></article></div><div class="card"><div class="card-content"><h3 class="menu-label has-text-centered">喜欢这篇文章？打赏一下作者吧</h3><div class="buttons is-centered"><a class="button donate" data-type="alipay"><span class="icon is-small"><i class="fab fa-alipay"></i></span><span>支付宝</span><span class="qrcode"><img src="/img/Alipay.jpg" alt="支付宝"></span></a><a class="button donate" data-type="wechat"><span class="icon is-small"><i class="fab fa-weixin"></i></span><span>微信</span><span class="qrcode"><img src="/img/WeChat_pay.png" alt="微信"></span></a></div></div></div><nav class="post-navigation mt-4 level is-mobile"><div class="level-start"><a class="article-nav-prev level level-item link-muted" href="/p/be0ddb94/"><i class="level-item fas fa-chevron-left"></i><span class="level-item">The Art Of Command Line</span></a></div><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/p/644af2bf/"><span class="level-item">Python 基本模块的使用</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><div class="card"><div class="card-content"><h3 class="title is-5">评论</h3><div id="disqus_thread"><noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></div><script>var disqus_config = function () {
+            this.page.url = 'http://blog.czccc.cc/p/beaf03ad/';
+            this.page.identifier = 'p/beaf03ad/';
+        };
+        (function() {
+            var d = document, s = d.createElement('script');  
+            s.src = '//' + 'czcc' + '.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();</script></div></div></div><div class="column column-left is-4-tablet is-3-desktop is-3-widescreen  order-1"><div class="card widget" data-type="profile"><div class="card-content"><nav class="level"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-128x128 mx-auto mb-2"><img class="avatar" src="/img/avatar.jpg" alt="Cheng"></figure><p class="title is-size-4 is-block" style="line-height:inherit;">Cheng</p><p class="is-size-6 is-block">A Student</p><p class="is-size-6 is-flex justify-content-center"><i class="fas fa-map-marker-alt mr-1"></i><span>Nanjing</span></p></div></div></nav><nav class="level is-mobile"><div class="level-item has-text-centered is-marginless"><div><p class="heading">文章</p><a href="/archives"><p class="title">54</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">分类</p><a href="/categories"><p class="title">26</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">标签</p><a href="/tags"><p class="title">50</p></a></div></div></nav><div class="level"><a class="level-item button is-primary is-rounded" href="https://github.com/czccc" target="_blank" rel="noopener">关注我</a></div><div class="level is-mobile is-multiline"><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Github" href="https://github.com/czccc"><i class="fab fa-github"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="RSS" href="/atom.xml"><i class="fas fa-rss"></i></a></div></div></div><div class="card widget column-left is-sticky" id="toc" data-type="toc"><div class="card-content"><div class="menu" style="max-height: calc(100vh - 5rem); overflow-y: auto;"><h3 class="menu-label">目录</h3><ul class="menu-list"><li><a class="level is-mobile" href="#"><span class="level-left"><span class="level-item">1</span><span class="level-item">string</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#定义及初始化"><span class="level-left"><span class="level-item">1.1</span><span class="level-item">定义及初始化</span></span></a></li><li><a class="level is-mobile" href="#对象操作"><span class="level-left"><span class="level-item">1.2</span><span class="level-item">对象操作</span></span></a></li><li><a class="level is-mobile" href="#范围for语句"><span class="level-left"><span class="level-item">1.3</span><span class="level-item">范围for语句</span></span></a></li></ul></li><li><a class="level is-mobile" href="#"><span class="level-left"><span class="level-item">2</span><span class="level-item">vector</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#定义及初始化-2"><span class="level-left"><span class="level-item">2.1</span><span class="level-item">定义及初始化</span></span></a></li><li><a class="level is-mobile" href="#元素操作"><span class="level-left"><span class="level-item">2.2</span><span class="level-item">元素操作</span></span></a></li></ul></li><li><a class="level is-mobile" href="#"><span class="level-left"><span class="level-item">3</span><span class="level-item">迭代器</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#运算符"><span class="level-left"><span class="level-item">3.1</span><span class="level-item">运算符</span></span></a></li></ul></li></ul></div></div><script src="/js/toc.js" defer></script></div></div><!--!--></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img src="/img/logo.ico" alt="CZCC" height="28"></a><p class="is-size-7"><span>&copy; 2022 Cheng</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a><br><span id="busuanzi_container_site_uv">共<span id="busuanzi_value_site_uv">0</span>个访客</span></p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons-by"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/czccc/hexo-theme-icarus"><i class="fab fa-github"></i></a></p></div></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script><script>moment.locale("zh-CN");</script><script>var IcarusThemeSettings = {
+            article: {
+                highlight: {
+                    clipboard: true,
+                    fold: 'unfolded'
+                }
+            }
+        };</script><script src="/js/column.js"></script><script src="/js/animation.js"></script><a id="back-to-top" title="回到顶端" href="javascript:;"><i class="fas fa-chevron-up"></i></a><script src="/js/back_to_top.js" defer></script><!--!--><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/js/lightgallery.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/js/jquery.justifiedGallery.min.js" defer></script><script>window.addEventListener("load", () => {
+            if (typeof $.fn.lightGallery === 'function') {
+                $('.article').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof $.fn.justifiedGallery === 'function') {
+                if ($('.justified-gallery > p > .gallery-item').length) {
+                    $('.justified-gallery > p > .gallery-item').unwrap();
+                }
+                $('.justified-gallery').justifiedGallery();
+            }
+        });</script><!--!--><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css"><script src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/auto-render.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/mhchem.min.js" defer></script><script>window.addEventListener("load", function() {
+            document.querySelectorAll('[role="article"] > .content').forEach(function(element) {
+                renderMathInElement(element);
+            });
+        });</script><script type="text/x-mathjax-config">MathJax.Hub.Config({
+            'HTML-CSS': {
+                matchFontHeight: false
+            },
+            SVG: {
+                matchFontHeight: false
+            },
+            CommonHTML: {
+                matchFontHeight: false
+            },
+            tex2jax: {
+                inlineMath: [
+                    ['$','$'],
+                    ['\\(','\\)']
+                ]
+            }
+        });</script><script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.9/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script><!--!--><script src="/js/main.js" defer></script><div class="searchbox"><div class="searchbox-container"><div class="searchbox-header"><div class="searchbox-input-container"><input class="searchbox-input" type="text" placeholder="想要查找什么..."></div><a class="searchbox-close" href="javascript:;">×</a></div><div class="searchbox-body"></div></div></div><script src="/js/insight.js" defer></script><script>document.addEventListener('DOMContentLoaded', function () {
+            loadInsight({"contentUrl":"/content.json"}, {"hint":"想要查找什么...","untitled":"(无标题)","posts":"文章","pages":"页面","categories":"分类","tags":"标签"});
+        });</script></body></html>
